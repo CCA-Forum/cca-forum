@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Event Specification Proposal </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Event+Specification+Proposal.html">Event Specification Proposal</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Event Specification Documents</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar">Draft Specification aka The SIDL</div>
+<br />
+<a class="wiki"  href="http://www.cca-forum.org/download/spec/EventSpecification.sidl">event specification sidl</a><br />
+<br />
+<div class="titlebar">Overview Document</div>
+<br />
+<a class="wiki"  href="http://www.cca-forum.org/download/spec/EventSpecificationIssues.pdf">event specification overview document</a><br />
+<br />
+<div class="titlebar">Use Cases and Other Issues</div>
+<br />
+<ul><li> <b>GUI component</b>
+</li></ul>
+<br />
+When thinking of events, it is natural to think about GUI systems. However, the CCA event system is not intended to replace event support in the GUI toolkit. Instead, it provides its own means for distributing events to components in a framework. Of course, there are a number of events that occur that may need to be reflected in a GUI.<br />
+<br />
+We are working on a common set of events that are of use to any CCA framework. Most of these are in the area of component lifecycle and discovery.<br />
+<br />
+In the event specification, we reserve the cca.* event topic namsepace for these standard events. As the specification evolves, these topic names and the structure of the event body (as a TypeMap<a href="tiki-editpage.php%3Fpage=TypeMap.html" title="Create page: TypeMap" class="wiki wikinew">?</a> or XML) will be specified as well. Any feedback on what this namspace should look like is very useful.<br />
+<br />
+While it would be possible to implement the CCA event service on top of a GUI event framework, it wouldn't be an optimal choice, as the usage patterns are too different.<br />
+<br />
+<ul><li> <b>multiple frameworks</b>
+</li></ul>
+<br />
+Q:In this case let's consider several instances of (possibly) the same framework and the &quot;main()&quot; program appears as a component in all of them.  When main() calls framework specific methods (e.g. anything on Services) then the event bus associated with that framework gets serviced.   But if those methods are not called then the events will not get serviced.  It seems conceivable that this could lead to a deadlock.  It could be that the event service _should_ be a singleton to prevent this.<br />
+<br />
+A: The EventService<a href="tiki-editpage.php%3Fpage=EventService.html" title="Create page: EventService" class="wiki wikinew">?</a> is indeed a singleton, or unique to a given framework. For several instances of the same framework, it is up to the implementation to decide if all the framework instances share the same service instance or not. Each case has advantages and disadvantages.<br />
+<br />
+As for different frameworks, there seems to be more general interoperability issues that need to be addressed before one can discuss passing events between differing frameworks.<br />
+<br />
+<ul><li> <b>FPGAs and other heterogeneous environments</b>
+</li></ul>
+<br />
+With respect to FPGAs, the main need is to be able to asynchronously call a method that will execute on an FPGA and when it is finished, the calling process should be notified.  Hardware-accelerated methods (FPGA) will require the participation of a partner processor to handle all OS and framework system calls, the FPGA itself can only provide the computation with a restricted placement of the input data (i.e. it has to be on the FPGAs SRAM, or it has to be on certain window within the partner processor's main memory).  The partner processor should, of course, be the processor which is physically closest to the FPGA itself in order to minimize overhead.  Synchronous execution on the FPGAs should also be supported with semantics similar to a regular method call. (More details to come...)<br />
+<br />
+The model of providing FPGA support is very platform dependent. In most cases, a driver will be needed to setup access to the FPGA and to place data and calls to it. To raise a CCA event when the FPGA computation completes, it will probably be necessary to write platform and framework-specifc code that interacts with that driver to raise events based on low-level callback mechanisms (signals, callback functions, etc.) that the driver and OS platform provide.<br />
+<br />
+<a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=30">Using CCA Events for Polygraph and FPGAs</a><br />
+<br />
+<ul><li> <b>Event Service for HPC applications</b>
+</li></ul>
+<br />
+A prototype implementation of the initial CCA Event Service specification was implemented at PNNL on a Cray XD-1 using ARMCI as the event transport. A paper describing this work has been published at the Software Engineering for HPC Workshop held in minneapolis in May 2007.<br />
+<br />
+<a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=40"> SE-HPC 2007 paper</a><br />
+<br />
+We have now implemented the modified specification (from January 2007 CCA meeting) on the XD-1 and have increased the performance of event delivery by redesigning the event service internals. We have test ed this in a prototype application by using the event service as an abstraction to distribute work to a collection of FPGA-based analysis components from a mass spectrometry application.<br />
+<br />
+We have submitted a paper to the journal Concurrency &amp; Computation: Practice and Experience, describing in full details the design and implementation of a high-performance event service on HPC platforms.  The paper also discusses the use of the event service for distributing work on a mass spectrometry application executing on a heterogeneous CPU/FPGA cluster.<br />
+<br />
+The paper is titled &quot;<b>Design and Implementation of a High-Performance<a href="tiki-editpage.php%3Fpage=High-Performance.html" title="Create page: High-Performance" class="wiki wikinew">?</a> CCA Event Service</b>&quot;.  A summary of the paper is:<br />
+<br />
+<div class="simplebox">Event services based on publish-subscribe architectures are well established components of distributed computing applications. Recently, an event service has been proposed as part of the Common Component Architecture (CCA) for high-performance computing applications. In this paper we describe our implementation, experimental evaluation, and initial experience with a high performance CCA event service that exploits efficient communications mechanisms commonly used on high-performance computing (HPC) platforms. We describe the CCA event service model, and discuss briefly the possible implementation strategies of that model. We then present the design and implementation of the event service using the Aggregate Remote Memory Copy Interface (ARMCI) as an underlying communication layer for this mechanism. Two alternative implementations are presented and evaluated on a Cray XD-1 platform. The performance results demonstrate that event delivery latencies are low and that the event service is able to achieve high throughput levels. Finally, we describe the use of the event service in an application for high-speed processing of data from a mass spectrometer, and conclude by discussing some possible extensions to the event service for other HPC applications.</div><br />
+<br />
+We'll be able to post the paper as soon as it is accepted by CCPE... <img alt="cool" src="img/smiles/icon_cool.gif" /><br />
+<br />
+An evolving document describing use cases at PNNL for the HPC version of the event service is:<br />
+<br />
+<a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=41"> HPC Event Service use cases</a><br />
+<br />
+<ul><li> <b>distributed environments</b>
+</li></ul>
+<br />
+It is up to each component to decide how an event is distributed inside a component; the event service just insures that the every component gets the events it subscribes to, and can send events to all components. It is up to the framework implementation to provide those semantics, but the semantics of intra-component distribution is not specified.<br />
+<br />
+If using a standard CCA event service model to distribute events in a single component is desired, then it can work on that. The main issue is that intra-component events may be able to use optimizations that inter-component events can not. For example, if the component is in a single address space, one could create a simple event bus based on callback functions, allowing arbirtary objects in the language to be passed back and forth,<br />
+<br />
+<ul><li> <b>Management and Monitoring</b>
+</li></ul>
+<br />
+One common use of an event-based system is often used as the backbone of management and performance tools. Tools like HP Openview, Tivoli and Microsoft Operation Manager use a large set of events that correspond to various events in a running system (for example, process creation, abnormal termination, user login/logout, etc.) Also, there is a set of events associated with performance (memory usage, page file system, etc.)<br />
+<br />
+It seems that a discussion of create a standard set of CCA performance and management events that are optionally available to CCA components is worth exploring. However, it can not be understated that the collection and distribution of these events is not easy to scale. All the above companies have significant IP and technologies that allow the detection and distribution of system events with minimal overhead and maximum scalability.<br />
+<br />
+<ul><li> <b>Appropriate Use of Events</b>
+</li></ul>
+<br />
+It is vital to note that events are not a replacement for remote method calls or other methods of communication. Defining the appropriate level of events, how often events are raised and processed is vital for events to be used successfully. The framework can only process events as best they can.<br />
+<br />
+<div class="titlebar">Event Structure</div>
+<br />
+An event-based frame management (component wrangling) system has been prototyped for Ccaffeine (the ccafe04 framework implementation). The event delivery model is synchronous callbacks (on a local basis in a multi-process environment). The javadoc of the events and listeners in this prototype is available at <a class="wiki"  href="../~baallan/currentSpec/html/index.html">Ben's cca-forum web site</a>.<br />
+Compared to the 'everything is a string' approach, this prototype leverages the existing CCA defined handles (ComponentID, ConnectionID, TypeMap, ComponentClassDescription) in the event payloads. Once a component receives the event, it has everything it needs to interact with the BuilderService in response to the event. See particularly ccaffeine.ports.ContextEvent*Service and the package ccaffeine.ce. A <a title="Comparing proposed event service with Context-oriented (cca frame lifecycle) events in-core" href="tiki-index.php%3Fpage=ComparisonWithCcaffeineFrameworkEvents.html" class="wiki">ComparisonWithCcaffeineFrameworkEvents</a> reveals some efficiency issues both in coding and runtime performance.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=ayla.html' >ayla</a>
+  last modification: Tuesday 11 of March, 2008 [04:44:03 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=kosta.html' >kosta</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Event%20Specification%20Proposal
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

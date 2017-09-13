@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : odin.cs.indiana.edu-mpich-1.2.7-intel-9-babel </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=odin.cs.indiana.edu-mpich-1.2.7-intel-9-babel.html">odin.cs.indiana.edu-mpich-1.2.7-intel-9-babel</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">odin.cs.indiana.edu mpich 1.2.7 intelv9 babel</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+architecture: opteron/linux<br />
+date: Aug. 2005<br />
+contributor: Benjamin Allan<br />
+<br />
+The keys in this configuration are getting mpich configured and babel pointed at mpich.<br />
+First the mpich config, then the babel config. In this config set, we use intel fortran, but not intel c++. (Even with these instructions you may still not get a working f90 support depending on how Chasm was compiled and installed on your system.)<br />
+<br />
+<tt> ../mpich-1.2.7/configure --with-romio --with-mpe \</tt><br />
+<tt>      -prefix=/san/cca/mpich_gcc_intel_PIC \</tt><br />
+<tt>      --enable-cxx \</tt><br />
+<tt>      -c++=/usr/x86_64-pc-linux-gnu/gcc-bin/3.4.3/c++ \</tt><br />
+<tt>      -fc=/opt/intel/fce/9.0/bin/ifort \</tt><br />
+<tt>      -opt='-O' \</tt><br />
+<tt>      -clinker=/usr/bin/cc \</tt><br />
+<tt>      -c++linker=/usr/x86_64-pc-linux-gnu/gcc-bin/3.4.3/c++ \</tt><br />
+<tt>      -flinker=/opt/intel/fce/9.0/bin/ifort \</tt><br />
+<tt>      -optcc='-O ' \</tt><br />
+<tt>      -optf77='-O ' \</tt><br />
+<tt>      -f90=/opt/intel/fce/9.0/bin/ifort \</tt><br />
+<tt>      -f90inc=/opt/intel/fce/9.0/include \</tt><br />
+<tt>      -f90libpath=/opt/intel/fce/9.0/lib \</tt><br />
+<tt>      -f90linker=/opt/intel/fce/9.0/bin/ifort \</tt><br />
+<tt>      --enable-sharedlib \</tt><br />
+<tt>      --enable-sharedlib=/san/cca/mpich_gcc_intel_PIC/lib \</tt><br />
+<tt>      -cflags=-fPIC \</tt><br />
+<tt>      -fflags=-fPIC \</tt><br />
+<tt>      -c++flags=-fPIC \</tt><br />
+<tt>      -rsh=/usr/bin/ssh</tt><br />
+<br />
+<tt> ../babel-0.10.10/configure --prefix=$HOME/cca/install/babel-mpi \</tt><br />
+<tt>  --disable-java \</tt><br />
+<tt>  CC=/san/cca/mpich_gcc_intel_PIC/bin/mpicc \</tt><br />
+<tt>  CXX=/san/cca/mpich_gcc_intel_PIC/bin/mpicxx \</tt><br />
+<tt>  FC=/san/cca/mpich_gcc_intel_PIC/bin/mpif90 \</tt><br />
+<tt>  F77=/san/cca/mpich_gcc_intel_PIC/bin/mpif77</tt><br />
+<br />
+If you want to use intel c++ as well, change the obvious c++ options in the mpich configuration and add CXXFLAGS=-w1 to the babel configuration to suppress Intel remarks.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Friday 26 of August, 2005 [04:27:23 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=odin.cs.indiana.edu-mpich-1.2.7-intel-9-babel
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

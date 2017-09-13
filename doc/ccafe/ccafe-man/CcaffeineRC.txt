@@ -1,0 +1,11 @@
+#!ccaffeine bootstrap file. 
+# ------- don't change anything ABOVE this line.-------------
+path set /home/rob/cca/dccafe/cxx/dc/component
+! The above line should be path /usr/local/ccafe/cxx/dc/component
+! unless you hack/add your own component directories in a : separated list.
+repository get StarterComponent
+repository get TimeStamper
+repository get Timer
+repository get PrinterComponent
+repository get RevalidateTest
+

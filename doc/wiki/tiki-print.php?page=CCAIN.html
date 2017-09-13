@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CCAIN </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CCAIN.html">CCAIN</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">CCAIN home page</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+CCAIN work has been discontinued. Ease of use work has rolled into bocca and onramp developments.<br />
+<br />
+<b>The CCA INtegration Framework</b><br />
+<br />
+<b>Overview: What is CCAIN?</b><br />
+CCAIN is a very light-weight framework for supporting component-based programs written in a mix of C, C++, and Fortran 2003. It implements a subset of the Common Component Architecture (CCA) specification. The facilities that it provides support the basic operations of creating, connecting, and calling components. By using C only for implementing the framework, CCAIN itself does not require any tools beyond a C compiler and the compilers for the components that make up user applications. This removes the dependence of the component framework from compiler features and tools that increase the complexity of the component toolchain. Avoiding this complexity decreases build time, removes potential difficulties in porting between platforms, and makes code less susceptable to incompatibilities between tools as their individual versions evolve. CCAIN is based on static linking of components, which eliminates portability issues due to support for dynamic linking of component-based programs at runtime. Although other frameworks support static linking quite readily, their support for dynamic linking increases their cost for porting to new platforms. CCAIN supports sequential, multi-threaded parallel, and distributed memory parallel (ala MPI, ARMCI, etc...) programming. Distributed programs based on remote method invocation, grid computing, and other non-traditional approaches to parallel programming are not supported. Other frameworks exist that can be used if these programming models are desired.<br />
+<br />
+The key points to associate with CCAIN are summarized as:<br />
+<br />
+<tt>    * Language interoperability via C API.</tt><br />
+<tt>    * Static component linking.</tt><br />
+<tt>    * Thread-level and message-passing parallelism internally within components.</tt><br />
+<tt>    * Minimal toolset required for framework - make and a C compiler.</tt><br />
+<br />
+<b>Documentation</b><br />
+Currently the best place to learn about CCAIN is the Doxygen documentation from the code, the examples included with the distribution, and the little readme files in various places. Documentation will grow over time.<br />
+<br />
+<br />
+<br />
+CCAIN Design<a href="tiki-editpage.php%3Fpage=CCAIN+Design.html" title="Create page: CCAIN+Design"  class="wiki wikinew">?</a><br />
+<b>Component:</b><br />
+<br />
+<tt>   /**</tt><br />
+<tt>    * This is here only as a way to declare the base of a component, and</tt><br />
+<tt>    * any user's components would expand on this.  This allows the framework</tt><br />
+<tt>    * to perform a cast operation to access fields w/in the component.</tt><br />
+<tt>    */</tt><br />
+<tt>   typedef struct CcainBaseComponent<a href="tiki-editpage.php%3Fpage=CcainBaseComponent.html" title="Create page: CcainBaseComponent" class="wiki wikinew">?</a></tt><br />
+<tt>   {</tt><br />
+<tt>      /* the local services object for this component, which itself contains</tt><br />
+<tt>       * a reference to the centralized service structure.</tt><br />
+<tt>       */</tt><br />
+<tt>      CcainLocalServices_t *myServices;</tt><br />
+<br />
+<tt>      /* function pointer for the setServices function given by a component */</tt><br />
+<tt>      void (*setServices)(struct CcainBaseComponent *comp,</tt><br />
+<tt>                          CcainLocalServices_t *myServices);</tt><br />
+<br />
+<tt>      void (*addRef)(struct CcainBaseComponent *comp);</tt><br />
+<tt>      void (*deleteRef)(struct CcainBaseComponent *comp);</tt><br />
+<tt>   }CcainBaseComponent_t;</tt><br />
+<br />
+<b>Questions:</b><br />
+1) Should deleteRef() return the current reference count to allow the caller to free the memory if there are no more references?<br />
+2) Is the framework responsible for freeing the memory?<br />
+3) Who frees the memory?<br />
+4) Does a Port need an addRef() and deleteRef() also?<br />
+<b>Answers:</b><br />
+1) no. generally only the object knows how to delete itself. For ALL objects, add/del ref come first in the struct and we have a base struct type CcainCountable { addRef; deleteRef; } (where i'm omitting proper C syntax in Countable at the moment.)<br />
+2) The framework is responsible for using create/addref/deleteref appropriately.<br />
+3) objects know how to delete themselves (or not) inside their deleteref impl.<br />
+4) Ports should be refcounted like all other objects. We can choose to make a special exception for ports that are advertised to the framework with as uncounted eg addProvidesPort(CcainCountable *portInstance, const char *myPortInstName, const char *myPortType); and addVoidProvidesPort(void *portInstance, ...etc); The contract on void* ports is as in ccaffeine: the framework will hold the pointer until removeVoidProvidesPort is called, and then it will be returned to the remover that presumably was also the provide caller and knows how the memory of the particular void* is managed. Void* ports will be non-proxyable.<br />
+<br />
+CCAIN Development<a href="tiki-editpage.php%3Fpage=CCAIN+Development.html" title="Create page: CCAIN+Development"  class="wiki wikinew">?</a><br />
+CCAIN Downloads<a href="tiki-editpage.php%3Fpage=CCAIN+Downloads.html" title="Create page: CCAIN+Downloads"  class="wiki wikinew">?</a><br />
+<a class="wiki"  href="http://sourceforge.net/projects/ccain/ "> CCAIN SourceForge Site</a><br />
+CCAIN Documentation<a href="tiki-editpage.php%3Fpage=CCAIN+Documentation.html" title="Create page: CCAIN+Documentation"  class="wiki wikinew">?</a><br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=admin.html' >admin</a>
+  last modification: Friday 19 of June, 2009 [17:29:31 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CCAIN
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : standards </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=standards.html">standards</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">CCA Toolkit naming and install standards</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar"> OBSOLETE </div>
+This page is superceded by the <a title="CCA Component Installation Standard" href='tiki-index.php%3Fpage=bocca+package+installation.html' class='wiki'>bocca package installation</a> standard.<br />
+CCA Toolkit developers should follow the bocca standard.<br />
+<br />
+<div class="titlebar">Component Install Path</div>
+<br />
+<table class="wikitable"><tr><td class="wikicell" >components</td><td class="wikicell" > $prefix/CCAtk/components/$PACKAGE_NAME-$version/</td><td class="wikicell" >Contains $COMPONENT_NAME.cca, $COMPONENT_NAME.so, lib$COMPONENT_NAME.a</td></tr><tr><td class="wikicell" >
+
+ports</td><td class="wikicell" >$prefix/CCAtk/ports/$PACKAGE_NAME-$version/</td><td class="wikicell" >Contains $PORT_NAME.sidl,             lib$PORT_NAME-lang.a, $PORT_NAME-lang.so</td></tr><tr><td class="wikicell" >
+
+port headers for F90, C, C++</td><td class="wikicell" > $prefix/CCAtk/ports/$PACKAGE_NAME-$version/include</td><td class="wikicell" >Contains *.h, *.hh</td></tr><tr><td class="wikicell" >
+
+frameworks, tools</td><td class="wikicell" >$prefix/CCAtk/fwk/  (example:$prefix/CCAtk/fwk/ccafe) </td><td class="wikicell" >Contains frameworks</td></tr><tr><td class="wikicell" >
+
+bindir</td><td class="wikicell" >$prefix/CCAtk/bin/</td><td class="wikicell" >Contains executables</td></tr><tr><td class="wikicell" >
+
+Utilities: mpich,python,...</td><td class="wikicell" >$prefix/CCAtk/etc</td><td class="wikicell" >Grab bag</td></tr></table><br />
+<br />
+<br />
+<br />
+<div class="titlebar">Version Naming (i.e. GNU) and language monikers</div>
+<br />
+<table class="wikitable"><tr><td class="wikicell" >i.e.version = %d.%d.%d</td><td class="wikicell"  colspan="2">
+
+For example: &quot;$COMPONENT_NAME-$version&quot; looks like &quot;ga-3.2.6&quot;</td></tr><tr><td class="wikicell" >
+
+i.e. lang = one of c, c++, f90, python</td><td class="wikicell"  colspan="2">For example: &quot;$PORT_NAME-lang.so&quot; looks like &quot;IntegratorPort-f90.so&quot;</td></tr></table><br />
+<br />
+Note: Bocca will soon provide fully automated install. The above standard which looked fine in 2004 is likely to be revised to be less divergent from the gnu guidelines and other common practices.<br />
+<br />
+Note-old: the above standard was revised from the CCA meeting in a telecon 6 Sep 04; it is also good to look at: <a class="wiki"  href="http://www.gnu.org/prep/standard_toc.html">http://www.gnu.org/prep/standards_toc.html</a>. These should be considered guidelines and there are almost certainly circumstance where these may be stretched or broken.  Boyana is creating an example component build from the tutorial source.  If you wish to get a head start on deploying your component you might want to download <a class="wiki"  href="http://cca-forum.org/download/tutorial">tutorial-src-$version.tar.gz</a> .  This distribution will soon install everything in the standard places outlined above, using the conventions discussed here.  The tutorial source is only a template for building and deploying a component. You will also want to build the cca tools (Babel, Chasm, Ccaffeine, etc.) that will work best with the tutorial source.  Download http://cca-forum.org/download/cca-tools|cca-tools-$version.tar.gz] here.<br />
+<br />
+<a title="FAQ / b-rag" href='tiki-index.php%3Fpage=Bocca+Reference+And+Guide.html' class='wiki'>Bocca Reference And Guide</a><br />
+<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=admin.html' >admin</a>
+  last modification: Wednesday 26 of September, 2007 [21:05:59 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=standards
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

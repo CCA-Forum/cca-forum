@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Bocca syntax </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Bocca+syntax.html">Bocca syntax</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Design draft/discussion of the subcommand set</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Background material at:<br />
+<a title="Adding commands to bocca" href='tiki-index.php%3Fpage=Extending+bocca.html' class='wiki'>Extending bocca</a>, <a title="Losing all those pesky switches" href='tiki-index.php%3Fpage=Known+Babel+Types+Become+Subcommands.html' class='wiki'>Known Babel Types Become Subcommands</a>, and <a title="Command Line IDE" href='tiki-index.php%3Fpage=CCA+Commandline+Tools.html' class='wiki'>CCA Commandline Tools</a>.<br />
+<br />
+<ul><li> Old: this page captures much of the functionality we aim for.
+</li></ul>
+But the syntax is now &quot;bocca <b>action</b> <i>itemtype</i> options&quot; and is documented further in the bocca help system.<br />
+<br />
+<ul><li><b>Ben's current proposal</b>
+</li></ul>
+Starting at clide, we can extend. Clide proposed subcommands like so: <div class="simplebox">help, init, component, port, package, examples, show, application, import, export, config, SIDLNAME, class and interface</div> We're assuming that by some mechanism not shown, partial sidl names which can be resolved uniquely within the project are allowed in place of fully qualified sidl names.<br />
+<br />
+Note by Boyana: the current BGraph provides symbol resolution for partial sidl names.<br />
+<br />
+Clide Syntax {optional args in parens}: <div class="simplebox"><b>init</b> PROJECTNAME {DEFAULTLANGUAGE}<br />
+<b>application</b> APPNAME {LANGUAGE} {ccafe_script_name}<br />
+<b>component</b> CLASSNAME {LANGUAGE} provides PORTCLASS {PORTINSTANCE {modifiers}} {, additional provided ports} uses PORTCLASS {PORTINSTANCE {modifiers}} {, additional uses ports}<br />
+<b>port</b> PORTCLASS {extends SIDLNAME}<br />
+<b>package</b> PACKAGENAME {DEFAULTLANGUAGE}<br />
+<b>show</b> {components, ports, classes, interfaces, whatever we want to query the project metadata for}<br />
+<b>config</b> {dump relevant config information from bocca and/or the current project}<br />
+<b>class</b> SIDLCLASS {LANGUAGE} {additional-sidl-class-modifiers}<br />
+<b>interface</b> SIDLINTERFACE {additional-sidl-iface-modifiers}<br />
+<b>copy</b> SIDLNAME NEWSIDLNAME<br />
+<b>rename</b> SIDLNAME NEWSIDLNAME<br />
+<b>copytree</b> SUBDIRNAME<br />
+<b>delete</b> SIDLNAME<br />
+<b>import</b> CANNED_BOCCA_PACKAGE_OR_SIDL_FILE_OR_SOURCE_TO_BE_DETERMINED_LATER<br />
+<b>export</b> CANNED_BOCCA_PACKAGE<br />
+</div><br />
+based on the types-as-subcommands, a component can be defined incrementally, avoid hideously long command lines or gobs of switches. <div class="simplebox"><b>CLASSNAME</b> provides PORTCLASS {PORTINSTANCE {modifiers}} {, additional provided ports}<br />
+<b>CLASSNAME</b> uses PORTCLASS {PORTINSTANCE {modifiers}} {, additional uses ports}<br />
+<b>CLASSNAME</b> delete PORTINSTANCE<br />
+<b>APPNAME</b> any_legal_ccaffeine_scripting_statement</div><br />
+In particular, the original python createcomponent draft uses switches instead of the little syntax proposed above; the pedantic use of<br />
+-- is tiresome and it limits the readable use of various modifiers needed for ports that do not follow the default pattern.<br />
+<br />
+<br />
+<ul><li><b>Boyana's comments on Ben's current proposal</b>
+</li></ul>
+<br />
+I would much rather have named command line options rather than positional arguments. A reliable options parser is required. Alternatives to some of the above (approximate syntax, this needs to be refined to be able to associate instances and modifiers with the correct type).<br />
+<br />
+<div class="simplebox"><b>init</b> PROJECTNAME {--language/-l DEFAULTLANGUAGE}<br />
+<b>application</b> APPNAME {--language/-l LANGUAGE} {ccafe_script_name}<br />
+<b>component</b> CLASSNAME {--language/-l LANGUAGE} --provides/-p PORTCLASS {--instance/-i PORTINSTANCE {--modifiers/-m modifierslist}} {, additional provided ports} --uses PORTCLASS {PORTINSTANCE {--modifiers/m modifierslist}} {, additional uses ports}<br />
+<b>port</b> PORTINTERFACE {--extends/-e SIDLNAME}<br />
+<b>package</b> PACKAGENAME {--language/-l DEFAULTLANGUAGE}<br />
+<b>class</b> SIDLCLASS {--language/-lLANGUAGE} {--modifiers/-m additional-sidl-class-modifiers}<br />
+<b>interface</b> SIDLINTERFACE {--modifiers/-m additional-sidl-iface-modifiers}<br />
+</div><br />
+<br />
+<div class="simplebox"><br />
+change component --addPort/--removePort PORT_TYPE:PORT_INSTANCE<br />
+change class --addInterface/--removeInterface INTERFACE_TYPE<br />
+</div><br />
+<br />
+where PORT_INSTANCE is optional (the instance name is derived from type if not explicitly specified).<br />
+<ul><li><b>INSERT alternative proposals here</b>. The port or interface must exist before being added to the component/class. Multiple --addPort/etc. options can be given in the same command.
+</li></ul>
+<br />
+Boyana comments: I think the change arguments should be as similar to create as possible (ideally the same whenever it makes sense). So for component/class changes, I suggest:<br />
+<br />
+<div class="simplebox"><br />
+change component --uses/--provides/--remove-port PORT_TYPE:PORT_INSTANCE<br />
+change class --implements/--remove-interface INTERFACE_TYPE<br />
+change class/component --extends/--remove-superclass CLASS_TYPE<br />
+</div><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Wednesday 15 of August, 2007 [16:50:22 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=norris.html' >norris</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Bocca%20syntax
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

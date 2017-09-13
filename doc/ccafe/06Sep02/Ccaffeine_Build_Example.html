@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Ccaffeine Build Example</title>
+      
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+</head>
+  <body>
+ <br>
+ 
+<h2 align="center">Ccaffeine Build Example for <a
+ href="http://cca-forum.org/download/ccafe/tutorial/ccaffeine-09-06-2002.tgz">cccaffeine-09-06-2002.tgz</a><br>
+ </h2>
+ <br>
+ This is an example build for Ccaffeine from my laptop. &nbsp;The paths that 
+you give to "configure" are going to be different, but it will give you an 
+idea as to what it takes. &nbsp;It will configure and build using the normal 
+previous procedure.&nbsp; It must have two ancillary repositories to build: 
+cca-spec-classic, and cca-spec-babel. &nbsp;The *real* cca spec is the babel 
+one.&nbsp; These must be built before Ccaffeine is built. &nbsp;Here
+is a list of the things required:<br>
+ <br>
+ 
+<ul>
+   <li><a href="http://www.llnl.gov/CASC/components/babel.html">Babel</a></li>
+   <li><a href="http://www.boost.org/">BOOST</a> smart pointers</li>
+   <li><a href="http://www.netlib.org/blas/">BLAS</a> and <a href="http://www.netlib.org/lapack/">
+ LAPACK</a></li>
+   <li><a href="ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.6.7.tar.gz">Ruby</a>
+ (ships with Redhat now, but let me know if this is a hassle, 
+	I can fix this)</li>
+   <li>gcc 2.95.3 (3.1 may work, untested)&nbsp;</li>
+ 
+</ul>
+The repositories are in the following places:<br>
+<br>
+<table cellpadding="2" cellspacing="2" border="0" width="100%">
+  <tbody>
+    <tr>
+      <td valign="top"><b>Name</b><br>
+      </td>
+      <td valign="top" align="center"><b>Repository</b><br>
+      </td>
+      <td valign="top"><b>Module</b><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">Ccaffeine</td>
+      <td valign="top">$USER@cca-forum.org:/home/ccaffeine/repository tag:"babelification"
+ </td>
+      <td valign="top">dccafe<br>
+      <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">CCA Specification<br>
+      </td>
+      <td valign="top">$USER@cca-forum.org:/home/cca-spec/repository<br>
+      <br>
+      </td>
+      <td valign="top">cca-spec-babel<br>
+      <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">Classic (old) CCA specification<br>
+      </td>
+      <td valign="top">$USER@cca-forum.org:/home/cca-spec/repository<br>
+      <br>
+      </td>
+      <td valign="top">cca-spec-classic<br>
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Here is the complete <a href="build-log.html">
+listing</a> for the example buildfrom my laptop.<br>
+ 
+</body>
+</html>

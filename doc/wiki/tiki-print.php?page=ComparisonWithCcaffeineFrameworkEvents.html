@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : ComparisonWithCcaffeineFrameworkEvents </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=ComparisonWithCcaffeineFrameworkEvents.html">ComparisonWithCcaffeineFrameworkEvents</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Comparing proposed event service with Context-oriented (cca frame lifecycle) events in-core</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+This is a stab at comparing EventService ala Nathan/Ayla/Steve to Ccaffeine's prototype for CCA-lifecycle and some notes on potential unification. The prototype can be viewed at:<br />
+<a class="wiki"  href="../~baallan/currentSpec/html/namespaceccaffeine_1_1ce.html">the javadoc page</a>.<br />
+<br />
+<div class="titlebar">CCA specific Channels</div>
+<br />
+- Make the channels similar to the concrete types namewise.<br />
+- Note that the entire model in Ccaffeine is frame-scoped, so we'll need to add a prefix here on all the channels if we export beyond a frame scope.  For example the channels might all be prefixed with &quot;frame-####.&quot; where #### is somehow mappable to an instance of the frame; it would need to be more complicated if the frame is off-process.  Everywhere that ccaffeine appears is a candidate for replacing with &quot;cca.&quot; in the following list of channel names (replace . with / as needed). Here are channel names equivalent to the events the prototype contains:<br />
+<tt>        &quot;ccaffeine.ContextEvent&quot;</tt><br />
+<tt>        &quot;ccaffeine.ComponentFactory&quot;</tt><br />
+<tt>        &quot;ccaffeine.ComponentInstance.Added&quot;</tt><br />
+<tt>        &quot;ccaffeine.ComponentInstance.AddRequest&quot;</tt><br />
+<tt>        &quot;ccaffeine.ComponentInstance.Deleted&quot;</tt><br />
+<tt>        &quot;ccaffeine.ComponentInstance.DeleteRequest&quot;</tt><br />
+<tt>        &quot;ccaffeine.ContextConnection&quot;</tt><br />
+<tt>        &quot;ccaffeine.PortActivity&quot;</tt><br />
+<tt>        &quot;ccaffeine.PortDefinition&quot;</tt><br />
+<br />
+- A potentially heavy load of work with strings is required by the proposed sidl. The default babel-fortran string length is 512 characters and it appears this default is not runtime tunable or configure-time specifiable in the Babel build. Channel names in real applications can get very long (check out the full key length in most Windows Registry entries). Using event class objects can cut down on a lot of string overhead and be more friendly to fortran clients.<br />
+<br />
+<div class="titlebar"> Observations based on the ccafe04 prototype </div>
+<br />
+- I included a stub for generic events, but it proved of no utility in the framework itself.<br />
+<br />
+- I didn't find it useful within in some of these channels/events (ComponentFactory, PortActivity, PortDefinition, ContextConnection) to distinguish at the event class level some finer details. Instead, each event carries an enum'd type as described at<br />
+url given at the beginning of this document.<br />
+<br />
+<b>Particular sticky points compared to TypeMap based events</b><br />
+-- With an in-core framework, event-delivery carrying TypeMaps through babel requires that a <b>copy</b> of the typemap (not likely to be a lightweight exercise) be made for each listener. If not copied, modifications made to the typemap by the first listener taking delivery can mislead subsequent listeners.<br />
+<br />
+-- I didn't find it useful to query a TypeMap for event-class specific payload values that will always be used. Specific methods on the event object are provided instead.<br />
+<br />
+-- I didn't find it useful to return string values whose only real use is to invoke an object lookup on the BuilderService interface. &quot;Everything is a string/TypeMap + BuilderService&quot; as an approach just bloats the event receiver's code enormously. Methods that return ComponentID, etc are provided.<br />
+<br />
+<b>Unification directions</b><br />
+<br />
+My first impulse is that one way of unifying the proposals is to add a TypeMap to the generic ContextEvent<a href="tiki-editpage.php%3Fpage=ContextEvent.html" title="Create page: ContextEvent" class="wiki wikinew">?</a> of the ccafe04 scheme. This is of a band-aid/gateway nature.<br />
+<br />
+I certainly don't claim the &quot;in-core-oriented&quot; nature of the ccafe04 work is appropriate to wide-area-network scenario, but the charter of the events working group is to capture a set of specifications that covers the 3 or so major scenarios (wide-area/high-latency, in-core/cheapness+reliability-guaranteed, local-area/asynchronous). It's not clear to me that we've achieved all these so far or identified well which are expected to be satisfied.<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Friday 29 of September, 2006 [18:31:31 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=ComparisonWithCcaffeineFrameworkEvents
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

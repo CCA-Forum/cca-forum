@@ -1,0 +1,121 @@
+
+Notes on topics and contents for a framework(context)/gui scheme.
+This scheme came from and is mappable to an event object type hierarchy
+(prototyped in java cca framework ccafe04). Flattening down to hash (typemap and
+topics) initially is as follows and eliminates polymorphism pain.
+Ben Allan, Sandia NL, April 2009, for extension by Kosta and other friends.
+
+
+Topic names:
+cca.* reserved to cca specified events and derivatives.
+cca.context.* described below to explain what goes on in or with a frame instance scope.
+
+All cca events will have the following attributes:
+	1) int:  context-event-type { an int value within a defined list (a) (maps to enum, obviously). }
+	2) string: source-id {string form of the component or framework container generating the event}
+	3) int: source-key {unique source point identifier within the source-id caller}
+	4) long: sequence-number { emitted in a monotonically increasing sequence for each source-id:source-key pair}
+	5) string: description { something user readable if it makes sense }
+
+(a) int values convenient for lots of hpc (c switch) style dispatch since polymorphism in babel can be
+so painful. The values so far suggested are:
+-2: None. When digesting an alleged std::string or int type, it was found not to be in the standard. 
+-1: Error. {some deep foulup has occurred; should never be deliberately sent or received}.
+0:  ALL. {wild card mapping to non-string code.}
+1:  ConnectPending
+2:  Connected
+3:  DisconnectPending
+4:  Disconnected
+5:  ComponentInstanceAddPending 
+6:  ComponentInstanceAdded 
+7:  ComponentInstanceDeletePending 
+8:  ComponentInstanceDeleted 
+9:  PortAddPending 
+10: PortAdded 
+11: PortRemovePending 
+12: PortRemoved 
+13: PortRegisterPending 
+14: PortRegistered 
+15: PortUnregisterPending 
+16: PortUnregistered 
+17: PortFetchPending 
+18: PortFetched 
+19: PortReleasePending 
+20: PortReleased 
+21: FactoryOpened 
+22: FactoryClosed 
+23: ContextClosing 
+24: GoPortRequest
+25: GoPortResult
+
+(b)   The following additional info, if present, may make the event
+      interpretable in the scope of the outermost framework (which may not be
+      the originating framework). This
+      is handy mainly as that's where the interactive user interface 
+      will reside. 
+
+      6) string: containerFullyQualifiedInstanceName
+      7) string: componentFullyQualifiedInstanceName
+      8) string: callerComponentFullyQualifiedInstanceName
+      9) string: calleeComponentFullyQualifiedInstanceName
+
+Topic names and additional attributes or attribute restrictions with in-frame semantics:
+cca.context.connection)
+	string: context-event-type in {1-4}
+	string: user-component
+	string: provider-component
+	string: user-port
+	string: provider-port
+
+cca.context.component-instance.add-request)
+	string: context-event-type in {5}
+	string: component-class-name
+	string: component-instance-name-requested
+
+cca.context.component-instance.added)
+	string: context-event-type in {6}
+	string: component-class-name
+	string: component-instance-name
+
+cca.context.component-instance.delete-request)
+	string: context-event-type in {7}
+	string: component-class-name
+	string: component-instance-name
+
+cca.context.component-instance.deleted)
+	string: context-event-type in {8}
+	string: dead-component-class-name
+	string: dead-component-instance-name
+
+cca.context.port-instance.definition)
+	string: context-event-type in {9-16}
+	string: component-instance-name 
+	string: port-instance-name
+	string: port-class-name
+
+cca.context.port-instance.activity)
+	string: context-event-type in {17-20}
+	string: component-instance-name 
+	string: port-instance-name
+	string: port-class-name
+	string: connection-instance-name
+
+cca.context.component-factory)
+	string: context-event-type in {21-22}
+	string: factory-component-id
+	string: factory-port-name
+
+cca.context.closing)
+	string: context-event-type in {23}
+
+cca.context.goport.started)
+	string: context-event-type in {24}
+	string: component-instance-name 
+	string: port-instance-name
+
+cca.context.goport.finished)
+	string: context-event-type in {25}
+	string: component-instance-name 
+	string: port-instance-name
+	int:    result
+	string: exception-string

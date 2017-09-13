@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : AddingRoundupTracker </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=AddingRoundupTracker.html">AddingRoundupTracker</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Creating a new CCA roundup issue tracker</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<a name='_How_to_Create_a_New_CCA_Roundup_Issue_Tracker'></a><h1> How to Create a New CCA Roundup Issue Tracker</h1>
+<br />
+This procedure requires that you know how to login to <code>www.cca-forum.org</code> and ultimately become <code>root</code>. If you don't have this kind of access, ask someone who does.<br />
+<br />
+<ol><li> Choose a name for your tracker. The name for the tracker is going to be used as a database name, a user ID, and an email address; hence, the tracker name should be different than all the current trackers, all the current user IDs, and all the mailing lists. For this example, let's assume the tracker name is <code><b>cca-tutorial</b></code>
+</li><li> Send email to the ORNL system administrators (a.k.a. <code>volunteers</code>) asking them to create an nonlogin user account with the name of your tracker. This account should have the same UID/GID numbers as the <code>babel-bugs</code> user.
+</li><li> Give Roundup permission in MySQL to create a new database to hold the issue tracking information. If your tracker name has hyphens in it, the <i>databasename</i> should be the tracker name with the hyphens removed; otherwise, the <i>databasename</i> is simply the tracker name. In our example, <i>databasename</i> is <code><b>ccatutorial</b></code>.Become <code>root</code> on <code>www.cca-forum.org</code>. Find the database user name with <div class="simplebox"><code>grep &quot;user =&quot; /var/roundup/trackers/babel/config.ini</code></div>. Use name that appears to the right of the equal sign as the <i>username</i> below. The command <code>show databases</code> is included below, so you can verify that <i>databasename</i> is not already taken by some other application. <b>Bad things</b> will happen below if a database named <i>databasename</i> already exists. <div class="simplebox"><code>export HOME=~root</code><br /><code>mysql -u root</code><br /><code>mysql&gt; show databases;</code><br /><code>mysql&gt; grant all on <i>databasename</i>.* to <i>username</i>@localhost;</code><br /><code>mysql&gt; flush privileges;</code><br /><code>mysql&gt; quit</code><br /><code>Bye</code></div> In our <code>cca-tutorial</code> example, the grant line is <div class="simplebox"><code>mysql&gt; grant all on ccatutorial.* to <i>username</i>@localhost;</code></div>
+</li><li> Now we can initialize the Roundup database and make the tracker directory. As <code>root</code> execute the following on <code>www.cca-forum.org</code>. <div class="simplebox"><code># export PATH=/usr/local/python2.4.4/bin:/usr/local/roundup/bin:${PATH}</code><br /><code># export LD_LIBRARY_PATH=/usr/local/python2.4.4/lib</code><br /><code># roundup-admin install</code><br /><code>Enter tracker home: /var/roundup/trackers/<i>trackername</i></code><br /><code>Select template [classic]: classic</code><br /><code>Back ends: anydbm, mysql</code><br /><code>Select backend [anydbm]: mysql</code><br />  <br /><code>&nbsp;You should now edit the tracker configuration file:</code><br /><code>&nbsp;&nbsp;/var/roundup/trackers/<i>trackername</i>/config.ini</code></div>
+</li><li> Edit the tracker configuration file <code>/var/roundup/trackers/<i>trackername</i>/config.ini</code> using a text editor. Make sure to edit the name: <div class="simplebox"><code>name = <i>trackername</i> issue tracker</code></div> Set the web: <div class="simplebox"><code>web = https://www.cca-forum.org/bugs/<i>trackername</i>/</code></div> Set the email: <div class="simplebox"><code>email = <i>trackername</i></code></div>  This assumes that the user ID created in the second step is equal to <i>trackername</i>. Down in the <code>[rdbms]</code> section, set the database name with <div class="simplebox"><code>name = <i>databasename</i></code></div> Remember from above that the database name cannot have hyphens in it. In the same section, set the database login ID and password <div class="simplebox"><code>user = <i>username</i></code><br /><code>password = <i>password</i></code></div> You should lookup <i>username</i> and <i>password</i> from <code>/var/roundup/trackers/babel/config.ini</code> or some other tracker's <code>config.ini</code> file. In the <code>[logging]</code> section, set the filename to <code>../../log/internal.log</code> with <div class="simplebox"><code>filename = ../../log/internal.log</code></div>. Set the level as well <div class="simplebox"><code>level = WARNING</code></div>.  In the <code>[mail]</code> section, set the domain <div class="simplebox"><code>domain = cca-forum.org</code></div> and the host <div class="simplebox"><code>host = localhost</code></div>
+</li><li> Copy <code>/var/roundup/trackers/bocca/schema.py</code> to <code>/var/roundup/trackers/<i>trackername</i>/schema.py</code>. <div class="simplebox"><code>cp /var/roundup/trackers/bocca/schema.py /var/roundup/trackers/<i>trackername</i>/schema.py</code></div>
+</li><li> Initialize the database. This step creates a new MySQL database. If there is a preexisting database named <i>databasename</i>, it will be blown away during this step. In this step, you will need to provide an administrator password that you will need to remember.<div class="simplebox"><code># roundup-admin initialise</code><br /><code>Enter tracker home: /var/roundup/trackers/<i>trackername</i></code><br /><code>Admin Password: <i>adminpassword</i></code><br /><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm: <i>adminpassword</i></code></div> This message appeared on the screen the last time I did one.  I don't believe it's a problem.<div class="simplebox"><code>/usr/local/roundup-1.1.2/lib/python2.4/site-packages/roundup/backends/rdbms_common.py:155:</code><br /> <code>Warning: 'TYPE=storage_engine' is deprecated; use 'ENGINE=storage_engine' instead</code><br /> <code>&nbsp;&nbsp;self.cursor.execute(sql)</code></div>
+</li><li> Assuming you want email notification for new issues, copy <code>/var/roundup/trackers/bocca/detectors/newissuecopy.py</code> to <code>/var/roundup/trackers/<i>trackername</i>/detectors/newissuecopy.py</code>. <div class="simplebox"><code># cp  /var/roundup/trackers/bocca/detectors/newissuecopy.py /var/roundup/trackers/<i>trackername</i>/detectors/newissuecopy.py</code></div> Edit <code>/var/roundup/trackers/<i>trackername</i>/detectors/newissuecopy.py</code> and change the email address in the <code>cl.send_message</code> function to one appropriate for the new tracker.
+</li><li> You can change the look and feel of the tracker by editing the files in the <code>/var/roundup/trackers/<i>trackername</i>/html</code> directory. Normally, I edit <code>style.css</code>, <code>page.html</code>, and <code>issue.item.html</code>. You may want to copy <code>cca_logo.png</code> and/or <code>cca-logo-trans-180.gif</code> from <code>/var/roundup/trackers/bocca/html/</code>. It may also be useful for you to compare the default files with those in the <code>bocca</code> tracker <div class="simplebox"><code># diff -r /var/roundup/trackers/bocca/html /var/roundup/trackers/<i>trackername</i>/html</code></div> You may just copy some files from bocca if you want to mimic it's style.
+</li><li> Now we need to fix up some of the file/directory permissions. Change directory to <code>/var/roundup/trackers/<i>trackername</i></code> and execute the following chown and chmod commands. <div class="simplebox"><code># cd /var/roundup/trackers/<i>trackername</i></code> <br /><code># chgrp -R babel-bugs .</code> <br /><code># chmod -R go-w .</code> <br /><code># chmod -R g+wX db</code> <br /><code># chmod -f g+s db db/files db/files/*</code></div>
+</li><li> If the administrators have not created the user ID you asked for in step two, pause here! You don't want to do any other the rest until you have a working user id and hence a valid mailbox.
+</li><li> Use your favorite text editor to edit <code>/etc/default/roundup</code>. Find the line with <code>trackers= </code> followed by a space separated list of <code><i>trackername</i>=<i>trackerdirectory</i></code> definitions. For example, <div class="simplebox"><code>trackers='babel=/var/roundup/trackers/babel ccafe=/var/roundup/trackers/ccafe'</code></div> Add your tracker to this list by inserting a space followed by <code><i>trackername</i>=/var/roundup/trackers/<i>trackername</i></code>. Once you save this file, the cronjob that brings in email will start checking for mail to <i>trackername</i>.  If you want weekly reminders about unassigned issue sent to a particular address, add an entry to the <code>unassignedreminders</code> variable defined in <code>/etc/default/roundup</code>.  Each entry is <div class="simplebox"><code><i>trackername</i>=<i>emailaddress</i></code></div>
+</li><li> Restart the Roundup server. <div class="simplebox"><code># /etc/init.d/roundup restart</code></div>
+</li><li> Verify check your new issue tracker with a WWW brower. Open URI <code>https://www.cca-forum.org/bugs/<i>trackername</i>/</code>. You can login to the tracker with username <code>admin</code> and the password <i>adminpassword</i> used above.
+</li><li> You can tweak the look and feel with more editing in <code>/var/roundup/trackers/<i>trackername</i>/html/</code> if you want. Don't create any issues yet.
+</li><li> If the administrators have created the user ID you asked for in step two, edit <code>/etc/postfix/aliases.virtual</code>. There are several lines in a section labeled <code># Roundup related</code>. Add an analogous line for your tracker <div class="simplebox"><code><i>trackername</i>@cca-forum.org&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>trackername</i></code></div> I am not really sure why this is necessary.
+</li><li> Try creating a sample issue using the WWW interface. If it fails, double check that <code>/var/roundup/trackers/<i>trackername</i>/db</code> and it's subdirectories are writable by either group babel-bugs or by user babel-bugs.  The Roundup server runs as user babel-bugs/group babel-bugs, so it must be able to run in this area.
+</li><li> Verify that the new issue email was delivered. If the recipient is a Mailman mailing list, it may be stuck waiting for moderator approval. In these cases, it's good to subscribe <i>trackername</i>@cca-forum.org to the mailing list, but click the &quot;nomail&quot; option in the Mailman's Membership Management screen. This will probably allow the tracker to send email to the list without needing moderator approval.
+</li><li> By adding your tracker to <code>/etc/default/roundup</code>, some jobs in the <code>babel-bugs</code> crontab already have started executing on your tracker. Every three minutes, <code>/usr/local/roundup/bin/roundup-email</code> processes incoming email to all the trackers, and <code>/usr/local/roundup/bin/roundup-remind-all</code> runs weekly to remind people about unresolved issues that have been assigned to them.  You may want to look at <code>babel-bugs</code> crontab to look at the other available things that you can run on the new tracker. <div class="simplebox"><code># crontab -u babel-bugs -l</code></div>  If you want to edit the crontab to add some additional jobs on your tracker, use <div class="simplebox"><code># crontab -u babel-bugs -e</code></div>.
+</li><li> At this point, your tracker is pretty much done. If spam becomes excessive you make want to install ASK like I did for the <code>babel-bugs</code> tracker.
+</li></ol>
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=tepperly.html' >tepperly</a>
+  last modification: Friday 31 of August, 2007 [17:02:43 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=tepperly.html' >tepperly</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=AddingRoundupTracker
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

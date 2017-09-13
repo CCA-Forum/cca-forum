@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : How the Babel Developers Install Babel </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=How+the+Babel+Developers+Install+Babel.html">How the Babel Developers Install Babel</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">A blog-like post to see how Gary does it.</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar">Introduction</div>
+<br />
+Greetings Babelers!<br />
+<br />
+Today for a variety of technical resasons, I've got to install a SVN snapshot of  Babel on a bunch of different machines.  Our existing toolstack on many of these  machines is out of date, so I'm essentially going to start from scratch.  For those of you who've tried to build Babel and wonder how we developers do it, I figured I'd write up this wiki as a kind of lab notes for the experience.<br />
+<br />
+<b>NOTE:</b> You'll see that I'm installing a significant amount of build tools.  This is because I'm toying with SVN checkouts.  Most users download releases and never modify the makefiles or configure scripts in Babel, and can blissfully ignore some of the steps I'm doing.  I'll use this glyph <img alt="exclaim" src="img/smiles/icon_exclaim.gif" /> to signify things that are only build tool related and may not be a concern for the general audience.<br />
+<br />
+<div class="titlebar">Preparation</div>
+<br />
+<a name='Software'></a><h1>Software</h1>
+Here's a list of all the software I'm going to use today.  (actually the next few days, since I've got mucho meetings interrupting the technical work.)<br />
+<br />
+<ul><li><b>UNIX Shell</b> : (assumed)
+</li><li><b>GNU Make</b> : (assumed)
+</li><li><b>C/C++/Fortran77/Fortran90 Compilers</b> : (assumed) xlC on AIX, Intel 9.1 on Linux
+</li><li><b>Java</b> : (assumed)  Sun's JDK is a binary distro on most *NIX systems and generally compiled with GCC.  We have alternate distros available on our machines that are compiled with Intel and IBM compilers.
+</li><li><b>XML Parser</b> : (assumed, sort of).  Traditionally, Babel has relied on libxml2 being present.  There are a few technical problems that have arizen from this and at the time of writing we are transitioning to another, smaller XML parser that will be distributed with future Babel releases.  For my purposes, I know libxml2 is present and will suffice.
+</li><li><b>Chasm</b> : <a class="wiki"  href="http://superb-east.dl.sourceforge.net/sourceforge/chasm-interop/chasm_1.4.RC2.tar.gz"> Chasm -1.4rc2</a> Needed for Fortran 90 support.
+</li><li><b>Python</b> : <a class="wiki"  href="http://www.python.org/ftp/python/2.5/Python-2.5.tgz">Python-2.5</a>  I'm installing my own python because I want Babel to support Python on both client and server side.  Server-side python support requires a libpython.so which is often not present in default installations.  A second reason to build your own Python may be that the default Python was compiled with an uncompatible compiler!
+</li><li><b>NumPy</b> : <a class="wiki"  href="http://superb-east.dl.sourceforge.net/sourceforge/numpy/numpy-1.0.1.tar.gz">NumPy-1.0.1</a>  Required for Python support. This is essentially an HPC array library that Babel arrays map to.
+</li><li><img alt="exclaim" src="img/smiles/icon_exclaim.gif" /> <b>Perl</b> : (assumed) This is needed by automake.  I've never had problems  with system defaults here.
+</li><li><img alt="exclaim" src="img/smiles/icon_exclaim.gif" /> <b>M4</b> : <a class="wiki"  href="ftp://ftp.gnu.org/gnu/m4/m4-1.4.8.tar.bz2">m4-1.4.8</a>. This is the traditional UNIX macro processor.  In the past, we've overflowed their buffers and had to rely on patched versions.  So I have the habit of avoiding the default one that's almost always in /usr/bin.
+</li><li><img alt="exclaim" src="img/smiles/icon_exclaim.gif" /> <b>Autoconf</b> : <a class="wiki"  href="http://ftp.gnu.org/gnu/autoconf/autoconf-2.61.tar.bz2">autoconf-2.61</a>  This begins the long chain of what folks collectively know of as <a class="wiki"  href="http://sourceware.org/autobook">autotools</a>.  Autoconf is the oldest of the three and depends on M4.
+</li><li><img alt="exclaim" src="img/smiles/icon_exclaim.gif" /> <b>Automake</b> : <a class="wiki"  href="http://ftp.gnu.org/gnu/automake/automake-1.10.tar.bz2">automake-1.10</a>
+</li><li><img alt="exclaim" src="img/smiles/icon_exclaim.gif" /> <b>Libtool</b> : <a class="wiki"  href="http://ftp.gnu.org/gnu/libtool/libtool-1.5.22.tar.gz">libtool-1.5.22</a>
+</li></ul>
+<br />
+<br />
+<a name='_Systems'></a><h1> Systems</h1>
+Since I've got a filesystem that's crossmounted on these machines, I'm going to do a lot of VPATH builds, but you can set up your system however you like.  The three main systems I'm going to handle is<br />
+<ol><li> Power5 w/ Federation
+</li><li> Linux-x86 w/ elan3
+</li><li> Linux-Opteron  w/ InfiniBand
+</li></ol>
+Notice that I'm including the parallel fabric when describing these machines.  I'm installing this stuff for a customer that also uses babel-config and babel-libtool to simplify a lot of its build issues.  Even though Babel doesn't need MPI itself, it turns out that our use of libtool interferes with a lot of MPI-isms... so we can reverse engineer what the MPI compilation scripts do and integrate that in our build easier than trying to trick libtool to use the MPI scritps. I still have a lot to add in the BUG about build/configure strategies.  There's a lot of arcana that I need to write down for posterity.<br />
+<br />
+<a name='Setup'></a><h1>Setup</h1>
+So here's my high-level directory structure:<br />
+<div class="simplebox"><br />
+<tt>  ROOT=/opt/babel</tt><br />
+<tt>  BABEL_SRCS=${ROOT}/srcs</tt><br />
+<tt>  POWER=${ROOT}/power5-fed</tt><br />
+<tt>  X86=${ROOT}/x86-elan3</tt><br />
+<tt>  OPTERON=${ROOT}/opteron-ib</tt><br />
+<tt>  ALL_SYSTEMS=&quot;POWER X86 OPTERON&quot;</tt><br />
+</div><br />
+<br />
+The rest of the instructions will be in terms of these environment variables, so if you want to install along side with me, you'll want to set these to something appropriate for your system.  Now I'm going to download and unpack all this code in my ${BABEL_SRCS} directory<br />
+<br />
+<div class="simplebox"><br />
+<tt>  cd ${BABEL_SRCS}</tt><br />
+<tt>  wget http://www.python.org/ftp/python/2.5/Python-2.5.tgz</tt><br />
+<tt>  wget http://superb-east.dl.sourceforge.net/sourceforge/numpy/numpy-1.0.1.tar.gz</tt><br />
+<tt>  wget http://superb-east.dl.sourceforge.net/sourceforge/chasm-interop/chasm_1.4.RC2.tar.gz</tt><br />
+<tt>  wget ftp://ftp.gnu.org/gnu/m4/m4-1.4.8.tar.bz2                 # iff you are developing Babel</tt><br />
+<tt>  wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.61.tar.bz2     # iff you are developing Babel</tt><br />
+<tt>  wget http://ftp.gnu.org/gnu/automake/automake-1.10.tar.bz2     # iff you are developing Babel</tt><br />
+<tt>  wget http://ftp.gnu.org/gnu/libtool/libtool-1.5.22.tar.gz      # iff you are developing Babel</tt><br />
+<tt>  svn co svn+ssh://cca-forum.org/home/svn/babel/trunk babel_svn  # or wget http://www.llnl.gov/CASC/components/docs/babel-1.0.2.tar.gz</tt><br />
+<tt>  for i in *.bz2; do gtar jxvf $i; done</tt><br />
+<tt>  for i in *gz; do gtar zxvf $i; done</tt><br />
+</div><br />
+<br />
+<div class="titlebar">Babel's User Toolstack</div>
+<br />
+<a name='Picking_Your_Compiler'></a><h1>Picking Your Compiler</h1>
+<br />
+Now we have to commit to a suite of compilers and compile-time flags.  For my $X86 machine, I'll use the Intel 9.1 compilers for everything except Fortran 77, which I'll use g77... just for fun!<br />
+<div class="simplebox"><br />
+<tt>  export PLATFORM=$X86  #or pick your favorite here</tt><br />
+<tt>  export PREFIX=${PLATFORM}/icc91</tt><br />
+<tt>  export PATH=${PREFIX}/bin:${PATH}</tt><br />
+<tt>  export LD_LIBRARY_PATH=${PREFIX}/lib:${LD_LIBRARY_PATH}</tt><br />
+<br />
+<tt>  export CC=icc</tt><br />
+<tt>  export CFLAGS=-g</tt><br />
+<tt>  export CXX=icpc</tt><br />
+<tt>  export CXXFLAGS=-g</tt><br />
+<tt>  export F77=g77</tt><br />
+<tt>  export FFLAGS=-g</tt><br />
+<tt>  export FC=ifort</tt><br />
+<tt>  export FCFLAGS='-g -Vaxlib'</tt><br />
+</div><br />
+<br />
+<a name='Staging_the_build'></a><h1>Staging the build</h1>
+<br />
+My instincts say to do VPATH builds for all the remaining codes.  Unfortunately, they do not all follow GNU coding guidelines.  So I'll simply build them in the code tree, install, and wipe the directory and create a fresh one from the tarball when I go to the next platform.<br />
+<br />
+<a name='Chasm'></a><h1>Chasm</h1>
+Installation is relatively straightforward.  The need to explicitly state the F90 compiler vendor is necessary.  Also Chasm uses the more obvious (but deprecated by autotools) F90 variable instead of FC.<br />
+<div class="simplebox"><br />
+<tt>  cd ${BABEL_SRCS}/chasm</tt><br />
+<tt>  ./configure --with-F90-vendor=Intel F90=${FC} --disable-pdt --prefix=${PREFIX}</tt><br />
+<tt>  make all install</tt><br />
+</div><br />
+<br />
+I did find one bug with Chasm while installing it.  But its a cosmetic one that I logged in Sourceforge.<br />
+<div class="simplebox"><br />
+<tt>  $ cd $BABEL_SRCS</tt><br />
+<tt>  $ chasm-config --version</tt><br />
+<tt>  1.2.1</tt><br />
+</div><br />
+<br />
+<a name='Python'></a><h1>Python</h1>
+<br />
+This is fairly straightforward.  The --enable-shared flag is often needed ot generate a libpython.so which is critical for server-side Python.<br />
+<div class="simplebox"><br />
+<tt>  cd ${BABEL_SRCS}/Python-2.5</tt><br />
+<tt>  ./configure --enable-shared --prefix=${PREFIX}</tt><br />
+<tt>  make all install</tt><br />
+</div><br />
+<br />
+<img alt="twisted" src="img/smiles/icon_twisted.gif" /> Python actually has three configure scripts that, combined, weighs in at 30K lines of Bourne Shell.  Babel has only two configure scripts, but they are 47K and 46K lines of Bourne Shell each.<br />
+<br />
+<a name='NumPy'></a><h1>NumPy</h1>
+<br />
+This uses Python's build system.  So if you just installed Python in the last step, here's a little self-test to make sure things are going well.<br />
+<div class="simplebox"><br />
+<tt>  if test &quot;`which python`&quot; != ${PREFIX}/bin/python; then</tt><br />
+<tt>    for i in 1 2 3 4 5; do</tt><br />
+<tt>      echo &quot;STOP! something is wrong&quot;</tt><br />
+<tt>    done</tt><br />
+<tt>    sleep 5</tt><br />
+<tt>  fi</tt><br />
+</div><br />
+<br />
+Now you're ready to install NumPy.<br />
+<br />
+<div class="simplebox"><br />
+<tt>  cd ${BABEL_SRCS}/numpy-1.0.1</tt><br />
+<tt>  python setup.py build</tt><br />
+<tt>  python setup.py install</tt><br />
+</div><br />
+<br />
+If you are using a pre-existing Python that is installed somewhere you cannot write to, then you'll have to specify an alternate location to install NumPy and set up your environment so that Python will look at the alternate location for resources.<br />
+<br />
+If you'd like to verify all is well, try this.<br />
+<div class="simplebox"><br />
+<tt>  $ cd ${BABEL_SRCS}</tt><br />
+<tt>  $ python</tt><br />
+<tt>  Python 2.5 (r25:51908, Mar  7 2007, 18:14:04)</tt><br />
+<tt>  <a class="wiki"  href="https://www.cca-forum.org/wiki/GCC&#32;Intel(R)&#32;C++&#32;gcc&#32;3.4&#32;mode">GCC Intel(R) C++ gcc 3.4 mode</a> on linux2</tt><br />
+<tt>  Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</tt><br />
+<tt>  &gt;&gt;&gt; import numpy</tt><br />
+<tt>  &gt;&gt;&gt;</tt><br />
+</div><br />
+If you don't get an ImportError, you're in business.<br />
+<br />
+<br />
+<div class="titlebar"><img alt="exclaim" src="img/smiles/icon_exclaim.gif" /> Babel's Developer Toolstack</div>
+<br />
+Note the glyph in the title?  It means that most users can skip this entire section.  Folks who need this information already know who they are.<br />
+<br />
+The tricky part about the build tools is installing them in proper order as each depends on the other.  The order is always M4, Autoconf, Automake, Libtool.  The fastest way to do this is put the install directory in your search path and rehash after every part is intalled.<br />
+<br />
+I generally install build tools in a special directory away from other things.  Most people who use Babel don't need to use our particular version of autotools, only the few folks who are developing in the Babel tree do.  Futhermore, we can have multiple Babel installs per machine (different compiler suites, etc.) and these tools clearly are immune from these variations.<br />
+<div class="simplebox"><br />
+<tt>  DEV_TOOLS=${PLATFORM}/dev_tools</tt><br />
+<tt>  mkdir $DEV_TOOLS</tt><br />
+<tt>  export PATH=${DEV_TOOLS}/bin:${PATH}</tt><br />
+<tt>  export LD_LIBRARY_PATH=${DEV_TOOLS}/lib:${LD_LIBRARY_PATH}</tt><br />
+<tt>  for i in m4-1.4.8 autoconf-2.61 automake-1.10 libtool-1.5.22; do</tt><br />
+<tt>    ( cd $i;</tt><br />
+<tt>      ./configure --prefix=${DEV_TOOLS};</tt><br />
+<tt>      make all install;)</tt><br />
+<tt>    rehash;</tt><br />
+<tt>  done</tt><br />
+</div><br />
+<br />
+<div class="titlebar">Configuring Babel Itself</div>
+<br />
+In my setup, I'll have several versions of Babel built against all the resources we've<br />
+already installed.  So I'll make a new subdirectory under $PREFIX for Babel.  Plus,<br />
+I'll do a VPATH build to not muddy up the SVN checkout<br />
+<div class="simplebox"><br />
+<tt>  export BABEL_PREFIX=${PREFIX}/babel-r5911</tt><br />
+<tt>  export BABEL_BUILDDIR=${BABEL_PREFIX}/_build</tt><br />
+<tt>  mkdir -p $BABEL_BUILDDIR</tt><br />
+<tt>  cd $BABEL_BUILDDIR</tt><br />
+</div><br />
+<br />
+There are a couple of one-time environment settings that need to be made. I need to specify custom JAVA settings, for example.  This machine has a commercial JVM that was compiled with Intel compilers, so your JNI_INCLUDES and JNI_LDFLAGS will probably be different.  One-time settings such as these can be done simply as arguments to the configure script.  The -C flag accellerates the configuration process somewhat by pushing the two configure scripts to share a cache file.  Since this is a two processor node, I'll use -j4 for make.  This creates four-way parallelism in the build (rule of thumb is two threads per processor is the sweet-spot).<br />
+<div class="simplebox"><br />
+<tt>  ${BABEL_SRCS}/babel_svn/configure \</tt><br />
+<tt>     CHASMPREFIX=${PREFIX} \</tt><br />
+<tt>     JNI_INCLUDES=-I${JAVAHOME}/include \</tt><br />
+<tt>     JNI_LDFLAGS=-L${JAVAHOME}/jre/bin \</tt><br />
+<tt>     --with-mpi  -C \</tt><br />
+<tt>     --prefix=${BABEL_PREFIX}</tt><br />
+<tt>  make -j4 all</tt><br />
+<tt>  make install</tt><br />
+</div><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=kumfert.html' >kumfert</a>
+  last modification: Tuesday 13 of March, 2007 [20:27:23 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=kumfert.html' >kumfert</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=How%20the%20Babel%20Developers%20Install%20Babel
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

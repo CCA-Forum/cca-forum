@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Coupled Climate Modeling </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Coupled+Climate+Modeling.html">Coupled Climate Modeling</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Climate system models are the classic example of a multiphysics system.  These models are coupled, with individual constituent models (hereafter referred to as <i>constituents</i>) representing the atmosphere, ocean, cryosphere (namely sea-ice, but in the future land ice sheets as well), and biosphere.  The Earth's energy and hydrological cycles, and the oceans' thermohaline ciruculation are all direct products of these couplings.<br />
+<br />
+The first coupled atmosphere-ocean model was built by Manabe and Bryan in 1969, which comprised general circulation models (GCMs) for both subsystems.  The fact that atmospheric GCM-centric climate models were unable to capture important climate mechanisms such as El Nino drove scientists to embrace fully coupled models.  The advent of fast commodity-microprocessor based cluster platforms and the MPI programming model have enabled fully coupled climate models.  Coupled models are thus now the production state-of-the-art for this community.<br />
+<br />
+Scientists now realize that the computing capacity and capability available can expand the horizons of climate modeling by:  1) enabling more comprehensive <i>earth system models</i> that will also include the global carbon cycle through biogeochemical models for each subsystem constituent and increased coupling complexity; and 2) more widespread use of ensemble modeling that will necessitate effective ensemble-managment tools.<br />
+<br />
+How does this relate to MCMD?  Climate models have often employed MCMD in their architecture, in many cases for over a decade!  Let's pause to define some terms, leveraging some terminoligy from process calculus for parallel systems.  A <i>serial composition</i> is a system with multiple distinct constituents that each execute in turn on a single shared process pool (this is most often what one encounters in MPI-based CCA applications).  A <i>parallel composition</i> is a system with multiple distinct constituents that all execute simultaneously, with each constituent running on its own set of processors (called a <i>cohort</i>), and these processor pools are disjoint.  These two terms are referred to by Foster in his book on parallel computing.  In addition to these two architectures, one can have two others:  <i>Hybrid composition,</i> which combines both serial and parallel compositions by nesting serial inside of parallel and/or vice-versa, but doing so without crossing process pool boundaries defined at a higher level in the compostion.  <i>Overlapping compostion</i> is the division of a set of processor pools into cohorts which in some cases can overlap (i.e., be part of the same process group used by the models--this approach is being used in the FACETS fusion application).<br />
+<br />
+Note:  Any constituent layout for a coupled model that has parallel composition at its top composition level can be implemented as multiple executables.<br />
+<br />
+Climate models have used both serial and parallel compositiions.  The Parallel Climate Model (PCM) is a serial composition.  The Community Climate System Model (CCSM) is a parallel composition in multiple (five) executables, but is currently being retooled to run as a single-executable serial composition with BlueGene<a href="tiki-editpage.php%3Fpage=BlueGene.html" title="Create page: BlueGene" class="wiki wikinew">?</a> the target platform.<br />
+<br />
+Those are the use cases.<br />
+<br />
+Of course, the real problem is <i>coupling</i> between the constituents in multiphysics and multiscale models.  Coupling entails data transformation of constituent outputs into constituent inputs.  In a single address space, this is pretty much what coupling is about.  For a distribute-memory system, one encounters the need to describe, transfer, and transform <i>distributed data</i> and this is called the <i>parallel coupling problem</i> (PCP).  A quick overview of the PCP is given in Section 2 of the manuscript I've attached to this web page.  A more lengthy discussion is in a paper currently under revision that will be attached here at a later date.<br />
+<br />
+<i>'FWIW, I attached a file to this page--the manuscript for the ICCSA paper mentioned in the previous paragraph, but I'm unclear on how to get it linked in. If somebody would please fix this, I'd appreciate it greatly.</i>'<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=larson.html' >larson</a>
+  last modification: Friday 20 of April, 2007 [16:40:01 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=norris.html' >norris</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Coupled%20Climate%20Modeling
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

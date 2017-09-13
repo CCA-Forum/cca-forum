@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Molecular Dynamics </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Molecular+Dynamics.html">Molecular Dynamics</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Molecular dynamics and Multiphysics simulations</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<br />
+POC: Bruce Palmer, PNNL<br />
+<br />
+1) Multiple independent parallel tasks. This is similar to embarassingly parallel but the individual tasks are themselves parallel, either because they are too large to fit on a single processor or because the user wants to take advantage of large number of available processors<br />
+(more processors than tasks are available). Tasks that fall into this category are:<br />
+<ul><li> Various thermodynamic integration/perturbation theory calculations in molecular dynamics
+</li><li> Numerical evaluation of gradients (can be used on almost any parallel calculation). The availability of these gradients is useful for optimizations.
+</li></ul>
+<br />
+2) Multiphysics simulations. Different physics simulations that are only loosely coupled use different groups of processors. Some kind of horizontal communication model is required to pass data between the two simulations. Examples would include coupling atmospheric and ocean<br />
+models in a climate simulation. One group of processors models the atmosphere and another group models the ocean.<br />
+<br />
+3) Dedicated processor group for IO or concurrent visualization.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+  last modification: Friday 20 of April, 2007 [05:47:28 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Molecular%20Dynamics
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

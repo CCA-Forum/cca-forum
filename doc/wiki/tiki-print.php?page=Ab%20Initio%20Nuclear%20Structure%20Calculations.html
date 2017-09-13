@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Ab Initio Nuclear Structure Calculations </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Ab+Initio+Nuclear+Structure+Calculations.html">Ab Initio Nuclear Structure Calculations</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">ab initio nuclear sructure</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<b>Collection of ab initio nuclear sructure code instances.</b><br />
+(POC: Masha Sosonkina, Ames Lab)<br />
+<br />
+<br />
+The No Core Shell Model (NCSM) formalism in the ab initio nuclear structure calculations involves the construction of very large sparse matrix (called Hamiltonian) followed by its diagonalization (e.g., eigenvalue calculation), which is a very computationally-intensive process. The Many Fermion Dynamics (MFD) parallel code may be used for NCSM.<br />
+<br />
+Many MFD runs may be required to find an optimal parameter set. In this task, the use case considered here is similar to the usecase item #2 in Coop Parallelism. However, there are some important differences in the possible component model. The master component would not evaluate the the parameter choices itself since there is a separate component performing the search process. Instead, a single Collection of MFD components may be necessary to perform the load balancing and work-assignment tasks among MFD components while communicating with the master, which will be controlling both the search engine and the collection of MFD components. The need for the Collection component is perceived because each MFD component may require the full power of the available resources, and thus dedicating processor sub-groups might be detrimental for each separate instance of it. Such issues as the mutual-awareness of instance execution (or high-level monitoring) need to be addressed. The collection component may help to resolve the issues of efficiency and flexibility for multiple MFD instances.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+  last modification: Thursday 12 of April, 2007 [19:07:13 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Ab%20Initio%20Nuclear%20Structure%20Calculations
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

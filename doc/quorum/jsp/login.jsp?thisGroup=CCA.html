@@ -1,0 +1,50 @@
+
+<!-- File: 	login.jsp                                                 -->
+<!-- after submit button is hit the information is sent to the getUserInfo-->
+<!-- in the driver file.  Then parsed and stored in the user.java file    -->
+
+<html>
+<head><title>Please Login</title></head> 
+<body bgcolor="white" text="black" alink="blue" vlink="purple"
+   link="navy">
+<form method="post" action="https://www.cca-forum.org/quorum/jsp/processLogin.jsp">
+<input name="thisGroup" type="hidden" value="CCA" />
+
+<center><strong>PLEASE LOGIN</strong></center>
+<br><br><br>
+
+<br>
+<label for="email">Enter your Email Address: </label> 
+	<br><input type="text" name="email" /><br>
+<label for="password">Password: </label> 
+	<br><input type="password" name="password" /> 
+
+<br><br><br><center>
+<input name=loginButton type=submit value="LOGIN" />
+</center><br><br>
+
+<center><a href="sendPassword.jsp%3FthisGroup=CCA.html">
+Forget Password?</a></center>  
+
+<center><a href="chooseGroup.jsp.html" target="mainframe">
+Choose an online forum</a></center>
+
+<center><a href="about.html" target="mainframe">
+About Quorum</a></center>
+
+<br><br><center>
+<a href="setUser.jsp%3FthisGroup=CCA.html">
+<font size=4>New User?</font></a>
+<p>
+<small>
+UCRL-MI-140543<br />
+<a href="http://www.llnl.gov/disclaimer.html"
+   target="mainframe" >
+LLNL&nbsp;Disclaimers</a>
+<br /><a href="../cookies.html" target="mainframe" >
+Cookie &amp; Privacy Policy</a>
+</small>
+</p>
+</center>
+</form></body></html> 
+

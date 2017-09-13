@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : QuantumChemistryCQoS </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=QuantumChemistryCQoS.html">QuantumChemistryCQoS</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Quantum Chemistry CQoS Working Notes</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar"> Quantum Chemistry CQoS Working Notes </div>
+<br />
+This area is used for planning and discussion on the CQoS support for quantum chemistry applications.<br />
+<br />
+<b>Telecon info (recurring)</b><br />
+Time: 9 am PT / 11 am CT / 12 pm ET<br />
+Dial - 888-455-9076<br />
+Passcode - 96241<br />
+<br />
+<br />
+<div class="titlebar"> Application Configuration </div>
+<br />
+<ul><li> Parameters to store in the database for each run, include the type and dimensionality
+<ul><li> time (float scalar)
+</li><li> ??
+</li></ul></li></ul>
+<br />
+<ul><li> Chemistry dataflow overview
+</li></ul>
+<span class="img"><img alt="" src="http://www.mcs.anl.gov/cca/cqos/chemistry/Chem-CQoS-Design.gif" border="0"  width="600" /></span><br />
+<br />
+<ul><li> Joe Kenny parameters
+<ul><li> Database Entities:
+<ul><li> Hardware Configuration
+</li><li> Number of nodes {integer}
+</li><li> Distributed memory parallel (MPI/DDI) tasks per node {integer}
+</li><li> Threads per node {integer}
+</li></ul></li><li> SCF Configuration
+<ul><li> Use integral cache (GAMESS:disk, MPQC:memory) {boolean}
+</li></ul></li><li> Molecule Characterization
+<ul><li> Numbers of H,C,N,O atoms {integers}
+</li><li> Numbers of other atom types (first row, third row transition, etc) {integers}
+</li><li> Spin Multiplicity {integer}
+</li></ul></li><li> Performance Metric
+<ul><li> Execution time (seconds) {integer}
+</li></ul></li></ul></li></ul>
+<br />
+<div class="titlebar"> Interfaces </div>
+<br />
+<ul><li> Database library and components
+<ul><li> Downloads and other information: <a class="wiki"  href="https://trac.mcs.anl.gov/projects/cca/wiki/cqos">https://trac.mcs.anl.gov/projects/cca/wiki/cqos</a>
+</li><li> Component downloads: <a class="wiki"  href="https://trac.mcs.anl.gov/projects/cca/wiki/cqosDownload">https://trac.mcs.anl.gov/projects/cca/wiki/cqosDownload</a>
+</li><li> Low-level infrastructure discussions (database tables, text file formats, TAU calls, etc.): <a class="wiki"  href="http://wiki.mcs.anl.gov/cqos/index.php/CQoS_database_requirements">http://wiki.mcs.anl.gov/cqos/index.php/CQoS_database_requirements</a>
+</li></ul></li></ul>
+<br />
+<ul><li> Shared <a class="wiki"  href="http://wiki.mcs.anl.gov/cqos/index.php/CQoS_database_at_UO "> database info</a> (at the University of Oregon)
+</li></ul>
+<br />
+<ul><li> Analysis software
+<ul><li> <a class="wiki"  href="http://wiki.mcs.anl.gov/cqos/index.php/PerfExplorer_and_CQoS "> PerfExplorer and CQoS</a>
+</li></ul></li></ul>
+<br />
+<ul><li> Chemistry-relevant interfaces:
+</li></ul>
+<div class="simplebox"><br />
+<pre>
+ // File: chem-interface.sidl:
+
+ /** CQoSChem interface supports creation of performance databases and analysis of results by providing chemistry details. */
+interface CQoSChemInterface extends CQoSInterface {
+
+   /** Add the molecule info
+      @param molecule. The Molecule object. */
+  void add_molecule(  in Chemistry.MoleculeInterface molecule  );
+
+   /** Add the model info
+      @param model. The Model object. */
+  void add_model(  in Chemistry.QC.ModelInterface model  );
+
+   /** Add integral descriptor info (for integrals or operators)
+      @param descriptor. The Descriptor details. */
+  void add_descr(  in Chemistry.QC.GaussianBasis.DescrInterface descriptor  );
+
+}
+
+/** CQoSMachine interface supports creation of performance databases and
+    analysis of results by providing machine details. */
+interface CQoSMachineInterface extends CQoSInterface {
+
+   /** Add machine config info
+      @param machine_config. The Machine config details. */
+  void add_machine_config (  in ?? machine_config  );
+
+   /** Add software config info
+      @param software_config. The Software config details. */
+  void add_software_config (  in ?? software_config  );
+
+}
+
+
+/** CQoS interface supports creation of performance databases and
+     analysis of results. */
+ interface CQoSInterface extends gov.cca.Port {
+
+   /** Add a calculation record to the CQoS database
+       @param record The calculation record. */
+   void add_record( in gov.cca.TypeMap record );
+
+   /** Extend a calculation record to the CQoS database
+      @param record The calculation record. */
+   void extend_record( in gov.cca.TypeMap record );
+
+   /** Get recommended parallel machine configuration.
+       @param input The calculation input.
+       @return config The recommended configuration. */
+   gov.cca.TypeMap get_parallel_config( in gov.cca.TypeMap input );
+ }
+</pre><br />
+</div><br />
+<br />
+<div class="titlebar"> Miscellaneous </div>
+<br />
+<ul><li> Back to <a class="wiki"  href="tiki-index.php%3Fpage=Computational+Quality+of+Service.html">the main CQoS page</a>
+</li></ul>
+<br />
+<ul><li> In preparation for getting database access at MCS, please apply for an account if you don't already have one at the URL: <a class="wiki"  href="https://accounts.mcs.anl.gov/request.php">https://accounts.mcs.anl.gov/request.php</a>
+<ul><li> Specify Boyana as the sponsor (username norris)
+</li><li> For the project description, write a brief 2-3 sentence paragraph mentioning that this is collaborative work as part of the CQoS initiative in the TASCS SciDAC project.
+</li></ul></li><li> To reactivate your existing account, please use: <a class="wiki"  href="https://accounts.mcs.anl.gov/reactivate.php">https://accounts.mcs.anl.gov/reactivate.php</a>
+</li></ul>
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=norris.html' >norris</a>
+  last modification: Tuesday 07 of October, 2008 [16:29:35 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=norris.html' >norris</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=QuantumChemistryCQoS
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

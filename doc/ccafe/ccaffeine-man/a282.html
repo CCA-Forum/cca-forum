@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+> PortTranslator: A Babel gov.cca.Port that provides access to
+the Ccaffeiene Classic Type Components </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE=" Ccaffeine Reference Framework for CCA Components "
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Running Ccaffeine"
+HREF="x58.html"><LINK
+REL="NEXT"
+TITLE=" Important C++ Casting Issues "
+HREF="x327.html"></HEAD
+><BODY
+CLASS="appendix"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ccaffeine Reference Framework for CCA Components</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x58.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x327.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="appendix"
+><H1
+><A
+NAME="PortTranslator"
+></A
+> PortTranslator: A Babel gov.cca.Port that provides access to
+the Ccaffeiene Classic Type Components </H1
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="http://www.cca-forum.org/ccafe/ccaffeine-man/stylesheet-images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="CENTER"
+><B
+>C++ Mappings Only</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>&#13;This refers <I
+CLASS="emphasis"
+> only </I
+> to C++ mappings of CCA SIDL
+components and only to the C++ mapping of the
+<TT
+CLASS="classname"
+>ccaffeine.ports.PortTranslator</TT
+> class.  This is
+likely to be the <I
+CLASS="emphasis"
+> only </I
+> meaningful mapping
+because Classic components only exist in C++.  The principle use for
+the <TT
+CLASS="classname"
+>ccaffeine.ports.PortTranslator</TT
+> is to
+exploit legacy Classic components and Ccaffeine services.  It is
+critical to follow the <A
+HREF="x327.html"
+> casting
+rules </A
+> in order for the Porttranslator to work.
+</P
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="AEN295"
+></A
+>Introduction</H1
+><P
+>Currently there are two major
+expressions of CCA-ness in Ccaffeine: the old C++ only Classic
+components, and the now CCA specified SIDL/Babel components.  It is
+necessary to think of SIDL/Babel as another language (i.e. the "L" in
+SIDL) and special provision must be made to import and export the
+legacy Classic ports.  </P
+><DIV
+CLASS="figure"
+><A
+NAME="AEN298"
+></A
+><DIV
+CLASS="mediaobject"
+><P
+><IMG
+SRC="PortTranslator.png"><DIV
+CLASS="caption"
+><P
+>This uses one port from each of the
+Babel/SIDL and the Classic religions.  It also imports a Classic
+<TT
+CLASS="classname"
+> ParameterPort</TT
+> service from the framework
+itself. This component is part of the Ccaffeine distribution, see
+further down for an <A
+HREF="x327.html#ptexample"
+>example</A
+>.</P
+></DIV
+></P
+></DIV
+><P
+><B
+>Figure 1.  Ccaffeine GUI with a PortTranslatorStarter component
+instantiated </B
+></P
+></DIV
+><P
+>All Classic ports are derived from the
+class<TT
+CLASS="classname"
+> classic::gov::cca::Port </TT
+> and all of the
+current CCA ports are derived from<TT
+CLASS="classname"
+> gov::cca::Port
+</TT
+>. <TT
+CLASS="classname"
+> ccaffeine::ports::PortTranslator</TT
+>
+is derived from <TT
+CLASS="classname"
+> gov::cca::Port </TT
+> and has
+methods on it for communicating<TT
+CLASS="classname"
+>&#13;classic::gov::cca::Port</TT
+>'s to the Classic religion in
+Ccaffeine.  </P
+><P
+>&#13;The following is the PortTranslator expressed in sidl:
+</P
+><P
+CLASS="literallayout"
+><br>
+<br>
+package&nbsp;ccaffeine&nbsp;{<br>
+package&nbsp;ports&nbsp;{<br>
+<br>
+&nbsp;&nbsp;class&nbsp;PortTranslator&nbsp;implements&nbsp;gov.cca.Port&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/**	&nbsp;Must&nbsp;be&nbsp;initialized&nbsp;with&nbsp;a&nbsp;::ccafeopq::Port*&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;initialize(in&nbsp;opaque&nbsp;opaquePort);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;Return&nbsp;a&nbsp;classic&nbsp;port.&nbsp;&nbsp;The&nbsp;void&nbsp;*&nbsp;returned&nbsp;in&nbsp;C++&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;directly&nbsp;castable&nbsp;to&nbsp;a&nbsp;C++&nbsp;classic::gov::cca::Port*&nbsp;and&nbsp;only<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;that&nbsp;type.&nbsp;&nbsp;Casting&nbsp;to&nbsp;the&nbsp;specific&nbsp;type&nbsp;must&nbsp;occur&nbsp;after.&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;opaque&nbsp;getClassicPort();<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;unimplemented,&nbsp;returns&nbsp;NULL.&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;opaque&nbsp;getChasmPort();<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;Return&nbsp;a&nbsp;raw&nbsp;OpaquePort.&nbsp;&nbsp;The&nbsp;void&nbsp;*&nbsp;in&nbsp;C++&nbsp;is&nbsp;directly<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;castable&nbsp;to&nbsp;a&nbsp;ccafeopq::Port*.&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;opaque&nbsp;getRawPort();<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;Create&nbsp;a&nbsp;new&nbsp;PortTranslator&nbsp;wrapper&nbsp;with&nbsp;a<br>
+	classic::gov::cca::Port*.&nbsp;If&nbsp;the&nbsp;type&nbsp;does&nbsp;not&nbsp;match&nbsp;this<br>
+	specifically,&nbsp;unexpected&nbsp;results&nbsp;may&nbsp;occur,&nbsp;or&nbsp;more&nbsp;likely,<br>
+	all&nbsp;get&nbsp;methods&nbsp;will&nbsp;return&nbsp;NULL.*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;PortTranslator&nbsp;createFromClassic(in&nbsp;opaque&nbsp;classic_Port_ptr);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;Create&nbsp;a&nbsp;new&nbsp;PortTranslator&nbsp;wrapper&nbsp;with&nbsp;a&nbsp;::ccafeopq::Port*.<br>
+	If&nbsp;the&nbsp;type&nbsp;does&nbsp;not&nbsp;match&nbsp;this&nbsp;specifically,&nbsp;unexpected<br>
+	results&nbsp;may&nbsp;occur,&nbsp;or&nbsp;more&nbsp;likely,&nbsp;all&nbsp;get&nbsp;methods&nbsp;will&nbsp;return<br>
+	NULL.&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;PortTranslator&nbsp;createFromRaw(in&nbsp;opaque&nbsp;ccafeopq_Port_ptr);<br>
+}<br>
+<br>
+}&nbsp;//&nbsp;package&nbsp;ports<br>
+}&nbsp;//&nbsp;package&nbsp;ccaffeine<br>
+<br>
+</P
+><P
+> To export a Classic port for use by the
+outside world is to use the<TT
+CLASS="function"
+> createFromClassic() </TT
+>
+function to create a new<TT
+CLASS="classname"
+>&#13;ccaffeine.ports.PortTranslator</TT
+> wrapping a
+Classic<TT
+CLASS="classname"
+> classic::gov::cca::Port</TT
+> you have in
+your possession.  Then use the normal<TT
+CLASS="function"
+>&#13;addProvidesPort()</TT
+> call on the<TT
+CLASS="classname"
+> gov.cca.Services
+</TT
+> object to export it. </P
+><P
+> To import a Classic port from the outside world, either as a
+port from another component or a service port from the Ccaffeine
+framework, use the<TT
+CLASS="function"
+> registerUsesPort()</TT
+> call on the
+Services object using the type name that identifies the specific
+Classic port you desire.  If your component is successfully connected
+to that port, the<TT
+CLASS="function"
+> getPort()</TT
+> will yield
+a<TT
+CLASS="classname"
+> gov::cca::Port</TT
+> that will cast down to
+a<TT
+CLASS="classname"
+> ccaffeine::ports::PortTranslator</TT
+> port.  To
+state this more succinctly, when your component advertises
+(using<TT
+CLASS="function"
+> registerUsesPort()</TT
+> ) for a Classic port,
+Ccaffeine recognizes that the port is foreign and automatically wraps
+the port in a PortTranslator.  If the port is a normal SIDL port
+expected in the standard CCA environment, everything works as usual
+and no wrapping will occur.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x58.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x327.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Running Ccaffeine</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Important C++ Casting Issues</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="Tiki CMS/Groupware via FeedCreator 1.7.2" -->
+<?xml-stylesheet href="https://www.cca-forum.org/wiki/lib/rss/rss-style.css" type="text/css"?>
+<?xml-stylesheet href="https://www.cca-forum.org/wiki/lib/rss/rss20.xsl" type="text/xsl"?>
+<rss version="2.0">
+    <channel>
+        <title>Tiki RSS feed for articles</title>
+        <description></description>
+        <link>https://www.cca-forum.org/wiki/tiki-articles_rss.php?ver=2</link>
+        <lastBuildDate>Tue, 12 Sep 2017 10:08:14 +0100</lastBuildDate>
+        <generator>Tiki CMS/Groupware via FeedCreator 1.7.2</generator>
+        <image>
+            <url>https://www.cca-forum.org/wiki/img/tiki.jpg</url>
+            <title>tikiwiki logo</title>
+            <link>https://www.cca-forum.org/wiki/tiki-view_articles.php</link>
+            <description><![CDATA[Feed provided by https://www.cca-forum.org/wiki/tiki-view_articles.php. Click to visit.]]></description>
+        </image>
+        <language>en-us</language>
+        <item>
+            <title>MeetingPlace</title>
+            <link>https://www.cca-forum.org/wiki/tiki-read_article.php?articleId=6</link>
+            <description><![CDATA[Instructions for <a title="Desktop Sharing Tool" href="tiki-index.php?page=MeetingPlace" class="wiki">MeetingPlace</a> Desktop Sharing Tool<br />
+]]></description>
+            <author>bernhold</author>
+            <pubDate>Thu, 15 Sep 2005 17:14:00 +0100</pubDate>
+        </item>
+        <item>
+            <title>Registration</title>
+            <link>https://www.cca-forum.org/wiki/tiki-read_article.php?articleId=5</link>
+            <description><![CDATA[When you register you will be asked for a <i>registration passcode</i>.  The password is the <b>last</b> name of this handsome devil, all lower case.<br />
+]]></description>
+            <author>Rob Armstrong</author>
+            <pubDate>Thu, 04 Aug 2005 21:57:00 +0100</pubDate>
+        </item>
+        <item>
+            <title>CCA in SciDAC follow-on</title>
+            <link>https://www.cca-forum.org/wiki/tiki-read_article.php?articleId=4</link>
+            <description><![CDATA[This is a <a class="wiki"  href="tiki-index.php?page_ref_id=26">place</a> to get your ideas out there for the prospective CCA2 proposal.  As we discussed there are two categories:<br />
+<ol><li> <a class="wiki"  href="tiki-index.php?page=Tool+Infrastructure">Core infrastructure</a> and
+</li><li> <a class="wiki"  href="tiki-index.php?page=Initiatives">New research and add-ons</a> to CCA.
+</li></ol>
+<br />
+Please choose one or the other, even though they may switch categories in time.<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+]]></description>
+            <author>admin</author>
+            <pubDate>Thu, 05 May 2005 19:43:00 +0100</pubDate>
+        </item>
+        <item>
+            <title>CCA Tools now supports X86_64 Linux, Mac OSX, x86 Linux</title>
+            <link>https://www.cca-forum.org/wiki/tiki-read_article.php?articleId=3</link>
+            <description><![CDATA[Release 0.5.8 expands the port base to these platforms.  Download from <a class="wiki"  href="http://www.cca-forum.org/download/cca-tools">here</a> or this specific <a class="wiki"  href="http://www.cca-forum.org/download/cca-tools/cca-tools-0.5.8.tar.gz">release</a> and confirm the MD5 <a class="wiki"  href="http://www.cca-forum.org/download/cca-tools/cca-tools-0.5.8.md5sum">checksum</a>.<br />
+More info on CCA Tools <a class="wiki"  href="/wiki/tiki-index.php?page_ref_id=3">here</a>.<br />
+<br />
+Note: In later news MacOSX has a problem with cpp causing Fortran not to build correctly, I'm working on it...<br />
+]]></description>
+            <author>Rob Armstrong</author>
+            <pubDate>Wed, 20 Apr 2005 20:52:00 +0100</pubDate>
+        </item>
+        <item>
+            <title>CCA Tools Ebuild's</title>
+            <link>https://www.cca-forum.org/wiki/tiki-read_article.php?articleId=2</link>
+            <description><![CDATA[A complete set of ebuilds for Gentoo ...<br />
+]]></description>
+            <author>Rob Armstrong</author>
+            <pubDate>Thu, 03 Mar 2005 15:42:00 +0100</pubDate>
+        </item>
+    </channel>
+</rss>

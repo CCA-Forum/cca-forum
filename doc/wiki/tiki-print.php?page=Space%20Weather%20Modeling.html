@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Space Weather Modeling </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Space+Weather+Modeling.html">Space Weather Modeling</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Space Weather Modeling and InterComm</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+The Center for Integrated Space Weather Modeling (CISM), an NSF Science and Technology Center begun in 2002 with Boston University as the lead site, focuses on the production of a comprehensive scientific model of the solar terrestrial environment from the solar surface to the upper atmosphere of earth. The model consists of global codes which address the solar corona, heliosphere, the earth's magnetosphere, and ionosphere. The characteristics of these codes, including that they are still being developed and modified by groups of space scientists at different institutions, dictate an approach involving loosely coupled groups of independently running programs (components).<br />
+<br />
+CISM has chosen to use existing codes that model accurately either individual regions of the solar-terrestrial environment, or particular physical processes. The reliance on existing codes necessitates that the software to be used require only minimal code modification. At the same time, the software must support extensive numeric (grid) interpolation both at the boundaries, or in overlapping volumes, as well as the translation of physical quantities as necessary among the codes. These constraints require that the coupling strategy have four separable functions:<br />
+(1) efficient transmission of information among codes;<br />
+(2) interpolation of grid quantities;<br />
+(3) translation of physical variables between codes with different physical models; and<br />
+(4) control mechanism to synchronize the execution and interaction of the codes.<br />
+<br />
+To achieve such a goal, the University of Maryland InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> framework is being used for coupling between those codes. One part of InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> is a runtime library that performs direct data transfers between distributed data structures, in particular multidimensional arrays, among different parallel programs. Programs do not need to know in advance any information about others with which they will communicate, since all the information required for data transfers is computed by InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> at runtime. After analyzing the data structures in the communicating programs, InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> uses efficient algorithms to generate communication schedules which enable data to be sent directly from the processors on which it resides to the processors in the receiving program that are destination of the data, i.e., a complete MxN data transfer.<br />
+<br />
+InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> contains a runtime library that achieves direct data transfers between data structures managed by multiple data parallel languages and libraries in different programs. Communications between processes in different programs are performed using a low level communication library, which currently is PVM. The data transfer requires that all processes of the sender and the receiver programs locate data elements involved in the data transfer and that a mapping be specified between data elements in the two data structures. Upon initialization of InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a>, three process groups are created in the PVM environment, namely,<br />
+(1) The global group containing all the processes in sender and receiver programs, to facilitate data transfers between the two programs (components)<br />
+(2) The sender group containing all the processes in the sender program only, to locate data elements involved in the data transfer on the sender side.<br />
+(3) The receiver group containing all the processes in receiver program only, to locate data elements involved in the data transfer on the receiver side.<br />
+Using the data distribution and mapping information exchanged through these groups, InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> generates all the information required to execute direct data transfers between the processes in the sender program and the receiver program, and stores the information in a communication schedule, which is then used to perform direct communication between the processes in different programs.<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+  last modification: Wednesday 05 of December, 2007 [19:32:08 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Space%20Weather%20Modeling
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+ : BoccaSnapshotUpgrade
+</title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+   class="tiki_wiki">
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+<div id="tiki-main">
+    <div id="tiki-mid">
+    <table id="tiki-midtbl" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+            <td id="leftcolumn" valign="top">
+            
+
+
+
+
+<div class="box box-cca_menu">
+<div class="box-title">CCA Wiki</div><div id="mod-cca_menu" style="display: block" class="box-data">
+
+<div id="cca_menu" style="display:block;">
+
+<img src="../wiki-chrome/cca-logo-trans-180.gif"/>
+<span style="font-weight: bold;">CCA Software Resources</span>
+
+
+
+
+
+
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__3'); return false">[-]</a>
+	 
+<a href="tiki-index.php.html" class="separator">CCA</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__3'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__3'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=CCA+documentation+and+information.html" class="linkmenu">CCA Info</a></div>
+
+
+
+
+<div class="option"><a href="../mailman/listinfo.1.html" class="linkmenu">Mailing Lists</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Working+Groups.html" class="linkmenu">Working Groups</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Members.html" class="linkmenu">Membership & Voting</a></div>
+
+
+
+
+<div class="option"><a href="../bugs.html" class="linkmenu">Issue Trackers</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__15'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=CCA+Meetings&amp;watch_event=wiki_page_changed&amp;watch_object=CCA+Meetings.html" class="separator">Meetings</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__15'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__15'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Upcoming+Events.html" class="linkmenu">Upcoming Events</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=SC2006+Internal.html" class="linkmenu">SC2006 Internal</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__20'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_Ref_id=29.html" class="separator">CCA Specification</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__20'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__20'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Specification+News.html" class="linkmenu">News</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=CCA%2520Specification%2520Development.html" class="linkmenu">Developer</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=CCARB.html" class="linkmenu">CCA Review Board</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__60'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Tutorial.html" class="separator">Tutorial</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__60'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__60'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=News.html" class="linkmenu">News</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Developer.html" class="linkmenu">Developer</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__100'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_ref_id=3.html" class="separator">CCA Tools</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__100'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__100'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Install.html" class="linkmenu">Install</a></div>
+
+
+
+
+<div class="option"><a href="tiki-view_faq.php%3FfaqId=2.html" class="linkmenu">FAQ</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage_ref_id=12.html" class="linkmenu">Ebuilds</a></div>
+
+
+
+
+<div class="option"><a href="https://www.cca-forum.org/download/cca-tools" class="linkmenu">Download</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__150'); return false">[-]</a>
+	 
+<a href="../toolkit/index.html" class="separator">Toolkit</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__150'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__150'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Bocca.html" class="linkmenu">Bocca</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Toolkit+Tools.html" class="linkmenu">Devel Environment</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__200'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Ccafe.html" class="separator">Ccaffeine</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__200'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__200'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage_ref_id=16.html" class="linkmenu">Install</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__300'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_ref_id=27.html" class="separator">Babel</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__300'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__300'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Babel+Install.html" class="linkmenu">Install</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Babel+Patches.html" class="linkmenu">Patches</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__350'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=CCAIN.html" class="separator">CCAIN</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__350'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__350'>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__400'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_ref_id=28.html" class="separator">Usability</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__400'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__400'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Coding+Camps.html" class="linkmenu">Coding Camps</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__1000'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Collaboration+Resources.html" class="separator">Collaboration Resources</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__1000'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__1000'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=MeetingPlace.html" class="linkmenu">MeetingPlace web sharing</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=RoundupBugTracking.html" class="linkmenu">Roundup</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__1600'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Computational+Quality+of+Service.html" class="separator">CQoS</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu43__1600'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__1600'>
+
+
+
+</div>
+
+<script type='text/javascript'>
+      setsectionstate('menu43__3', 'e');
+        setsectionstate('menu43__15', 'e');
+        setsectionstate('menu43__20', 'e');
+        setsectionstate('menu43__60', 'e');
+        setsectionstate('menu43__100', 'e');
+        setsectionstate('menu43__150', 'e');
+        setsectionstate('menu43__200', 'e');
+        setsectionstate('menu43__300', 'e');
+        setsectionstate('menu43__350', 'e');
+        setsectionstate('menu43__400', 'e');
+        setsectionstate('menu43__1000', 'e');
+        setsectionstate('menu43__1600', 'e');
+  </script>
+
+</div>
+
+
+</div></div>
+            
+
+
+
+
+<div class="box box-mnu_application_menu">
+<div class="box-title"><table class="box-title">
+  <tr>
+    <td ondblclick="javascript:icntoggle('mod-mnu_application_menu','mo.png');">
+<span class="box-titletext">Menu</span>
+    </td>
+    <td width="11">
+      <a title="Hide module contents" class="flipmodtitle" href="javascript:icntoggle('mod-mnu_application_menu','mo.png');"><img name="mod-mnu_application_menuicn" class="flipmodimage" src="img/icons/omo.png" border="0" alt="[hide]" /></a>
+</td>
+</tr>
+</table>
+</div><div id="mod-mnu_application_menu" style="display: block" class="box-data">
+
+<div id="mnu_application_menu" style="display:block;">
+
+
+
+
+<div class="option"><a href="tiki-index.php.html" class="linkmenu">Home</a></div>
+
+
+
+
+<div class="option"><a href="tiki-contact.php.html" class="linkmenu">Contact us</a></div>
+
+
+
+
+
+
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__200'); return false">[-]</a>
+	 
+<a href="tiki-index.php.html" class="separator">Wiki</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__200'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__200'>
+
+
+
+
+<div class="option"><a href="tiki-index.php.html" class="linkmenu">Wiki Home</a></div>
+
+
+
+
+<div class="option"><a href="tiki-lastchanges.php.html" class="linkmenu">Last Changes</a></div>
+
+
+
+
+<div class="option"><a href="dump/new.tar" class="linkmenu">Dump</a></div>
+
+
+
+
+<div class="option"><a href="tiki-wiki_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+<div class="option"><a href="tiki-listpages.php.html" class="linkmenu">List pages</a></div>
+
+
+
+
+<div class="option"><a href="tiki-orphan_pages.php.html" class="linkmenu">Orphan pages</a></div>
+
+
+
+
+<div class="option"><a href="tiki-editpage.php%3Fpage=sandbox.html" class="linkmenu">Sandbox</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__300'); return false">[-]</a>
+	 
+<a href="tiki-galleries.php.html" class="separator">Image Galleries</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__300'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__300'>
+
+
+
+
+<div class="option"><a href="tiki-galleries.php.html" class="linkmenu">Galleries</a></div>
+
+
+
+
+<div class="option"><a href="tiki-galleries_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__350'); return false">[-]</a>
+	 
+<a href="../wiki.1.html" class="separator">Articles</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__350'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__350'>
+
+
+
+
+<div class="option"><a href="../wiki.1.html" class="linkmenu">Articles home</a></div>
+
+
+
+
+<div class="option"><a href="tiki-list_articles.php.html" class="linkmenu">List articles</a></div>
+
+
+
+
+<div class="option"><a href="tiki-cms_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__450'); return false">[-]</a>
+	 
+<a href="tiki-list_blogs.php.html" class="separator">Blogs</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__450'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__450'>
+
+
+
+
+<div class="option"><a href="tiki-list_blogs.php.html" class="linkmenu">List blogs</a></div>
+
+
+
+
+<div class="option"><a href="tiki-blog_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__600'); return false">[-]</a>
+	 
+<a href="tiki-file_galleries.php.html" class="separator">File Galleries</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__600'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__600'>
+
+
+
+
+<div class="option"><a href="tiki-file_galleries.php.html" class="linkmenu">List galleries</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__650'); return false">[-]</a>
+	 
+<a href="tiki-list_faqs.php.html" class="separator">FAQs</a>
+<a class='separator' href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html#" onclick="javascript:toggle('menu42__650'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__650'>
+
+
+
+
+<div class="option"><a href="tiki-list_faqs.php.html" class="linkmenu">List FAQs</a></div>
+
+
+
+</div>
+
+<script type='text/javascript'>
+      setsectionstate('menu42__200', 'd');
+        setsectionstate('menu42__300', 'd');
+        setsectionstate('menu42__350', 'd');
+        setsectionstate('menu42__450', 'd');
+        setsectionstate('menu42__600', 'd');
+        setsectionstate('menu42__650', 'd');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display:none">
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+  setsectionstate('mod-mnu_application_menu','{$module_dstate}','mo.png');
+</script>
+
+</div></div>
+            
+
+
+
+
+<div class="box box-breadcrumb">
+<div class="box-title">Recently visited pages</div><div id="mod-breadcrumb" style="display: block" class="box-data">
+  <table  border="0" cellpadding="0" cellspacing="0">
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=Building%2520CCA%2520Tools%2520on%2520the%2520Cray%2520XT.html">
+                      Building CCA Tools on the Cray XT
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=Parker%2520Dataflow%2520Notes.html">
+                      Parker Dataflow Notes
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=Rails%2520Web%2520Development.html">
+                      Rails Web Development
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=migrating%2520the%2520CCA%2520spec%2520to%2520Babel%25200.11.html">
+                      migrating the CCA spec to Babel 0.11
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=SC2007%2520Content.html">
+                      SC2007 Content
+                  </a>
+      </td></tr>
+      </table>
+
+
+</div></div>
+            
+
+<!-- no perm -->
+
+                      </td>
+            <td width="100%" id="centercolumn" valign="top"><div id="tiki-center">
+      
+            
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=BoccaSnapshotUpgrade.html">BoccaSnapshotUpgrade</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Howto move to a new snapshot or release from an old snapshot of bocca</div>
+</td>
+	<td style="text-align:right;width:142px;wrap:nowrap">
+	       
+				<a title="print" href="tiki-print.php%3Fpage=BoccaSnapshotUpgrade.html"><img src="img/icons/ico_print.gif" border="0"  width="16" height="16" alt="print" /></a>
+	
+			<a title="create PDF" href="tiki-config_pdf.php%3Fpage=BoccaSnapshotUpgrade.html"><img src="img/icons/ico_pdf.gif" border="0"  width="16" height="16" alt="PDF" /></a>
+				</td>
+
+			<td style="text-align:right;width:42px;">
+		<form action="tiki-index.php.html" method="get">
+		<select name="page" onchange="page.form.submit()">
+		<option>backlinks...</option>
+				<option value="BoccaUpgradeAnswers">BoccaUpgradeAnswers</option>
+				</select>
+		</form>
+		</td>
+	
+	
+	
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar"> Life on the bleeding edge </div>
+There is no formal support for snapshot users; we respond to pleas for assistance on a case-by-case basis as time allows. Snapshot users are encouraged to sign up for and use the <a class="wiki"  href="http://www.cca-forum.org/bugs/bocca">bocca bug tracker</a>.<br />
+<br />
+<div class="titlebar"> It's not so bad. We really, really won't hurt your code </div>
+Question: Assuming you have used a bocca snapshot to create a project, written some sidl and impl files, and want not to lose that work, how should you proceed to a new version of bocca?<br />
+<br />
+Answer (bocca svn version 1077 (Oct 17, 2007) or later):<br />
+<ul><li> Backup: tar up your project into a nice safe tar file, e.g. tar cf myproj.tar myproj.
+</li><li> Reconfigure the project. specifying the new bocca, e.g.
+</li></ul>
+<div class="simplebox">./configure --with-bocca=/path/to/bocca   ;#    full path to bocca executable<br />
+make clean; make<br />
+</div><br />
+<ul><li> Try continuing to work with the new bocca version by issuing some bocca commands to create a component and to add, then remove a port instance from an existing component and then make clean; make. If all that works, you're in possession of a compatible new bocca. If that fails, continue with the next step.
+</li><li> Since you're trying these later steps, first delete the project and untar your untouched project. Tar is your friend.
+</li><li> You will recreate a pristine new project with all new bocca bits simply by importing your existing code from the old project, as outlined in the next section. All your existing sidl and impl files are used strictly in read-only mode for importing, so the worst that can happen is you may find an incompleteness in our import process.
+</li></ul>
+<br />
+<div class="titlebar"> Importing code from a project made with an old snapshot of bocca </div>
+<br />
+The process illustrated is a workaround based on current capabilities. There are plans (with no definite implementation schedule) for a bocca aware &quot;bocca project import&quot; that would automatically take care of all the details. Basically the workaround process to import an old project is to repeat the bocca create commands that led to the existing code, but to use --import options to have bocca extract your existing sidl/impl codes and put them in the new project.<br />
+<br />
+By example, say you did the following to create the old project P:<br />
+<div class="simplebox">bocca create project P<br />
+cd P<br />
+bocca create port S<br />
+bocca edit S ; #inserted your methods<br />
+bocca create component C -lc --uses=S:useS --go=run --provides=S:provideS<br />
+bocca edit -m C ; # add some private data to the header<br />
+bocca edit -i C ; # add the impl bodies<br />
+</div><br />
+You now repeat all that, but the code you wrote is preserved by importing it.<br />
+<ul><li> First copy (or untar) your project to a new location or just rename it.
+</li><li> For this example, we assume the directory had the project name P and so we rename it to P.orig.
+</li><li> P.orig exists in a directory we will denote $TOPDIR.
+</li></ul>
+<div class="simplebox">bocca create project P; cd P<br />
+bocca config project --set-var=Project:exclude_from_import --value=None<br />
+bocca create port S \<br />
+<tt>  --import-sidl=P.S:$TOPDIR/P.orig/ports/sidl/P.S.sidl</tt><br />
+bocca create component C -lc --uses=S:useS --go=run --provides=S:provideS \<br />
+<tt>  --import-impl=P.C:$TOPDIR/P.orig/components/P.C \</tt><br />
+<tt>  --import-sidl=P.C:$TOPDIR/P.orig/components/sidl/P.C.sidl</tt><br />
+</div><br />
+<ul><li> Voila, you now have your old components with all the latest bocca bells and whistles, including the new makefile setup if that changed. If you want to verify, just run diff or mgdiff or compare to see what changed, e.g.:
+</li></ul>
+<div class="simplebox">cd ../<br />
+mgdiff P.orig/components/P.C/P_C_Impl.c P/components/P.C/P_C_Impl.c<br />
+mgdiff P.orig/components/P.C/P_C_Impl.h P/components/P.C/P_C_Impl.h<br />
+</div><br />
+<div class="titlebar"> Version controls and build customization </div>
+In the new directory you no longer have your CVS or .svn directories and you no longer have any user-customized makefile fragments (make.vars.user, make.rules.user) or configure.in script. There is no automated solution yet for moving that build information to the new project directory or for moving the newly generated project files back into your version controlled directory space; these features may be part of the project import functionality previous mentioned.<br />
+<br />
+If you were clever enough to check bocca out of subversion and use it, we expect you to be clever enough to write a shell script that copies files as needed in/out of your version controlled source tree. &quot;diff -r --brief P.orig P&quot; should tell you what the files you may need to copy/update manually are (make clean in both P and P.orig before the diff to simplify the examination).<br />
+<br />
+Basic items to attend to in the diff:<br />
+<ul><li> anything in a .bocca or BOCCA directory.
+</li><li> any tailored configure.in and configure.
+</li><li> any make.vars.user, make.rules.user.
+</li><li> any customization that connects your project to external code (external libraries, headers, sidl). Soon most of these you will be able to handle with 'bocca config' comma nds, but this is still in development.
+</li></ul>
+<br />
+Version control hint:<br />
+Likely the most efficient way to reliably move your newly generated project into the existing repository is to move the version control information into the newly generated directory tree rather than moving files out. This can be done by using find and a shell script intelligently. e.g. (sh script):<br />
+<div class="simplebox"><br />
+NEWDIR=/where/is/P ; # the project directory just created with --import<br />
+cd P.orig/<br />
+find . -type d -name CVS -exec copyVCdir.sh {} $NEWDIR \;<br />
+</div><br />
+where copyVCdir.sh is in your path and looks like:<br />
+<div class="simplebox"><br />
+<tt> #!/bin/sh</tt><br />
+<tt> # put a copy of CVS or .svn in NEWDIR</tt><br />
+<tt> # $1 should be the relative path of the directory in both source trees.</tt><br />
+<tt> # assumes gnu cp.</tt><br />
+target=`dirname $1`<br />
+cp -a $1 $2/$target<br />
+</div><br />
+Then you can svn status or cvs -n update inside your new project and let your version control system tell you what happened. Pay particular attention to new files marked with &quot;'?' filename&quot; that you don't recognized as compilation artifacts.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Friday 26 of October, 2007 [18:26:07 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+
+      
+            
+
+<hr/>
+<div id="page-bar">
+  <table>
+    <tr>
+
+
+    
+
+
+
+<td><div class="button2"><a href="tiki-likepages.php%3Fpage=BoccaSnapshotUpgrade.html" class="linkbut">similar</a></div></td>
+
+
+
+ 
+
+  
+  
+  
+
+    
+  
+</tr>
+</table>
+</div>
+
+
+
+<a name="attachments"></a>
+
+<div id="attzone">
+
+
+
+
+
+
+
+</div>
+
+
+
+    <a name="comments"></a>
+    	<div id="comzone">
+    
+
+  
+
+    
+
+	
+
+
+
+    </div><!-- comzone end -->
+            </div>
+      </td>
+            <td id="rightcolumn" valign="top">
+            
+
+
+
+<div class="box box-login_box">
+<div class="box-title">Login</div><div id="mod-login_box" style="display: block" class="box-data">
+
+         <form name="loginbox" action="https://www.cca-forum.org/wiki/tiki-login.php" method="post" > 
+           <table border="0">
+      <tr>
+        <td>
+          <table>
+          <tr><td class="module"><label for="login-user">user:</label></td></tr>
+		          <tr><td><input type="text" name="user" id="login-user" size="20" /></td></tr>
+		                    <tr><td class="module"><label for="login-pass">pass:</label></td></tr>
+          <tr><td><input type="password" name="pass" id="login-pass" size="20" /></td></tr>
+          <tr><td><input type="submit" name="login" value="login" /></td></tr>
+                    <tr>
+                      <td  class="module" valign="bottom">[ <a class="linkmodule" href="tiki-register.php.html" title="Click here to register">register</a> | <a class="linkmodule" href="tiki-remind_password.php.html" title="Click here if you've forgotten your password">I forgot my password</a> ]</td>
+                                                  </tr>
+                              </table>
+        </td>
+      </tr>
+      </table>
+
+              <input type="hidden" name="stay_in_ssl_mode" value="" />
+      			      </form>
+    
+
+</div></div>
+            
+
+
+
+
+<div class="box box-who_is_there">
+<div class="box-title">Online users</div><div id="mod-who_is_there" style="display: block" class="box-data">
+<div>
+6 
+online users
+</div>
+
+
+</div></div>
+                      </td>
+          </tr>
+    </table>
+  </div>
+  </div>
+
+</body>
+</html>  

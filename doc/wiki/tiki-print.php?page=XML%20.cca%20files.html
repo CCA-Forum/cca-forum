@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : XML .cca files </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=XML+.cca+files.html">XML .cca files</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">XML and CCA specifications</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+CCA software integration tools (particularly the majority of them that involve code generation or the compilation of generated code) often require more information than is readily available in either source code or compiled libraries in order to assemble larger  applications. The usual solution adopted is to install, along with a component binary library, a meta-data file that contains the extra information in XML format.<br />
+<br />
+What kind of information does &quot;meta-data&quot; include? Well, a lot. The <a title="CCA xml meta-data discussion" href='tiki-index.php%3Fpage=CCA+Metadata.html' class='wiki'>CCA Metadata</a> details are a big topic. At least one xml DTD has been produced and is available from CVS<br />
+cvs -d cca-forum.org:/cvs/cca-spec/repositories co cca-xml-spec.<br />
+<br />
+Given all the details, though, there are two persistent questions:<br />
+<ul><li> What can/do we do with it?
+</li><li> Why does it need to be in a separate file instead of embedded in the binaries?
+</li></ul>
+<br />
+The answers to these questions are of course related. Some answers are tabulated. CCA has picked a solution that is general. Specific application frameworks (Ccaffeine is an example of a <b>general</b> framework) can make more restrictive assumptions about the installation of  their components. With enough assumptions and a limited set of target platforms, one can find ways to get around having a meta-data file. The Ccaffeine framework provides extension hooks (Loader, ComponentFactory CCA ports) for an application framework to implement its own component loading mechanisms. Most other general CCA frameworks do as well.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell"  colspan="2"> What can/do we do with it?</td></tr><tr><td class="wikicell" >Off-line GUI</td><td class="wikicell" > We can compose applications graphically. Building a component-based parallel application may mean composing an executable from a set of dynamically loaded components that exist on a large machine where (due to queuing system restrictions or whatever) a human cannot interact with hundreds or thousands of nodes just to discover the public interfaces and wire the applications together.   Worse, some of the components may not even be instantiable except in the parallel environment. Thus, the CCA component meta-data includes a description of the Ports available and a GUI-based builder can support app. composition based on XML solely without having the component libraries present on the desktop where the GUI runs.       </td></tr><tr><td class="wikicell" >Static-link</td><td class="wikicell" >We can generate custom main() or custom framing subroutine source-code and compile to an optimized binary. This requires information about source code header and library installation locations. On parallel systems, these locations rarely follow any particular standard.  </td></tr><tr><td class="wikicell"  colspan="2"> Why does it need to be in another file? </td></tr><tr><td class="wikicell" > Portability </td><td class="wikicell" > Querying binaries to extract particular strings (for example embedding the XML data into a binary library) can be done on any platform but it varies widely. </td></tr><tr><td class="wikicell" > Cross-compiling </td><td class="wikicell" > XML in a text file can be read with a wide variety of utilities in any desktop environment. Data extracted from XML can then be used to generate source code even if the libraries and headers referred to in the XML are not present on that desktop (as is often the case with parallel machines). Source code can then be moved to the final runtime environment for compilation. </td></tr><tr><td class="wikicell" > Late location</td><td class="wikicell" > Embedding  the XML string requires knowing the full final installation location details at compile time. Especially in the case of relocatable binary RPM packages, this is often not possible. Separate XML text files are easily edited automatically at installation time while binaries are not.</td></tr><tr><td class="wikicell" > Registry </td><td class="wikicell" > Under MS Windows, the data in an XML file could equally well be stored in the registry. As registry entry, it is less prone to user corruption. </td></tr><tr><td class="wikicell" > Lack of standards</td><td class="wikicell" > Unix software environments and software projects are notoriously variable. There is no common, language independent standard for naming or location of component libraries and headers. </td></tr><tr><td class="wikicell" > Multi-components</td><td class="wikicell" > Often one binary library will house a collection of component classes. Thus, in a generic framework a component cannot be found by matching its name to names found on the filesystem. </td></tr></table><br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Wednesday 18 of May, 2005 [17:21:42 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=XML%20.cca%20files
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

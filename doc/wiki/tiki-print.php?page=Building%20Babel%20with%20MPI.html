@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Building Babel with MPI </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Building+Babel+with+MPI.html">Building Babel with MPI</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Building Babel with MPI (and other) compiler wrappers</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+If you want to compile MPI-based codes into babel-wrapped libraries that can be dynamically loaded, consistency of compiler and linker flags is critically important. The simplest way to  maintain consistency with MPI codes is to use the MPI compiler wrappers (mpicc, mpicxx, mpif77/90) when building Babel. E.g. if your mpi compilers are in /opt/mpi/bin, configure babel like so:<br />
+<br />
+<tt> ./configure --prefix=$HOME/cca/install/babel-mpi \</tt><br />
+<tt>  FC=/opt/mpi/bin/mpif90 \</tt><br />
+<tt>  F77=/opt/mpi/bin/mpif77 \</tt><br />
+<tt>  CXX=/opt/mpi/bin/mpicxx \</tt><br />
+<tt>  CC=/opt/mpi/bin/mpicc</tt><br />
+<br />
+Note, however, that your MPI may not support dynamic loading correctly (or correctly for all the different languages) and this will probably only show up at final application link time.<br />
+<br />
+We have real configuration examples-<br />
+<a title="odin.cs.indiana.edu mpich 1.2.7 intelv9 babel" href='tiki-index.php%3Fpage=odin.cs.indiana.edu-mpich-1.2.7-intel-9-babel.html' class='wiki'>odin.cs.indiana.edu-mpich-1.2.7-intel-9-babel</a><br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Tuesday 23 of August, 2005 [22:45:08 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Building%20Babel%20with%20MPI
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

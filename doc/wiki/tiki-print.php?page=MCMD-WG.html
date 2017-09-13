@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : MCMD-WG </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=MCMD-WG.html">MCMD-WG</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Multiple Component Multiple Data Parallel Programming Model Support</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar">Overview</div>
+<br />
+As high-end computers move from offering thousands of processors to tens and hundreds of thousands of processors, users are increasingly challenged to find additional parallelism in their application in order to effectively utilize them.  When a single parallel activity doesn't scale sufficiently, it would be desirable to be able to launch many distinct parallel tasks, each using a subset of the available processors.  This type of programming goes by many names, including multi-level parallelism, multiple-program multiple-data (MPMD), multi-tasking, etc.  Traditional parallel programming models provide only the most basic support for this kind of programming, if they provide any support at all.<br />
+<br />
+The dynamic nature and the encapsulation provided by the component approach maps quite naturally to the concepts of MPMD programming. The goal of the MCMD Working Group is to define, develop, and deploy a high-level infrastructure for MCMD programming in a CCA environment.<br />
+<br />
+<div class="titlebar">Contacts and Communications</div>
+<br />
+<b>Working Group Chairs:</b> <a class="wiki"  href="http://hpc.pnl.gov/people/jarek">Jarek Nieplocha</a> and <a class="wiki"  href="http://hpc.pnl.gov/people/manoj">Manojkumar Krishnan</a>, PNNL<br />
+<br />
+<b>Mailing list:</b> <a class="wiki"  href="../mailman/listinfo/mcmd-wg.html">https://www.cca-forum.org/mailman/listinfo/mcmd-wg</a><br />
+<br />
+<div class="titlebar">Activities</div>
+<br />
+<ul><li> 2007-01-24 MCMD Mini Workshop, Snoqualmie, WA
+</li><li> 2007-04-20 MCMD BOF, Salt Lake City, UT
+</li><li> 2007-07-20 MCMD BOF, Silver Springs, MD (slides: <a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=46&amp;page=MCMD-WG">ppt</a>, <a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=47&amp;page=MCMD-WG">pdf</a>)
+</li></ul>
+<br />
+<br />
+<div class="titlebar">Working Documents</div>
+<br />
+<b>MCMD Team API Proposal:</b><br />
+<ul><li> <a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=57&amp;page=MCMD-WG">MCMD CCA Team Spec v0.5</a> is based on MCMD uses cases and feedback from MCMD workshop, meetings, telecons, etc.
+</li><li> <a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=58&amp;page=MCMD-WG">MCMD CCA Team sidl file</a> - based on Spec v0.5.
+</li></ul>
+<br />
+<b>MCMD Software:</b><br />
+Protoype implementation of the Team API can be <a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=62&amp;page=MCMD-WG"> download here</a>.<br />
+<br />
+<b>MCMD Use Cases:</b><br />
+<ol><li> <a class="wiki"  href="tiki-index.php%3Fpage=Hierarchical+Parallelism.html">Hierarchical Parallelism in Numerical Hessian Algorithm (Chemistry)</a>
+</li><li> <a class="wiki"  href="tiki-index.php%3Fpage=Coop+Parallelism.html"> Coop Parallelism</a>
+</li><li> <a title="ab initio nuclear sructure" href='tiki-index.php%3Fpage=Ab+Initio+Nuclear+Structure+Calculations.html' class='wiki'>Ab Initio Nuclear Structure Calculations</a>
+</li><li> <a title="Coupled Climate Modeling" href='tiki-index.php%3Fpage=Coupled+Climate+Modeling.html' class='wiki'>Coupled Climate Modeling</a>
+</li><li> <a class="wiki"  href="tiki-index.php%3Fpage=Molecular+Dynamics.html"> Molecular Dynamics, Multiphysics Simulations</a>
+</li><li> <a title="Space Weather Modeling and InterComm" href='tiki-index.php%3Fpage=Space+Weather+Modeling.html' class='wiki'>Space Weather Modeling</a>
+</li></ol>
+<br />
+<b>Additional Use Cases in Preparation:</b><br />
+<ol><li> SWIM Integrated Plasma Simulator (Fusion; Foley, <span style="text-decoration:underline;">Bernholdt</span>, Bramley)
+</li><li> Another potential Nuclear Structure Calculation use-case (Bernholdt)
+</li><li> FACETS - integrating core, edge and wall modeling of fusion reactors (Fusion, Shasharina, Wang)
+</li></ol>
+<br />
+<div class="titlebar">Recommended Readings</div>
+<ol><li>	Thomas Rauber , Gudula Rünger, Library support for hierarchical multi-processor tasks, Proceedings of the 2002 ACM/IEEE conference on Supercomputing, p.1-10, November 16, 2002, Baltimore, Maryland
+</li><li>	Henri E. Bal , Matthew Haines, Approaches for Integrating Task and Data Parallelism, IEEE Concurrency, v.6 n.3, p.74-84, July 1998
+</li><li>	George S. Almasi, Cǎlin Caşcaval, José G. Castaños, Monty Denneau, Wilm Donath, Maria Eleftheriou, Mark Giampapa, Howard Ho, Derek Lieber, José E. Moreira, Dennis Newns, Marc Snir, Henry S. Warren, Jr., Demonstrating the scalability of a molecular dynamics application on a Petaflop computer, Proceedings of the 15th international conference on Supercomputing, p.393-406, June 2001, Sorrento, Italy
+</li><li>	Soumen Chakrabarti , James Demmel , Katherine Yelick, Modeling the benefits of mixed data and task parallelism, Proceedings of the seventh annual ACM symposium on Parallel algorithms and architectures, p.74-83, June 24-26, 1995.
+</li><li>	T. Rauber, and G. Rünger. Tlib - A Library to Support Programming with Hierarchical Multi-Processor<a href="tiki-editpage.php%3Fpage=Multi-Processor.html" title="Create page: Multi-Processor" class="wiki wikinew">?</a> Tasks. In Journal of Parallel and Distributed Computing, vol. 65, no. 3, pp. 347-360, 2005.
+</li><li>	H. Jin, G. Jost, J. Yan, E. Ayguade, M. Gonzalez, and X. Martorell, &quot;Automatic Multilevel Parallelization Using OpenMP,&quot; Proceedings of EWOMP, 2001.
+</li><li>	Fan Chan, Jiannong Cao, Alvin T.S. Chan, and Minyi Guo, &quot;Programming Support for MPMD Parallel Computing in ClusterGOP&quot;, IEICE Transactions on Information and Systems. Vol. E-87D, No. 7, pp. 1693--1702, 2004.
+</li><li>	Manojkumar Krishnan, Yuri Alexeev, Theresa L. Windus and Jarek Nieplocha, Multilevel Parallelism in Computational Chemistry using Common Component Architecture. accepted to Supercomputing 2005, Seattle, WA
+</li><li>     Jay Larson, Robert Jacob, and Everest Ong,&quot;The Model Coupling Toolkit: A New Fortran90 Toolkit for Building Multiphysics Parallel Coupled Models,&quot; International Journal of High Performance Computing Applications, 19, 277-292 (2005).
+</li><li>     Robert Jacob, Jay Larson, and Everest Ong, &quot;M x N Communication and Parallel Interpolation in Community Climate System Model Version 3 Using the Model Coupling Toolkit,&quot; International Journal of High Performance Computing Applications, 19, 293-307 (2005).
+</li><li>     Anthony P. Craig, Robert Jacob, Brian Kauffman, Tom Bettge, Jay Larson, Everest Ong, Chris Ding, and Yun He,&quot;CPL6: The New Extensible, High Performance Parallel Coupler for the Community Climate System Model,&quot; International Journal of High Performance Computing Applications, 19, 309-327 (2005).
+</li><li>     F. Bertrand, R. Bramley, K.B. Damevski, J.A. Kohl, D.E. Bernholdt, J.W. Larson, and A. Sussman, &quot;Data Redistribution and Remote Method Invocation for Coupled Components,&quot; Journal of Parallel and Distributed Computing, 66(7), 931-946 (2006). doi:10.1016/j.jpdc.2005.12.009
+</li><li>     Raicu, I., Zhang, Z., Wilde, M., Foster, I., Beckman, P., Iskra, K., and Clifford, B. 2008. Toward loosely coupled programming on petascale systems. In Proceedings of the 2008 ACM/IEEE Conference on Supercomputing DOI= http://doi.acm.org/10.1145/1413370.1413393.  <a class="wiki"  href="http://portal.acm.org/citation.cfm?id=1413393&amp;dl=GUIDE&amp;coll=GUIDE&amp;CFID=20305045&amp;CFTOKEN=75411355">Paper</a>
+</li></ol>
+<br />
+...<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+  last modification: Tuesday 10 of February, 2009 [20:29:24 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=MCMD-WG
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

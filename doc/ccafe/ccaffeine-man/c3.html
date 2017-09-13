@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Building and Running Ccaffeine</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE=" Ccaffeine Reference Framework for CCA Components "
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE=" Ccaffeine Reference Framework for CCA Components "
+HREF="book1.html"><LINK
+REL="NEXT"
+TITLE="Running Ccaffeine"
+HREF="x58.html"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ccaffeine Reference Framework for CCA Components</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="book1.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x58.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="chapBuildRun"
+></A
+>Building and Running Ccaffeine</H1
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="http://www.cca-forum.org/ccafe/ccaffeine-man/stylesheet-images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="CENTER"
+><B
+>Framework-specific Information</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Most of the information in this chapter is specific to the
+Ccaffeine CCA framework running in Babel-interoperability mode</P
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="AEN11"
+></A
+>Building Ccaffeine</H1
+><P
+> Ccaffiene uses normal GNU tools for configuration and
+   building.  The ccaffeine build tree can be downloaded from the
+   central server at <A
+HREF="../../ccafe.1.html"
+TARGET="_top"
+>&#13;   cca-forum.org </A
+>.  There are extensive
+   examples of the build process
+   available on the <A
+HREF="../../ccafe.1.html"
+TARGET="_top"
+> web
+   </A
+>.  </P
+><P
+>&#13;   There are a variety of usable configurations that will
+   produce a functioning framework.  You can get a list of these
+   options by typing: <B
+CLASS="command"
+>configure --help</B
+>.  For the first time 
+though there are some common packages that should be installed on your machine 
+up front:
+
+<P
+></P
+><UL
+><LI
+><P
+>&#13;gcc (2.95.3, 2.96, 3.x)
+</P
+></LI
+><LI
+><P
+>&#13;Java (&#62;jdk1.2)
+</P
+></LI
+><LI
+><P
+>&#13;BLAS, LAPACK (any recent)
+</P
+></LI
+><LI
+><P
+>&#13;BOOST headers
+</P
+></LI
+><LI
+><P
+>&#13;Babel
+</P
+></LI
+><LI
+><P
+>&#13;Ruby (any recent)
+</P
+></LI
+></UL
+> 
+</P
+><P
+> After untarring the Ccaffeine <A
+HREF="http://www.cca-forum.org/download/ccafe"
+TARGET="_top"
+> distribution </A
+>.
+There will be three directories at top level: </P
+><P
+></P
+><UL
+><LI
+><P
+>&#13;	dccafe: the top level Ccaffeine directory.
+</P
+></LI
+><LI
+><P
+>&#13;	cca-spec-babel: the CCA specification in SIDL (Babel) and its
+	attendent Makefiles
+ </P
+></LI
+><LI
+><P
+>&#13;	cca-spec-classic: the old CCA specification on which many
+	components still run.  
+</P
+></LI
+></UL
+><P
+> In a perfect world all that need be done at this point is to go
+into each of these directories and type
+"<B
+CLASS="command"
+>configure;make</B
+>", but this is not a perfect world
+and your environment is likely to be unique.  Examples of successful builds on 
+our platform are:</P
+><P
+></P
+><UL
+><LI
+><P
+> Configure and make the CCA specification:</P
+><P
+CLASS="literallayout"
+><br>
+	(cd&nbsp;./cca-spec-babel;&nbsp;configure&nbsp;--with-babel=/usr/local/babel&nbsp;--with-jdk12=/usr/local/java;make)<br>
+</P
+><P
+>Configure and make the classic CCA specification (this is currently a necessary part of the build, because Ccaffeine itself relies on it):</P
+></LI
+><LI
+><P
+CLASS="literallayout"
+><br>
+	(cd&nbsp;./cca-spec-classic;configure;make)<br>
+</P
+></LI
+><LI
+><P
+>Configure and make Ccaffeine itself:</P
+><P
+CLASS="literallayout"
+><br>
+	(cd&nbsp;./dccafe;&nbsp;./configure&nbsp;&nbsp;--with-cca-babel=`pwd`/../cca-spec-babel&nbsp;\<br>
+	--with-cca-classic=`pwd`/../cca-spec-classic&nbsp;\&nbsp;<br>
+	--with-mpi=/usr/local/mpich&nbsp;--with-jdk12=/usr/local/java&nbsp;\<br>
+	--with-lapack=/home/rob/cca/dccafe/../LAPACK/liblapack.a&nbsp;\<br>
+	--with-blas=/home/rob/cca/dccafe/../LAPACK/libblas.a;&nbsp;make)<br>
+</P
+></LI
+></UL
+><P
+> The Ccaffeine build will take 5-10 minutes.  A entire listing of the
+build process for Rob Armstrong's laptop is available on the <A
+HREF="../build-log.html"
+TARGET="_top"
+>web</A
+>.  At the end of 
+the build (in directory <TT
+CLASS="filename"
+>dccafe</TT
+>) a fairly complete test is 
+run on Ccaffeine.  Your indication that all
+has gone well appears at the very end of the (considerable) output that
+the Ccaffeine build process generates:</P
+><P
+CLASS="literallayout"
+><br>
+<br>
+=====================================================================<br>
+Testing&nbsp;the&nbsp;Ccaffeine&nbsp;build&nbsp;...<br>
+didn't&nbsp;crash&nbsp;or&nbsp;hang&nbsp;up&nbsp;early&nbsp;...&nbsp;&nbsp;looks&nbsp;like&nbsp;it&nbsp;is&nbsp;working.<br>
+done&nbsp;with&nbsp;Ccaffeine&nbsp;tests.<br>
+=====================================================================<br>
+</P
+><P
+> This is your indication that all is in
+readiness and that Ccaffeine ready for a test drive.  So it is time
+to go to the next <A
+HREF="x58.html"
+>section</A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x58.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Ccaffeine Reference Framework for CCA Components</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Running Ccaffeine</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

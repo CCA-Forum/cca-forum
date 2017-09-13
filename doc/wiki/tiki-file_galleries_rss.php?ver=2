@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="Tiki CMS/Groupware via FeedCreator 1.7.2" -->
+<?xml-stylesheet href="https://www.cca-forum.org/wiki/lib/rss/rss-style.css" type="text/css"?>
+<?xml-stylesheet href="https://www.cca-forum.org/wiki/lib/rss/rss20.xsl" type="text/xsl"?>
+<rss version="2.0">
+    <channel>
+        <title>Tiki RSS feed for file galleries</title>
+        <description></description>
+        <link>https://www.cca-forum.org/wiki/tiki-file_galleries_rss.php?ver=2</link>
+        <lastBuildDate>Tue, 12 Sep 2017 10:08:15 +0100</lastBuildDate>
+        <generator>Tiki CMS/Groupware via FeedCreator 1.7.2</generator>
+        <image>
+            <url>https://www.cca-forum.org/wiki/img/tiki.jpg</url>
+            <title>tikiwiki logo</title>
+            <link>https://www.cca-forum.org/wiki/tiki-view_articles.php</link>
+            <description><![CDATA[Feed provided by https://www.cca-forum.org/wiki/tiki-view_articles.php. Click to visit.]]></description>
+        </image>
+        <language>en-us</language>
+        <item>
+            <title>ccarb-update-apr-09.pdf</title>
+            <link>https://www.cca-forum.org/wiki/tiki-download_file.php?fileId=16</link>
+            <description><![CDATA[ccarb apr 09 status]]></description>
+            <author>baallan</author>
+            <pubDate>Wed, 22 Apr 2009 19:19:28 +0100</pubDate>
+        </item>
+        <item>
+            <title>mpiserviceupdate.pdf</title>
+            <link>https://www.cca-forum.org/wiki/tiki-download_file.php?fileId=15</link>
+            <description><![CDATA[oct08 mpiservice update]]></description>
+            <author>baallan</author>
+            <pubDate>Tue, 21 Oct 2008 15:30:33 +0100</pubDate>
+        </item>
+        <item>
+            <title>ccacontainers.pdf</title>
+            <link>https://www.cca-forum.org/wiki/tiki-download_file.php?fileId=14</link>
+            <description><![CDATA[state of containers in the cca specification as of 4/2008]]></description>
+            <author>baallan</author>
+            <pubDate>Thu, 24 Apr 2008 00:26:30 +0100</pubDate>
+        </item>
+        <item>
+            <title>CCALogo.Gary.ppt</title>
+            <link>https://www.cca-forum.org/wiki/tiki-download_file.php?fileId=13</link>
+            <description><![CDATA[Gary's Version of the CCA Logo in PowerPoint...  :)]]></description>
+            <author>jeeembo</author>
+            <pubDate>Thu, 27 Jul 2006 13:54:27 +0100</pubDate>
+        </item>
+        <item>
+            <title>CCA Logo.ppt</title>
+            <link>https://www.cca-forum.org/wiki/tiki-download_file.php?fileId=12</link>
+            <description><![CDATA[Jeeem's PowerPoint version of the CCA Logo.  :-)]]></description>
+            <author>jeeembo</author>
+            <pubDate>Thu, 27 Jul 2006 13:54:02 +0100</pubDate>
+        </item>
+        <item>
+            <title>logos-xcf.tgz</title>
+            <link>https://www.cca-forum.org/wiki/tiki-download_file.php?fileId=11</link>
+            <description><![CDATA[Logo source files (XCF format)]]></description>
+            <author>norris</author>
+            <pubDate>Tue, 25 Jul 2006 21:55:27 +0100</pubDate>
+        </item>
+        <item>
+            <title>logo-short.png</title>
+            <link>https://www.cca-forum.org/wiki/tiki-download_file.php?fileId=10</link>
+            <description><![CDATA[CCA sun and "CCA" (400x124, transparent bg, darker font)]]></description>
+            <author>norris</author>
+            <pubDate>Tue, 25 Jul 2006 21:53:53 +0100</pubDate>
+        </item>
+        <item>
+            <title>logo-short-bright.png</title>
+            <link>https://www.cca-forum.org/wiki/tiki-download_file.php?fileId=9</link>
+            <description><![CDATA[Sun and "CCA" (400x124, transparent)]]></description>
+            <author>norris</author>
+            <pubDate>Tue, 25 Jul 2006 21:50:44 +0100</pubDate>
+        </item>
+        <item>
+            <title>logo5.png</title>
+            <link>https://www.cca-forum.org/wiki/tiki-download_file.php?fileId=8</link>
+            <description><![CDATA[Sun logo with "Common Component Architecture" (664x156, transparent)]]></description>
+            <author>norris</author>
+            <pubDate>Tue, 25 Jul 2006 21:49:12 +0100</pubDate>
+        </item>
+        <item>
+            <title>logo3.png</title>
+            <link>https://www.cca-forum.org/wiki/tiki-download_file.php?fileId=7</link>
+            <description><![CDATA[Just the sun logo (124x126)]]></description>
+            <author>norris</author>
+            <pubDate>Tue, 25 Jul 2006 21:48:00 +0100</pubDate>
+        </item>
+    </channel>
+</rss>
+		

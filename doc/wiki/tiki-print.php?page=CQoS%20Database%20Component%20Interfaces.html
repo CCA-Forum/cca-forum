@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CQoS Database Component Interfaces </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CQoS+Database+Component+Interfaces.html">CQoS Database Component Interfaces</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<a name='_Database_component_interface_design'></a><h3> Database component interface design</h3>
+<br />
+The preliminary database interfaces result from discussion at CQoS BOF session at october CCA meeting. The goals of this interface design is to store meta-data and performance outcome of experiment runs into a database and to query the database  to find out problem parameters and solvers that fit for a new problem. Figure 1 shows how the proposed new components - database and comparator components - work with adaptive heuristic components (referred to as adaptors in following discussion). The database component provides interfaces for storing and accessing data in a physic database. The comparator interfaces compare and/or match properties of two problems under user-specified conditions.<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/dbcomponents.jpg" border="0"  /></span><br />
+<br />
+<a name='_Component_interfaces'></a><h3> Component interfaces</h3>
+<br />
+There are three interfaces associated with comparator component, parameter, parameter set, and comparator.<br />
+A parameter captures characteristics of one single property of problem, e.g., a parameter setting of a meta-partitioner, or a property of a linear system. A parameter is characterized by its name, data type, value. It is associated with a table where it is stored in the physical database. The parameter interfaces also support comparison against another peer parameter under user-specified conditions.<br />
+<br />
+<pre>          interface Parameter { 			
+	                void setName(in string name);
+			void setDataType(in int type);
+			void setValue[Int](in int value);
+			void setValue[Long](in long value);
+			void setValue[Double](in double value);
+			void setValue[String](in string value);
+			void setTBName(in string tbName);
+			
+			string getName();
+			int getDataType();
+			void getValue[Int](out int value);
+			void getValue[Long](out long value);
+			void getValue[Double](out double value);
+			void getValue[String](out string value);
+			string getTBName();
+			
+			bool compareWith(in Parameter&amp; another, in double tolerance, in int relation); 
+			string getDBConditions(in int tbIndex, in double tolerance, in int relation);
+             } 
+</pre><br />
+<br />
+A ParameterSet<a href="tiki-editpage.php%3Fpage=ParameterSet.html" title="Create page: ParameterSet" class="wiki wikinew">?</a> represents a group of related parameters, e.g., a set of parameters that characterize an AMR grid, or a category of linear system properties. Through ParameterSet<a href="tiki-editpage.php%3Fpage=ParameterSet.html" title="Create page: ParameterSet" class="wiki wikinew">?</a> interfaces, users can manage parameter memebers and compare against another peer parameter set.<br />
+<br />
+<pre>           interface ParameterSet { 
+			void addAParameter(in Parameter aParam);
+			int getNumOfParameters();
+			Parameter getParameterAt(in int index);
+			Parameter getParameterAt(in string name);
+			string getTBName();
+			bool compareWith(in ParameterSet another, in map&lt;string, double&gt; tMap, in map&lt;string, int&gt; rMap);
+			string getDBConditions(in array&lt;int&gt; tbIndices, in map&lt;string, double&gt; tMap, in map&lt;string, int&gt; rMap)
+           }
+</pre><br />
+<br />
+<br />
+Each comparator component provides a Comparator port, through which the adaptor passes over parameter sets<br />
+to compare them. For instance, the Comparator can determine if two set of parameters are within {&#128;} of each other.<br />
+A performance comparator that implements the interfaces can determine which one is the better of 2 sets of performance results.<br />
+<br />
+<pre>          interface Comparator extends gov.cca.Port {/* Comparison operations between parameter sets */
+		
+			void setLHS(in ParameterSet lefthand);
+			void setRHS(in ParameterSet righthand);
+			
+			ParameterSet getLHS();
+			ParameterSet getRHS();
+			
+			int getDimension();
+			
+			Parameter getLHSParameterAt(in string paraName);
+			Parameter getRHSParameterAt(in string paraName);
+		
+			void setToleranceAt(in string name, in double epsilon);
+			double getToleranceAt(in string name);
+			
+			void setRelationAt(in string name, in int aRelation);
+			int getRelationAt(in string name);
+			
+			bool doCompare();			
+             }
+</pre><br />
+<br />
+<br />
+There are two interfaces associated with database component, DB and Outcome. The adaptor connects to a database component through DB port, through which it can get connected to the physical database, execute queries, store parameters and parameter set, retrieve desirable parameters, parameter sets. DB components also support the query of trials whose parameter sets satisfy user-specified conditions, e.g., whether the parameter set is within a &#091;lower, upper&#093; range, or within {&#128;} of a value set.<br />
+<br />
+<pre>           interface DB extends gov.cca.Port{
+			bool connect();
+			bool disconnect();
+			bool isClosed();
+			void setConnectionInfo(in string info);
+			string getConnectioninfo();
+			
+			int bindParameters(in int param, in int argument);
+			int bindParameters(in int param, in long argument);
+			int bindParameters(in int param, in double argument);
+			int bindParameters(in int param, in string argument);
+			void bindCommand();
+			void resetQuery();
+			int executeQuery_bindParam(in string commd, out Outcome res); 
+			int executeQuery(in string commd, out Outcome res);  
+			int executeInsert(in string commd);
+			
+			void storeParameter(in int trialID, in int iterNo, in Parameter aParam);
+			void storeParameterSet(in int trialID, in int iterNo, in ParameterSet aParamSet);
+				
+			void getParameter(in int trialID, int iterNo, inout Parameter aParam); // get parameter value
+			void getParameterSet(in int trialID, int iterNo, inout ParameterSet aParamSet);// get parameter set value
+
+	                int getMatchingTrialsBetween(in ParameterSet lower, in ParameterSet upper, out Outcome trialIDs);
+			int getMatchingTrials(in ParameterSet lower, in vector&lt;doule&gt; epsilons, out Outcome trialIDs);
+		}
+</pre><br />
+<br />
+Outcome interfaces transform data results returned back from a DB query to use-readable format, and support accesses to the data elements.<br />
+<br />
+<pre>		interface Outcome {
+			int setElements(in opaque res); // res type is decided by the DBMS, e.g., PGresult in PostgreSQL)
+			int getNumberOfRows();
+			int getNumberOfColumns();
+			int getElement[Long](in int row, in int column, out long res);
+			int getElement[Double](in int row, in int column, out double res);
+			int getElement[String](in int row, in int column, out string res);
+			
+			int getElement[Long](in int row, in string columnName, out long res);
+			int getElement[Double](in int row, in string columnName, out double res);
+			int getElement[String](in int row, in string columnName, out string res);
+
+			void clear();
+		}
+</pre><br />
+<br />
+<br />
+<a name='_Use_the_interfaces_in_a_linear_solver_application_2D_driven_cavity_example'></a><h3> Use the interfaces in a linear solver application - 2D driven-cavity example</h3>
+Next we use a 2D driven-cavity example to show how to use the proposed interfaces. This code snippet stores a parameter set of two matrix properties into database.<br />
+<br />
+<pre>
+        /*  instantiate parameter 1 */
+        ierr = ComputeQuantity(matrix,&quot;icmk&quot;,&quot;splits&quot;,&amp;res,&amp;flg); CHKERRQ(ierr);
+	MatrixProperty param1(&quot;splits&quot;, &quot;matrix_meta&quot;, res.i);  
+
+        /*  instantiate parameter 2 */
+	ierr = ComputeQuantity(matrix,&quot;structure&quot;,&quot;nnzeros&quot;,&amp;res,&amp;flg); CHKERRQ(ierr);
+	MatrixProperty param2(&quot;nnzeros&quot;, &quot;matrix_meta&quot;, res.i); 
+	
+		
+	/**** Store matrix property set into database. ***/
+	
+	int myRank;
+	ierr = MPI_Comm_rank(PETSC_COMM_WORLD, &amp;myRank); CHKERRQ(ierr);
+	if (myRank == 0){
+		int localID;
+		int trialID;
+	        string conninfo(&quot;dbname = perfdb&quot;);
+
+                /* Generate a runtime database manager. It connects to a PostgreSQL database through DB interfaces.  */
+		RunTimeRecord *R = RunTimeRecord::instance();
+		R-&gt;Connect2DB(conninfo);
+		trialID = R-&gt;getTrialID();
+		localID = R-&gt;getCurEvtID(cflStr);
+			
+                /* instantiate a parameter set */
+		PropertySet aSet;
+
+                /* add parameter 1 and 2 into the set */
+		aSet.addAParameter(&amp;param1);
+		aSet.addAParameter(&amp;param2);
+
+                /* store the parameter set into database, */
+		R-&gt;loadParameterSet(trialID, localID, aSet);	
+	}
+	
+	/**** End storing matrix properties into database. ***/
+</pre><br />
+<br />
+<a name='_Current_status_and_plans_to_use_the_interfaces_in_other_problem_domains_e_g_combustion_and_quantum_chemistry_'></a><h3> Current status and plans to use the interfaces in other problem domains (e.g., combustion and quantum chemistry)</h3>
+We have developed a functional C++ library which inplements the above database interfaces. We have tested the codes on 2D Driven cavity application, in which the interfaces store and query matrix properties of<br />
+linear systems during runtime. We are now wrapping the database codes with SIDL interface and<br />
+developing them into CCA-compliant components.<br />
+<br />
+We'd like to hook up the database interfaces with applications from other problem domians, such as combustion and quantum chemistry, that require the use of database to choose solvers. You can either grab the C++ library and integrate to your code, or share with us your source code that requires the use of database so we can experiment and test the interfaces on your code.<br />
+<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <span class='link'>likli</span>
+  last modification: Thursday 06 of December, 2007 [00:17:55 UTC] by <span class='link'>likli</span>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CQoS%20Database%20Component%20Interfaces
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

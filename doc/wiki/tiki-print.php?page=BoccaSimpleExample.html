@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : BoccaSimpleExample </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=BoccaSimpleExample.html">BoccaSimpleExample</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">A first project with bocca</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Presuming you have a bocca 0.3 installed and in path, here's a simple example.<br />
+<br />
+<div class="simplebox">bocca create project myproj<br />
+cd myproj<br />
+./configure ; # generates utility scripts important when testing<br />
+bocca create port myport<br />
+bocca create component mycomponent --uses=myport:out --provides:myport:in</div><br />
+This creates a component with two ports  (named &quot;in&quot; and &quot;out&quot;) of the same type myport (full SIDL type name is myproj.myport). It uses the default language c++. To specify using another language, add the --language=&quot;LANG&quot; option to create component; LANG is one of &quot;c,cxx,f77,f90,python,java&quot;.<br />
+<br />
+To put some brains in the system we need to add a method to the port:<br />
+<div class="simplebox">bocca edit myport</div><br />
+brings up the editor with the myport sidl file. The sidl file actually resides somewhere in the project source tree (myproj/ports/sidl/myproj.myport.sidl) that we don't want to remember.<br />
+(If there's a problem starting the editor, see <a title="BoccaEdit" href="tiki-index.php%3Fpage=BoccaEdit.html" class="wiki">BoccaEdit</a> for hints.) Add method:<br />
+<div class="simplebox"><br />
+<tt> double doSomething(in double x);</div></tt><br />
+in the block of the sidl file surrounded by:<br />
+<div class="simplebox"><br />
+<tt> // DO-NOT-DELETE bocca.splicer.begin(myproj.myport.methods)</tt><br />
+...<br />
+<tt> // DO-NOT-DELETE bocca.splicer.end(myproj.myport.methods)</div></tt><br />
+<br />
+Now we need to implement doSomething in the component.<br />
+<div class="simplebox">bocca edit -i mycomponent</div><br />
+brings up the editor with the component impl (implementation) file in c++.<br />
+<br />
+here you will find (if you search):<br />
+<div class="simplebox"><br />
+<tt> // DO-NOT-DELETE splicer.begin(myproj.mycomponent.doSomething)</tt><br />
+<tt>    // Insert-Code-Here {myproj.mycomponent.doSomething} (doSomething method)</tt><br />
+<br />
+<tt>    // DO-DELETE-WHEN-IMPLEMENTING exception.begin()</tt><br />
+<tt>    /*</tt><br />
+<tt>     * This method has not been implemented</tt><br />
+<tt>     */</tt><br />
+<tt>    <div align="center">sidl</div>NotImplementedException ex = <div align="center">sidl</div>NotImplementedException::_create();</tt><br />
+<tt>    ex.setNote(&quot;This method has not been implemented&quot;);</tt><br />
+<tt>    ex.add(<b>FILE</b>, <b>LINE</b>, &quot;doSomething&quot;);</tt><br />
+<tt>    throw ex;</tt><br />
+<tt>    // DO-DELETE-WHEN-IMPLEMENTING exception.end()</tt><br />
+<br />
+<tt> // DO-NOT-DELETE splicer.end(myproj.mycomponent.doSomething)</div></tt><br />
+<br />
+Replace the block contents with some code:<br />
+<div class="simplebox"><br />
+<tt> // DO-NOT-DELETE splicer.begin(myproj.mycomponent.doSomething)</tt><br />
+<tt>        return x*x;</tt><br />
+<tt> // DO-NOT-DELETE splicer.end(myproj.mycomponent.doSomething)</div></tt><br />
+<br />
+and then type 'make' again and you have a working component!<br />
+<br />
+To prove the component is working, type 'make check'.<br />
+To prove the component is working with a gui, type 'make testgui'.<br />
+<br />
+Please note that the ccafe-gui freezing up after loading some but not all components is a known bug and has nothing to do with your component.<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Friday 28 of September, 2007 [15:37:59 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=BoccaSimpleExample
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

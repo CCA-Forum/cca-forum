@@ -1,0 +1,167 @@
+
+// TeamService.sidl for CCA Process group management
+package mcmd version 0.1 {
+
+    interface TeamService extends gov.cca.Port
+    {
+          
+          /**
+           * creates a task/process team given the global rank list and size
+           */
+          Team create(in array<int> gRanklist,
+                      in int size);
+          
+          /**
+           * Returns the global rank of the calling task within this
+           * global team
+           */
+          int gRank();
+
+          /**
+           * Returns the global id object of any process in global team given
+           * the job id and the local pid (within the job)
+           */
+          ProcessID globalID(in int jobid,
+                      in int pid);
+          
+          /**
+           * Returns the global id object of any process in global team given
+           * the global rank
+           */
+          ProcessID globalIDbyRank(in int rank); 
+
+          /**
+           * Returns the size of the global team
+           */
+          int gSize();
+          
+          /**
+           * Job related
+           */
+          int jobCount();
+          int jobSize(in int jobid);
+          int jobProclist(in int jobid,
+                          in int size,
+                          in array<int> gRanklist);
+    }
+
+    interface ProcessID 
+    {     
+          /**
+           * Returns the global rank of the calling task in global team
+           */
+          int rank();
+          
+          /**
+           * get machineid, jobid, MPI rank of any task corresponding to
+           * global id
+           */
+          int machineId();
+          int jobId(); /* job ids range: 0 to (njobs-1) */
+          int procId();
+
+    }
+
+    interface Team
+    {
+          /**
+           * Returns the sorted list of process global ranks associated with
+           * this team
+           */
+          int proclist(in array<int> gRanklist);
+
+          /**
+           * Returns the local rank of the calling process within this
+           * team
+           */
+          int rank();
+
+          /**
+           * Returns the local rank of any given process (global rank) within
+           * this team
+           */
+          int rank2(in int gid);
+
+          /**
+           * Returns the size of the team
+           */
+          int size();
+          
+          /**
+           * Splits into n teams
+           */
+          Team split(in int n);
+
+          /**
+           * Compare this team with another team
+           */
+          int compare(in Team t1);
+
+          /**
+           * Merges the current team object with the given team t1, and
+           * returns the newly created Team object/handle
+           */
+          Team merge(in Team t1);
+
+          /**
+           * creates a sub-team given the local rank list with in this team  
+           */
+          Team create(in array<int> gRanklist,
+                      in int size);
+          
+          /**
+           * destroys this team
+           */
+          void destroy();
+
+          /**
+           * Team translators
+           */
+          /**
+           * There are many processes in a team. These processes can come
+           * from one or many MPI jobs. jobCount() can be used to determine the
+           * number of MPI jobs involved in this team.
+           */
+          int jobCount();
+
+          /**
+           * To determine the list of job ids part of this team 
+           */
+          int joblist(in array<int> joblist);
+
+          /**
+           * To determine the number of processes part of this team which
+           * also belongs to the given job id. Returns the number of processes
+           * belong to this job id and also part of this team
+           */
+          int jobSize(in int jobid);
+
+          /**
+           * returns the list of processes (i.e. global rank list) that
+           * belong to the given job id and also part of this team
+           */
+          int jobProclist(in int jobid,
+                          in int size,
+                          in array<int> gRanklist);
+          
+    } // end interface Team
+    
+} // end package "MCMD"
+
+// mcmd TeamService implementation
+package xm version 0.1 {
+
+    class TeamService implements-all mcmd.TeamService, gov.cca.Component
+    {
+        int init();
+    }
+    
+    class ProcessID implements-all mcmd.ProcessID 
+    {     
+    }
+    
+    class Team implements-all mcmd.Team
+    {
+    }
+    
+}

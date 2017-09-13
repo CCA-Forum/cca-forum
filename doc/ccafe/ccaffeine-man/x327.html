@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+> Important C++ Casting Issues </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE=" Ccaffeine Reference Framework for CCA Components "
+HREF="book1.html"><LINK
+REL="UP"
+TITLE=" PortTranslator: A Babel gov.cca.Port that provides access to
+the Ccaffeiene Classic Type Components "
+HREF="a282.html"><LINK
+REL="PREVIOUS"
+TITLE=" PortTranslator: A Babel gov.cca.Port that provides access to
+the Ccaffeiene Classic Type Components "
+HREF="a282.html"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ccaffeine Reference Framework for CCA Components</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="a282.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>PortTranslator: A Babel gov.cca.Port that provides access to
+the Ccaffeiene Classic Type Components</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+>&nbsp;</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="castingissues"
+></A
+>Important C++ Casting Issues</H1
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="http://www.cca-forum.org/ccafe/ccaffeine-man/stylesheet-images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Follow the procedures outlined here to use the PortTranslator
+port unless you are absolutely sure what you are doing. 
+</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>Since the only way to get foreign objects into and out of the
+SIDL/Bable world is to use the SIDL opaque type, certain non-obvious
+procedures must be observed in the C++ use of the SIDL/Babel
+PortTranslator.  This is necessary because of two independent but, for
+the programmer, interacting things: </P
+><P
+></P
+><UL
+><LI
+><P
+>&#13;SIDL/Babel<SPAN
+CLASS="type"
+> opaque</SPAN
+> is mapped to<SPAN
+CLASS="type"
+>void *</SPAN
+>.
+</P
+></LI
+><LI
+><P
+>&#13;C++ cast's are not unique or commutative.  That is: (PortTranslator*)(void*)(Port*) != (PortTranslator*)(Port*)(void*).
+</P
+></LI
+></UL
+><P
+> Ultimately, the thing to keep in mind is that PortTranslator
+expects and returns void* that are always cast from the
+type<TT
+CLASS="classname"
+> classic::gov::cca::Port*</TT
+> and must be
+<SPAN
+CLASS="type"
+>static_cast</SPAN
+>'ed back to that type before anything else is
+done.  A full example is built with the Ccaffeine distribution and can
+be found in<TT
+CLASS="filename"
+>&#13;$CCAFE_ROOT/cxx/dc/babel/component/PortTranslatorStarter</TT
+>.
+The following is an excerpt from that component that illustrates how
+to import and export Classic ports in the Babel religion:</P
+><P
+CLASS="literallayout"
+><br>
+<br>
+/**<br>
+&nbsp;*&nbsp;Obtain&nbsp;Services&nbsp;handle,&nbsp;through&nbsp;which&nbsp;the&nbsp;<br>
+&nbsp;*&nbsp;component&nbsp;communicates&nbsp;with&nbsp;the&nbsp;framework.&nbsp;<br>
+&nbsp;*&nbsp;This&nbsp;is&nbsp;the&nbsp;one&nbsp;method&nbsp;that&nbsp;every&nbsp;CCA&nbsp;Component<br>
+&nbsp;*&nbsp;must&nbsp;implement.&nbsp;<br>
+&nbsp;*/<br>
+void<br>
+ccafe_eg::PortTranslatorStarter_impl::setServices&nbsp;(<br>
+&nbsp;&nbsp;/*in*/&nbsp;gov::cca::Services&nbsp;services&nbsp;)&nbsp;<br>
+throw&nbsp;()&nbsp;<br>
+{<br>
+&nbsp;&nbsp;//&nbsp;DO-NOT-DELETE&nbsp;splicer.begin(ccafe_eg.PortTranslatorStarter.setServices)<br>
+<br>
+&nbsp;&nbsp;svc&nbsp;=&nbsp;services;<br>
+<br>
+&nbsp;&nbsp;try&nbsp;{<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;Check&nbsp;to&nbsp;see&nbsp;if&nbsp;we&nbsp;are&nbsp;alive&nbsp;or&nbsp;dead.&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if(services._not_nil())&nbsp;{&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gov::cca::TypeMap&nbsp;tm&nbsp;=&nbsp;svc.createTypeMap();&nbsp;//&nbsp;nil&nbsp;TypeMap<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gov::cca::ports::GoPort&nbsp;gp&nbsp;=&nbsp;self;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;svc.addProvidesPort(gp,&nbsp;std::string("go"),&nbsp;<br>
+			&nbsp;&nbsp;std::string("gov.cca.ports.GoPort"),&nbsp;tm);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;We&nbsp;register&nbsp;for&nbsp;a&nbsp;plain&nbsp;old&nbsp;StringConsumerPort,&nbsp;this&nbsp;is&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Classic&nbsp;port&nbsp;that&nbsp;will&nbsp;(hopefully)&nbsp;be&nbsp;connected&nbsp;to&nbsp;us.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;svc.registerUsesPort(std::string("classicOut"),&nbsp;<br>
+			&nbsp;&nbsp;&nbsp;std::string("StringConsumerPort"),&nbsp;tm);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;We&nbsp;register&nbsp;this&nbsp;guy&nbsp;in&nbsp;the&nbsp;normal&nbsp;way&nbsp;for&nbsp;the&nbsp;Babel&nbsp;religion.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;svc.registerUsesPort(std::string("babelOut"),&nbsp;<br>
+			&nbsp;&nbsp;&nbsp;std::string("ccafe0.StringConsumerPort"),&nbsp;tm);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Now&nbsp;for&nbsp;parameters.&nbsp;&nbsp;We&nbsp;do&nbsp;the&nbsp;full&nbsp;enchalada&nbsp;here,&nbsp;dynamic<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;parameters&nbsp;included.&nbsp;&nbsp;Dynamic&nbsp;parameters&nbsp;call&nbsp;back&nbsp;on&nbsp;this<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;class&nbsp;to&nbsp;tell&nbsp;the&nbsp;component&nbsp;that&nbsp;the&nbsp;parameters&nbsp;have&nbsp;changed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;This&nbsp;is&nbsp;appropriately&nbsp;harder&nbsp;to&nbsp;accomplish&nbsp;than&nbsp;simple&nbsp;static<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;parameters.&nbsp;&nbsp;Note&nbsp;that&nbsp;static&nbsp;parameters&nbsp;will&nbsp;*change*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;dynamically&nbsp;when&nbsp;changed&nbsp;in&nbsp;the&nbsp;GUI,&nbsp;they&nbsp;just&nbsp;won't&nbsp;notify<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;you&nbsp;of&nbsp;the&nbsp;change,&nbsp;at&nbsp;the&nbsp;time&nbsp;the&nbsp;change&nbsp;happens.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Here&nbsp;we&nbsp;fish&nbsp;out&nbsp;the&nbsp;Service&nbsp;provided&nbsp;by&nbsp;Ccaffeine&nbsp;to&nbsp;do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;dynamic&nbsp;parameters.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;svc.registerUsesPort("classicParam",&nbsp;<br>
+			&nbsp;&nbsp;&nbsp;"gov.cca.ParameterPortFactoryService",&nbsp;tm);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Since&nbsp;it&nbsp;is&nbsp;a&nbsp;Service,&nbsp;we&nbsp;can&nbsp;get&nbsp;it&nbsp;right&nbsp;away.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gov::cca::Port&nbsp;p&nbsp;=&nbsp;svc.getPort("classicParam");<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Since&nbsp;it&nbsp;is&nbsp;a&nbsp;classic&nbsp;service&nbsp;it&nbsp;comes&nbsp;in&nbsp;a&nbsp;PortTranslator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;package,&nbsp;which&nbsp;we&nbsp;must&nbsp;cast&nbsp;down&nbsp;from&nbsp;gov::cca::Port,&nbsp;using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;(sigh)&nbsp;the&nbsp;"="&nbsp;operator.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ccaffeine::ports::PortTranslator&nbsp;portX&nbsp;=&nbsp;p;&nbsp;//cast<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Since&nbsp;I&nbsp;almost&nbsp;never&nbsp;make&nbsp;mistakes,&nbsp;but&nbsp;I&nbsp;hear&nbsp;others&nbsp;do,&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;is&nbsp;good&nbsp;to&nbsp;check&nbsp;to&nbsp;see&nbsp;that&nbsp;the&nbsp;cast&nbsp;succeeded.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(portX._not_nil())&nbsp;{<br>
+	<br>
+<br>
+	//&nbsp;Here&nbsp;we&nbsp;use&nbsp;the&nbsp;getClassicPort()&nbsp;method&nbsp;on&nbsp;PortTranslator<br>
+	//&nbsp;that&nbsp;must&nbsp;always&nbsp;be&nbsp;casted&nbsp;blindly&nbsp;to&nbsp;a<br>
+	//&nbsp;classic::gov::cca::Port*&nbsp;and&nbsp;absolutely&nbsp;nothing&nbsp;else.<br>
+	classic::gov::cca::Port&nbsp;*&nbsp;cp&nbsp;=&nbsp;<br>
+	&nbsp;&nbsp;static_cast&nbsp;&#60;&nbsp;classic::gov::cca::Port&nbsp;*&nbsp;&#62;&nbsp;(portX.getClassicPort());<br>
+	if(cp&nbsp;==&nbsp;NULL)&nbsp;{&nbsp;//&nbsp;icky.<br>
+	&nbsp;&nbsp;fprintf(stderr,&nbsp;":-(&nbsp;the&nbsp;port&nbsp;returned&nbsp;&nbsp;is&nbsp;not&nbsp;one&nbsp;of&nbsp;"<br>
+		&nbsp;&nbsp;"classic::gov::cca::Port&nbsp;or&nbsp;is&nbsp;NULL\n");<br>
+	&nbsp;&nbsp;return;<br>
+	}<br>
+<br>
+	//&nbsp;Now&nbsp;we&nbsp;do&nbsp;the&nbsp;dynamic_cast&nbsp;down&nbsp;to&nbsp;the&nbsp;specific<br>
+	//&nbsp;classic::gov::cca::Port:&nbsp;ConfigurableParameterFactory&nbsp;that<br>
+	//&nbsp;will&nbsp;help&nbsp;us&nbsp;do&nbsp;dynamic&nbsp;parameters.<br>
+	ConfigurableParameterFactory&nbsp;*cpf&nbsp;=&nbsp;<br>
+	&nbsp;&nbsp;dynamic_cast&nbsp;&#60;&nbsp;ConfigurableParameterFactory&nbsp;*&nbsp;&#62;&nbsp;(cp);<br>
+	<br>
+	//&nbsp;Now&nbsp;we&nbsp;get&nbsp;the&nbsp;parameters&nbsp;set&nbsp;up&nbsp;in&nbsp;another&nbsp;routine.<br>
+	ConfigurableParameterPort&nbsp;*pp&nbsp;=&nbsp;setupParameters(cpf);<br>
+<br>
+	//&nbsp;Now&nbsp;we&nbsp;begin&nbsp;the&nbsp;process&nbsp;of&nbsp;adding&nbsp;a&nbsp;classic&nbsp;port&nbsp;to&nbsp;this<br>
+	//&nbsp;component:&nbsp;the&nbsp;parameter&nbsp;port&nbsp;that&nbsp;GUI&nbsp;users&nbsp;can&nbsp;click&nbsp;on<br>
+	//&nbsp;and&nbsp;configure.<br>
+<br>
+	//&nbsp;First&nbsp;we&nbsp;*must*&nbsp;get&nbsp;it&nbsp;into&nbsp;the&nbsp;type&nbsp;that&nbsp;the<br>
+	//&nbsp;PortTranslator&nbsp;is&nbsp;expecting:&nbsp;cast&nbsp;it&nbsp;to&nbsp;a<br>
+	//&nbsp;classic::gov::cca::Port*.<br>
+	classic::gov::cca::Port&nbsp;*&nbsp;clscp&nbsp;=&nbsp;<br>
+	&nbsp;&nbsp;dynamic_cast&nbsp;&#60;&nbsp;&nbsp;classic::gov::cca::Port&nbsp;*&nbsp;&nbsp;&#62;&nbsp;(pp);<br>
+	if(clscp&nbsp;==&nbsp;NULL)&nbsp;{<br>
+	&nbsp;&nbsp;fprintf(stderr,&nbsp;"Something&nbsp;went&nbsp;wrong&nbsp;with&nbsp;the&nbsp;ParameterPort&nbsp;"<br>
+		&nbsp;&nbsp;"returned&nbsp;from&nbsp;setupParameters\n");<br>
+	}<br>
+<br>
+	//&nbsp;Next&nbsp;pass&nbsp;it&nbsp;to&nbsp;PortTranslator&nbsp;by&nbsp;createFromClassic(void*)<br>
+	void&nbsp;*&nbsp;vp&nbsp;=&nbsp;static_cast&nbsp;&#60;&nbsp;&nbsp;void&nbsp;*&nbsp;&nbsp;&#62;&nbsp;(clscp);	&nbsp;<br>
+	ccaffeine::ports::PortTranslator&nbsp;provideX&nbsp;=&nbsp;<br>
+	&nbsp;&nbsp;ccaffeine::ports::PortTranslator::createFromClassic(vp);<br>
+<br>
+	//&nbsp;Add&nbsp;the&nbsp;configure&nbsp;port&nbsp;that&nbsp;we&nbsp;want&nbsp;to&nbsp;provide.<br>
+	svc.addProvidesPort(provideX,&nbsp;"configure",&nbsp;"ParameterPort",&nbsp;tm);<br>
+<br>
+	//&nbsp;Let&nbsp;go&nbsp;of&nbsp;the&nbsp;ParameterPortFactoryService&nbsp;we&nbsp;got&nbsp;previously.<br>
+	svc.releasePort("classicParam");<br>
+	svc.unregisterUsesPort("classicParam");<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;}&nbsp;catch(std::exception&nbsp;&#38;&nbsp;&nbsp;e)&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(stderr,&nbsp;"Exception&nbsp;caught:&nbsp;%s\n",&nbsp;e.what());<br>
+&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;//&nbsp;DO-NOT-DELETE&nbsp;splicer.end(ccafe_eg.PortTranslatorStarter.setServices)<br>
+}<br>
+<br>
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="a282.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>PortTranslator: A Babel gov.cca.Port that provides access to
+the Ccaffeiene Classic Type Components</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="a282.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

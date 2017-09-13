@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Babel Structs </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Babel+Structs.html">Babel Structs</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Design discussions for Babel structs</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<a name='Design_discussions_for_Babel_structs'></a><h1>Design discussions for Babel structs</h1>
+<br />
+This page is meant to be a repository of design questions and our current best thinking on the answers. At the time of its initial creation, the questions and their answers are relatively fluid. As time progresses, the hope is that the design will stabilize.<br />
+<br />
+Here, I list my opinions in the third person, and I would encourage other contributors to do likewise. By writing this way, we make it clear to everyone who agrees and disagrees with each issue.<br />
+<br />
+<a name='1_What_does_quot_in_quot_mean_for_a_struct_parameter_'></a><h2>1. What does &quot;in&quot; mean for a struct parameter?</h2>
+<br />
+There are three main possible IOR signatures for an &quot;in&quot; struct parameter &quot;struct a_Foo a&quot;, &quot;struct a_Foo *a&quot;, and &quot;const struct a_Foo *a&quot;. The first option (pass-by-value) matches the natural meaning on &quot;in&quot; best, but it forces a deep copy of the struct (bad for performance).<br />
+<br />
+The second option, &quot;struct a_Foo *a&quot;, is the most flexible. It doesn't require a copy; however, if the impl modifies the contents of the struct, those changes are seen by the caller. This causes in-process calls to behave differently than remote calls.<br />
+<br />
+The third option, &quot;const struct a_Foo *a&quot;, prevents changes to the struct itself.<br />
+<br />
+Right now, Tom Epperly likes option 3 the best, option 2 second, and option 1 least. One reason I prefer option 3 is to make &quot;in&quot; different from my preference for &quot;inout&quot; below.<br />
+<br />
+Nanbor agrees with Tom in that option 3 is the best choice although for languages that don't support &quot;const', option 2 would be the way to go.<br />
+<br />
+In the case of RMI, the struct values are only passed from caller to callee.<br />
+<br />
+<a name='2_What_does_quot_inout_quot_mean_for_a_struct_parameter_'></a><h2>2. What does &quot;inout&quot; mean for a struct parameter?</h2>
+<br />
+There are two main possible IOR signatures for an &quot;inout&quot; struct parameter &quot;struct a_Foo *a&quot; and &quot;struct a_Foo **a&quot;. Right now, Tom Epperly favors the first option. The second option implies that the impl can free (the C library call) the struct, malloc a new one, and return it. This leads down the path to reference counting and structs having vtables, and I believe we're trying to avoid that.<br />
+<br />
+Option 1, &quot;struct a_Foo *a&quot; means that the impl sees all the incoming values, and is free to change them. The impl is not allowed to free the incoming pointer.<br />
+<br />
+In the case of RMI, the incoming values are shipped from caller to callee, and on return the outgoing values are shipped from the callee to the caller.<br />
+<br />
+<a name='3_What_does_quot_out_quot_mean_for_a_struct_parameter_'></a><h2>3. What does &quot;out&quot; mean for a struct parameter?</h2>
+<br />
+This has the same two options as &quot;inout&quot;, &quot;struct a_Foo *a&quot; and &quot;struct a_Foo **a&quot;.<br />
+<br />
+Tom Epperly favors option 1 for the same reasons as question 2.<br />
+<br />
+Nanbor thinks option 2 makes more sense for out parameters since one can potentially use an empty pointer to receive an out struct.<br />
+<br />
+In the case of RMI, no incoming struct values are shipped from caller to callee, and on return the outgoing values are shipped from the callee to the caller.<br />
+<br />
+<a name='4_What_are_the_reference_counting_implications_for_structs_that_contain_object_and_array_references_'></a><h2>4. What are the reference counting implications for structs that contain object and array references?</h2>
+<br />
+I think the simplest rule is say that the reference counting ownerships are the same as if the object/array reference were passed individually with the same mode.<br />
+<br />
+If a.Foo is defined as follows: <div class="simplebox"><code>package a version 0.1 { struct Foo { sidl.BaseClass bc; double b; }; };</code></div> In the case of &quot;in a.Foo a&quot;, the impl has a borrow reference to the sidl.BaseClass, and it is not allowed to have a negative impact on the reference count.<br />
+<br />
+In the case of &quot;inout a.Foo a&quot;, the impl owns the incoming reference. It's allowed to deleteRef a.bc and set it to another valid object reference (including NULL).  Upon exit, the reference a.bc is returned to the caller who becomes the owner of the reference.<br />
+<br />
+In the case of &quot;out a.Foo a&quot;, the impl should overwrite the incoming reference with a valid object reference (including NULL). Upon exit, the reference a.bc is returned to the caller who becomes the owner of the reference.<br />
+<br />
+<a name='5_How_are_structs_returned_'></a><h2>5. How are structs returned?</h2>
+<br />
+Normally, return values are just like &quot;out&quot; parameters. However, there is trouble with that because some of the &quot;out&quot; definitions assume that the caller has provided space for the out value.  Should the IOR function return &quot;struct a_Foo&quot; or &quot;struct a_Foo *&quot;. The first option requires a copy and may be difficult to do with Fortran, and the second option gets into reference counting.<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=tepperly.html' >tepperly</a>
+  last modification: Sunday 25 of February, 2007 [23:25:06 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=nanbor.html' >nanbor</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Babel%20Structs
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

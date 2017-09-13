@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CCA Tools Notes 2009-10 </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CCA+Tools+Notes+2009-10.html">CCA Tools Notes 2009-10</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Discussions of work needed on CCA tools</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<i>Items are <b>not</b> prioritized</i><br />
+<br />
+<a name='Babel'></a><h3>Babel</h3>
+<ul><li> Structs
+</li><li> RMI testing more systematic
+</li><li> Migrate to central code repo
+</li><li> Release LaTeX<a href="tiki-editpage.php%3Fpage=LaTeX.html" title="Create page: LaTeX" class="wiki wikinew">?</a> source to BUG (held up over legal questions)
+</li><li> Complete contracts
+</li><li> John Cary Delegation problem (eliminate splicer blocks)
+<ul><li> Command line switchable
+</li></ul></li><li> Remove unnecessary Babel cruft from Impl file
+<ul><li> Always
+</li><li> Need to figure out build issues
+</li></ul></li><li> client-server babel processor (?)
+<ul><li> Might be less maintainable
+</li><li> Maybe Java server daemon would be adequate (without changing Babel)?
+</li></ul></li><li> Shared libraries on BG/P
+</li><li> C &amp; Java line wrapping problem (in tracker)
+</li><li> GCJ (default on most Linux installs)
+<ul><li> If user doesn't need Java interop, just use GCJ to build Babel compiler
+</li><li> Possible to support GCJ as bytecode compiler for interop?
+</li><li> Might need CNI binding to make GCJ language interop work
+</li><li> How many Java users do we have?
+</li></ul></li><li> Babel spa
+</li><li> Migrating to Python 3.0 (defer?)
+</li><li> Add'l documentation
+<ul><li> More tutorial-style intro (maybe we have elsewhere?)
+</li><li> need developer documentation
+</li><li> How to port Babel to a new Fortran compiler?
+</li><li> publish existing whitepapers
+</li></ul></li></ul>
+<br />
+<a name='Bocca'></a><h3>Bocca</h3>
+<ul><li> Autotools build plugin (ready soon)
+</li><li> Documentation
+<ul><li> User guide (tutorial?) Need to explain features not currently covered in tutorial.  bocca help is insufficient
+</li><li> Differentiate between things that do and don't work
+</li><li> Developer docs (in code? external?)
+</li><li> Design documentation (expand on compframe paper)
+</li></ul></li><li> Inter-project cooperation (in progress)
+</li><li> Migration to Python 3.0 (defer?)
+</li><li> Make sure runs w/ Python 2.6 w/o deprecation warnings
+</li><li> Gen build system for static binaries (need inter-project deps)
+</li><li> More testing
+</li><li> Clear bug tracker issues
+</li><li> Delegate feature (in tracker)
+</li><li> Parameter port support? (in tracker) Boyana likes current situation
+</li><li> Python 2.3.4 doesn't work and should be trapped somewhere (2.3.6 is first supported)
+</li></ul>
+<br />
+<a name='Ccaffeine'></a><h3>Ccaffeine</h3>
+<ul><li> New MPI port standard
+</li><li> Use parsifal instead of libxml2
+</li><li> Clean up code tree
+</li><li> Classic binding is still used (CFRFS and C++ or Java &amp; C++ only)
+</li></ul>
+<br />
+<a name='Contractor'></a><h3>Contractor</h3>
+<ul><li> Python 2.3.4 doesn't work and should be trapped somewhere (2.3.6 is first supported)
+</li><li> Clear bug tracker issues
+</li><li> Update main download page, label, 0.7.x, document changes
+</li><li> Add Cray XT build to contractor (and individual tools)
+</li><li> Add BG/P build to contractor (and individual tools)
+</li></ul>
+<br />
+<a name='CCA_spec'></a><h3>CCA spec</h3>
+<ul><li> Static build pending bocca support
+</li><li> Static build for drivers in other languages (than C++)
+</li><li> Reference manual (like Understanding the CCA through Decaf)
+</li><li> Document other approaches to implementing spec (see Tom for details)
+</li><li> CCARB activities
+</li><li> Use bocca for spec?
+</li></ul>
+<br />
+<a name='Tutorial_and_other_documentation'></a><h3>Tutorial and other documentation</h3>
+<ul><li> SIDL arrays (current tutorial chap is insufficient)
+</li><li> Objects
+</li><li> Static build (manually and automatically)
+</li><li> Abstract framework (i.e. framing your own app in Python)
+</li><li> builder service (C++, F90, Python)
+</li><li> Parameter ports!!! (Rob is emphatic)
+</li><li> MPI examples
+</li><li> Document tools build for Cray XT
+</li></ul>
+<br />
+<a name='Release_plan'></a><h3>Release plan</h3>
+<br />
+<a name='Testing'></a><h3>Testing</h3>
+<ul><li> Nightly testing using tutorial (complete build)
+</li></ul>
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+  last modification: Monday 26 of October, 2009 [02:35:23 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CCA%20Tools%20Notes%202009-10
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

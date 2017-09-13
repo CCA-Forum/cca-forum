@@ -1,0 +1,27 @@
+<html>
+<title>CCAFFEINE anonymous CVS access</title>
+<body>
+<p>This service is provided for alpha testers: {Use of cvs make you an alpha tester,
+ and as such you should expect some things to be broken and/or undocumented. 
+If you don't like this status, download one of the tar files instead.}</p>
+<p>To get the current repositories of cca-related framework codes by anonymous cvs:</p>
+
+<p><b>dccafe itself</b></p>
+<pre>
+cvs -d :pserver:anonymous@cca-forum.org:/home/ccaffeine/repository login
+# hit return (no passwd)
+cvs -d :pserver:anonymous@cca-forum.org:/home/ccaffeine/repository co -r babelification dccafe 
+cvs -d :pserver:anonymous@cca-forum.org:/home/ccaffeine/repository logout
+</pre>
+
+<pre>
+<p><b>the corresponding cca specifications</b></p>
+cvs -d :pserver:anonymous@cca-forum.org:/home/cca-spec/repository login
+# hit return (no passwd)
+cvs -d :pserver:anonymous@cca-forum.org:/home/cca-spec/repository co cca-spec-babel cca-spec-classic
+cvs -d :pserver:anonymous@cca-forum.org:/home/cca-spec/repository logout
+</pre>
+</body>
+</html>
+
+

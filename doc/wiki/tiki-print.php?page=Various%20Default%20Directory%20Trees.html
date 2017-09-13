@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Various Default Directory Trees </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Various+Default+Directory+Trees.html">Various Default Directory Trees</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar">Default Consensus Solution</div>
+I call it default because, so far, this directory layout is closest to what exists in the tutorial now.  I call it consensus because everyone but Ben (I think) seems to think this is livable.<br />
+<br />
+<div class="simplebox"><br />
+<tt> $ createProject --ccafe-config=/usr/local/bin/cafe_config MonteCarloIntegratorProj</tt><br />
+<tt> $ cd  MonteCarloIntegratorProj/</tt><br />
+<tt> $ ls -F</tt><br />
+<tt> scripts/ components/ ports/ legacy/ utils/ README configure.in</tt><br />
+<tt> configure Makefile.in MakeIncl.user.in</tt><br />
+</div><br />
+<br />
+Now <i>legacy</i> needs to have a name change: I select <i>external</i> and <i>utils</i> and <i>scripts</i> should be combined (I choose to keep the <i>scripts</i> directory). Another concern is whether we should keep <i>MakeIncl.user.in</i>. Now we have:<br />
+<br />
+<div class="simplebox"><br />
+<tt> $ createProject --ccafe-config=/usr/local/bin/cafe_config MonteCarloIntegratorProj</tt><br />
+<tt> $ cd  MonteCarloIntegratorProj/</tt><br />
+<tt> $ ls -F</tt><br />
+<tt> scripts/ components/ ports/ external/ README configure.in</tt><br />
+<tt> configure Makefile.in MakeIncl.user.in</tt><br />
+</div><br />
+<br />
+<b>Ports</b><br />
+<br />
+Right now these directories are mostly empty.  Least controversial is the <i>Ports</i> directory:<br />
+<br />
+<div class="simplebox"><br />
+<tt> $ ls -F ports/</tt><br />
+<tt> MakeIncl_template.user  Makefile include/ lib/ sidl/</tt><br />
+<tt> $ ls -F ports/include/</tt><br />
+<tt>   *nothing*</tt><br />
+<tt> $ ls -F ports/lib/</tt><br />
+<tt> c c++ f90 py java</tt><br />
+<tt> $ ls -F ports/sidl</tt><br />
+<tt>   *nothing*</tt><br />
+</div><br />
+This is identical to the unpopulated tutorial src at this moment.  <i>lib</i> and <i>include</i> are autogened and built by the tutorial src infrastructure which can be lifted from the tutorial.   The <i>sidl</i> directory is for SIDL descriptions of CCA Port's.<br />
+<br />
+<br />
+<b>Components</b><br />
+<br />
+This follows mostly the tutorial src as it is now.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=rob.html' >rob</a>
+  last modification: Tuesday 31 of October, 2006 [18:03:45 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=rob.html' >rob</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Various%20Default%20Directory%20Trees
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

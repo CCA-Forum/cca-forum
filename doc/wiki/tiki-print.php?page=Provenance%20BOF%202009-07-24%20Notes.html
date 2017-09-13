@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Provenance BOF 2009-07-24 Notes </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Provenance+BOF+2009-07-24+Notes.html">Provenance BOF 2009-07-24 Notes</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Notes from a BOF on provenance in component environments at the Summer 2009 CCA Forum</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Jeff Daly: Problem solving environment (general, target subsurface)<br />
+<ul><li> Input files
+</li><li> Output files
+</li><li> Execution machine
+</li><li> When run?
+</li><li> Minimum necessary to reproduce same executable
+</li><li> Capture paths, names for executable
+</li><li> Not version information
+</li><li> Best effort only
+</li></ul>
+<br />
+Ben Allan: Current practice: archive binaries (whole operating<br />
+systems) for later execution in VMs. Examples: weapons, environmental<br />
+management<br />
+<br />
+Ian Gorton: heading towards versioning of models, inputs, etc.<br />
+<br />
+Need: identify which components (and versions) constituted the<br />
+application at any moment in time.  Track over time since application<br />
+might be dynamic.<br />
+<br />
+Jeff: Sufficient for CCA app to dump file w/ provenance info for ingestion<br />
+<br />
+Jeff: Data model: triple store w/ &quot;standard&quot; terms<br />
+<br />
+Ben: BuilderService<a href="tiki-editpage.php%3Fpage=BuilderService.html" title="Create page: BuilderService" class="wiki wikinew">?</a> events are not sufficient because can<br />
+create SIDL objects<br />
+<br />
+David: BS events give the equivalent of current &quot;application&quot; identity<br />
+assuming it consists entirely of CCA components.  Recognize<br />
+limitations, but accept.  Instrumented loader would have a much harder<br />
+time giving info that can be connected up to things the user/developer<br />
+can recognize.<br />
+<br />
+David: Some groups collect much more detailed info about the build<br />
+(compiler flags, versions of key OS elements).  Want to have enough<br />
+detail to rebuild the same executables. Want to be able to identify if<br />
+built code is modified from something they've captured in an SVN<br />
+repo. Example: Tech-X<br />
+<br />
+Need a mechanism for component (build) to record provenance details,<br />
+and make them available<br />
+<br />
+Dynamically assembled application use case (Wael's approach)<br />
+<ul><li> Component path gives all available components
+</li><li> Runtime provenance/version statement from components as instantiated appears in output stream
+</li></ul>
+<br />
+Dynamically assembled application use case (David's approach)<br />
+<ul><li> BuilderService<a href="tiki-editpage.php%3Fpage=BuilderService.html" title="Create page: BuilderService" class="wiki wikinew">?</a> provides info about components in application
+</li><li> Provenance service collects provenance info and reports it in unified form
+</li></ul>
+<br />
+Kosta's work on data provenance: in HPC contexts probably gives too<br />
+much information.<br />
+<br />
+Idea: extract provenance information during build (probably part of<br />
+bocca-generated build system), stuff into (a) component metadata (.cca<br />
+file), and (b) auto-generated provenance port.<br />
+<br />
+Provenance info<br />
+<ul><li> Version number/string
+</li><li> Some Dublin Core info
+</li></ul>
+<br />
+Consider XML markup which can be parsed downstream (provenance service<br />
+or info management app) to pick out desired info<br />
+<br />
+Look at what other groups are capturing: Open Speedshop, PERI<br />
+participants.  Want to be sure we can accommodate it in any CCA<br />
+approach.<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+  last modification: Monday 03 of August, 2009 [12:37:28 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Provenance%20BOF%202009-07-24%20Notes
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CcaBuildAntiPattern </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CcaBuildAntiPattern.html">CcaBuildAntiPattern</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Antipatterns in CCA software</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar"> Antipattern 1: duplicated nested directory hierarchies inflicted on unsuspecting users </div>
+To give an example, it's been proposed that a set of command line tools should set up a project something like so (where a project is one or more sidl-packages):<br />
+<div class="simplebox">createProject CFRFS</div><br />
+resulting in<br />
+CFRFS/<br />
+CFRFS/ports/<br />
+CFRFS/bin {aka util, scripts}<br />
+CFRFS/components<br />
+<br />
+next<br />
+<div class="simplebox">cd CFRFS<br />
+addComponent cfrfs.namespace1.Comp1<br />
+addPort cfrfs.Port1<br />
+addComponent cfrfs.namespace2.Comp2<br />
+</div><br />
+and that, before babel is even invoked, should yield<br />
+CFRFS/ports/cfrfs/<br />
+CFRFS/components/cfrfs/namespace1/Comp1/<br />
+CFRFS/components/cfrfs/namespace2/Comp2/<br />
+with the likely invocation of <i>babel -g</i> from the directory where the handedited stuff lives we'll then get<br />
+CFRFS/components/cfrfs/namespace1/Comp1/cfrfs/namespace1/<br />
+CFRFS/components/cfrfs/namespace2/Comp2/cfrfs/namespace2/<br />
+<br />
+and we see the that pretty soon the text-oriented developer is in a directory hell and the only way around it is to set the prompt through some shell trick to show the complete path below $HOME.<br />
+Some may say <b>So get rid of the -g to babel, I don't like the extra my/packageN</b>. This then exposes that probably in both cases my/packageN should be got rid of.<br />
+<hr />
+Here's the sane person's alternative to the antipattern, the pattern observed in several real projects to date (CFRFS, CCAChem).<br />
+For the same command line invocations above end up with (by default):<br />
+CFRFS/ports/CFRFS.ports.sidl<br />
+CFRFS/components/Comp1/cfrfs.namespace1.Comp1.sidl<br />
+CFRFS/components/Comp2/cfrfs.namespace2.Comp2.sidl<br />
+Which contains all the same information with a lot less indirection to confuse the user, confuse make, etc.<br />
+The user is then free to choose -g in babel or not or to override the output location, e.g.<br />
+<div class="simplebox">addComponent -o components/cfrfs/namespace1/Comp1 cfrfs.namespace1.Comp1</div><br />
+yielding for the long-path-fans:<br />
+CFRFS/components/cfrfs/namespace1/Comp1/cfrfs.namespace1.Comp1.sidl<br />
+and for the -g fans<br />
+CFRFS/components/cfrfs/namespace1/Comp1/cfrfs/namespace1/*Comp1_Impl*<br />
+<br />
+-Ben<br />
+<hr />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Thursday 26 of October, 2006 [21:10:26 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CcaBuildAntiPattern
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

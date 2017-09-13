@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+                               
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <title>Ccaffeine User Manual</title>
+                    
+  <meta name="author" content="Rob Armstrong &amp; Ben Allan">
+</head>
+  <body text="#000000" bgcolor="#ffffff" link="#0000ee" vlink="#551a8b" alink="#0000ee">
+<h1>Ccaffeine User Manual</h1>
+<br>
+        Now that you have built Ccaffeine it would probably be nice to know 
+ how   to run it. &nbsp;The Ccaffeine executable orchestrates a set of SCMD 
+ components   on a parallel machine. &nbsp;It has the ability to instantiate, 
+ connect and  run components interactively or in batch mode. &nbsp;Additionally, 
+ it has  debug mode that runs as a sigle processor serial program. &nbsp;Ccaffeine 
+   itself has no ability to spawn processes and relies on MPI or PVM to do 
+ this  task for it. &nbsp;For more information see the Ccaffeine paper. &nbsp;<br>
+       The rest of this document assumes a rudimentary understanding of the 
+ CCA   component connection mechanisms and procedures.<br>
+<br>
+       The the ccaffeine executable comes in three distinct forms:      
+ 
+<ol>
+  <li><b>ccafe-client - </b>client version that expects to connect  to  a
+ multiplexer front end which can then be connected to the Ccaffeine  GUI
+ or  a plain old command line for interactive work.</li>
+  <li><b>ccafe-batch</b> - a batch version that has no need of a front  
+ end and has no ability to be interactive.</li>
+  <li><b>ccafe-single</b> - a single process interactive version useful  
+ for debugging.</li>
+</ol>
+     These executables are closely related and are intended to be useful
+in  different  &nbsp;modes of component-oriented software development (<a href="Ccafe_Manual.html#Run_Modes">
+     see below</a>
+     ).<br>
+<h2>1. ccafe-single</h2>
+      This executable is meant to be run in sigle processor mode interactively
+   with the command line.<br>
+<img src="pic3.gif" alt="cafe-single in use" width="414" height="130">
+<br>
+      Options for <i>ccafe-single:</i><br>
+<br>
+      ccafe-single&nbsp; [--ccafe-rc &lt;rc file&gt;] &nbsp; [--help] <br>
+<a href="Ccafe_Manual.html#resource_file"> --ccafe-rc &lt;rc file&gt;</a>
+<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Source the given file into ccaffeine. 
+  <br>
+      &nbsp;<br>
+      &nbsp; --help <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Print out help information.<br>
+<h2><br>
+</h2>
+<h2>2. ccafe-batch</h2>
+       This executable is meant to run in a parallel environment, but does
+ not   have an interactive capability, nor the cumbersome multiplexing machinery
+   that interaction requires. &nbsp;Since there is no way for the user to
+&nbsp;interactively   create a component program, <i>ccafe-batch</i> requires
+either a command   line <i>--ccafe-rc</i> option for a Ccaffiene resource
+file, a ~/.ccaferc,  or a CCAFE_RC_FILE environment variableto perform parallel
+computations  (<a href="Ccafe_Manual.html#resource_file">see below</a>
+     ). &nbsp;<br>
+        &nbsp;<img src="pic2.gif" alt="cafe-batch in use" width="294" height="674">
+<br>
+<br>
+     Options for <i>ccafe-batch:</i><br>
+<br>
+     ccafe-batch [--ccafe-rc &lt;rc file&gt;] [--help] <br>
+<a href="Ccafe_Manual.html#resource_file">--ccafe-rc &lt;rc file&gt;</a>
+<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Source the given file into ccaffeine. 
+  <br>
+     &nbsp;<br>
+     &nbsp; --help <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Print out help information.<br>
+<br>
+<h2><b>3. ccafe-client</b></h2>
+      This is the application for interactive use in a parallel environment.
+  &nbsp;A  copy of cafe-client runs on each participating processor, orchestrating
+  and  managing component creation, connections, and destruction on behalf
+ of the  user. &nbsp; A central multiplexor, called the Muxer,&nbsp; creates
+ a single  multiplexed communication stream out of the many <i>cafe-client
+ </i> streams.  &nbsp;The multiplexed stream communicates with the user through
+  a GUI, or  directly to a terminal. &nbsp;In order to preserve scalability,
+  the <i>Muxer</i>  's are self-similar and can be cascaded in a tree. &nbsp;<br>
+<br>
+<a name="Muxer"></a>
+<img src="pic1.gif" alt="cafe-client in action" width="458" height="482">
+<br>
+<br>
+     Options for <i>ccafe-client:<br>
+</i>ccafe-client<i> &nbsp;</i>[--type &lt;client,interactive,gui,oneProcInteractive&gt;] 
+  &nbsp;[--ccafe-waitForGdbAttach] &nbsp;[--port] &nbsp;[--ccafe-rc &lt;rc 
+ file&gt;] &nbsp;[--help]<br>
+<br>
+     &nbsp; --type <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; More below: <br>
+     &nbsp;<br>
+     &nbsp; --type&nbsp; client&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This is the "normal" position,
+it  listens  for a <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; connection, probably the GUI.&nbsp; 
+  The backend right <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; now, always behaves as a client.
+ <br>
+     &nbsp;<br>
+     &nbsp; --type&nbsp; interactive&nbsp;&nbsp; <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Same as client but interacts in 
+human   readable form, <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rather than the way the GUI would 
+ be  expecting to <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interact. <br>
+     &nbsp;<br>
+     &nbsp; --type gui&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; default behavior, expecting 
+ to  talk to a GUI. <br>
+     &nbsp;<br>
+     &nbsp; --type oneProcInteractive&nbsp;&nbsp;&nbsp; <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Expects that there will be
+ only  one <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; process and that it will
+be  talking  to a human <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; being. <br>
+<br>
+     &nbsp; --port &lt;number&gt;&nbsp; <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Port number to listen on, 
+default   host name is localhost. <br>
+     &nbsp;<br>
+     &nbsp; --name &lt;host&gt;&nbsp; <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Host other than localhost 
+to  connect to. <br>
+     &nbsp;<br>
+     &nbsp; --file &lt;configFile&gt;&nbsp;&nbsp; <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A processor config file for 
+ the  processor map, <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; not an initialization file. 
+ <br>
+     &nbsp;<br>
+     &nbsp; --ccafe-waitForGdbAttach <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Spins until gdb attaches
+for   debugging, probably not useful in <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a parallel environment; every 
+  process would have to <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; be attached simultaneously.&nbsp; 
+  <br>
+     &nbsp;<br>
+     &nbsp; <a href="Ccafe_Manual.html#resource_file">--ccafe-rc &lt;rc file&gt;</a>
+<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Source the given file into ccaffeine. 
+  <br>
+<br>
+     &nbsp;&nbsp; --ccafe-outputdir &lt;directory&gt;<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ccaffeine creates files that are tied 
+off to each process's <br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stdout and stderr.&nbsp; This flag&nbsp; 
+causes those files to appear in the <br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; specified directory.<br>
+<br>
+     &nbsp; --help <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This message. \n<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<a name="Run_Modes"></a>
+     Run modes vs Ccaffeine executables chart:<br>
+<table cellpadding="2" cellspacing="2" border="1" width="100%">
+  <tbody>
+    <tr>
+      <td valign="Top"><br>
+      </td>
+      <td valign="Top"><i>ccafe-single</i><br>
+      </td>
+      <td valign="Top"><i>ccafe-batch</i>&nbsp;<br>
+      </td>
+      <td valign="Top"><i>ccafe-client</i><sup>5</sup><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Parallel<br>
+      </td>
+      <td valign="Top">N<br>
+      </td>
+      <td valign="Top">Y<br>
+      </td>
+      <td valign="Top">Y<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">GUI<br>
+      </td>
+      <td valign="Top">N<br>
+      </td>
+      <td valign="Top">N<br>
+      </td>
+      <td valign="Top">Y<sup>1</sup><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">interactive command line<br>
+      </td>
+      <td valign="Top">Y<br>
+      </td>
+      <td valign="Top">N<sup>3</sup><br>
+      </td>
+      <td valign="Top">Y<sup>2</sup><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">debug (gdb attach)<sup>6</sup><br>
+      </td>
+      <td valign="Top">N<br>
+      </td>
+      <td valign="Top">N<br>
+      </td>
+      <td valign="Top">Y<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">mpi-based components<br>
+      </td>
+      <td valign="Top">N<br>
+      </td>
+      <td valign="Top">Y<sup>4</sup><br>
+      </td>
+      <td valign="Top">Y<sup>4</sup><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+     footnotes:<br>
+<ol>
+  <li>java muxer and builder gui req'd if used in parallel.</li>
+  <li>java muxer and terminal window req'd if used in parallel.</li>
+  <li>Runs if "mpirun -np 1" otherwise interactive commands would go only
+  to lead node and things eventually hang when some collective operation is
+  attempted</li>
+  <li>Yes if mpi support configured into ccaffeine.</li>
+  <li>ccafe-client has a plethora of switches, documented elsewhere, to 
+control how it contacts a gui or a multiplexer</li>
+  <li>If run with appropriate switch (<i>--ccafe-gdbWaitForAttach</i> ) 
+and  gdb configured in during build, gdbWaitForAttach() occurs during startup.</li>
+</ol>
+<a name="resource_file"></a>
+     A Ccaffeine resource file consists of a valid set of <a href="Ccafe_Manual.html#Ccaffeine_Commands">
+    Ccaffeine commands</a>
+  and is loaded and run before interactive input begins. &nbsp;The Ccaffeine 
+resource file is found and used in the following order of precedence for all
+of executables:<br>
+<ol>
+  <li><i>--ccafe-rc</i> option</li>
+  <li>CCAFE_RC_FILE environment variable<br>
+  </li>
+  <li>$HOME/.ccaferc</li>
+  <li>$prefix/cxx/dc/user_iface/CcaffeineRC &nbsp;where $prefix is the  value
+ by the same name given to configure.<br>
+  </li>
+</ol>
+<br>
+<i>ccafe-single</i> and <i>ccafe-client</i> if still not finding an rc  file,
+ bravely continue, waiting for the interactive input, <i>ccafe-batch</i> 
+    on the other hand, will exit. &nbsp;<br>
+<br>
+ In order to prevent unintended use of non-Ccaffeine files, a valid Ccaffeine 
+resource file must have a "magic number" at the top of it to be valid. You 
+should include the first two lines of this <a href="CcaffeineRC.txt"> example
+file</a>
+  at the top of any rc file you wish to create for yourself. &nbsp;If these 
+magic two lines are not present, the file will not be read by Ccaffeine and 
+it will complain on start up. &nbsp; If the file &nbsp;$CCAFE_ROOT/cxx/dc/user_iface/CcaffeineRC 
+is used as a resource file (directly from the Ccaffeine build), the components 
+that come with Ccaffeine will be loaded automatically whenever Ccaffeine is
+started.<br>
+<br>
+     All executables, if given an invalid resource file, continue searching 
+ in  the next possible rc file location, and issuing a warning about the bad
+ file.  If any rc file is subsequently found, another warning is issued that
+ the rc file found is not the one expected.<br>
+<h3><a name="Ccaffeine_Commands"></a>
+    Ccaffeine Commands</h3>
+ At the command line Ccafeine is pretty much self documenting. &nbsp;Running 
+ccafe-single at  the command line and typing "help&lt;CR&gt;" gives:<br>
+<pre>help -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: [string token] </pre>
+<pre>&nbsp;&nbsp;&nbsp; prints the help of one or all commands</pre>
+<pre>exit -- </pre>
+<pre>x -- </pre>
+<pre>bye -- </pre>
+<pre>quit -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: [string token] </pre>
+<pre>&nbsp;&nbsp;&nbsp; leave the parser and the calling program, with optional return code.</pre>
+<pre>display -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: &lt;string token&gt; [instance] </pre>
+<pre>&nbsp;&nbsp;&nbsp; display pallet</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - show what is in the pallet currently.</pre>
+<pre>display arena</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - show what is in the arena currently.</pre>
+<pre>display component &lt;component instance name&gt;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - show the ports and class name associated with a component</pre>
+<pre>display chain &lt;component instance name&gt;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - show the connections associated with a particular</pre>
+<pre>display state</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - equivalent to "display arena" and then "display chain"</pre>
+<pre>pulldown -- </pre>
+<pre>instantiate -- </pre>
+<pre>create -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: &lt;class&gt; [string token] </pre>
+<pre>&nbsp;&nbsp;&nbsp; create an arena instance from a class.</pre>
+<pre>connect -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: &lt;instance&gt; &lt;string token&gt; &lt;instance&gt; &lt;string token&gt; </pre>
+<pre>&nbsp;&nbsp;&nbsp; &lt;using instance&gt; &lt;used Port name&gt; &lt;providing instance&gt; &lt;provided Port name&gt;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - make a connection between two instantiated components </pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; residing in the arena.</pre>
+<pre>disconnect -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: &lt;instance&gt; &lt;string token&gt; &lt;instance&gt; &lt;string token&gt; </pre>
+<pre>&nbsp;&nbsp;&nbsp; &lt;using instance&gt; &lt;used Port name&gt; &lt;providing instance&gt; &lt;provided Port name&gt;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - break a connection between two instantiated components </pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; residing in the arena.</pre>
+<pre>configure -- </pre>
+<pre>parameters -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: &lt;instance&gt; &lt;string token&gt; &lt;string token&gt; [string token] [0 or args like previous]</pre>
+<pre>&nbsp;&nbsp;&nbsp; query or set the configuration parameters of a component port</pre>
+<pre>go -- </pre>
+<pre>run -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: [instance] [string token] </pre>
+<pre>&nbsp;&nbsp;&nbsp; cause the connection framework to run the framed components.</pre>
+<pre>pallet -- </pre>
+<pre>classes -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; show what component classes are in the pallet currently.</pre>
+<pre>arena -- </pre>
+<pre>instances -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; show what instances are in the arena currently.</pre>
+<pre>links -- </pre>
+<pre>chain -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; show what connections are in the arena currently.</pre>
+<pre>property -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: &lt;instance&gt; [string token] [remainder of line as a single string]</pre>
+<pre>&nbsp;&nbsp;&nbsp; property &lt;component-instance-name&gt;</pre>
+<pre>&nbsp;&nbsp; - show all the properties of a component.</pre>
+<pre>property &lt;component-instance-name&gt; &lt;key&gt;</pre>
+<pre>&nbsp;&nbsp; - show all the named property of a component, if it exists.</pre>
+<pre>property &lt;component-instance-name&gt; &lt;key&gt; &lt;value&gt;</pre>
+<pre>&nbsp;&nbsp; - set the named property of a component.</pre>
+<pre>remove -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: [instance] </pre>
+<pre>&nbsp;&nbsp;&nbsp; remove &lt;component instance name&gt;</pre>
+<pre>nuke -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: &lt;string token&gt; </pre>
+<pre>&nbsp;&nbsp;&nbsp; remove all components in the arena</pre>
+<pre>repository -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: &lt;string token&gt; [string token] </pre>
+<pre>&nbsp;&nbsp;&nbsp; repository list</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - show components available in the repository.</pre>
+<pre>&nbsp; The following get options cannot be abbreviated:</pre>
+<pre>&nbsp;&nbsp;&nbsp; repository get class</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - load component from the repository list (private and immediate linking).</pre>
+<pre>&nbsp;&nbsp;&nbsp; repository get-global class</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - load component from the repository list (global and immediate linking).&nbsp;&nbsp;&nbsp; repository get-lazy class</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - load component from the repository list (private and lazy linking).</pre>
+<pre>&nbsp;&nbsp;&nbsp; repository get-lazy-global class</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - load component from the repository list (global and lazy linking).</pre>
+<pre>Global linking may be appropriate for components that, as a side effect,</pre>
+<pre>for example include libblas, liblapack, libppm, and other legacy C/f77 routines.Such components will need to be loaded before any other components that use the</pre>
+<pre>global symbols.</pre>
+<pre>path -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: [string token] [string token] </pre>
+<pre>&nbsp;&nbsp;&nbsp; path init</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - set framework path from env(CCA_COMPONENT_PATH).</pre>
+<pre>&nbsp;&nbsp;&nbsp; path append &lt;directory&gt;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - add directory to path.</pre>
+<pre>&nbsp;&nbsp;&nbsp; path prepend &lt;directory&gt;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - insert directory before path.</pre>
+<pre>&nbsp;&nbsp;&nbsp; path set</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - replace path. format input as env()</pre>
+<pre>&nbsp;&nbsp;&nbsp; path</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - show path</pre>
+<pre>shell -- </pre>
+<pre>system -- </pre>
+<pre>&nbsp;&nbsp;&nbsp; arguments: [remainder of line as a single string]</pre>
+<pre>&nbsp;&nbsp;&nbsp; executes shell commands (no globbing, though)<br><br><br></pre>
+<br>
+<h3><br>
+</h3>
+<h3>Configuration Files and File Confusion<br>
+</h3>
+     There are 3 different files that Ccaffeine uses for configuration, beyond
+  other files that might be associated with any components that get instantiated. 
+ &nbsp; In addition to these, ccafe-client creates files associated with the
+ <i>stdout/stderr</i> of each process (these are usually named pErr<i> xx</i>
+    and pOut<i>xx, </i>where <i>xx</i> is the MPI rank of the process<i> )</i>
+   . &nbsp;It is easy to confuse them and usually disasterous to program execution
+ if they are mixed up. &nbsp;Only one file type is associated with <i>ccafe-batch</i>
+    and <i>ccafe-single</i>: the <a href="Ccafe_Manual.html#resource_file"> Ccaffeine resource
+ file</a>
+    . &nbsp;For <i>ccafe-batch</i> there are three configuration files:<br>
+<ol>
+  <li><a href="Ccafe_Manual.html#resource_file">Ccaffeine resource file.</a>
+  </li>
+  <li>A runtime configuration file indicated by the --file option.</li>
+  <li>A ".bld" file that is read by the Ccaffeine <a href="Ccafe_Manual.html#Ccaffeine_GUI">
+    GUI</a>
+    .</li>
+</ol>
+    Of these the most similar and the easiest to confuse are the ".bld" file
+  and the Ccaffeine resource file. &nbsp;The ".bld" file is a format only
+for  the <a href="Ccafe_Manual.html#Ccaffeine_GUI">GUI</a>
+     front end and is only read and parsed only by the GUI.&nbsp; Ccaffeine 
+ proper (i.e. ccafe-client) will get confused by it and probably hang. &nbsp;The 
+ ".bld" file can both be read and written by the <a href="Ccafe_Manual.html#Ccaffeine_GUI">
+   GUI</a>
+    . &nbsp;It can also be carefully edited by the user, usually with reasonable
+  results. &nbsp;The <a href="Ccafe_Manual.html#resource_file">Ccaffeine resource file</a>
+     is never written by Ccaffeine and is only constructed by the user from 
+ the valid list of <a href="Ccafe_Manual.html#Ccaffeine_Commands">Ccaffeine commands</a>
+    .<br>
+<h2><a name="Ccaffeine_GUI"></a>
+    Ccaffeine GUI</h2>
+   The Ccaffeine GUI takes the place of a user typing at a command line terminal. 
+ &nbsp;It interprets gestures in the window and translates them into commands 
+ to be typed out on a socket that is connected to the <a href="Ccafe_Manual.html#Muxer">Muxer</a>
+  , which in turn sends them to the <i>ccafe-client</i>'s. &nbsp; The GUI 
+always assumes that it is talking to a single Ccaffeine client and requires 
+the <a href="Ccafe_Manual.html#Muxer">Muxer</a>
+    to communicate in to a parallel run. &nbsp;Obviously the GUI can only 
+be used in an interactive fashion and does not work with <i>ccafe-batch</i>
+  or <i>ccafe-single</i>. &nbsp;It will function normally with a single processor 
+run of <i>ccafe-client</i>. &nbsp;<br>
+<br>
+<img src="pic4.gif" alt="GUI in action" width="616" height="478">
+<br>
+<br>
+<br>
+The GUI is written in Java and can take many forms. &nbsp;The standard path
+from the console&nbsp; is <br>
+<pre><br>java -classpath $CCAFE_ROOT/java  gov.sandia.ccaffeine.dc.user_iface.BuilderClient<br><br></pre>
+The available options are:<br>
+<br>
+<pre>  <a name="GUI_options"></a>--builderPort &lt;port number&gt;<br>         Port on which GUI will connect, default is 2024.<br><br>  --host &lt;hostName&gt;<br>         Host to which GUI will connect, default is localhost.<br><br>  --file &lt;.bld file&gt; <br>         GUI compatible .bld file to be read in at startup.<br>  <br></pre>
+The GUI ".bld" files are a format that is written by the GUI and is not compatible
+with the Ccaffeine rc file type. &nbsp;<br>
+<br>
+<br>
+<br>
+<h2>Ccaffeine Muxer</h2>
+This is an application, written in Java, that multiplexes streams between
+multiple parallel &nbsp;process and a single entity. &nbsp;In practice that
+entity is either <i>telnet</i> for command line interaction or the Ccaffeine
+GUI for a graphical user interface. &nbsp; The standard execution path from
+the Ccaffeine build is:<br>
+<br>
+<pre>java -classpath $CCAFE_ROOT/java gov.sandia.ccaffeine.dc.distributed.MuxingProcess<br><br></pre>
+The common options are:<br>
+<br>
+<pre>  --file procDefinitionFile (required)<br>         A processor definition file that associates names with machine <br>         and processor locations of the layout for this parallel run.<br><br>  --name MyName (required)<br>         The name for this server appearing in the processor definition file.<br><br>  --builderPort port<br>         The port to listen on for a connection from the single process <br>         expecting multiplexed IO.<br><br>  --port port<br>         The port to listen on for multiple connections from the parallel <br>         processes.         <br></pre>
+<br>
+<br>
+<h2>Ccaffeine Scripts</h2>
+<br>
+There are two shell scripts that hopefully make it easy to run Ccaffeine
+as a beginner: <i>runParallelLocal</i> and <i>runGUI. &nbsp;</i>Both are
+located in $CCAFE_ROOT/bin and run from the Ccaffeine build.<br>
+<br>
+<i>runParallelLocal</i> has these options:<br>
+<pre><br>	--np 			number of processes requested from MPI.<br><br>	--kill  		wipe out the Ccaffeine parallel backend <br>				run previously.<br><br>	--help  		this message.<br><br>	ccaffeine options	any valid combination of&nbsp;ccafe-client options<br><br></pre>
+With no options <i>runParallelLocal</i> will execute three MPI processes
+of ccafe-client and connect them to a Muxer ready for a command line connection
+(<i>telnet) </i>or a connection from the Ccaffeine GUI. &nbsp;<br>
+<br>
+<i>runGUI</i> has no extra options but takes all of the <a href="Ccafe_Manual.html#GUI_options">
+options</a>
+ available to the Ccaffeine GUI. <br>
+<br>
+<h3>Tips</h3>
+<ul>
+  <li>Do not use relative paths for any of the file arguments, use only absolute
+paths. &nbsp;These are parallel runs and MPI does its best, but sometimes
+paths get confused.</li>
+  <li>Unless you are sure you know what your doing do not use the <i>--file</i>
+ argument for <i>ccafe-client</i>.</li>
+  <li>Make sure that your MPI installation is working and your rsh is configured
+such that "rsh localhost ls" works without an error.</li>
+  <li>It is always best to preface any parallel run with a "runParallelLocal
+--kill" to get rid of any stray processes that may be laying around. &nbsp;If
+there are complaints about "connection refused" or "port unavailable" resort
+to this command. &nbsp;Also: unless you are already running something, it
+can't hurt.</li>
+  <li>Not all combinations of GUI and Ccaffeine options are compatible, but
+the default ones are.</li>
+  <li>Use the <a href="mailto:ccafe-help@z.ca.sandia.gov">help line</a>
+.<br>
+  </li>
+</ul>
+<h3>Examples</h3>
+Here bold faced type is what the user types. &nbsp;To talk to three <i>ccafe-client</i>
+'s through the Muxer via a command line:<br>
+<br>
+<pre>$ <b>runParallelLocal</b><br>starting the muxer ...<br>done.<br>$ MPI_Init called in CmdLineClientMain.cxx<br>MPI_Init called in CmdLineClientMain.cxx<br>MPI_Init called in CmdLineClientMain.cxx<br>$ <b>telnet localhost 2024</b><br></pre>
+<pre>Trying 127.0.0.1...<br>Connected to localhost.localdomain (127.0.0.1).<br>Escape character is '^]'.<br>Loaded StarterComponent NOW  PRIVATE .<br>Loaded RevalidateTest NOW  PRIVATE .<br><b>display pallet</b><br>addClass RevalidateTest<br>addClass StarterComponent<br>^]<br><br>telnet&gt; quit    <br>Connection closed.<br><br>$<br><br><br></pre>
+Note that the escape character for telnet is '^]' after which "quit" at the
+prompt terminates the session. &nbsp;Note also that there is some output
+informing you that MPI has created 3 processes. &nbsp;<br>
+<br>
+The standard port that the Muxer listens from is 2024 and the <i>telnet</i>
+ program is just a way to type to a socket. &nbsp;The interface used in this
+way is pretty unfriendly because it is expecting the GUI to connect to it.
+&nbsp; If you want to use something friendlier try the ccafe-client option
+<i>--type interactive</i> which is meant for human beings. &nbsp;It would
+be disasterous however to use this option in conjunction with the GUI. &nbsp;To
+run the GUI:<br>
+<br>
+&nbsp;
+<pre>$ <b>runParallelLocal --kill; runParallelLocal</b><br>starting the muxer ...<br>done.<br>$ MPI_Init called in CmdLineClientMain.cxx<br>MPI_Init called in CmdLineClientMain.cxx<br>MPI_Init called in CmdLineClientMain.cxx<br><br>$ <b>runGUI</b><br>&lt; GUI output eliminated &gt;<br><br></pre>
+After this, if the X Windows settings are working, a GUI should appear in
+your display. &nbsp;Since it is Java it is pretty slow and may take a while.
+&nbsp;Note that <i>runParallelLocal --kill</i> was run to eliminate any stray
+processes created in the first run.<br>
+<br>
+<br>
+<pre><br></pre>
+<br>
+</body>
+</html>

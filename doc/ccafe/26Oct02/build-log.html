@@ -1,0 +1,1805 @@
+<html>
+<head>
+  <title>Ccaffeine Build from Rob's Laptop</title>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+</head>
+<body>
+
+<h2><center>Legend</center></h2>
+
+<table cellpadding="0" cellspacing="0" border="0" width="30%">
+  <tbody>
+    <tr>
+    <td valign="top" halign="center">
+    Typed input in </td><td valign="top" halign="center" bgcolor="#ff9966"> orange</td>
+    <td valign="top" halign="center" > and output in </td><td valign="top" halign="center" bgcolor="#c0c0c0">
+    grey. </td>
+   </tr>
+</tbody>
+</table>
+<br/>
+<br/>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tbody>
+    <tr>
+    <td valign="top" bgcolor="#ff9966"><br><pre>
+capt-january$ ./configure  --with-cca-babel=/home/rob/cca/cca-spec-babel --with-ccca-classic=/home/rob/cca/cca-spec-classic --with-mpi=/usr/local/mpich --with-jdkk12=/usr/local/java --with-lapack=/home/rob/cca/LAPACK/liblapack.a --with-blas=/hhome/rob/cca/LAPACK/libblas.a
+    </pre>
+    </td>
+    </tr>
+    <tr> <td valign="top" bgcolor="#c0c0c0"><br> <pre>
+Checking for environment variables that may affect the configure/make:
+checking environment for JAVA_HM... no. OK.
+checking environment for CCA_ROOT... no. OK.
+checking environment for TOMCAT_HOME... no. OK.
+checking environment for WEBHOST... no. OK.
+checking environment for EYES2_ROOT... no. OK.
+checking environment for SNLCPP_ROOT... no. OK.
+checking environment for ESI_ROOT... no. OK.
+checking environment for ISIS_ROOT... no. OK.
+checking environment for PVM_ROOT... predefined. Hope it is correct. 
+checking environment for STV_ROOT... predefined. Hope it is correct. 
+checking environment for EYES_ROOT... no. OK.
+checking environment for EFENCE... no. OK.
+checking environment for CCAFE_SPEW... no. OK.
+checking environment for CCAFE_MAJOR_VERSION... no. OK.
+checking environment for CCAFE_MINOR_VERSION... no. OK.
+checking environment for CCAFE_PATCH_LEVEL... no. OK.
+checking environment for CCAFE_VERSION... no. OK.
+checking environment for VERSION... no. OK.
+checking environment for CCAFE_FORCE... no. OK.
+checking environment for CCAFE_ROOT... no. OK.
+checking environment for CCAFE_CXX_ROOT... no. OK.
+checking environment for CCAFE_JAVA_ROOT... no. OK.
+checking environment for CCAFE_INSTALL_ROOT... no. OK.
+checking environment for CFLAGS... no. OK.
+checking environment for CFLAGS_DEBUG... no. OK.
+checking environment for CFLAGS_OPTIMIZE... no. OK.
+checking environment for CFLAGS_WARNING... no. OK.
+checking environment for CPP... no. OK.
+checking environment for CC... no. OK.
+checking environment for CXX... no. OK.
+checking environment for CXXFLAGS... no. OK.
+checking environment for CXX_TEMPLATES... no. OK.
+checking environment for CXXCPP... no. OK.
+checking environment for FLIBS... no. OK.
+checking environment for MATH_LIBS... no. OK.
+checking environment for EFENCE_LIB... no. OK.
+checking environment for PURIFY... no. OK.
+checking environment for MPI... no. OK.
+checking environment for MPI_HOME... no. OK.
+checking environment for MPI_ARCH... no. OK.
+checking environment for BROKEN_MPICC... no. OK.
+checking environment for BROKEN_MPICXX... no. OK.
+checking environment for MPICC... no. OK.
+checking environment for MPICXX... no. OK.
+checking environment for MPIRUN... no. OK.
+checking environment for MPI_LDFLAGS... no. OK.
+checking environment for MPILIB... no. OK.
+checking environment for BABEL_ROOT... no. OK.
+checking environment for BABEL_FLAGS... no. OK.
+checking environment for HAVE_BABEL... no. OK.
+checking environment for AWK... no. OK.
+checking environment for LN_S... no. OK.
+checking environment for RANLIB... no. OK.
+checking environment for LEX... no. OK.
+checking environment for YACC... no. OK.
+checking environment for TCLSH... no. OK.
+checking environment for RUBY... no. OK.
+checking environment for SWIG... no. OK.
+checking environment for SWIG_HOME... no. OK.
+checking environment for CCAFE_DL_LIBS... no. OK.
+checking environment for CCAFE_LD_FLAGS... no. OK.
+checking environment for CCAFE_LD_SEARCH_FLAGS... no. OK.
+checking environment for CCAFE_SHLIB_CFLAGS... no. OK.
+checking environment for CCAFE_SHLIB_LD... no. OK.
+checking environment for CCAFE_SHLIB_LD_LIBS... no. OK.
+checking environment for CCAFE_SHLIB_SUFFIX... no. OK.
+checking environment for GMAKE... no. OK.
+checking environment for TARGET_OS... no. OK.
+checking environment for TARGET_CPU... no. OK.
+checking environment for TARGET_VENDOR... no. OK.
+checking environment for HOST_OS... no. OK.
+checking environment for HOST_CPU... no. OK.
+checking environment for HOST_VENDOR... no. OK.
+checking environment for TIME_WITH_SYS_TIME... no. OK.
+checking environment for HAVE_SYS_TIME_H... no. OK.
+checking environment for LIBS... no. OK.
+checking environment for SETVBUF_REVERSED... no. OK.
+checking environment for HAVE_VPRINTF... no. OK.
+checking environment for HAVE_SYS_IOCTL_H... no. OK.
+checking environment for HAVE_SYS_FILIO_H... no. OK.
+checking environment for USE_FIONBIO... no. OK.
+checking environment for TCL_STUB_LIB_FILE... no. OK.
+checking environment for TCL_STUB_LIB_FLAG... no. OK.
+checking environment for TCL_BUILD_STUB_LIB_SPEC... no. OK.
+checking environment for TCL_STUB_LIB_SPEC... no. OK.
+checking environment for TCL_BUILD_STUB_LIB_PATH... no. OK.
+checking environment for TCL_STUB_LIB_PATH... no. OK.
+checking environment for MAKE_STUB_LIB... no. OK.
+checking environment for BUILD_DLTEST... no. OK.
+checking environment for CFG_TCL_SHARED_LIB_SUFFIX... no. OK.
+checking environment for CFG_TCL_UNSHARED_LIB_SUFFIX... no. OK.
+checking environment for CFG_TCL_EXPORT_FILE_SUFFIX... no. OK.
+checking environment for TCL_DBGX... no. OK.
+checking environment for DL_LIBS... no. OK.
+checking environment for DL_OBJS... no. OK.
+checking environment for EXTRA_CFLAGS... no. OK.
+checking environment for LD_FLAGS... no. OK.
+checking environment for MAKE_LIB... no. OK.
+checking environment for SHLIB_CFLAGS... no. OK.
+checking environment for SHLIB_LD... no. OK.
+checking environment for SHLIB_LD_LIBS... no. OK.
+checking environment for SHLIB_SUFFIX... no. OK.
+checking environment for TCL_BUILD_LIB_SPEC... no. OK.
+checking environment for TCL_LD_SEARCH_FLAGS... no. OK.
+checking environment for TCL_LIB_FILE... no. OK.
+checking environment for TCL_LIB_FLAG... no. OK.
+checking environment for TCL_NEEDS_EXP_FILE... no. OK.
+checking environment for TCL_BUILD_EXP_FILE... no. OK.
+checking environment for TCL_EXP_FILE... no. OK.
+checking environment for TCL_LIB_SPEC... no. OK.
+checking environment for TCL_LIB_VERSIONS_OK... no. OK.
+checking environment for TCL_PACKAGE_PATH... no. OK.
+checking environment for TCL_SHARED_LIB_SUFFIX... no. OK.
+checking environment for TCL_SHARED_BUILD... no. OK.
+checking environment for TCL_SHLIB_CFLAGS... no. OK.
+checking environment for TCL_SRC_DIR... no. OK.
+checking environment for TCL_UNSHARED_LIB_SUFFIX... no. OK.
+checking environment for SIZEOF_SHORT_P... no. OK.
+checking environment for SIZEOF_SHORT... no. OK.
+checking environment for BABEL_CCA_ROOT... no. OK.
+checking environment for CCAFE_CONFIG_FILES... no. OK.
+checking environment for CCAFE_SHLIB_LDFLAGS... no. OK.
+checking environment for CLASSIC_CCA_ROOT... no. OK.
+checking environment for MAKE_SERVLET... no. OK.
+checking environment for MPI_INC_ODD... no. OK.
+checking environment for MPI_LIBDIR... no. OK.
+checking environment for OS_ARCH... no. OK.
+checking environment for PYTHON_CPPFLAGS... no. OK.
+checking environment for PYTHON_INCLUDE... no. OK.
+checking environment for PYTHON_LDFLAGS... no. OK.
+checking environment for PYTHON_SCRIPTING... no. OK.
+checking environment for SERVLET_JAR... no. OK.
+checking environment for SET_MAKE... no. OK.
+checking environment for TOMCAT_START_COMMAND... no. OK.
+checking environment for TOMCAT_STOP_COMMAND... no. OK.
+checking environment for USEMPI... no. OK.
+Done checking for environment variables.
+checking host system type... i686-pc-linux-gnu
+checking cca-spec-babel... /home/rob/cca/cca-spec-babel
+checking for gawk... gawk
+checking whether ln -s works... yes
+checking whether make sets ${MAKE}... yes
+checking for ranlib... ranlib
+checking for g77... /usr/local/bin/g77
+checking whether /usr/local/bin/gcc and cc understand -c and -o together... yes
+checking for c++... /usr/local/bin/g++
+checking whether the C++ compiler (/usr/local/bin/g++  ) works... yes
+checking whether the C++ compiler (/usr/local/bin/g++  ) is a cross-compiler... no
+checking whether we are using GNU C++... yes
+checking whether /usr/local/bin/g++ accepts -g... yes
+checking how to run the C preprocessor... /usr/local/bin/gcc -E
+checking how to run the C++ preprocessor... /usr/local/bin/g++ -E
+checking for flex... flex
+checking for yywrap in -lfl... yes
+checking for bison... bison -y
+checking size of short... 2
+checking size of short *... 4
+Running check for TOMCAT web server.
+checking for common/lib/servlet.jar... no
+checking for lib/servlet.jar... no
+checking for common/lib/servlet.jar... no
+checking for lib/servlet.jar... no
+checking for common/lib/servlet.jar... no
+checking for lib/servlet.jar... no
+checking for common/lib/servlet.jar... no
+checking for lib/servlet.jar... no
+checking for common/lib/servlet.jar... no
+checking for lib/servlet.jar... no
+checking for common/lib/servlet.jar... no
+checking for lib/servlet.jar... no
+checking for common/lib/servlet.jar... no
+checking for lib/servlet.jar... no
+checking for common/lib/servlet.jar... no
+checking for lib/servlet.jar... no
+checking for common/lib/servlet.jar... no
+checking for lib/servlet.jar... no
+checking for common/lib/servlet.jar... no
+checking for lib/servlet.jar... no
+configure: warning: Cannot find TomCat...Not building web servlets. (that is ok)
+checking for javac... /usr/local/java/bin/javac
+checking for Python directories... found /usr/include/python2.1 and /usr/lib/python2.1.
+checking for pvmd... pvmd found. PVM_ROOT is /home/rob/cca/pvm3.
+checking for pvmgetarch... found /home/rob/cca/pvm3/lib/pvmgetarch.
+checking for efence... efence found.
+checking for MakeIncl.CUMULVS_Component... /home/rob/cca/viz-stv/CUMULVS/ccaComponent/MakeIncl.CUMULVS_Component
+checking for gmake... gmake
+checking for tclsh... tclsh
+checking for ruby... ruby
+checking for swig... swig
+checking host system type... i686-pc-linux-gnu
+checking target system type... i686-pc-linux-gnu
+checking build system type... i686-pc-linux-gnu
+checking mpicc... yes
+checking mpiCC... yes
+checking BOOST smart pointers... yes
+checking for Chasm... no  use --with-chasm=CHASM_ROOT to enable
+checking for sin... no
+checking for main in -lieee... yes
+checking for z_div in -lg2c... yes
+checking for ANSI C header files... yes
+checking for fcntl.h... yes
+checking for strings.h... yes
+checking for sys/file.h... yes
+checking for sys/time.h... yes
+checking for unistd.h... yes
+checking for working const... yes
+checking for size_t... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking for connect... yes
+checking for gethostbyname... yes
+checking whether setvbuf arguments are reversed... no
+checking for vprintf... yes
+checking for select... yes
+checking for socket... yes
+checking for strdup... yes
+checking for strerror... yes
+checking for strstr... yes
+checking for strtol... yes
+checking system version (for dynamic loading)... Linux-2.4.8-26mdk
+checking for dlopen in -ldl... yes
+checking for sys/ioctl.h... yes
+checking for sys/filio.h... no
+checking FIONBIO vs. O_NONBLOCK for nonblocking I/O... O_NONBLOCK
+creating ./config.status
+creating varlist
+creating Makefile
+creating Makefile.dl
+creating Makefile.conf.dl
+creating cxx/Makefile.Rules
+creating cxx/Makefile.Vars
+creating cxx/MakeIncl.CCAFE_MPI
+creating cxx/dc/user_iface/ccacmd/Makefile
+creating cxx/dc/user_iface/CcaffeineRC
+creating cxx/scutil/detemplate.rb
+creating java/Makefile.Rules
+creating java/gov/sandia/ccaffeine/dc/user_iface/runFromServletEg/Makefile
+creating java/gov/sandia/ccaffeine/dc/user_iface/servlet/Makefile
+creating java/gov/sandia/ccaffeine/dc/user_iface/servlet/ccaffeine/WEB-INF/classes/Makefile
+creating java/gov/sandia/ccaffeine/dc/user_iface/servlet/ccaffeine/WEB-INF/classes/IpAndPort.java
+creating java/gov/sandia/ccaffeine/dc/user_iface/Makefile
+creating java/gov/sandia/ccaffeine/dc/user_iface/applet/Makefile
+creating scripts/simplify-bld
+creating chez-rob/protoBS/Makefile
+creating MakeIncl.CCAFE_Siloon
+</pre>
+    </td>
+    </tr>
+    <tr> <td valign="top" bgcolor="#ff9966"><br><pre>
+capt-january$ make
+	</pre>
+    </td>
+    </tr>
+    <tr> <td valign="top" bgcolor="#c0c0c0"><br><pre>
+(cd cxx; make depend)
+make[1]: Entering directory `/home/rob/cca/ccafe/cxx'
+find . -name Makefile.depends -print -exec rm {} \;
+find . -name Makefile -print -exec util/newdepend {} \;
+./dc/port/Makefile
+./dc/port/Makefile.depends
+./dc/framework/Makefile
+./dc/framework/Makefile.depends
+./dc/Makefile
+./dc/Makefile.depends
+./dc/babel/Makefile
+./dc/babel/Makefile.depends
+./dc/babel/ccafe-cca/Makefile
+./dc/babel/ccafe-cca/Makefile.depends
+./dc/babel/component/Makefile
+./dc/babel/component/Makefile.depends
+./dc/babel/component/PortTranslatorStarter/Makefile
+./dc/babel/component/PortTranslatorStarter/Makefile.depends
+./dc/babel/component/StarterComponent/Makefile
+./dc/babel/component/StarterComponent/Makefile.depends
+./dc/babel/component/PrinterComponent/Makefile
+./dc/babel/component/PrinterComponent/Makefile.depends
+./dc/babel/babel-cca/Makefile
+./dc/babel/babel-cca/Makefile.depends
+./dc/babel/ccafe-bind/Makefile
+./dc/babel/ccafe-bind/Makefile.depends
+./dc/babel/ccafe-bind/FactorySvcComponent/Makefile
+./dc/babel/ccafe-bind/FactorySvcComponent/Makefile.depends
+./dc/chasm/Makefile
+./dc/chasm/Makefile.depends
+./dc/component/Makefile
+./dc/component/Makefile.depends
+./dc/user_iface/Makefile
+./dc/user_iface/Makefile.depends
+./dc/user_iface/ccacmd/Makefile
+./dc/user_iface/ccacmd/Makefile.depends
+./dc/distributed/Makefile
+./dc/distributed/Makefile.depends
+./dc/services/gui/Makefile
+./dc/services/gui/Makefile.depends
+./dc/std_iface/Makefile
+./dc/std_iface/Makefile.depends
+./dc/classic/Makefile
+./dc/classic/Makefile.depends
+./dc/classic/ccafe-bind/Makefile
+./dc/classic/ccafe-bind/Makefile.depends
+./cmd/Makefile
+./cmd/Makefile.depends
+./doc/Makefile
+./doc/Makefile.depends
+./esi/Makefile
+./esi/Makefile.depends
+./gnu/Makefile
+./gnu/Makefile.depends
+./gnu/getopt/Makefile
+./gnu/getopt/Makefile.depends
+./lib/Makefile
+./lib/Makefile.depends
+./jc++/io/Makefile
+./jc++/io/Makefile.depends
+./jc++/lang/Makefile
+./jc++/lang/Makefile.depends
+./jc++/test/Makefile
+./jc++/test/Makefile.depends
+./jc++/util/Makefile
+./jc++/util/Makefile.depends
+./jc++/Makefile
+./jc++/Makefile.depends
+./port/Makefile
+./port/Makefile.depends
+./port/data-interfaces/Makefile
+./port/data-interfaces/Makefile.depends
+./sc99/Makefile
+./sc99/Makefile.depends
+./util/Makefile
+./util/Makefile.depends
+./Makefile
+./Makefile.depends
+./parameters/Makefile
+./parameters/Makefile.depends
+./scutil/Makefile
+./scutil/Makefile.depends
+./stovepipe/Makefile
+./stovepipe/Makefile.depends
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/jc++'
+(cd lang; gmake depend)
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/jc++/lang'
+../../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Object.cxx FloatJC.cxx DoubleJC.cxx IntegerJC.cxx LongJC.cxx BooleanJC.cxx String.cxx
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/jc++/lang'
+(cd util; gmake depend)
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/jc++/util'
+../../util/g++depinclude_nosys -E  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Vector.cc StringVector.cc VectEnum.cc HashEnum.cc StringVectEnum.cc StringHashEnum.cc HashBucket.cc ResourceBucket.cc StringHashBucket.cc Hashtable.cc StringHash.cc ResourceHash.cc GenericHashEnum.cc GenericHashBucket.cc GenericHashTable.cc StringBuffer.cc StringTokenizer.cc JString.cc
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/jc++/util'
+(cd io; gmake depend)
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/jc++/io'
+../../util/g++depinclude_nosys -E  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   StdReader.cc BufferedReader.cc NonblockingReader.cc
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/jc++/io'
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/jc++'
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/parameters'
+../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   parametersDynamic.cxx BaseParameter.cxx BoolParameter.cxx DoubleParameter.cxx FloatParameter.cxx IntParameter.cxx LongParameter.cxx StringParameter.cxx
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/parameters'
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/port'
+done
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/port'
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/sc99'
+done
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/sc99'
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/util'
+../util/g++depinclude_nosys -E  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   TypeMap.cxx IO.cxx gdbWaitForAttach.cxx 
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/util'
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/cmd'
+../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdContext.cxx CmdActionExit.cxx CmdActionHelp.cxx CmdParse.cxx
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/cmd'
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/scutil'
+../util/g++depinclude_nosys -E  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCEnumeration.cpp SCVectEnum.cpp SCVector.cpp
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/scutil'
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/stovepipe'
+Manual dependencies written by Rob
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/stovepipe'
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/dc'
+for i in classic babel port framework distributed component std_iface user_iface ; do if ! (cd $i;gmake depend);then exit -1;fi done
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/classic'
+for i in ccafe-bind; do if ! (cd $i;gmake depend);then exit -1;fi done
+gmake[4]: Entering directory `/home/rob/cca/ccafe/cxx/dc/classic/ccafe-bind'
+../../../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   ClassicOpaqueGoPort.cc ClassicServices.cc ClassicPortInfo.cc ClassicOpaquePort.cc
+touch .depend
+gmake[4]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/classic/ccafe-bind'
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/classic'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel'
+for i in babel-cca component ccafe-bind; do if ! (cd $i;gmake depend);then exit -1;fi done
+gmake[4]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/babel-cca'
+mkdir server client
+touch .dirs-made
+if [ -n "ccaffeine_CCAException_Impl.cc ccaffeine_CCAException_Impl.hh ccaffeine_ComponentClassDescription_Impl.cc ccaffeine_ComponentClassDescription_Impl.hh ccaffeine_ComponentID_Impl.cc ccaffeine_ComponentID_Impl.hh ccaffeine_ConnectionEventService_Impl.cc ccaffeine_ConnectionEventService_Impl.hh ccaffeine_ConnectionID_Impl.cc ccaffeine_ConnectionID_Impl.hh ccaffeine_ports_BuilderService_Impl.cc ccaffeine_ports_BuilderService_Impl.hh ccaffeine_ports_ComponentRepository_Impl.cc ccaffeine_ports_ComponentRepository_Impl.hh ccaffeine_ports_ConnectionEvent_Impl.cc ccaffeine_ports_ConnectionEvent_Impl.hh ccaffeine_ports_PortTranslator_Impl.cc ccaffeine_ports_PortTranslator_Impl.hh ccaffeine_Services_Impl.cc ccaffeine_Services_Impl.hh ccaffeine_TypeMap_Impl.cc ccaffeine_TypeMap_Impl.hh ccaffeine_TypeMismatchException_Impl.cc ccaffeine_TypeMismatchException_Impl.hh  allCcaffeine.hh Makefile.babel" ];then \
+	for i in ccaffeine_CCAException_Impl.cc ccaffeine_CCAException_Impl.hh ccaffeine_ComponentClassDescription_Impl.cc ccaffeine_ComponentClassDescription_Impl.hh ccaffeine_ComponentID_Impl.cc ccaffeine_ComponentID_Impl.hh ccaffeine_ConnectionEventService_Impl.cc ccaffeine_ConnectionEventService_Impl.hh ccaffeine_ConnectionID_Impl.cc ccaffeine_ConnectionID_Impl.hh ccaffeine_ports_BuilderService_Impl.cc ccaffeine_ports_BuilderService_Impl.hh ccaffeine_ports_ComponentRepository_Impl.cc ccaffeine_ports_ComponentRepository_Impl.hh ccaffeine_ports_ConnectionEvent_Impl.cc ccaffeine_ports_ConnectionEvent_Impl.hh ccaffeine_ports_PortTranslator_Impl.cc ccaffeine_ports_PortTranslator_Impl.hh ccaffeine_Services_Impl.cc ccaffeine_Services_Impl.hh ccaffeine_TypeMap_Impl.cc ccaffeine_TypeMap_Impl.hh ccaffeine_TypeMismatchException_Impl.cc ccaffeine_TypeMismatchException_Impl.hh  allCcaffeine.hh Makefile.babel;\
+	do \
+	  ( cd server; \
+	    if ! [ -L $i ]; then \
+	      ln -s ../$i .;\
+                    fi; ) \
+	done; \
+         fi
+touch .babel-symlink
+PATH=/usr/local/babel/bin:/usr/local/java/bin:$PATH babel --suppress-timestamp -sC++ -oserver --repository-path /home/rob/cca/cca-spec-babel/server ccafe.sidl
+Babel: Parsing URL "file:/home/rob/cca/ccafe/cxx/dc/babel/babel-cca/ccafe.sidl"...
+Babel: Warning: Package "cca-v0.6" was not used to resolve any symbols
+PATH=/usr/local/babel/bin:/usr/local/java/bin:$PATH babel --suppress-timestamp --xml -oserver --repository-path /home/rob/cca/cca-spec-babel/server  ccafe.sidl
+Babel: Parsing URL "file:/home/rob/cca/ccafe/cxx/dc/babel/babel-cca/ccafe.sidl"...
+Babel: Warning: Package "cca-v0.6" was not used to resolve any symbols
+gmake unstamp
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/babel-cca'
+for i in ccaffeine_CCAException_Impl.cc ccaffeine_CCAException_Impl.hh ccaffeine_ComponentClassDescription_Impl.cc ccaffeine_ComponentClassDescription_Impl.hh ccaffeine_ComponentID_Impl.cc ccaffeine_ComponentID_Impl.hh ccaffeine_ConnectionEventService_Impl.cc ccaffeine_ConnectionEventService_Impl.hh ccaffeine_ConnectionID_Impl.cc ccaffeine_ConnectionID_Impl.hh ccaffeine_ports_BuilderService_Impl.cc ccaffeine_ports_BuilderService_Impl.hh ccaffeine_ports_ComponentRepository_Impl.cc ccaffeine_ports_ComponentRepository_Impl.hh ccaffeine_ports_ConnectionEvent_Impl.cc ccaffeine_ports_ConnectionEvent_Impl.hh ccaffeine_ports_PortTranslator_Impl.cc ccaffeine_ports_PortTranslator_Impl.hh ccaffeine_Services_Impl.cc ccaffeine_Services_Impl.hh ccaffeine_TypeMap_Impl.cc ccaffeine_TypeMap_Impl.hh ccaffeine_TypeMismatchException_Impl.cc ccaffeine_TypeMismatchException_Impl.hh  ; do \
+	rm -f -f .unstamp.$i; \
+	cat $i | grep -v '^// babel-version' | \
+		grep -v '^// source-line' | \
+		grep -v '^// source-url' | \
+		grep -v '^// Babel Version' | \
+		grep -v '^// Generated' | \
+		grep -v '^// SIDL Created'  &gt  .unstamp.$i; \
+	mv -f .unstamp.$i $i; \
+done
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/babel-cca'
+touch .gen-babel
+(cd server; /home/rob/cca/ccafe/cxx/dc/babel/babel-cca/../bin/sidlUncrufter.rb --re-to-delete gov_cca --re-to-delete SIDL_ \
+               --re-to-delete SIDL\.h )
+touch .uncruft
+touch server/Makefile.depends
+(cd server;gmake -f Makefile.babel depend)
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/babel-cca/server'
+rm -f Makefile;ln -s Makefile.babel Makefile
+../../../../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include ccaffeine_CCAException_IOR.c ccaffeine_ComponentClassDescription_IOR.c ccaffeine_ComponentID_IOR.c ccaffeine_ConnectionEventService_IOR.c ccaffeine_ConnectionID_IOR.c ccaffeine_Framework_IOR.c ccaffeine_Services_IOR.c ccaffeine_TypeMap_IOR.c ccaffeine_TypeMismatchException_IOR.c ccaffeine_ports_BuilderService_IOR.c ccaffeine_ports_ComponentRepository_IOR.c ccaffeine_ports_ConnectionEvent_IOR.c ccaffeine_ports_ParameterDialogService_IOR.c ccaffeine_ports_ParameterDialog_IOR.c ccaffeine_ports_ParameterGetListener_IOR.c ccaffeine_ports_ParameterPortWrap_IOR.c ccaffeine_ports_ParameterPort_IOR.c ccaffeine_ports_ParameterSetListener_IOR.c ccaffeine_ports_PortTranslator_IOR.c  ccaffeine_CCAException_Skel.cc ccaffeine_ComponentClassDescription_Skel.cc ccaffeine_ComponentID_Skel.cc ccaffeine_ConnectionEventService_Skel.cc ccaffeine_ConnectionID_Skel.cc ccaffeine_Framework_Skel.cc ccaffeine_Services_Skel.cc ccaffeine_TypeMap_Skel.cc ccaffeine_TypeMismatchException_Skel.cc ccaffeine_ports_BuilderService_Skel.cc ccaffeine_ports_ComponentRepository_Skel.cc ccaffeine_ports_ConnectionEvent_Skel.cc ccaffeine_ports_ParameterDialog_Skel.cc ccaffeine_ports_ParameterPortWrap_Skel.cc ccaffeine_ports_PortTranslator_Skel.cc  ccaffeine_CCAException.cc ccaffeine_ComponentClassDescription.cc ccaffeine_ComponentID.cc ccaffeine_ConnectionEventService.cc ccaffeine_ConnectionID.cc ccaffeine_Framework.cc ccaffeine_Services.cc ccaffeine_TypeMap.cc ccaffeine_TypeMismatchException.cc ccaffeine_ports_BuilderService.cc ccaffeine_ports_ComponentRepository.cc ccaffeine_ports_ConnectionEvent.cc ccaffeine_ports_ParameterDialog.cc ccaffeine_ports_ParameterDialogService.cc ccaffeine_ports_ParameterGetListener.cc ccaffeine_ports_ParameterPort.cc ccaffeine_ports_ParameterPortWrap.cc ccaffeine_ports_ParameterSetListener.cc ccaffeine_ports_PortTranslator.cc  ccaffeine_CCAException_Impl.cc ccaffeine_ComponentClassDescription_Impl.cc ccaffeine_ComponentID_Impl.cc ccaffeine_ConnectionEventService_Impl.cc ccaffeine_ConnectionID_Impl.cc ccaffeine_Framework_Impl.cc ccaffeine_Services_Impl.cc ccaffeine_TypeMap_Impl.cc ccaffeine_TypeMismatchException_Impl.cc ccaffeine_ports_BuilderService_Impl.cc ccaffeine_ports_ComponentRepository_Impl.cc ccaffeine_ports_ConnectionEvent_Impl.cc ccaffeine_ports_ParameterDialog_Impl.cc ccaffeine_ports_ParameterPortWrap_Impl.cc ccaffeine_ports_PortTranslator_Impl.cc 
+rm -f Makefile
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/babel-cca/server'
+touch .depend
+gmake[4]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/babel-cca'
+gmake[4]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component'
+for i in PrinterComponent StarterComponent PortTranslatorStarter; do if ! (cd $i;gmake depend);then exit -1;fi done
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent'
+mkdir server client
+touch .dirs-made
+if [ -n "ccafe0_PrinterComponent_Impl.cc ccafe0_PrinterComponent_Impl.hh Makefile.babel" ];then \
+	for i in ccafe0_PrinterComponent_Impl.cc ccafe0_PrinterComponent_Impl.hh Makefile.babel;\
+	do \
+	  ( cd server; \
+	    if ! [ -L $i ]; then \
+	      ln -s ../$i .;\
+                    fi; ) \
+	done; \
+         fi
+touch .babel-symlink
+PATH=/usr/local/babel/bin:/usr/local/java/bin:$PATH babel --suppress-timestamp -sC++ -oserver --repository-path /home/rob/cca/cca-spec-babel/server PrinterComponent.sidl
+Babel: Parsing URL "file:/home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent/PrinterComponent.sidl"...
+PATH=/usr/local/babel/bin:/usr/local/java/bin:$PATH babel --suppress-timestamp --xml -oserver --repository-path /home/rob/cca/cca-spec-babel/server  PrinterComponent.sidl
+Babel: Parsing URL "file:/home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent/PrinterComponent.sidl"...
+touch .gen-babel
+(cd server; /home/rob/cca/ccafe/cxx/dc/babel/bin/sidlUncrufter.rb --re-to-delete gov_cca --re-to-delete SIDL_ \
+               --re-to-delete SIDL\.h )
+touch .uncruft
+touch server/Makefile.depends
+(cd server;gmake -f Makefile.babel depend)
+gmake[6]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent/server'
+rm -f Makefile; ln -sf Makefile.babel Makefile
+../../../../../util/g++depinclude_nosys -E -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent ccafe0_PrinterComponent_IOR.c ccafe0_StringConsumerPort_IOR.c  ccafe0_PrinterComponent_Skel.cc  ccafe0_PrinterComponent.cc ccafe0_StringConsumerPort.cc  ccafe0_PrinterComponent_Impl.cc 
+rm -f Makefile
+gmake[6]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent/server'
+touch .depend
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent'
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/StarterComponent'
+mkdir server client
+touch .dirs-made
+if [ -n "ccafe1_StarterComponent_Impl.cc ccafe1_StarterComponent_Impl.hh Makefile.babel" ];then \
+	for i in ccafe1_StarterComponent_Impl.cc ccafe1_StarterComponent_Impl.hh Makefile.babel;\
+	do \
+	  ( cd server; \
+	    if ! [ -L $i ]; then \
+	      ln -s ../$i .;\
+                    fi; ) \
+	done; \
+         fi
+touch .babel-symlink
+PATH=/usr/local/babel/bin:/usr/local/java/bin:$PATH babel --suppress-timestamp -sC++ -oserver --repository-path /home/rob/cca/cca-spec-babel/server StarterComponent.sidl
+Babel: Parsing URL "file:/home/rob/cca/ccafe/cxx/dc/babel/component/StarterComponent/StarterComponent.sidl"...
+PATH=/usr/local/babel/bin:/usr/local/java/bin:$PATH babel --suppress-timestamp --xml -oserver --repository-path /home/rob/cca/cca-spec-babel/server  StarterComponent.sidl
+Babel: Parsing URL "file:/home/rob/cca/ccafe/cxx/dc/babel/component/StarterComponent/StarterComponent.sidl"...
+touch .gen-babel
+(cd server; /home/rob/cca/ccafe/cxx/dc/babel/bin/sidlUncrufter.rb --re-to-delete gov_cca --re-to-delete SIDL_ \
+               --re-to-delete SIDL\.h )
+touch .uncruft
+touch server/Makefile.depends
+(cd server;gmake -f Makefile.babel depend)
+gmake[6]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/StarterComponent/server'
+rm -f Makefile; ln -sf Makefile.babel Makefile
+../../../../../util/g++depinclude_nosys -E -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent ccafe1_StarterComponent_IOR.c  ccafe1_StarterComponent_Skel.cc  ccafe1_StarterComponent.cc  ccafe1_StarterComponent_Impl.cc 
+rm -f Makefile
+gmake[6]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/StarterComponent/server'
+touch .depend
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/StarterComponent'
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PortTranslatorStarter'
+mkdir server client
+touch .dirs-made
+if [ -n "ccafe_eg_PortTranslatorStarter_Impl.cc ccafe_eg_PortTranslatorStarter_Impl.hh Makefile.babel" ];then \
+	for i in ccafe_eg_PortTranslatorStarter_Impl.cc ccafe_eg_PortTranslatorStarter_Impl.hh Makefile.babel;\
+	do \
+	  ( cd server; \
+	    if ! [ -L $i ]; then \
+	      ln -s ../$i .;\
+                    fi; ) \
+	done; \
+         fi
+touch .babel-symlink
+PATH=/usr/local/babel/bin:/usr/local/java/bin:$PATH babel --suppress-timestamp -sC++ -oserver --repository-path /home/rob/cca/cca-spec-babel/server PortTranslatorStarter.sidl
+Babel: Parsing URL "file:/home/rob/cca/ccafe/cxx/dc/babel/component/PortTranslatorStarter/PortTranslatorStarter.sidl"...
+PATH=/usr/local/babel/bin:/usr/local/java/bin:$PATH babel --suppress-timestamp --xml -oserver --repository-path /home/rob/cca/cca-spec-babel/server  PortTranslatorStarter.sidl
+Babel: Parsing URL "file:/home/rob/cca/ccafe/cxx/dc/babel/component/PortTranslatorStarter/PortTranslatorStarter.sidl"...
+touch .gen-babel
+(cd server; /home/rob/cca/ccafe/cxx/dc/babel/bin/sidlUncrufter.rb --re-to-delete gov_cca --re-to-delete SIDL_ \
+               --re-to-delete SIDL\.h )
+touch .uncruft
+touch server/Makefile.depends
+(cd server;gmake -f Makefile.babel depend)
+gmake[6]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PortTranslatorStarter/server'
+rm -f Makefile; ln -sf Makefile.babel Makefile
+../../../../../util/g++depinclude_nosys -E -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent ccafe_eg_PortTranslatorStarter_IOR.c  ccafe_eg_PortTranslatorStarter_Skel.cc  ccafe_eg_PortTranslatorStarter.cc  ccafe_eg_PortTranslatorStarter_Impl.cc 
+rm -f Makefile
+gmake[6]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PortTranslatorStarter/server'
+touch .depend
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PortTranslatorStarter'
+gmake[4]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component'
+gmake[4]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/ccafe-bind'
+for i in FactorySvcComponent; do if ! (cd $i;gmake depend);then exit -1;fi done
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/ccafe-bind/FactorySvcComponent'
+/home/rob/cca/ccafe/cxx/util/g++depinclude_nosys -E -g -I/usr/local/babel/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-babel/server  -I/home/rob/cca/ccafe/cxx  -I/usr/local/include StringTools.cc BabelFactoryService.cc
+touch .depend
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/ccafe-bind/FactorySvcComponent'
+../../../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. BabelOpaqueTypeMap.cc BabelOpaqueGoPort.cc BabelComponentWrapper.cc BabelOpaquePort.cc BabelHelper.cc
+touch .depend
+gmake[4]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/ccafe-bind'
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/port'
+../../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   DefaultGUIService.cxx DefaultConfigurableParameterFactory.cxx DefaultParameterPort.cxx CCA_Block.cxx DefaultJPrintfPort.cxx DefaultPrintfPort.cxx DefaultKeyValuePort.cxx DefaultMPIService.cxx DefaultMPIBorrow.cxx Caffeine_Port_DynamicLink.cxx
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/port'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/framework'
+../../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server  ComponentFactory.cxx  ServicesHelper.cxx  ComponentInfo.cxx ConnectedConnectionEvent.cxx DisconnectingConnectionEvent.cxx UserPortData.cxx ProviderPortData.cxx PropertyStrings.cxx PropertiesHelper.cxx OpqPortInfo.cxx OpqBuilderService.cxx Gizzard.cxx ConnectionFramework.cxx ComponentChangedEvent.cxx GizzardComponentChangedEvent.cxx CcafeServiceFactoryContainer.cxx ComponentID.cxx ConnectionID.cxx  XCmptFactory.cc XService.cc
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/framework'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/distributed'
+../../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   ClientServerSocket.cxx ProcessorInfo.cxx  ConnectionManager.cxx SocketConnectionManager.cxx LinewiseClient.cxx ServerMux.cxx DataCollectorFactory.cxx MessageData.cxx ServerOutOfBandListener.cxx
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/distributed'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/component'
+../../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG BSTest.cxx Timer.cxx StarterComponent.cxx TimeStamper.cxx PrinterComponent.cxx RevalidateTest.cxx  
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/component'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/std_iface'
+done
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/std_iface'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/user_iface'
+(cd ccacmd; gmake depend)
+gmake[4]: Entering directory `/home/rob/cca/ccafe/cxx/dc/user_iface/ccacmd'
+../../../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAPortProperties.cxx CmdActionCCAConnect.cxx CmdActionCCADisplay.cxx CmdActionCCAPallet.cxx CmdActionCCAArena.cxx CmdActionCCAGo.cxx CmdActionCCAConfig.cxx CmdActionCCAProperties.cxx CmdActionCCALinks.cxx CmdActionCCAInstantiate.cxx CmdActionCCARemove.cxx CmdActionCCARepository.cxx CmdActionCCAPath.cxx CmdActionCCAShell.cxx CmdContextCCA.cxx CmdContextCCAMPI.cxx CmdActionCCANuke.cxx CmdActionCCADisconnect.cxx
+gmake[4]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/user_iface/ccacmd'
+../../util/g++depinclude_nosys -E -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server DefaultBuilderModel.cxx Link.cxx CmdLineBuilderViewForHuman.cxx CmdLineBuilderViewForGUI.cxx CmdLineBuilderViewMux.cxx CmdLineBuilderController2.cxx forceIsisBlasLapackLink.cxx CmdLineClient.cxx
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/user_iface'
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/dc'
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/lib'
+dccafe/cxx/lib depends not checked.
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/lib'
+make[1]: Leaving directory `/home/rob/cca/ccafe/cxx'
+(cd cxx; make)
+make[1]: Entering directory `/home/rob/cca/ccafe/cxx'
+(cd gnu;gmake)
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/gnu'
+(cd getopt; gmake)
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/gnu/getopt'
+/usr/local/bin/gcc -c -O  getCCAFEopt.c
+/usr/local/bin/gcc -c -O  getCCAFEopt1.c
+ar ruv libgetCCAFEopt.a *.o
+a - getCCAFEopt1.o
+a - getCCAFEopt.o
+ranlib libgetCCAFEopt.a
+done getCCAFEopt.o getCCAFEopt1.o
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/gnu/getopt'
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/gnu'
+for i in jc++ parameters port sc99 util cmd scutil stovepipe dc lib; do \
+	if [ -z "jc++ parameters port sc99 util cmd scutil stovepipe dc lib" -a ! -d $i ] ; then \
+		echo "*** You need to checkout/update -d $i"; \
+		exit 1 ; \
+	fi ; \
+        echo $i;(cd $i ; if ! gmake ; then exit -1;fi ); \
+done
+jc++
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/jc++'
+(cd util; gmake)
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/jc++/util'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT Vector.cc
+Vector.cc:23: warning: `char id[56]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT StringVector.cc
+StringVector.cc:18: warning: `char id[62]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT VectEnum.cc
+VectEnum.cc:8: warning: `char id[57]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT HashEnum.cc
+HashEnum.cc:15: warning: `char id[57]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT StringVectEnum.cc
+StringVectEnum.cc:14: warning: `char id[63]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT StringHashEnum.cc
+StringHashEnum.cc:14: warning: `char id[63]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT HashBucket.cc
+HashBucket.cc:14: warning: `char id[63]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT ResourceBucket.cc
+ResourceBucket.cc:13: warning: `char id[67]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT StringHashBucket.cc
+StringHashBucket.cc:11: warning: `char id[69]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT Hashtable.cc
+Hashtable.cc:18: warning: `char id[58]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT StringHash.cc
+StringHash.cc:21: warning: `char id[60]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT ResourceHash.cc
+ResourceHash.cc:26: warning: `char id[62]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT GenericHashEnum.cc
+GenericHashEnum.cc:16: warning: `char id[64]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT GenericHashBucket.cc
+GenericHashBucket.cc:16: warning: `char id[70]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT GenericHashTable.cc
+GenericHashTable.cc:20: warning: `char id[65]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT StringBuffer.cc
+StringBuffer.cc:23: warning: `char id[65]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT StringTokenizer.cc
+StringTokenizer.cc:2: warning: `char id[64]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT JString.cc
+JString.cc:2: warning: `char id[56]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT Thread.cc
+ar -rv libjc++util.a Vector.o StringVector.o VectEnum.o HashEnum.o StringVectEnum.o StringHashEnum.o HashBucket.o ResourceBucket.o StringHashBucket.o Hashtable.o StringHash.o ResourceHash.o GenericHashEnum.o GenericHashBucket.o GenericHashTable.o StringBuffer.o StringTokenizer.o JString.o Thread.o 
+a - Vector.o
+a - StringVector.o
+a - VectEnum.o
+a - HashEnum.o
+a - StringVectEnum.o
+a - StringHashEnum.o
+a - HashBucket.o
+a - ResourceBucket.o
+a - StringHashBucket.o
+a - Hashtable.o
+a - StringHash.o
+a - ResourceHash.o
+a - GenericHashEnum.o
+a - GenericHashBucket.o
+a - GenericHashTable.o
+a - StringBuffer.o
+a - StringTokenizer.o
+a - JString.o
+a - Thread.o
+ranlib libjc++util.a
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/jc++/util'
+(cd lang; gmake)
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/jc++/lang'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Object.cxx
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   FloatJC.cxx
+FloatJC.cxx:2: warning: `char id[57]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   DoubleJC.cxx
+DoubleJC.cxx:2: warning: `char id[58]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   IntegerJC.cxx
+IntegerJC.cxx:2: warning: `char id[59]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   LongJC.cxx
+LongJC.cxx:2: warning: `char id[56]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   BooleanJC.cxx
+BooleanJC.cxx:2: warning: `char id[59]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   String.cxx
+ar -rv libjexception.a Object.o FloatJC.o DoubleJC.o IntegerJC.o LongJC.o BooleanJC.o String.o
+a - Object.o
+a - FloatJC.o
+a - DoubleJC.o
+a - IntegerJC.o
+a - LongJC.o
+a - BooleanJC.o
+a - String.o
+ranlib libjexception.a
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/jc++/lang'
+(cd io; gmake)
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/jc++/io'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT StdReader.cc
+StdReader.cc:2: warning: `char id[62]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT BufferedReader.cc
+BufferedReader.cc:2: warning: `char id[63]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT NonblockingReader.cc
+NonblockingReader.cc:2: warning: `char id[70]' defined but not used
+ar -rv libjc++io.a StdReader.o BufferedReader.o NonblockingReader.o
+a - StdReader.o
+a - BufferedReader.o
+a - NonblockingReader.o
+ranlib libjc++io.a
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/jc++/io'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   jc++dynamic.cpp
+ar ruv libjcpp.a */*.o jc++dynamic.o
+a - io/BufferedReader.o
+a - io/NonblockingReader.o
+a - io/StdReader.o
+a - lang/BooleanJC.o
+a - lang/DoubleJC.o
+a - lang/FloatJC.o
+a - lang/IntegerJC.o
+a - lang/LongJC.o
+a - lang/Object.o
+a - lang/String.o
+a - util/GenericHashBucket.o
+a - util/GenericHashEnum.o
+a - util/GenericHashTable.o
+a - util/HashBucket.o
+a - util/HashEnum.o
+a - util/Hashtable.o
+a - util/JString.o
+a - util/ResourceBucket.o
+a - util/ResourceHash.o
+a - util/StringBuffer.o
+a - util/StringHashBucket.o
+a - util/StringHashEnum.o
+a - util/StringHash.o
+a - util/StringTokenizer.o
+a - util/StringVectEnum.o
+a - util/StringVector.o
+a - util/Thread.o
+a - util/VectEnum.o
+a - util/Vector.o
+a - jc++dynamic.o
+ranlib libjcpp.a
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/jc++'
+parameters
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/parameters'
+CCAFE_HOME = ..
+Make sure this is set properly!
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    parametersDynamic.cxx
+parametersDynamic.cxx:7: warning: `char id[67]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    BaseParameter.cxx
+BaseParameter.cxx:8: warning: `char id[63]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    BoolParameter.cxx
+BoolParameter.cxx:22: warning: `char id[64]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    DoubleParameter.cxx
+DoubleParameter.cxx:15: warning: `char id[65]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    FloatParameter.cxx
+FloatParameter.cxx:15: warning: `char id[64]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    IntParameter.cxx
+IntParameter.cxx:15: warning: `char id[62]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    LongParameter.cxx
+LongParameter.cxx:15: warning: `char id[63]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    StringParameter.cxx
+StringParameter.cxx:16: warning: `char id[66]' defined but not used
+ar ruv libparameters.a *.o
+a - BaseParameter.o
+a - BoolParameter.o
+a - DoubleParameter.o
+a - FloatParameter.o
+a - IntParameter.o
+a - LongParameter.o
+a - parametersDynamic.o
+a - StringParameter.o
+ranlib libparameters.a
+done parametersDynamic.o BaseParameter.o BoolParameter.o DoubleParameter.o FloatParameter.o IntParameter.o LongParameter.o StringParameter.o
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/parameters'
+port
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/port'
+done
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/port'
+sc99
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/sc99'
+done
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/sc99'
+util
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/util'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    TypeMap.cxx
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    IO.cxx
+IO.cxx:2: warning: `char id[56]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    gdbWaitForAttach.cxx
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    ascDynaLoad.c
+done TypeMap.o IO.o gdbWaitForAttach.o
+ar -rv libcafeutil.a TypeMap.o IO.o gdbWaitForAttach.o ascDynaLoad.o
+a - TypeMap.o
+a - IO.o
+a - gdbWaitForAttach.o
+a - ascDynaLoad.o
+ranlib libcafeutil.a
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/util'
+cmd
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/cmd'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdContext.cxx
+CmdContext.cxx:3: warning: `char id[60]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionExit.cxx
+CmdActionExit.cxx:2: warning: `char id[63]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionHelp.cxx
+CmdActionHelp.cxx:2: warning: `char id[63]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdParse.cxx
+ar ruv libcmd.a CmdContext.o CmdActionExit.o CmdActionHelp.o CmdParse.o
+a - CmdContext.o
+a - CmdActionExit.o
+a - CmdActionHelp.o
+a - CmdParse.o
+ranlib libcmd.a
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/cmd'
+scutil
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/scutil'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Iterated_CmdLineBuilderView_p.gen.cpp
+Iterated_CmdLineBuilderView_p.gen.cpp:14: warning: `char id[87]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCEnumeration_CmdLineBuilderView_p.gen.cpp
+SCEnumeration_CmdLineBuilderView_p.gen.cpp:15: warning: `char id[84]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVectEnum_CmdLineBuilderView_p.gen.cpp
+SCVectEnum_CmdLineBuilderView_p.gen.cpp:8: warning: `char id[81]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVector_CmdLineBuilderView_p.gen.cpp
+SCVector_CmdLineBuilderView_p.gen.cpp:33: warning: `char id[79]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Iterated_void_p.gen.cpp
+Iterated_void_p.gen.cpp:14: warning: `char id[73]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Iterated_char_p.gen.cpp
+Iterated_char_p.gen.cpp:14: warning: `char id[73]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Iterated_int.gen.cpp
+Iterated_int.gen.cpp:14: warning: `char id[70]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Iterated_double.gen.cpp
+Iterated_double.gen.cpp:14: warning: `char id[73]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Iterated_long_long.gen.cpp
+Iterated_long_long.gen.cpp:14: warning: `char id[76]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCEnumeration_void_p.gen.cpp
+SCEnumeration_void_p.gen.cpp:15: warning: `char id[70]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCEnumeration_char_p.gen.cpp
+SCEnumeration_char_p.gen.cpp:15: warning: `char id[70]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCEnumeration_int.gen.cpp
+SCEnumeration_int.gen.cpp:15: warning: `char id[67]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCEnumeration_double.gen.cpp
+SCEnumeration_double.gen.cpp:15: warning: `char id[70]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCEnumeration_long_long.gen.cpp
+SCEnumeration_long_long.gen.cpp:15: warning: `char id[73]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVectEnum_void_p.gen.cpp
+SCVectEnum_void_p.gen.cpp:8: warning: `char id[67]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVectEnum_char_p.gen.cpp
+SCVectEnum_char_p.gen.cpp:8: warning: `char id[67]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVectEnum_int.gen.cpp
+SCVectEnum_int.gen.cpp:8: warning: `char id[64]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVectEnum_double.gen.cpp
+SCVectEnum_double.gen.cpp:8: warning: `char id[67]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVectEnum_long_long.gen.cpp
+SCVectEnum_long_long.gen.cpp:8: warning: `char id[70]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVector_void_p.gen.cpp
+SCVector_void_p.gen.cpp:33: warning: `char id[65]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVector_char_p.gen.cpp
+SCVector_char_p.gen.cpp:33: warning: `char id[65]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVector_int.gen.cpp
+SCVector_int.gen.cpp:33: warning: `char id[62]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVector_double.gen.cpp
+SCVector_double.gen.cpp:33: warning: `char id[65]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVector_long_long.gen.cpp
+SCVector_long_long.gen.cpp:33: warning: `char id[68]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Iterated_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.cpp
+Iterated_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.cpp:14: warning: `char id[114]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCEnumeration_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.cpp
+SCEnumeration_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.cpp:15: warning: `char id[119]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVectEnum_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.cpp
+SCVectEnum_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.cpp:8: warning: `char id[116]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVector_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.cpp
+SCVector_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.cpp:33: warning: `char id[114]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   Iterated_ComponentChangedListener_p.gen.cpp
+Iterated_ComponentChangedListener_p.gen.cpp:14: warning: `char id[93]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCEnumeration_ComponentChangedListener_p.gen.cpp
+SCEnumeration_ComponentChangedListener_p.gen.cpp:15: warning: `char id[90]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVectEnum_ComponentChangedListener_p.gen.cpp
+SCVectEnum_ComponentChangedListener_p.gen.cpp:8: warning: `char id[87]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   SCVector_ComponentChangedListener_p.gen.cpp
+SCVector_ComponentChangedListener_p.gen.cpp:33: warning: `char id[85]' defined but not used
+ar -rv libscutil.a *.o
+a - Iterated_char_p.gen.o
+a - Iterated_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.o
+a - Iterated_CmdLineBuilderView_p.gen.o
+a - Iterated_ComponentChangedListener_p.gen.o
+a - Iterated_double.gen.o
+a - Iterated_int.gen.o
+a - Iterated_long_long.gen.o
+a - Iterated_void_p.gen.o
+a - SCEnumeration_char_p.gen.o
+a - SCEnumeration_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.o
+a - SCEnumeration_CmdLineBuilderView_p.gen.o
+a - SCEnumeration_ComponentChangedListener_p.gen.o
+a - SCEnumeration_double.gen.o
+a - SCEnumeration_int.gen.o
+a - SCEnumeration_long_long.gen.o
+a - SCEnumeration_void_p.gen.o
+a - SCVectEnum_char_p.gen.o
+a - SCVectEnum_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.o
+a - SCVectEnum_CmdLineBuilderView_p.gen.o
+a - SCVectEnum_ComponentChangedListener_p.gen.o
+a - SCVectEnum_double.gen.o
+a - SCVectEnum_int.gen.o
+a - SCVectEnum_long_long.gen.o
+a - SCVectEnum_void_p.gen.o
+a - SCVector_char_p.gen.o
+a - SCVector_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.o
+a - SCVector_CmdLineBuilderView_p.gen.o
+a - SCVector_ComponentChangedListener_p.gen.o
+a - SCVector_double.gen.o
+a - SCVector_int.gen.o
+a - SCVector_long_long.gen.o
+a - SCVector_void_p.gen.o
+ranlib libscutil.a
+/usr/local/bin/g++ -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I.. -o testV testV.cpp \
+	libscutil.a ../util/libcafeutil.a
+./testV
+OK!
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/scutil'
+stovepipe
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/stovepipe'
+/usr/local/bin/g++ -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -c -o stp_cxx.o stp_cxx.cxx
+/usr/local/bin/g++ -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -c -o StpMap.o StpMap.cxx
+rm -f  libstovepipe.a
+ar r libstovepipe.a stp_cxx.o StpMap.o
+ranlib libstovepipe.a
+/usr/local/bin/gcc -O    -c -o testStovepipe.o testStovepipe.c
+/usr/local/bin/g++ -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I.. -I/home/rob/cca/cca-spec-classic/cxx/include -o testStovepipe \
+	testStovepipe.o libstovepipe.a \
+	../jc++/libjcpp.a ../util/libcafeutil.a
+Stovepipe picks up only args with a leading "--"
+Namespaces are separated by a single - no white space
+"--" by itself indicates the end of options for Stovepipe:
+
+./testStovepipe --hello world -too-few-dashes --hello-world hello \
+-- -hello- --hello-world notHello
+--hello arg value = "world", --hello-world arg value = "hello"
+namespace:hello,argName:world arg value =  "hello"
+
+
+The same argument used twice gets overwritten,
+options that do not appear in the command line
+but are requested return a C string ptr NULL:
+
+./testStovepipe --hello-world notHello --hello-world hello
+--hello arg value = "(null)", --hello-world arg value = "hello"
+namespace:hello,argName:world arg value =  "hello"
+
+
+Argument values must not begin with a "-" or they will be
+ignored or considered to be further options,
+options that appear in the command line but have
+no associated value return an empty string:
+
+./testStovepipe --hello --world --hello-world -hello
+--hello arg value = "", --hello-world arg value = ""
+namespace:hello,argName:world arg value =  ""
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/stovepipe'
+dc
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/dc'
+for i in classic babel port framework distributed component std_iface user_iface ; do if ! (cd $i;gmake);then exit -1;fi done
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/classic'
+for i in ccafe-bind; do if ! (cd $i;gmake);then exit -1;fi done
+gmake[4]: Entering directory `/home/rob/cca/ccafe/cxx/dc/classic/ccafe-bind'
+if [ -n "" ]; then mkdir ;fi
+touch .dirs-made
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   ClassicOpaqueGoPort.cc
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   ClassicServices.cc
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   ClassicPortInfo.cc
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   ClassicOpaquePort.cc
+ar r libClsCcafe.a ClassicOpaqueGoPort.o ClassicServices.o ClassicPortInfo.o ClassicOpaquePort.o
+ranlib libClsCcafe.a
+gmake[4]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/classic/ccafe-bind'
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/classic'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel'
+for i in babel-cca component ccafe-bind; do if ! (cd $i;gmake);then exit -1;fi done
+gmake[4]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/babel-cca'
+(cd server;gmake -f Makefile.babel)
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/babel-cca/server'
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_CCAException_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ComponentClassDescription_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ComponentID_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ConnectionEventService_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ConnectionID_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_Framework_Impl.cc
+ccaffeine_Framework_Impl.cc: In method `class gov::cca::ports::BuilderService ccaffeine::Framework_impl::getBuilderService()':
+ccaffeine_Framework_Impl.cc:61: warning: control reaches end of non-void function `ccaffeine::Framework_impl::getBuilderService()'
+ccaffeine_Framework_Impl.cc: In method `class gov::cca::TypeMap ccaffeine::Framework_impl::createTypeMap()':
+ccaffeine_Framework_Impl.cc:100: warning: control reaches end of non-void function `ccaffeine::Framework_impl::createTypeMap()'
+ccaffeine_Framework_Impl.cc: In method `class gov::cca::AbstractFramework ccaffeine::Framework_impl::createEmptyFramework()':
+ccaffeine_Framework_Impl.cc:203: warning: control reaches end of non-void function `ccaffeine::Framework_impl::createEmptyFramework()'
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_Services_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_TypeMap_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_TypeMismatchException_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_BuilderService_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ComponentRepository_Impl.cc
+ccaffeine_ports_ComponentRepository_Impl.cc: In method `struct SIDL::array &lt gov::cca::ComponentClassDescription &gt  ccaffeine::ports::ComponentRepository_impl::getAvailableComponentClasses()':
+ccaffeine_ports_ComponentRepository_Impl.cc:51: warning: control reaches end of non-void function `ccaffeine::ports::ComponentRepository_impl::getAvailableComponentClasses()'
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ConnectionEvent_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterDialog_Impl.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterPortWrap_Impl.cc
+ccaffeine_ports_ParameterPortWrap_Impl.cc: In method `struct SIDL::array &lt basic_string &lt char,string_char_traits &lt char &gt ,__default_alloc_template &lt true,0 &gt   &gt   &gt  ccaffeine::ports::ParameterPortWrap_impl::getMapNames()':
+ccaffeine_ports_ParameterPortWrap_Impl.cc:63: warning: control reaches end of non-void function `ccaffeine::ports::ParameterPortWrap_impl::getMapNames()'
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_PortTranslator_Impl.cc
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_CCAException_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ComponentClassDescription_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ComponentID_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ConnectionEventService_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ConnectionID_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_Framework_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_Services_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_TypeMap_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_TypeMismatchException_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_BuilderService_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ComponentRepository_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ConnectionEvent_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterDialogService_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterDialog_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterGetListener_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterPortWrap_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterPort_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterSetListener_IOR.c 
+/usr/local/bin/gcc -fPIC  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_PortTranslator_IOR.c 
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_CCAException_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ComponentClassDescription_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ComponentID_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ConnectionEventService_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ConnectionID_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_Framework_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_Services_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_TypeMap_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_TypeMismatchException_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_BuilderService_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ComponentRepository_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ConnectionEvent_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterDialog_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterPortWrap_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_PortTranslator_Skel.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_CCAException.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ComponentClassDescription.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ComponentID.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ConnectionEventService.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ConnectionID.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_Framework.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_Services.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_TypeMap.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_TypeMismatchException.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_BuilderService.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ComponentRepository.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ConnectionEvent.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterDialog.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterDialogService.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterGetListener.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterPort.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterPortWrap.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_ParameterSetListener.cc
+/usr/local/bin/g++ -fPIC -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/home/rob/cca/cca-spec-classic/cxx/include  -c ccaffeine_ports_PortTranslator.cc
+/usr/local/bin/g++ -shared -o libccaffeine.so -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. ccaffeine_CCAException_Impl.o ccaffeine_ComponentClassDescription_Impl.o ccaffeine_ComponentID_Impl.o ccaffeine_ConnectionEventService_Impl.o ccaffeine_ConnectionID_Impl.o ccaffeine_Framework_Impl.o ccaffeine_Services_Impl.o ccaffeine_TypeMap_Impl.o ccaffeine_TypeMismatchException_Impl.o ccaffeine_ports_BuilderService_Impl.o ccaffeine_ports_ComponentRepository_Impl.o ccaffeine_ports_ConnectionEvent_Impl.o ccaffeine_ports_ParameterDialog_Impl.o ccaffeine_ports_ParameterPortWrap_Impl.o ccaffeine_ports_PortTranslator_Impl.o  ccaffeine_CCAException_IOR.o ccaffeine_ComponentClassDescription_IOR.o ccaffeine_ComponentID_IOR.o ccaffeine_ConnectionEventService_IOR.o ccaffeine_ConnectionID_IOR.o ccaffeine_Framework_IOR.o ccaffeine_Services_IOR.o ccaffeine_TypeMap_IOR.o ccaffeine_TypeMismatchException_IOR.o ccaffeine_ports_BuilderService_IOR.o ccaffeine_ports_ComponentRepository_IOR.o ccaffeine_ports_ConnectionEvent_IOR.o ccaffeine_ports_ParameterDialogService_IOR.o ccaffeine_ports_ParameterDialog_IOR.o ccaffeine_ports_ParameterGetListener_IOR.o ccaffeine_ports_ParameterPortWrap_IOR.o ccaffeine_ports_ParameterPort_IOR.o ccaffeine_ports_ParameterSetListener_IOR.o ccaffeine_ports_PortTranslator_IOR.o  ccaffeine_CCAException_Skel.o ccaffeine_ComponentClassDescription_Skel.o ccaffeine_ComponentID_Skel.o ccaffeine_ConnectionEventService_Skel.o ccaffeine_ConnectionID_Skel.o ccaffeine_Framework_Skel.o ccaffeine_Services_Skel.o ccaffeine_TypeMap_Skel.o ccaffeine_TypeMismatchException_Skel.o ccaffeine_ports_BuilderService_Skel.o ccaffeine_ports_ComponentRepository_Skel.o ccaffeine_ports_ConnectionEvent_Skel.o ccaffeine_ports_ParameterDialog_Skel.o ccaffeine_ports_ParameterPortWrap_Skel.o ccaffeine_ports_PortTranslator_Skel.o  ccaffeine_CCAException.o ccaffeine_ComponentClassDescription.o ccaffeine_ComponentID.o ccaffeine_ConnectionEventService.o ccaffeine_ConnectionID.o ccaffeine_Framework.o ccaffeine_Services.o ccaffeine_TypeMap.o ccaffeine_TypeMismatchException.o ccaffeine_ports_BuilderService.o ccaffeine_ports_ComponentRepository.o ccaffeine_ports_ConnectionEvent.o ccaffeine_ports_ParameterDialog.o ccaffeine_ports_ParameterDialogService.o ccaffeine_ports_ParameterGetListener.o ccaffeine_ports_ParameterPort.o ccaffeine_ports_ParameterPortWrap.o ccaffeine_ports_ParameterSetListener.o ccaffeine_ports_PortTranslator.o  
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/babel-cca/server'
+touch .make-babel
+cp server/libccaffeine.so ../../../../lib
+cp /home/rob/cca/cca-spec-babel/server/libcca.so ../../../../lib
+touch .lib-local-installed
+gmake[4]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/babel-cca'
+gmake[4]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component'
+for i in PrinterComponent StarterComponent PortTranslatorStarter; do if ! (cd $i;gmake);then exit -1;fi done
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent'
+(cd server;make -f Makefile.babel)
+make[6]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent/server'
+/usr/local/bin/g++ -g -fPIC -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe0_PrinterComponent_Impl.cc
+/usr/local/bin/gcc -g -fPIC  -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe0_PrinterComponent_IOR.c 
+/usr/local/bin/gcc -g -fPIC  -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe0_StringConsumerPort_IOR.c 
+/usr/local/bin/g++ -g -fPIC -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe0_PrinterComponent_Skel.cc
+/usr/local/bin/g++ -g -fPIC -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe0_PrinterComponent.cc
+/usr/local/bin/g++ -g -fPIC -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe0_StringConsumerPort.cc
+/usr/local/bin/g++ -g -shared -o libPrinterComponent.so -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. ccafe0_PrinterComponent_Impl.o  ccafe0_PrinterComponent_IOR.o ccafe0_StringConsumerPort_IOR.o  ccafe0_PrinterComponent_Skel.o  ccafe0_PrinterComponent.o ccafe0_StringConsumerPort.o   
+make[6]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent/server'
+touch .make-babel
+echo \# Ccaffeine config file for ccafe0.PrinterComponent component  &gt PrinterComponent.cca
+echo \!date=`date`                                  &gt  &gt PrinterComponent.cca
+echo \!builder=$USER@`hostname`.`domainname`       &gt  &gt PrinterComponent.cca
+echo \!location=                                    &gt  &gt PrinterComponent.cca
+echo \!componentType=babel                          &gt  &gt PrinterComponent.cca
+echo dummy-place-holder                             &gt  &gt PrinterComponent.cca
+echo dummy-place-holder ccafe0.PrinterComponent             &gt  &gt PrinterComponent.cca
+if ! [ -d /home/rob/cca/ccafe/lib/babel-components ]; then mkdir /home/rob/cca/ccafe/lib/babel-components; fi
+install server/libPrinterComponent.so /home/rob/cca/ccafe/lib/babel-components
+install PrinterComponent.cca /home/rob/cca/ccafe/lib/babel-components
+touch .lib-local-installed
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent'
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/StarterComponent'
+(cd server;make -f Makefile.babel)
+make[6]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/StarterComponent/server'
+/usr/local/bin/g++ -g -fPIC -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe1_StarterComponent_Impl.cc
+/usr/local/bin/gcc -g -fPIC  -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe1_StarterComponent_IOR.c 
+/usr/local/bin/g++ -g -fPIC -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe1_StarterComponent_Skel.cc
+/usr/local/bin/g++ -g -fPIC -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe1_StarterComponent.cc
+/usr/local/bin/g++ -g -shared -o libStarterComponent.so -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. ccafe1_StarterComponent_Impl.o  ccafe1_StarterComponent_IOR.o  ccafe1_StarterComponent_Skel.o  ccafe1_StarterComponent.o   /home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent/server/libPrinterComponent.so
+make[6]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/StarterComponent/server'
+touch .make-babel
+echo \# Ccaffeine config file for ccafe1.StarterComponent component  &gt StarterComponent.cca
+echo \!date=`date`                                  &gt  &gt StarterComponent.cca
+echo \!builder=$USER@`hostname`.`domainname`       &gt  &gt StarterComponent.cca
+echo \!location=                                    &gt  &gt StarterComponent.cca
+echo \!componentType=babel                          &gt  &gt StarterComponent.cca
+echo dummy-place-holder                             &gt  &gt StarterComponent.cca
+echo dummy-place-holder ccafe1.StarterComponent             &gt  &gt StarterComponent.cca
+if ! [ -d /home/rob/cca/ccafe/lib/babel-components ]; then mkdir /home/rob/cca/ccafe/lib/babel-components; fi
+install server/libStarterComponent.so /home/rob/cca/ccafe/lib/babel-components
+install StarterComponent.cca /home/rob/cca/ccafe/lib/babel-components
+touch .lib-local-installed
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/StarterComponent'
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PortTranslatorStarter'
+(cd server;make -f Makefile.babel)
+make[6]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PortTranslatorStarter/server'
+/usr/local/bin/g++ -g -fPIC -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe_eg_PortTranslatorStarter_Impl.cc
+/usr/local/bin/gcc -g -fPIC  -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe_eg_PortTranslatorStarter_IOR.c 
+/usr/local/bin/g++ -g -fPIC -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe_eg_PortTranslatorStarter_Skel.cc
+/usr/local/bin/g++ -g -fPIC -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. -I/usr/local/include -I../../../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -I/usr/local/babel/include -c ccafe_eg_PortTranslatorStarter.cc
+/usr/local/bin/g++ -g -shared -o libPortTranslatorStarter.so -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. ccafe_eg_PortTranslatorStarter_Impl.o  ccafe_eg_PortTranslatorStarter_IOR.o  ccafe_eg_PortTranslatorStarter_Skel.o  ccafe_eg_PortTranslatorStarter.o   /home/rob/cca/ccafe/cxx/dc/babel/component/PrinterComponent/server/libPrinterComponent.so
+make[6]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PortTranslatorStarter/server'
+touch .make-babel
+echo \# Ccaffeine config file for ccafe_eg.PortTranslatorStarter component  &gt PortTranslatorStarter.cca
+echo \!date=`date`                                  &gt  &gt PortTranslatorStarter.cca
+echo \!builder=$USER@`hostname`.`domainname`       &gt  &gt PortTranslatorStarter.cca
+echo \!location=                                    &gt  &gt PortTranslatorStarter.cca
+echo \!componentType=babel                          &gt  &gt PortTranslatorStarter.cca
+echo dummy-place-holder                             &gt  &gt PortTranslatorStarter.cca
+echo dummy-place-holder ccafe_eg.PortTranslatorStarter             &gt  &gt PortTranslatorStarter.cca
+if ! [ -d /home/rob/cca/ccafe/lib/babel-components ]; then mkdir /home/rob/cca/ccafe/lib/babel-components; fi
+install server/libPortTranslatorStarter.so /home/rob/cca/ccafe/lib/babel-components
+install PortTranslatorStarter.cca /home/rob/cca/ccafe/lib/babel-components
+touch .lib-local-installed
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component/PortTranslatorStarter'
+gmake[4]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/component'
+gmake[4]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/ccafe-bind'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. BabelOpaqueTypeMap.cc
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. BabelOpaqueGoPort.cc
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. BabelComponentWrapper.cc
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. BabelOpaquePort.cc
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I. BabelHelper.cc
+ar r libBblCcafe.a BabelOpaqueTypeMap.o BabelOpaqueGoPort.o BabelComponentWrapper.o BabelOpaquePort.o BabelHelper.o
+ranlib libBblCcafe.a
+for i in FactorySvcComponent; do if ! (cd $i;gmake);then exit -1;fi done
+gmake[5]: Entering directory `/home/rob/cca/ccafe/cxx/dc/babel/ccafe-bind/FactorySvcComponent'
+/usr/local/bin/g++ -c -g -I/usr/local/babel/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-babel/server  -I/home/rob/cca/ccafe/cxx  -I/usr/local/include  StringTools.cc
+rm -f BabelFactoryService.so BabelFactoryService.o BabelFactoryService_wrapper.cc
+./genDLWrapperStrict BabelFactoryService  &gt  BabelFactoryService_wrapper.cc
+./genDLIndex BabelFactoryService.so create_BabelFactoryService BabelFactoryService  &gt  BabelFactoryService.cca
+/usr/local/bin/g++ -c -g -I/usr/local/babel/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-babel/server  -I/home/rob/cca/ccafe/cxx  -I/usr/local/include  -fPIC BabelFactoryService.cc 
+/usr/local/bin/g++ -c -g -I/usr/local/babel/include -I/home/rob/cca/cca-spec-classic/cxx/include -I/home/rob/cca/cca-spec-babel/server  -I/home/rob/cca/ccafe/cxx  -I/usr/local/include  -fPIC \
+	 BabelFactoryService_wrapper.cc
+c++ -shared  -o BabelFactoryService.so BabelFactoryService.o BabelFactoryService_wrapper.o StringTools.o
+rm -f BabelFactoryService.o BabelFactoryService_wrapper.o
+chmod 644 BabelFactoryService.so
+install -d /home/rob/cca/ccafe/lib/classic-components
+install *.so *.cca /home/rob/cca/ccafe/lib/classic-components
+done BabelFactoryService.o
+gmake[5]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/ccafe-bind/FactorySvcComponent'
+gmake[4]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel/ccafe-bind'
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/babel'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/port'
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/mpich/include -D_CCAMPI DefaultGUIService.cxx
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/mpich/include -D_CCAMPI DefaultConfigurableParameterFactory.cxx
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/mpich/include -D_CCAMPI DefaultParameterPort.cxx
+DefaultParameterPort.cxx:22: warning: `char id[71]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/mpich/include -D_CCAMPI CCA_Block.cxx
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/mpich/include -D_CCAMPI DefaultJPrintfPort.cxx
+DefaultJPrintfPort.cxx:2: warning: `char id[68]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/mpich/include -D_CCAMPI DefaultPrintfPort.cxx
+DefaultPrintfPort.cxx:2: warning: `char id[71]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/mpich/include -D_CCAMPI DefaultKeyValuePort.cxx
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/mpich/include -D_CCAMPI DefaultMPIService.cxx
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/mpich/include -D_CCAMPI DefaultMPIBorrow.cxx
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/mpich/include -D_CCAMPI Caffeine_Port_DynamicLink.cxx
+ar ruv libports.a DefaultGUIService.o DefaultConfigurableParameterFactory.o DefaultParameterPort.o CCA_Block.o DefaultJPrintfPort.o DefaultPrintfPort.o DefaultKeyValuePort.o DefaultMPIService.o DefaultMPIBorrow.o Caffeine_Port_DynamicLink.o
+a - DefaultGUIService.o
+a - DefaultConfigurableParameterFactory.o
+a - DefaultParameterPort.o
+a - CCA_Block.o
+a - DefaultJPrintfPort.o
+a - DefaultPrintfPort.o
+a - DefaultKeyValuePort.o
+a - DefaultMPIService.o
+a - DefaultMPIBorrow.o
+a - Caffeine_Port_DynamicLink.o
+ranlib libports.a
+done DefaultGUIService.o DefaultConfigurableParameterFactory.o DefaultParameterPort.o CCA_Block.o DefaultJPrintfPort.o DefaultPrintfPort.o DefaultKeyValuePort.o DefaultMPIService.o DefaultMPIBorrow.o Caffeine_Port_DynamicLink.o
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/port'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/framework'
+echo CCA_PLLFLAGS = -I/usr/local/mpich/include -D_CCAMPI
+CCA_PLLFLAGS = -I/usr/local/mpich/include -D_CCAMPI
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server  \
+-DSTV_ROOT  \
+ \
+ \
+-I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include \
+ \
+ \
+-I/usr/local/mpich/include -D_CCAMPI ComponentFactory.cxx
+ComponentFactory.cxx:2: warning: `char id[68]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI ServicesHelper.cxx 
+ServicesHelper.cxx:2: warning: `char id[68]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI ComponentInfo.cxx 
+ComponentInfo.cxx:2: warning: `char id[68]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI ConnectedConnectionEvent.cxx 
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI DisconnectingConnectionEvent.cxx 
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI UserPortData.cxx 
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI ProviderPortData.cxx 
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI PropertyStrings.cxx 
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI PropertiesHelper.cxx 
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI OpqPortInfo.cxx 
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI OpqBuilderService.cxx 
+OpqBuilderService.cxx:2: warning: `char id[71]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI Gizzard.cxx 
+Gizzard.cxx:2: warning: `char id[59]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI ConnectionFramework.cxx 
+ConnectionFramework.cxx:2: warning: `char id[75]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI ComponentChangedEvent.cxx 
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI GizzardComponentChangedEvent.cxx 
+GizzardComponentChangedEvent.cxx:2: warning: `char id[82]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI CcafeServiceFactoryContainer.cxx 
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI ComponentID.cxx 
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I../../dc/babel/ccafe-cca/server   -I/usr/local/mpich/include -D_CCAMPI ConnectionID.cxx 
+/usr/local/bin/g++ -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include     -c -o XCmptFactory.o XCmptFactory.cc
+/usr/local/bin/g++ -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include     -c -o XService.o XService.cc
+ar ruv libdc_fwk.a ComponentFactory.o ServicesHelper.o ComponentInfo.o ConnectedConnectionEvent.o DisconnectingConnectionEvent.o UserPortData.o ProviderPortData.o PropertyStrings.o PropertiesHelper.o OpqPortInfo.o OpqBuilderService.o Gizzard.o ConnectionFramework.o ComponentChangedEvent.o GizzardComponentChangedEvent.o CcafeServiceFactoryContainer.o ComponentID.o ConnectionID.o XCmptFactory.o XService.o
+a - ComponentFactory.o
+a - ServicesHelper.o
+a - ComponentInfo.o
+a - ConnectedConnectionEvent.o
+a - DisconnectingConnectionEvent.o
+a - UserPortData.o
+a - ProviderPortData.o
+a - PropertyStrings.o
+a - PropertiesHelper.o
+a - OpqPortInfo.o
+a - OpqBuilderService.o
+a - Gizzard.o
+a - ConnectionFramework.o
+a - ComponentChangedEvent.o
+a - GizzardComponentChangedEvent.o
+a - CcafeServiceFactoryContainer.o
+a - ComponentID.o
+a - ConnectionID.o
+a - XCmptFactory.o
+a - XService.o
+ranlib libdc_fwk.a
+done ComponentFactory.o ServicesHelper.o ComponentInfo.o ConnectedConnectionEvent.o DisconnectingConnectionEvent.o UserPortData.o ProviderPortData.o PropertyStrings.o PropertiesHelper.o OpqPortInfo.o OpqBuilderService.o Gizzard.o ConnectionFramework.o ComponentChangedEvent.o GizzardComponentChangedEvent.o CcafeServiceFactoryContainer.o ComponentID.o ConnectionID.o XCmptFactory.o XService.o
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/framework'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/distributed'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT ConnectionManager.cxx
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT SocketConnectionManager.cxx
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT LinewiseClient.cxx
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT ServerMux.cxx
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT DataCollectorFactory.cxx
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT MessageData.cxx
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_GNU_SOURCE -D_REENTRANT ServerOutOfBandListener.cxx
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   ClientServerSocket.cxx
+ClientServerSocket.cxx:6: warning: `char id[72]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   ProcessorInfo.cxx
+ProcessorInfo.cxx:6: warning: `char id[63]' defined but not used
+ar -rv libdistributed.a ClientServerSocket.o ProcessorInfo.o 
+a - ClientServerSocket.o
+a - ProcessorInfo.o
+ranlib libdistributed.a
+ar -rv libdistthreaded.a ConnectionManager.o SocketConnectionManager.o LinewiseClient.o ServerMux.o DataCollectorFactory.o MessageData.o ServerOutOfBandListener.o
+a - ConnectionManager.o
+a - SocketConnectionManager.o
+a - LinewiseClient.o
+a - ServerMux.o
+a - DataCollectorFactory.o
+a - MessageData.o
+a - ServerOutOfBandListener.o
+ranlib libdistthreaded.a
+done ClientServerSocket.o ProcessorInfo.o
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/distributed'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/component'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG BSTest.cxx
+BSTest.cxx:2: warning: `char id[60]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG Timer.cxx
+Timer.cxx:2: warning: `char id[56]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG StarterComponent.cxx
+StarterComponent.cxx:2: warning: `char id[71]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG TimeStamper.cxx
+TimeStamper.cxx:2: warning: `char id[62]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG PrinterComponent.cxx
+PrinterComponent.cxx:2: warning: `char id[71]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG RevalidateTest.cxx
+RevalidateTest.cxx:2: warning: `char id[69]' defined but not used
+ar -rv libcomponent.a BSTest.o Timer.o StarterComponent.o TimeStamper.o PrinterComponent.o RevalidateTest.o 
+a - BSTest.o
+a - Timer.o
+a - StarterComponent.o
+a - TimeStamper.o
+a - PrinterComponent.o
+a - RevalidateTest.o
+ranlib libcomponent.a
+rm -f BSTest.so BSTest.o BSTest_wrapper.cxx
+./genDLWrapperStrict BSTest  &gt  BSTest_wrapper.cxx
+./genDLIndex BSTest.so create_BSTest BSTest  &gt  BSTest.cca
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC BSTest.cxx 
+BSTest.cxx:2: warning: `char id[60]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC \
+	 BSTest_wrapper.cxx
+BSTest_wrapper.cxx:25: warning: `char id[165]' defined but not used
+c++ -shared  -o BSTest.so BSTest.o BSTest_wrapper.o
+rm -f BSTest.o BSTest_wrapper.o
+rm -f Timer.so Timer.o Timer_wrapper.cxx
+./genDLWrapperStrict Timer  &gt  Timer_wrapper.cxx
+./genDLIndex Timer.so create_Timer Timer  &gt  Timer.cca
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC Timer.cxx 
+Timer.cxx:2: warning: `char id[56]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC \
+	 Timer_wrapper.cxx
+Timer_wrapper.cxx:25: warning: `char id[164]' defined but not used
+c++ -shared  -o Timer.so Timer.o Timer_wrapper.o
+rm -f Timer.o Timer_wrapper.o
+rm -f StarterComponent.so StarterComponent.o StarterComponent_wrapper.cxx
+./genDLWrapperStrict StarterComponent  &gt  StarterComponent_wrapper.cxx
+./genDLIndex StarterComponent.so create_StarterComponent StarterComponent  &gt  StarterComponent.cca
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC StarterComponent.cxx 
+StarterComponent.cxx:2: warning: `char id[71]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC \
+	 StarterComponent_wrapper.cxx
+StarterComponent_wrapper.cxx:25: warning: `char id[175]' defined but not used
+c++ -shared  -o StarterComponent.so StarterComponent.o StarterComponent_wrapper.o
+rm -f StarterComponent.o StarterComponent_wrapper.o
+rm -f TimeStamper.so TimeStamper.o TimeStamper_wrapper.cxx
+./genDLWrapperSloppy TimeStamper  &gt  TimeStamper_wrapper.cxx
+./genDLIndex TimeStamper.so create_TimeStamper TimeStamper  &gt  TimeStamper.cca
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC TimeStamper.cxx 
+TimeStamper.cxx:2: warning: `char id[62]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC \
+	 TimeStamper_wrapper.cxx
+TimeStamper_wrapper.cxx:30: warning: `char id[170]' defined but not used
+c++ -shared  -o TimeStamper.so TimeStamper.o TimeStamper_wrapper.o \
+	/home/rob/cca/ccafe/cxx/dc/port/libports.a /home/rob/cca/ccafe/cxx/parameters/libparameters.a /home/rob/cca/ccafe/cxx/cmd/libcmd.a /home/rob/cca/ccafe/cxx/jc++/libjcpp.a /home/rob/cca/ccafe/cxx/util/libcafeutil.a /home/rob/cca/ccafe/cxx/dc/component/libcomponent.a /home/rob/cca/ccafe/cxx/dc/framework/libdc_fwk.a /home/rob/cca/ccafe/cxx/dc/distributed/libdistributed.a
+rm -f TimeStamper.o TimeStamper_wrapper.o
+rm -f PrinterComponent.so PrinterComponent.o PrinterComponent_wrapper.cxx
+./genDLWrapperSloppy PrinterComponent  &gt  PrinterComponent_wrapper.cxx
+./genDLIndex PrinterComponent.so create_PrinterComponent PrinterComponent  &gt  PrinterComponent.cca
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC PrinterComponent.cxx 
+PrinterComponent.cxx:2: warning: `char id[71]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC \
+	 PrinterComponent_wrapper.cxx
+PrinterComponent_wrapper.cxx:30: warning: `char id[175]' defined but not used
+c++ -shared  -o PrinterComponent.so PrinterComponent.o PrinterComponent_wrapper.o \
+	/home/rob/cca/ccafe/cxx/dc/port/libports.a /home/rob/cca/ccafe/cxx/parameters/libparameters.a /home/rob/cca/ccafe/cxx/cmd/libcmd.a /home/rob/cca/ccafe/cxx/jc++/libjcpp.a /home/rob/cca/ccafe/cxx/util/libcafeutil.a /home/rob/cca/ccafe/cxx/dc/component/libcomponent.a /home/rob/cca/ccafe/cxx/dc/framework/libdc_fwk.a /home/rob/cca/ccafe/cxx/dc/distributed/libdistributed.a
+rm -f PrinterComponent.o PrinterComponent_wrapper.o
+rm -f RevalidateTest.so RevalidateTest.o RevalidateTest_wrapper.cxx
+./genDLWrapperSloppy RevalidateTest  &gt  RevalidateTest_wrapper.cxx
+./genDLIndex RevalidateTest.so create_RevalidateTest RevalidateTest  &gt  RevalidateTest.cca
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC RevalidateTest.cxx 
+RevalidateTest.cxx:2: warning: `char id[69]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/home/rob/cca/cca-spec-classic/cxx/eg/include -I/home/rob/cca/cca-spec-classic/cxx/eg/ccaComponent -D_EG -fPIC \
+	 RevalidateTest_wrapper.cxx
+RevalidateTest_wrapper.cxx:30: warning: `char id[173]' defined but not used
+c++ -shared  -o RevalidateTest.so RevalidateTest.o RevalidateTest_wrapper.o \
+	/home/rob/cca/ccafe/cxx/dc/port/libports.a /home/rob/cca/ccafe/cxx/parameters/libparameters.a /home/rob/cca/ccafe/cxx/cmd/libcmd.a /home/rob/cca/ccafe/cxx/jc++/libjcpp.a /home/rob/cca/ccafe/cxx/util/libcafeutil.a /home/rob/cca/ccafe/cxx/dc/component/libcomponent.a /home/rob/cca/ccafe/cxx/dc/framework/libdc_fwk.a /home/rob/cca/ccafe/cxx/dc/distributed/libdistributed.a
+rm -f RevalidateTest.o RevalidateTest_wrapper.o
+done BSTest.o Timer.o StarterComponent.o TimeStamper.o PrinterComponent.o RevalidateTest.o
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/component'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/std_iface'
+done
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/std_iface'
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/dc/user_iface'
+(cd ccacmd; gmake)
+gmake[4]: Entering directory `/home/rob/cca/ccafe/cxx/dc/user_iface/ccacmd'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAPortProperties.cxx
+CmdActionCCAPortProperties.cxx:2: warning: `char id[80]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAConnect.cxx
+CmdActionCCAConnect.cxx:3: warning: `char id[73]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCADisplay.cxx
+CmdActionCCADisplay.cxx:2: warning: `char id[73]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAPallet.cxx
+CmdActionCCAPallet.cxx:24: warning: `char id[72]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAArena.cxx
+CmdActionCCAArena.cxx:2: warning: `char id[71]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAGo.cxx
+CmdActionCCAGo.cxx:2: warning: `char id[68]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAConfig.cxx
+CmdActionCCAConfig.cxx:7: warning: `char id[73]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAProperties.cxx
+CmdActionCCAProperties.cxx:2: warning: `char id[76]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCALinks.cxx
+CmdActionCCALinks.cxx:2: warning: `char id[71]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAInstantiate.cxx
+CmdActionCCAInstantiate.cxx:2: warning: `char id[77]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCARemove.cxx
+CmdActionCCARemove.cxx:23: warning: `char id[73]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCARepository.cxx
+CmdActionCCARepository.cxx:2: warning: `char id[76]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAPath.cxx
+CmdActionCCAPath.cxx:2: warning: `char id[70]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCAShell.cxx
+CmdActionCCAShell.cxx:26: warning: `char id[71]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_RCPATH=\"/usr/local/ccafe/cxx/dc/user_iface/CcaffeineRC\" -o CmdContextCCA.o CmdContextCCA.cxx
+CmdContextCCA.cxx:2: warning: `char id[68]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_CCAMPI -D_RCPATH=\"/usr/local/ccafe/cxx/dc/user_iface/CcaffeineRC\" -o CmdContextCCAMPI.o CmdContextCCAMPI.cxx
+CmdContextCCAMPI.cxx:3: warning: `char id[70]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCANuke.cxx
+CmdActionCCANuke.cxx:23: warning: `char id[70]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   CmdActionCCADisconnect.cxx
+CmdActionCCADisconnect.cxx:3: warning: `char id[76]' defined but not used
+ar ruv libccacmd.a  CmdActionCCAPortProperties.o CmdActionCCAConnect.o CmdActionCCADisplay.o CmdActionCCAPallet.o CmdActionCCAArena.o CmdActionCCAGo.o CmdActionCCAConfig.o CmdActionCCAProperties.o CmdActionCCALinks.o CmdActionCCAInstantiate.o CmdActionCCARemove.o CmdActionCCARepository.o CmdActionCCAPath.o CmdActionCCAShell.o CmdContextCCA.o CmdContextCCAMPI.o CmdActionCCANuke.o CmdActionCCADisconnect.o
+a - CmdActionCCAPortProperties.o
+a - CmdActionCCAConnect.o
+a - CmdActionCCADisplay.o
+a - CmdActionCCAPallet.o
+a - CmdActionCCAArena.o
+a - CmdActionCCAGo.o
+a - CmdActionCCAConfig.o
+a - CmdActionCCAProperties.o
+a - CmdActionCCALinks.o
+a - CmdActionCCAInstantiate.o
+a - CmdActionCCARemove.o
+a - CmdActionCCARepository.o
+a - CmdActionCCAPath.o
+a - CmdActionCCAShell.o
+a - CmdContextCCA.o
+a - CmdContextCCAMPI.o
+a - CmdActionCCANuke.o
+a - CmdActionCCADisconnect.o
+ranlib libccacmd.a
+gmake[4]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/user_iface/ccacmd'
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server DefaultBuilderModel.cxx
+DefaultBuilderModel.cxx:2: warning: `char id[74]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server Link.cxx
+Link.cxx:2: warning: `char id[58]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server CmdLineBuilderViewForHuman.cxx
+CmdLineBuilderViewForHuman.cxx:2: warning: `char id[81]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server CmdLineBuilderViewForGUI.cxx
+CmdLineBuilderViewForGUI.cxx:16: warning: `char id[79]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server CmdLineBuilderViewMux.cxx
+CmdLineBuilderViewMux.cxx:9: warning: `char id[76]' defined but not used
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server CmdLineBuilderController2.cxx
+CmdLineBuilderController2.cxx:61: warning: `char id[98]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -DMAINCmdLineBuilderController2 -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   \
+         -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I/usr/local/mpich/include -D_CCAMPI  -D_HAVE_BLAS -D_HAVE_LAPACK \
+	forceIsisBlasLapackLink.cxx -o forceIsisBlasLapackLink.o
+/usr/local/bin/g++ -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server CmdLineClient.cxx
+CmdLineClient.cxx:2: warning: `char id[64]' defined but not used
+rm -f libccafeBM.a
+ar ruv libccafeBM.a DefaultBuilderModel.o Link.o
+a - DefaultBuilderModel.o
+a - Link.o
+ranlib libccafeBM.a
+=============================================================
+= building ccafe-batch
+=============================================================
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include   -D_INTERACTIVE \
+         -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server -I/usr/local/mpich/include -D_CCAMPI  \
+	CmdLineBuilderController2.cxx
+CmdLineBuilderController2.cxx:58: warning: `char id[95]' defined but not used
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -c -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server \
+-I/usr/local/mpich/include -D_CCAMPI  \
+CmdLineClientMain.cxx -o CmdLineClientMain.o
+CmdLineClientMain.cxx:2: warning: `char id[94]' defined but not used
+rm -f -f ccafe-client
+rm -f -f CmdLineClient.exe ccafe-client demo-client
+/usr/local/bin/g++ -I/usr/local/mpich/include -I/usr/local/mpich/build/LINUX/ch_p4/include -fexceptions  -g   "-DHAVE_PRINTFPORT=0" -DHAVE_BABEL=070  -DOS_LINUX -DCCAFE_SPEW=0 -I/usr/local/include -Wall -D_EFENCE  -I../.. -I/home/rob/cca/cca-spec-classic/cxx/include -I/usr/local/include    -I/usr/local/babel/include -I/home/rob/cca/cca-spec-babel/server        \
+	CmdLineClientMain.o DefaultBuilderModel.o Link.o CmdLineBuilderViewForHuman.o CmdLineBuilderViewForGUI.o CmdLineBuilderViewMux.o CmdLineBuilderController2.o forceIsisBlasLapackLink.o CmdLineClient.o   ../../scutil/libscutil.a ../../cmd/libcmd.a ../../dc/user_iface/ccacmd/libccacmd.a /home/rob/cca/ccafe/lib/libccaffeine.so ../../dc/framework/libdc_fwk.a ../../dc/distributed/libdistributed.a ../../dc/component/libcomponent.a ../../dc/port/libports.a ../../parameters/libparameters.a  /home/rob/cca/cca-spec-classic/cxx/lib/libcca.a ../../gnu/getopt/libgetCCAFEopt.a ../../dc/babel/ccafe-bind/libBblCcafe.a ../../dc/classic/ccafe-bind/libClsCcafe.a ../../jc++/libjcpp.a ../../scutil/libscutil.a ../../util/libcafeutil.a ../../stovepipe/libstovepipe.a /home/rob/cca/ccafe/lib/libcca.so /usr/local/babel/lib/libsidl.a \
+	  \
+	-g /usr/local/mpich/build/LINUX/ch_p4/lib/libmpich.a             \
+	-lieee /home/rob/cca/LAPACK/liblapack.a /home/rob/cca/LAPACK/libblas.a -lm -Wl,-rpath,/home/rob/cca/ccafe/cxx/dc/component \
+	-rdynamic -ldl \
+	-lg2c   \
+	-o ccafe-client
+/usr/local/lib/gcc-lib/i686-pc-linux-gnu/2.95.3/libg2c.a(open.o): In function `f_open':
+/home/rob/src/gcc/build/i686-pc-linux-gnu/libf2c/libI77/../../../../gcc-2.95.3/libf2c/libI77/open.c:213: the use of `tempnam' is dangerous, better use `mkstemp'
+ln -s ccafe-client CmdLineClient.exe
+ln -s ccafe-client demo-client
+rm -f ccafe-batch
+ln -s ccafe-client ccafe-batch
+=============================================================
+= building ccafe-client
+=============================================================
+=============================================================
+= building ccafe-single
+=============================================================
+rm -f ccafe-single
+ln -s ccafe-client ccafe-single
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/dc/user_iface'
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/dc'
+lib
+gmake[2]: Entering directory `/home/rob/cca/ccafe/cxx/lib'
+rm -f scratch/*.a scratch/*.o
+rm -f *.o *.a *.so *~
+"mkdir" scratch
+/bin/cp ../dc/user_iface/libccafeBM.a ../dc/framework/libdc_fwk.a ../dc/component/libcomponent.a ../dc/port/libports.a ../parameters/libparameters.a ../jc++/libjcpp.a ../scutil/libscutil.a ../util/libcafeutil.a scratch
+Extracting Objects From libccafeBM.a
+Extracting Objects From libdc_fwk.a
+Extracting Objects From libcomponent.a
+Extracting Objects From libports.a
+Extracting Objects From libparameters.a
+Extracting Objects From libjcpp.a
+Extracting Objects From libscutil.a
+Extracting Objects From libcafeutil.a
+rm -f libccafeCore.a
+ar crv libccafeCore.a scratch/*.o
+a - scratch/ascDynaLoad.o
+a - scratch/BaseParameter.o
+a - scratch/BooleanJC.o
+a - scratch/BoolParameter.o
+a - scratch/BSTest.o
+a - scratch/BufferedReader.o
+a - scratch/Caffeine_Port_DynamicLink.o
+a - scratch/CCA_Block.o
+a - scratch/CcafeServiceFactoryContainer.o
+a - scratch/ComponentChangedEvent.o
+a - scratch/ComponentFactory.o
+a - scratch/ComponentID.o
+a - scratch/ComponentInfo.o
+a - scratch/ConnectedConnectionEvent.o
+a - scratch/ConnectionFramework.o
+a - scratch/ConnectionID.o
+a - scratch/DefaultBuilderModel.o
+a - scratch/DefaultConfigurableParameterFactory.o
+a - scratch/DefaultGUIService.o
+a - scratch/DefaultJPrintfPort.o
+a - scratch/DefaultKeyValuePort.o
+a - scratch/DefaultMPIBorrow.o
+a - scratch/DefaultMPIService.o
+a - scratch/DefaultParameterPort.o
+a - scratch/DefaultPrintfPort.o
+a - scratch/DisconnectingConnectionEvent.o
+a - scratch/DoubleJC.o
+a - scratch/DoubleParameter.o
+a - scratch/FloatJC.o
+a - scratch/FloatParameter.o
+a - scratch/gdbWaitForAttach.o
+a - scratch/GenericHashBucket.o
+a - scratch/GenericHashEnum.o
+a - scratch/GenericHashTable.o
+a - scratch/GizzardComponentChangedEvent.o
+a - scratch/Gizzard.o
+a - scratch/HashBucket.o
+a - scratch/HashEnum.o
+a - scratch/Hashtable.o
+a - scratch/IntegerJC.o
+a - scratch/IntParameter.o
+a - scratch/IO.o
+a - scratch/Iterated_char_p.gen.o
+a - scratch/Iterated_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.o
+a - scratch/Iterated_CmdLineBuilderView_p.gen.o
+a - scratch/Iterated_ComponentChangedListener_p.gen.o
+a - scratch/Iterated_double.gen.o
+a - scratch/Iterated_int.gen.o
+a - scratch/Iterated_long_long.gen.o
+a - scratch/Iterated_void_p.gen.o
+a - scratch/jc++dynamic.o
+a - scratch/JString.o
+a - scratch/Link.o
+a - scratch/LongJC.o
+a - scratch/LongParameter.o
+a - scratch/NonblockingReader.o
+a - scratch/Object.o
+a - scratch/OpqBuilderService.o
+a - scratch/OpqPortInfo.o
+a - scratch/parametersDynamic.o
+a - scratch/PrinterComponent.o
+a - scratch/PropertiesHelper.o
+a - scratch/PropertyStrings.o
+a - scratch/ProviderPortData.o
+a - scratch/ResourceBucket.o
+a - scratch/ResourceHash.o
+a - scratch/RevalidateTest.o
+a - scratch/SCEnumeration_char_p.gen.o
+a - scratch/SCEnumeration_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.o
+a - scratch/SCEnumeration_CmdLineBuilderView_p.gen.o
+a - scratch/SCEnumeration_ComponentChangedListener_p.gen.o
+a - scratch/SCEnumeration_double.gen.o
+a - scratch/SCEnumeration_int.gen.o
+a - scratch/SCEnumeration_long_long.gen.o
+a - scratch/SCEnumeration_void_p.gen.o
+a - scratch/SCVectEnum_char_p.gen.o
+a - scratch/SCVectEnum_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.o
+a - scratch/SCVectEnum_CmdLineBuilderView_p.gen.o
+a - scratch/SCVectEnum_ComponentChangedListener_p.gen.o
+a - scratch/SCVectEnum_double.gen.o
+a - scratch/SCVectEnum_int.gen.o
+a - scratch/SCVectEnum_long_long.gen.o
+a - scratch/SCVectEnum_void_p.gen.o
+a - scratch/SCVector_char_p.gen.o
+a - scratch/SCVector_classic_o_gov_o_cca_o_ConnectionEventListener_p.gen.o
+a - scratch/SCVector_CmdLineBuilderView_p.gen.o
+a - scratch/SCVector_ComponentChangedListener_p.gen.o
+a - scratch/SCVector_double.gen.o
+a - scratch/SCVector_int.gen.o
+a - scratch/SCVector_long_long.gen.o
+a - scratch/SCVector_void_p.gen.o
+a - scratch/ServicesHelper.o
+a - scratch/StarterComponent.o
+a - scratch/StdReader.o
+a - scratch/StringBuffer.o
+a - scratch/StringHashBucket.o
+a - scratch/StringHashEnum.o
+a - scratch/StringHash.o
+a - scratch/String.o
+a - scratch/StringParameter.o
+a - scratch/StringTokenizer.o
+a - scratch/StringVectEnum.o
+a - scratch/StringVector.o
+a - scratch/Thread.o
+a - scratch/Timer.o
+a - scratch/TimeStamper.o
+a - scratch/TypeMap.o
+a - scratch/UserPortData.o
+a - scratch/VectEnum.o
+a - scratch/Vector.o
+a - scratch/XCmptFactory.o
+a - scratch/XService.o
+ranlib libccafeCore.a
+gmake noscratch
+gmake[3]: Entering directory `/home/rob/cca/ccafe/cxx/lib'
+rm -f scratch/*.a scratch/*.o
+gmake[3]: Leaving directory `/home/rob/cca/ccafe/cxx/lib'
+gmake[2]: Leaving directory `/home/rob/cca/ccafe/cxx/lib'
+make[1]: Leaving directory `/home/rob/cca/ccafe/cxx'
+(cd bin; make)
+make[1]: Entering directory `/home/rob/cca/ccafe/bin'
+sed -e s=\@JAVA\@="/usr/local/java/bin/java"=g  &lt runGUI.sed|\
+        sed -e s+\@CCA_ROOT\@+/home/rob/cca/cca-spec-classic+g|\
+        sed -e s+\@JAVARUNFLAGS\@+" -Djava.compiler=NONE -classpath :/home/rob/cca/ccafe/java:/home/rob/cca/cca-spec-classic/java"+g|\
+        sed -e s+\@CCAFE_ROOT\@+/home/rob/cca/ccafe+g  &gt runGUI
+chmod a+rx runGUI
+sed -e s=\@JAVA\@="/usr/local/java/bin/java"=g  &lt runParallelLocal.sed|\
+        sed -e s+\@CCA_ROOT\@+"/home/rob/cca/cca-spec-classic"+g|\
+        sed -e s+\@CCAFE_ROOT\@+"/home/rob/cca/ccafe"+g|\
+        sed -e s+\@JAVARUNFLAGS\@+" -Djava.compiler=NONE -classpath :/home/rob/cca/ccafe/java:/home/rob/cca/cca-spec-classic/java"+g|\
+        sed -e s+\@MPIRUN\@+"/usr/local/mpich/bin/mpirun"+g  &gt runParallelLocal
+chmod a+rx runParallelLocal
+sed -e s=\@JAVA\@="/usr/local/java/bin/java"=g  &lt runOneProcWGUI.sed|\
+        sed -e s+\@CCA_ROOT\@+"/home/rob/cca/cca-spec-classic"+g|\
+        sed -e s+\@CCAFE_ROOT\@+"/home/rob/cca/ccafe"+g|\
+        sed -e s+\@JAVARUNFLAGS\@+" -Djava.compiler=NONE -classpath :/home/rob/cca/ccafe/java:/home/rob/cca/cca-spec-classic/java"+g|\
+        sed -e s+\@MPIRUN\@+"/usr/local/mpich/bin/mpirun"+g  &gt runOneProcWGUI
+chmod a+rx runOneProcWGUI
+sed -e s+\@CCA_ROOT\@+/home/rob/cca/cca-spec-classic+g  &lt simpleTests.sed |\
+        sed -e s+\@CCAFE_ROOT\@+/home/rob/cca/ccafe+g  &gt simpleTests
+chmod a+rx simpleTests
+sed -e s+\@CCA_ROOT\@+/home/rob/cca/cca-spec-classic+g  &lt testBabelFactoryService.sed |\
+        sed -e s+\@CCAFE_ROOT\@+/home/rob/cca/ccafe+g  &gt testBabelFactoryService
+chmod a+rx testBabelFactoryService
+sed -e s+\@CCA_ROOT\@+/home/rob/cca/cca-spec-classic+g  &lt testBabelPortTranslator.sed |\
+        sed -e s+\@CCAFE_ROOT\@+/home/rob/cca/ccafe+g  &gt testBabelPortTranslator
+chmod a+rx testBabelPortTranslator
+make[1]: Leaving directory `/home/rob/cca/ccafe/bin'
+(cd java; make)
+make[1]: Entering directory `/home/rob/cca/ccafe/java'
+rm -f cmd dc parameters port util esi
+ln -s gov/sandia/ccaffeine/cmd .
+ln -s gov/sandia/ccaffeine/dc .
+ln -s gov/sandia/ccaffeine/esi .
+ln -s gov/sandia/ccaffeine/parameters .
+ln -s gov/sandia/ccaffeine/port .
+ln -s gov/sandia/ccaffeine/util .
+make[2]: Entering directory `/home/rob/cca/ccafe/java/gnu'
+(cd getopt; make)
+make[3]: Entering directory `/home/rob/cca/ccafe/java/gnu/getopt'
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../..:/home/rob/cca/cca-spec-classic/java LongOpt.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../..:/home/rob/cca/cca-spec-classic/java Getopt.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../..:/home/rob/cca/cca-spec-classic/java GetoptDemo.java
+make[3]: Leaving directory `/home/rob/cca/ccafe/java/gnu/getopt'
+done.
+make[2]: Leaving directory `/home/rob/cca/ccafe/java/gnu'
+make[2]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/cmd'
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../..:/home/rob/cca/cca-spec-classic/java CmdContext.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../..:/home/rob/cca/cca-spec-classic/java CmdAction.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../..:/home/rob/cca/cca-spec-classic/java CmdActionExit.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../..:/home/rob/cca/cca-spec-classic/java CmdActionHelp.java
+make[2]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/cmd'
+make[2]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc'
+(cd user_iface;make)
+make[3]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/user_iface'
+(cd ccacmd; make )
+make[4]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/user_iface/ccacmd'
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdContextCCA.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCAConnect.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCADisconnect.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCAConfig.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCALinks.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCADebug.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCADisplay.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCAPallet.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCAArena.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCAGo.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCAInstantiate.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCANoDebug.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCARemove.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCAProperties.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java CmdActionCCANuke.java
+make[4]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/user_iface/ccacmd'
+(cd gui; make )
+make[4]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/user_iface/gui'
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java ActionsPanel.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../../..:/home/rob/cca/cca-spec-classic/java AppFrame.java
+echo "aboutBoxPath=$(pwd)/about.html"  &gt ccafeGUI.properties
+make[4]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/user_iface/gui'
+(cd gui/guicmd; make  )
+make[4]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/user_iface/gui/guicmd'
+make[4]: Nothing to be done for `all'.
+make[4]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/user_iface/gui/guicmd'
+(cd applet; make )
+make[4]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/user_iface/applet'
+/usr/local/java/bin/javac -g -target 1.2 -classpath :/home/rob/cca/ccafe/java:/home/rob/cca/cca-spec-classic/java BuilderApplet.java
+echo '#!/bin/sh'  &gt runFromServlet
+echo export PVM_ROOT=\"$PVM_ROOT\"  &gt  &gt runFromServlet
+echo export STV_ROOT=\"$STV_ROOT\"  &gt  &gt runFromServlet
+echo export MPI_HOST=\"$MPI_HOST\"  &gt  &gt runFromServlet
+echo export MPI_HOME=\"$MPI_HOME\"  &gt  &gt runFromServlet
+echo export JAVA_HOME=\"$JAVA_HOME\"  &gt  &gt runFromServlet
+echo "cd /home/rob/cca/ccafe"  &gt  &gt runFromServlet
+echo "make runCxxSide  &gt runFromServlet.out 2 &gt  &amp 1  &amp "  &gt  &gt runFromServlet
+echo  &gt  &gt runFromServlet
+chmod a+rx runFromServlet
+make[4]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/user_iface/applet'
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java BuilderController.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java BuilderServer.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java BuilderClient.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java CmdLineBuilderController2.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java CmdLineBuilderController3.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java CmdLineBuilderApplet.java
+Note: ../../../../../gov/sandia/ccaffeine/dc/user_iface/AWTConsole.java uses or overrides a deprecated API.  Recompile with "-deprecation" for details.
+1 warning
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java JConsole.java
+make[3]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/user_iface'
+(cd component;make)
+make[3]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/component'
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java PrinterComponent.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java StarterComponent.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java TimeStamper.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java Timer.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java LinearSystemIsis.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java RevalidateTest.java
+make[3]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/component'
+(cd distributed;make)
+make[3]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/distributed'
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java TestClientServer.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java MessageBasedDataCollector.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java RunMuxer.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java TimeDelayDataCollector.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java EchoAllDataCollector.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java MuxingProcess.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../../..:/home/rob/cca/cca-spec-classic/java LineMessageDataCollector.java
+make[3]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc/distributed'
+make[2]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/dc'
+make[2]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/parameters'
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../..:/home/rob/cca/cca-spec-classic/java FloatParameter.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../..:/home/rob/cca/cca-spec-classic/java LongParameter.java
+/usr/local/java/bin/java  -Djava.compiler=NONE -classpath :/home/rob/cca/ccafe/java:/home/rob/cca/cca-spec-classic/java gov.sandia.ccaffeine.parameters.BoolParameter
+BOOL &amp p &amp true &amp which word didn't you understand? &amp enter true or false &amp true
+p
+true
+newParamField dummyI dummyP  BOOL  p
+paramCurrent dummyI dummyP p true
+paramHelp dummyI dummyP p which word didn't you understand?
+paramPrompt dummyI dummyP p enter true or false
+paramDefault dummyI dummyP p true
+
+make[2]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/parameters'
+make[2]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/esi'
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../..:/home/rob/cca/cca-spec-classic/java ESI_Vector.java
+/usr/local/java/bin/javac -g -target 1.2 -classpath :../../../..:/home/rob/cca/cca-spec-classic/java esi_Vector_snl.java
+make[2]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/esi'
+make[2]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/port'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/port'
+make[2]: Entering directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/util'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/rob/cca/ccafe/java/gov/sandia/ccaffeine/util'
+java build done.
+make[1]: Leaving directory `/home/rob/cca/ccafe/java'
+MAIN BUILD COMPLETED. You should have a runnable framework.
+touch .main
+(cd bin; make simpleTests)
+make[1]: Entering directory `/home/rob/cca/ccafe/bin'
+make[1]: `simpleTests' is up to date.
+make[1]: Leaving directory `/home/rob/cca/ccafe/bin'
+bin/simpleTests
+=====================================================================
+                  Testing the Ccaffeine build ...                    
+didn't crash or hang up early ...  looks like it is working.
+Looks like CLASSIC dccafe is working.
+Looks like BABEL dccafe is working.
+done with Ccaffeine tests.
+=====================================================================
+touch .test
+</pre>
+    </td>
+    </tr>
+    <tr> <td valign="top" bgcolor="#ff9966"><br><pre>
+capt-january$
+</pre>
+    </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : bocca package installation </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=bocca+package+installation.html">bocca package installation</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">CCA Component Installation Standard</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+This document supercedes 2004 <a title="CCA Toolkit naming and install standards" href='tiki-index.php%3Fpage=standards.html' class='wiki'>standards</a> for cca toolkit installation and naming.<br />
+<br />
+<br />
+<div class="titlebar">Component Install Paths</div>
+<br />
+<table class="wikitable"><tr><td class="wikicell" >components</td><td class="wikicell" > $prefix/lib/ (aka $libdir in configure) </td><td class="wikicell" >Contains lib$COMPONENT.NAME.so, lib$COMPONENT.NAME.a, lib$COMPONENT.NAME.la, lib$COMPONENT.NAME-%lang.la</td></tr><tr><td class="wikicell" >
+
+ports</td><td class="wikicell" >$prefix/lib/ (aka $libdir)</td><td class="wikicell" >Contains  lib$PORT_NAME-%lang.a, $PORT_NAME-%lang.so, lib$PORT_NAME-%lang.la</td></tr><tr><td class="wikicell" >
+
+sidl and non-sidl xml</td><td class="wikicell" >$prefix/share/cca/ (aka $datarootdir/cca)</td><td class="wikicell" > Contains $PORT_NAME.sidl, $COMPONENT_NAME.sidl, and all other sidl needed. Also .cca and .scl files needed.</td></tr><tr><td class="wikicell" >
+
+headers for F90, C, C++</td><td class="wikicell" > $prefix/include/$PROJECT/ (aka $includedir/$PROJECT)</td><td class="wikicell" >Contains *.h, *.hxx, etc</td></tr><tr><td class="wikicell" >
+
+programs and scripts</td><td class="wikicell" >$prefix/bin/ (aka $bindir)</td><td class="wikicell" >Contains executables</td></tr><tr><td class="wikicell" >
+
+xml from sidl</td><td class="wikicell" >nowhere</td><td class="wikicell" >Babel 1.0 and later process sidl includes. Installing .xml generated from sidl is redundant.</td></tr><tr><td class="wikicell" >
+
+
+
+
+
+python</td><td class="wikicell" >$prefix/lib/python$PYVERSION (aka $libdir/python$PYVERSION in configure)</td><td class="wikicell" >Contains python</td></tr><tr><td class="wikicell" >
+
+java</td><td class="wikicell" >We're still working this one out.</td><td class="wikicell" >Contains .so and .class or .jar needed </td></tr><tr><td class="wikicell" >
+
+frameworks, tools</td><td class="wikicell" > just like all other packages </td><td class="wikicell" >Legacy codes may install duplicate files elsewhere in share to maintain support for existing third-party build systems.</td></tr><tr><td class="wikicell" >
+
+Utilities: mpich,python,...</td><td class="wikicell" >$prefix/etc</td><td class="wikicell" >Normally not needed, just use appropriate system-provided tools</td></tr></table><br />
+<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Monday 23 of June, 2008 [03:57:19 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=rob.html' >rob</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=bocca%20package%20installation
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

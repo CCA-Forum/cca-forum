@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CccafeInstallDatastar </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CccafeInstallDatastar.html">CccafeInstallDatastar</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">SDSC Datastar build</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Babel build in this AIX environment (datastar.sdsc.edu, dslogin, dspoe nodes) is rather restricted.<br />
+<br />
+As of 5/2005 babel does not support configuring with mpcc, mpCC, mpxlf compilers.<br />
+As of release 0.10.2, mostly nothing relevant works with xlC or xlc either.<br />
+With a subversion snapshot (v4643) a similar amount of nothing works.<br />
+Both fall apart in sidlx rmi code.<br />
+But apparently a libtool gets built and that's sometimes enough for Ccaffeine.<br />
+If one tries gcc compilers, the build gets much farther, and then<br />
+dies on missing some pthread library while attempting to build the sidl library<br />
+or (depending on the configure options) dies sometime around the production or<br />
+first use of the babel jar file or an undefined call (malloc!).<br />
+<br />
+The java needed just to configure babel can be found in:<br />
+/usr/java14_64/bin, or one of the other jdks: java131/   java13_64/ java14/<br />
+You will have to set the java bin directory in you path in your .cshrc/.profile<br />
+as it is not there by default.<br />
+<br />
+Babel-libtool can be built and installed<br />
+the following clues (your paths may vary). In the environment set:<br />
+MAKE=gmake<br />
+CONFIG_SHELL=/usr/bin/bash<br />
+JAVAPREFIX=/usr/java14_64/bin<br />
+then<br />
+bash ../babel-4643/configure --disable-fortran90 --disable-python  --prefix=/users00/sandia/baallan/cca/install/babel-4643 --srcdir=$HOME/cca/build/babel-4643 --without-sidlx --enable-pure-static-runtime<br />
+then<br />
+gmake install<br />
+<br />
+where the install will fall apart, but after babel-libtool has been placed.<br />
+<br />
+<br />
+moving on to cca-spec-neo next...<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Wednesday 18 of May, 2005 [18:23:18 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CccafeInstallDatastar
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

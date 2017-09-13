@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CCA Description Language </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CCA+Description+Language.html">CCA Description Language</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">CCA Description Language(s)</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<a name='Inspirations'></a><h1>Inspirations</h1>
+<br />
+Too many reports from the trenches that half the maintenance time is spent in the configure/build/package/deploy process.<br />
+Rumors of Better Ways to do it (Scons, <a title="rails notes" href='tiki-index.php%3Fpage=Rails+Web+Development.html' class='wiki'>Rails Web Development</a>, ...)<br />
+Too many hand-coded rote transformations of arguments from babel to native.<br />
+Every other middleware has needed and developed some sort of Component IDL that goes beyond SIDL to represent details of the CCA design pattern.<br />
+XML is great for .cca files read by computers but is too much for humans to create unaided.<br />
+XML adds a significant dependency (.scl, .cca) to the cca and babel tools at runtime.<br />
+In the wild, in most cases, the fundamental unit of development and deployment has been a project, (set of components), not an individual component.<br />
+<br />
+<a name='Approaches'></a><h1>Approaches</h1>
+<br />
+Go lighter on the parsing: use something more specific than xml and a set of parsers written in ANTLR but generated in C to eliminate heavy XML libraries or scripting language dependencies.<br />
+Define a grammar for describing the CCA-ness of components (what ports are provided and how).<br />
+Define as many conventions as we can, but make them configurable in a rails-like way.<br />
+Define a Babel AND Adjunct Impl Development (BANDAID) tool complementary to babel that employs argument transformation recipes.<br />
+Assume that babel will continue to support the autotools nightmare and thereby save the rest of us all the trouble of finding out which compilers and flags are in use.<br />
+Define tools and formats that ease the maintenance of component code without requiring Eclipse.<br />
+<br />
+<a name='Requirements'></a><h1>Requirements</h1>
+<br />
+This section is divided into several pages. The aim at this point is to define \\<b>what</b>\\ information we want to capture, not the format or particularities of how we capture it, parse it, or construct processor/generator tools that depend on the information.<br />
+<br />
+<a title="MappingImplToTheExpectedNative" href="tiki-index.php%3Fpage=MappingImplToTheExpectedNative.html" class="wiki">MappingImplToTheExpectedNative</a> - A Mitten (the CCA improvement over swig typemap) lets the component/project developer customize the mapping of babel-generated method arguments/exceptions/returns to their expected native impl, leaving only the computational logic to be generated manually. Of course there are many possible mappings, so you'll need Mittens to work with Babel on large projects.<br />
+<a title="ProjectsAsComponentCollections" href="tiki-index.php%3Fpage=ProjectsAsComponentCollections.html" class="wiki">ProjectsAsComponentCollections</a> - Generally there are project or developer scoped information, like where cca-tools was installed and where the default config (think rails environment file if you are Rob) sits. What is it?<br />
+<a title="ProjectsAsBuildInformation" href="tiki-index.php%3Fpage=ProjectsAsBuildInformation.html" class="wiki">ProjectsAsBuildInformation</a> - What do we need to extract from cca-spec-babel-config and from the user when building?<br />
+<a title="ProjectsAsInstallInformation" href="tiki-index.php%3Fpage=ProjectsAsInstallInformation.html" class="wiki">ProjectsAsInstallInformation</a> - What do we need to extract from the developer and what from the deployer to install/uninstall correctly?<br />
+<a title="ComponentsAsPortCollections" href="tiki-index.php%3Fpage=ComponentsAsPortCollections.html" class="wiki">ComponentsAsPortCollections</a> - Lots of cca-usage errors can be prevented by following (and automating) conventional use of the Services interface.<br />
+<a title="PortsAsSIDLCollections" href="tiki-index.php%3Fpage=PortsAsSIDLCollections.html" class="wiki">PortsAsSIDLCollections</a> - We'll be referencing SIDL interfaces (port and non-port) and dont' want to create another SIDL parser if we can avoid it.<br />
+<br />
+<a name='Implementation_notions'></a><h1>Implementation notions</h1>
+<a title="ProjectCommandLineErgonomics" href="tiki-index.php%3Fpage=ProjectCommandLineErgonomics.html" class="wiki">ProjectCommandLineErgonomics</a> - What should the command lines look like? Bear in mind that since it's the unix shell, more than one answer is allowed.<br />
+<a title="ProjectEnvironmentFileFormat" href="tiki-index.php%3Fpage=ProjectEnvironmentFileFormat.html" class="wiki">ProjectEnvironmentFileFormat</a> - How many different ways can we represent the required information? Is XML always the answer?<br />
+<a title="PerComponentFileFormat" href="tiki-index.php%3Fpage=PerComponentFileFormat.html" class="wiki">PerComponentFileFormat</a> - Grammars or key-values for describing CCAness?<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Thursday 19 of October, 2006 [17:40:48 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CCA%20Description%20Language
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

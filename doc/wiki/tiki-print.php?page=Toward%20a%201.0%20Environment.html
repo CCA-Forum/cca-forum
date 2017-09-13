@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Toward a 1.0 Environment </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Toward+a+1.0+Environment.html">Toward a 1.0 Environment</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">CCA 1.0 Environment Discussion</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+What should 1.0 env be? (note implicit assumption that spec-only is not enough)<br />
+We need to start defining what's in, what's out, and why.<br />
+<br />
+<b>Release date</b><br />
+1.1 Pre-Scidac2<br />
+1.2 During Scidac2<br />
+<br />
+<b>Binding</b><br />
+2.1 Babel 1.0<br />
+2.2 Neo,Classic,Lite<br />
+<br />
+<b>Specification Features</b><br />
+<br />
+3.1 Multiplexed uses ports<br />
+3.2 Fault tolerance<br />
+3.3 ParameterPort<br />
+3.4 GuiBuilderService<br />
+3.5 Event-service<br />
+3.6 Framework-particular event definition<br />
+3.7 Rule-processing for events service<br />
+3.8 ComponentRegistry<br />
+3.9 CreationService<br />
+3.10 MxN (PCI?)<br />
+3.11 FrameAccess<a href="tiki-editpage.php%3Fpage=FrameAccess.html" title="Create page: FrameAccess" class="wiki wikinew">?</a> (better support for creating containers of component assemblies).<br />
+<br />
+<b>Conformance Testing Suite</b><br />
+3.99 Needed<br />
+<br />
+<b>Supported reference implementation(s)</b><br />
+<br />
+4.1 SPMD/MPMD library-style components (ccaffeine)<br />
+4.2 Distributed (?)<br />
+4.3 All-in-one<br />
+4.4 Windows posix<br />
+4.5 Windows native<br />
+4.6 Binary distributions<br />
+4.7 RMI-over-mpi<br />
+4.8 Performant RMI<br />
+<br />
+<b>Supported components</b><br />
+<br />
+5.1 MPI<br />
+5.2 ParameterPortFactory<br />
+5.3 GUI<br />
+5.4 Parallel-to-distributed adaptor<br />
+<br />
+<b>Supported tools</b><br />
+<br />
+6.1 V 0.1 Eclipse/Babel/Cca plugin(s) release bundle<br />
+6.2 V 1.0 Proxy generators (performance, log-debug)<br />
+6.3 Chasm<br />
+6.4 Generating static executables<br />
+<br />
+<b>Unsupported</b><br />
+move from above items and add more here.<br />
+<br />
+<div class="titlebar">Notes</div>
+<br />
+<ul><li> Write requirements document for CCA 1.0 by end of SciDAC1
+<ul><li> 1.0 should include essential features to be a good general-purpose component architecture.  Features not essential in this respect can be added later.
+</li></ul></li><li> Spec needs to be stratified into &quot;core&quot; and &quot;optional&quot; features
+<ul><li> Some features should remain optional to maintain the simplicity of implementation for those who don't need the whole kitchen sink.  But if they're implemented, we specify interface.
+</li><li> Ben's section 5 &quot;Supported Components&quot; should probably be optional standards
+</li></ul></li><li> Need requirements for both the specification itself and the surrounding framework/environment
+</li><li> Need to provide users with a matrix of conformance tests and CCA implementations
+</li><li> Need to decide requirements for &quot;reference&quot; implementation
+<ul><li> Maybe spec+tests are enough to define CCA 1.0. Drop idea of &quot;reference&quot; implementation in favor of just having a bunch of implementations, which implement some or all of the CCA spec (see matrix, above).
+</li><li> Is HPC-only okay for reference?
+</li><li> What about distributed?
+</li><li> Does Ccaffeine have too much legacy baggage to be a good reference implementation
+</li><li> From-scratch cleanroom Babel-based reimplementation?  Good idea, but perhaps expensive?  Maybe start from Ben's Java alternative framework, convert to Babel &amp; C?
+</li></ul></li></ul>
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Thursday 27 of April, 2006 [20:03:45 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Toward%20a%201.0%20Environment
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

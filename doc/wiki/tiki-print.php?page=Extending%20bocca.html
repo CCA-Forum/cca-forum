@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Extending bocca </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Extending+bocca.html">Extending bocca</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Adding commands to bocca</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<b>Command-line concepts</b><br />
+<br />
+bocca [options] action subcommand [suboptions] [positional arguments]<br />
+<br />
+<ul><li> <b>action</b> is usually a verb, and at present is one of create, change, display, remove, rename
+</li><li> <b>subcommand</b> is usually a noun, and represents the project entity to which the action is applied and also the name of the module implementing the action interface. For example, bocca will support at least the following possibilities for <b>subcommand</b>: project, package, interface, class, port, component, library. See discussion of current implementation below.
+</li><li> Bocca, like cvs and subversion, has the idea of a working directory (tree), but unlike CVS and subversion a single directory on the file system is not limited to a single project or a single bocca tools version. This works because the metadata files encode the project as part of the filenames. The .bocca/ metadata dir can thus contain information for more than one project and even more than one version of bocca (provided the metadata scheme remains stable wrt filenaming).
+</li><li> We also define a second, visible, metadata subdirectory in the project tree, BOCCA (all caps, no period) which is used for storing metadata that can contain user-editable files and should be under revision control. It is used for storing defaults (user editable) in the projectName.defaults file, as well as for portable serializations of the project structure (not user editable). The hidden .bocca metadata directory is not meant to be under revision control.
+</li><li> Bocca commands are dispatched in a two-step scheme to insure that the correct bin and libraries get used even though the system bocca version may differ from the one used in a project.
+<ul><li> Any 'bocca' script will hunt down the boccalib-PROJECTNAME installation of bocca that goes with the project in the working directory. If the project choice is ambiguous, bocca -p PROJECT can disambiguate it. <span style="color:#FF0000;">(Note that current concensus is to <b>not</b> have project-specific boccalib installations.)</span>
+</li><li> Once the right boccalib is located, the arguments are redispatched (without requoting or other evil transformation) to the script boccalib-PROJ/bin/cct which manages the subcommands in the canonical python dictionary dispatch. Before the dispatch, the canonical BOCCA_*, PATH,  and PYTHON* environment variables are set.
+</li></ul></li></ul>
+<br />
+<ul><li> <b>bocca create project PROJECTNAME</b> is the entry point to the system. Until this is done, nothing else should work. This is like the CVS init or the first CVS checkout. It takes an option for the project template (defaulting to make-tut-0.5).
+</li></ul>
+<br />
+<ul><li> <b>Multiple build templates</b> We should (eventually) be able to take the same bocca metadata files and generate entirely different build systems (autotools, scons, etc). To this end I set up the template structure in boccalib. Expect that with each template set there's going to be a corresponding set of specific python tooling. For example we have templates/make-tut-0.5 (the current approximation) and there should probably be a matching boccalib/template-utils/make-tut-0.5/*.py for anything which turns out to be nongeneric across all build templates.
+</li></ul>
+<br />
+<b>Intuitive use is not dumb</b> (software is)<br />
+<ul><li> bocca clones
+<ul><li> tree cloning: Copying an entire project tree must be legal and not write into the old tree on subsequent operations, which means no encoding absolute paths anywhere in python or the metadata except to external entities (babel).
+</li><li> component cloning: Copying the directory of a specific component to create a new component within an existing project. E.g. cp -r foo_ComponentA foo_ComponentB. The metadata will be incorrect. We cannot stop people from trying. We can detect that they did it and indeed we do check for directory cloning in the bocca script and refuse to proceed. We must have a 'clone component' subcommand of bocca.
+</li><li> project mixing: Overlays are good. Support creating more than one project in the same directory or even more impressive nesting distinct projects in the same directory hierarchy. This is the first thing any naive CVS user tries to do. By introducing the PROJECTNAME explicitly in metadata filenames, we can support this trivially. The bocca dispatcher handles this case; we must make sure any metadata files are structured as well.
+</li></ul></li></ul>
+<br />
+<b>Subcommand implementation</b><br />
+<ul><li> Every bocca subcommand (a.k.a. noun) is represented by a file in boccalib/cct/. Files in boccalib/cct/ which are NOT subcommands should have names that start with one underscore, like _validate.py. Care should be taken in the definition of the suboptions to avoid confusing the heck out of the user if possible. Each subcommand  should be in a file with the name of the subcommand, containing a package with the same name, but capitalized, e.g., project.py contains class Project. This is something the dispatchers relies on when dispatching commands.
+</li><li> The easiest way to create a new subcommand is to copy the example stub boccalib/cct/example.py and modify it as needed. Things to note that we should do.
+<ul><li> Stick to optparse as much as possible. It gets us the help system for free and puts a nice clean syntactic model on the commands. The BVertex class creates the parser and invokes defineArgs and processArgs methods that each subcommand implements &mdash; this is pretty minimal amount of effort that gives us uniform command-line parsing.
+</li><li> The -d option of the bocca (bocca -d action subcommand [suboptions]) turns on the debugging flag; please follow the example for print statement debugging, i.e.:
+</li></ul></li></ul>
+<div class="simplebox"><br />
+from cct._debug import *<br />
+...<br />
+print &gt;&gt;DEBUGSTREAM, 'Some debugging info'<br />
+</div><br />
+<ul><ul><li> Document the subcommand (noun) file and each action it implements following the the python docstring standard. The help system depends on this.
+</li><li> Note that our stuff should all be in subdirectories of boccapy/boccalib-- creating scripts in the package top of boccalib corresponds to polluting the global namespace of python, a rather antisocial thing to do. Similarly all the loose scripts from proto/bin and util/ need to be migrated and reformed into subcommands or we end up with a horribly polluted Unix PATH; that's the whole point of having a dispatcher named bocca.
+</li></ul><li> Example: the following bocca commands result in the dependency structure visualized below.
+</li></ul>
+<div class="simplebox"><br />
+bocca create project testproj1<br />
+cd testproj1<br />
+bocca create interface bocca.test.SomeInterface<br />
+bocca create interface --extends bocca.test.SomeInterface bocca.test.SomeOtherInterface<br />
+bocca create port bocca.test.APort<br />
+bocca create port --extends bocca.test.SomeInterface --extends bocca.test.APort bocca.test.AnotherPort<br />
+bocca display project<br />
+</div><br />
+Resulting graph:<br />
+<br />
+<span class='img'><img src='img/wiki_up/Picture&#32;1.png' alt='img/wiki_up//Picture 1.png' /></span><br />
+<br />
+Generated SIDL files in testproj1/ports/sidl:<div class="simplebox"><br />
+bocca.test.APort.sidl<br />
+bocca.test.AnotherPort.sidl<br />
+bocca.test.SomeInterface.sidl<br />
+bocca.test.SomeOtherInterface.sidl<br />
+</div><br />
+<b>Editing cycle</b><br />
+We can build/edit in place thanks to the goodness of python. An example.<br />
+<ul><li> ./configure --with-babel-config=/home/test/babel_testing/install-104-pgf/bin/babel-config --prefix=`pwd`/install
+</li><li> make install
+</li><li> Open an emacs or window in boccalib/cct in which to edit subcommands.
+</li><li> In the first window do the cycle: (make install; install/bin/bocca -d testARGS) between edits. The make install is trivial.
+</li><li> Bear in mind of course that you need to take care not to have bocca declare the source tree to itself be a bocca project, that is, only run bocca commands in a directory that is not part of the boccapy sources.
+</li></ul>
+<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Monday 16 of April, 2007 [18:15:16 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=norris.html' >norris</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Extending%20bocca
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : General Advice for building Babel </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=General+Advice+for+building+Babel.html">General Advice for building Babel</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">General Babel Install Advice</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Babel is fairly strict in following the GNU Build System conventions. Pay close attention to<br />
+<tt> ./configure --help</tt><br />
+output. At the end is a list of variables you must set if you want to use particular compilers instead of whatever configure finds by default. E.g. you want to use /bootleg/fortran/intel/9.0/bin/ifort instead of gfortran.<br />
+<br />
+<tt> ./configure \</tt><br />
+<tt>  --prefix=$HOME/cca/install/babel-intel \</tt><br />
+<tt>  FC=/bootleg/fortran/intel/9.0/bin/ifort \</tt><br />
+<tt>  F77=/bootleg/fortran/intel/9.0/bin/ifort</tt><br />
+<tt> make install</tt><br />
+<br />
+Another often useful approach when building babel is to do a object-dir build, leaving the source tree untouched and creating all scratch files in a separate object tree.<br />
+<tt>  tar zxf babel-VERSION.tar.gz</tt><br />
+<tt>  mkdir obj-babel</tt><br />
+<tt>  cd obj-babel</tt><br />
+<tt>  ../babel-VERSION/configure --srcdir=../babel-VERSION \</tt><br />
+<tt>  --prefix=......etc</tt><br />
+<tt>  make install</tt><br />
+<br />
+After installation, you can just delete the obj-babel directory. This is particularly handy if you are making experimental modifications to the babel sources; you don't have to worry about potential imperfections in the clean and distclean targets of the babel build when rebuilding.<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Tuesday 23 of August, 2005 [22:35:43 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=General%20Advice%20for%20building%20Babel
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

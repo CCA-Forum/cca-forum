@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Known Babel Types Become Subcommands </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Known+Babel+Types+Become+Subcommands.html">Known Babel Types Become Subcommands</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Losing all those pesky switches</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+We're going to be generating a database (in some form) of known CCA/babel Components/Ports/classes/interfaces that bocca manages. Essentially, we know the SIDL type hierarchy at least so far as it interacts with CCA. Given that, then we can imagine the user writing bocca commands like so:<br />
+<div class="simplebox">bocca init myproject ; # defaults to package myproject<br />
+bocca port X ; # defaults to imply myproject.X extends gov.cca.port<br />
+bocca component Foo ; # implies myproject.Foo extends gov.cca.Component, gov.cca.ComponentRelease<br />
+bocca Foo provides my_x X ; # implies addProvidesPort(X_cast_from_self, &quot;my_x&quot;, &quot;myproject.X&quot;, tm); and class Foo implements-all X<br />
+</div><br />
+<br />
+Note that nowhere did the user go into a mess of switches. This all hinges on including in the parser below bocca (scripts/cct) the ability to resolve a CCA SIDL class or interface name. Switches or extra keywords are only needed when the user specifies something ambiguous in the known namespaces or wants to do something unusual like provide a port by delegation, e.g.<br />
+<div class="simplebox">bocca Foo provides my_x_second X delegated to my_secretary petsc.Secretary<br />
+; # implies an instance named my_secretary of sidl class petsc.Secretary that also implements myproject.X should be generated into the Foo private instance data and registered addProvidesPort(my_secretary, &quot;my_x_second&quot;, &quot;myproject.X&quot;, tm).</div><br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Wednesday 14 of March, 2007 [00:03:49 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Known%20Babel%20Types%20Become%20Subcommands
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

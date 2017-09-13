@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : cca-forum.org migration issues </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=cca-forum.org+migration+issues.html">cca-forum.org migration issues</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Outstanding issues related to migration of the cca-forum.org server</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Mailman<br />
+<ul><li> Check that mailing list web pages properly distinguish between domains
+</li><li> Why do monthly password reminders appear to come from amr instead of mailman?
+<ul><li> <b>Fixed /etc/mailman/virtual-mailman to include &quot;mailman&quot; on 2007-03-17. Maybe it will work now?</b>
+</li></ul></li><li> Can we do VERP-like confirmation messages?
+<ul><li> I think configuration is set for this, but didn't work
+</li></ul></li><li> Check whether users are notified when their postings are held
+<ul><li> Default should be no
+</li><li> Most (all?) lists should not do this
+</li></ul></li><li> Should we automatically discard anything that ORNL's spam filters mark as spam?
+<ul><li> So far, a visual inspection of each held mail indicates that ORNL spam checks are doing an excellent job.  No false positives observed.
+</li><li> Experimenting with cca-chemistry, amr, cca-pi, mxn-wg list header_filter_rules
+</li></ul></li><li> Web-based list creation only works if the following files are owned by apache.mailman rather than the normal mailman.mailman.  Unfortunately, postfix doesn't like apache.mailman ownership, so there's a conflict.  For now, we can't use web-based list creation.  There is something funny w.r.t. user and group ownership in this installation of postfix/mailman/apache compared to systems like forge-fre and chem-fre, where web-based creation just works.
+<ul><li> /etc/mailman/aliases
+</li><li> /etc/mailman/aliases.db
+</li><li> /etc/mailman/virtual-mailman
+</li><li> /etc/mailman/virtual-mailman.db
+</li></ul></li></ul>
+<br />
+LDAP<br />
+<ul><li> Local LDAP should grab real name, email from master server
+</li></ul>
+<br />
+Mail (General)<br />
+<ul><li> Who is generating mail to www.cca-forum.org instead of cca-forum.org?
+</li><li> Forwarding user mail based on LDAP email info
+</li><li> Automatic lists of users
+</li></ul>
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+  last modification: Thursday 05 of June, 2008 [18:10:17 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=cca-forum.org%20migration%20issues
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

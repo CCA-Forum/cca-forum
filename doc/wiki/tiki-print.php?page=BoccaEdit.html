@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : BoccaEdit </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=BoccaEdit.html">BoccaEdit</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="simplebox"><br />
+bocca edit {-i,-h,-m} sidl-symbol [methodname]<br />
+</div><br />
+starts the editor for your environment on the matching file, whereever it is stored in the project.<br />
+-i edits the impl.<br />
+-H edits the header if there is one<br />
+-m edits the f90 mod file if there is one<br />
+If no - switch is given, the sidl is edited.<br />
+<br />
+If methodname is supplied, and it is found in the file to be edited, and the editor is emacs or vi or another that responds to the +N option, then the method will appear directly in the editor when it starts. If your editor does not support +N, this feature is not available to you without advanced hackery. Contact the bocca developers with the correct way to start your editor at a given line number.<br />
+<br />
+The program to use for editor is found in environment variables:<br />
+BOCCA_EDITOR<br />
+EDITOR<br />
+and if these are not found, then we search for vi in the user's path.<br />
+Editors can have a variety of strange interactions with the terminal where the &quot;bocca edit&quot; was issued. If you have some such problem (typically for xemacs), set the environment variable<br />
+BOCCA_EDITOR_NOWAIT = 1. If you use the nowait variable, you must separately do a &quot;bocca edit -t sidl-symbol&quot; any time you save changes to a sidl file, or the impl file will fall behind the sidl.<br />
+<br />
+If you end up in vi and never learned it, type the following keys to get out:<br />
+<div class="simplebox">Esc : q !</div><br />
+If you end up in emacs and never learned it, type the following keys to get out:<br />
+<div class="simplebox">Ctrl-x Ctrl-c n Return yes Return</div><br />
+<br />
+If you are remote from the host, you may get X11 errors unable to open windows.<br />
+One handy incantation to avoid the X11 requirement is:<br />
+export BOCCA_EDITOR=&quot;emacs -nw&quot;<br />
+or for {t}csh:<br />
+setenv BOCCA_EDITOR &quot;emacs -nw&quot;<br />
+<br />
+The following project.defaults settings control the behavior of the build system after editing a file:<br />
+<br />
+<div class="simplebox"><br />
+<tt> # Automatically update component implementations when SIDL files change or</tt><br />
+<tt> # project entities are added or removed</tt><br />
+<tt> autoregenimpls = enabled                # possible values: enabled,disabled</tt><br />
+<br />
+<tt> # Verbosity level when autoregenimpls or autochecksidl is enabled</tt><br />
+<tt> regen_messages = verbose                # possible values: terse,verbose</tt><br />
+<br />
+<tt> # Automatically check SIDL by running babel -p after editing operations</tt><br />
+<tt> autochecksidl = enabled                 # possible values: enabled, disabled</tt><br />
+</div><br />
+<br />
+Note that if no modifications to the file were made, bocca will not perform any build-related updates, regardless of the option settings above.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Monday 26 of November, 2007 [18:20:09 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=BoccaEdit
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

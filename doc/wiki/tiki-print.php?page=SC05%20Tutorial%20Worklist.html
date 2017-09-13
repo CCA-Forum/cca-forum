@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : SC05 Tutorial Worklist </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=SC05+Tutorial+Worklist.html">SC05 Tutorial Worklist</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Things to do for SC05 CCA tutorial. <b>Legend</b>: <span style="color:#FF0000;">[Not yet started]</span>, <span style="color:#0000F2;">[In progress]</span>, <span style="color:#00FF00;">[Done]</span><br />
+<div class="titlebar">Deadlines:</div>
+<ul><li> Tuesday 20 September 9am ET: Deadline for all changes to tutorial slides and Hands-On<a href="tiki-editpage.php%3Fpage=Hands-On.html" title="Create page: Hands-On" class="wiki wikinew">?</a> Guide
+</li><li> Thursday 22 September: Final slides and Guide submitted for reproduction
+</li><li> Monday 14 November: Tutorial
+</li></ul>
+<br />
+No telecons currently scheduled.  Can use David's or Rob's number if needed.<br />
+<br />
+<div class="titlebar">Odin issues</div>
+<ul><li> <span style="color:#FF0000;">[Randy]</span> Insure all head nodes are equivalent w.r.t. tools, compilers, libraries
+<ul><li> Note missing slurm, readline on odindev1
+</li></ul></li><li> <span style="color:#FF0000;">[Randy]</span> Make it possible to compile and run on all work nodes
+<ul><li> Note missing readline on (unknown) work nodes
+</li></ul></li><li> <span style="color:#00ff00;">[DONE, Randy]</span> New work area for SC05 tutorial: /san/sc05/
+</li><li> <span style="color:#FF0000;">[Randy]</span> Build MPICH2 for tutorial use
+</li><li> <span style="color:#00ff00;">[DONE, Wael]</span> Build Python for tutorial use. <b>Python 2.4.1 installed in /san/sc05/tools/{bin|lib|shared|man} - need to adjust default $PATH, $LD_LIBRARY_PATH and PYTHONPATH accordingly.</b>
+</li><li> <span style="color:#FF0000;">[Randy]</span> Instructor accounts and students accounts should be in separate  groups
+</li><li> <span style="color:#FF0000;">[All]</span> Testing of tutorial build &amp; execute on all head nodes and random work nodes
+</li><li> Misc. items not critical to SC05
+<ul><li> <span style="color:#FF0000;">[Babelers]</span> Fix bug filed for Java server-side on amd64 w/ Java 5.0
+</li><li> <span style="color:#FF0000;">[David]</span> Need to clean up &amp; rationalize usage of /u/cca, /san/cca */san/sc05*
+</li><li> <span style="color:#FF0000;">[Chris/Randy/Rob]</span> gfortran expected to work as side-effect of fixing other stuff
+</li></ul></li></ul>
+<br />
+<div class="titlebar">Sumo</div>
+<ul><li> <span style="color:#FF0000;">[Rob]</span> Put build into CVS
+</li><li> <span style="color:#FF0000;">[Rob]</span> Need working version for odin
+<ul><li> F77, F90, C, C++, Python, Java (if possible), MPI
+</li><li> <span style="color:#FF0000;">[Wael]</span> Will assist in getting Python and the sumo to play together nicely
+</li></ul></li><li> <span style="color:#FF0000;">[Rob]</span> Need tarball for web distribution
+<ul><li> <span style="color:#FF0000;">[Chris]</span> Need new chasm release, not force people to use CVS.
+</li></ul></li><li> <b>Misc. items not critical for SC05</b>
+<ul><li> <span style="color:#FF0000;">[Rob]</span> Need thorough and detailed documentation on how to build sumo
+</li><li> <span style="color:#FF0000;">[David]</span> Have sumo construct shell startup fragments (cca.{profile,cshrc})
+</li></ul></li></ul>
+<br />
+<div class="titlebar">Hands-On Guide (deadline 22 Sep)</div>
+<ul><li> <span style="color:#00FF00;">[DONE, Boyana]</span> All referenced to &quot;c++&quot; for build/execution s/b &quot;cxx&quot;
+</li><li> <span style="color:#00FF00;">[DONE, David]</span> Change sumo build appendix to point to sumo documentation
+</li><li> <span style="color:#FF0000;">[David]</span> Caveat on mixing of versions of Java code and JVMs (1.4 vs 5.0)
+<ul><li> Test first to be clear exactly what the problem is!
+</li></ul></li><li> <span style="color:#FF0000;">[David]</span> Check and edit new exercises (Arrays, Modes, MPI)
+</li><li> <span style="color:#00FF00;">[DONE, David]</span> Find a better alternative to &lt;replaceable&gt;tutorial-src&lt;/replaceable&gt;
+<ul><li> In shell, use $TUTORIAL_SRC envar
+</li><li> In Ccaffeine input/rc files, find a representation that makes it more obvious
+</li></ul></li><li> <span style="color:#00FF00;">[DONE, David]</span> Make clear students need to build student-src
+</li><li> <span style="color:#FF0000;">[David]</span> In MPI exercise reference to students handouts for details of how to allocate and use nodes, and how <i>many</i> is reasonable
+</li><li> <span style="color:#00FF00;">[DONE, David]</span> Revise intro to reflect new exercises and give guidance on how to approach them
+</li><li> <span style="color:#00FF00;">[DONE, David]</span> Add summary table of exercises, languages, and concepts
+</li><li> <span style="color:#00ff00;">[DONE, David]</span> Page-to-page navigational links in HTML version
+</li><li> <b>Misc. items not critical for SC05</b>
+<ul><li> <span style="color:#FF0000;">[David]</span> Better handling of line folding on userinput and computer output
+</li><li> <span style="color:#0000F2;">[started, Boyana]</span> Document build system (perhaps not in HOG)
+<ul><li> Assumptions about organization of files
+</li><li> Build process and what is hapening in each step
+</li></ul></li><li> <span style="color:#FF0000;">[David]</span> Rewrite tasks 1-n to eliminate separate student-src and give more flexibility in what students tackle
+</li></ul></li><li> <span style="color:#FF0000;">[David]</span> Tie Hands-On<a href="tiki-editpage.php%3Fpage=Hands-On.html" title="Create page: Hands-On" class="wiki wikinew">?</a> and hand-out configuration more closely to sumo and tutorial-src configuration for greater consistency.
+<ul><li> Extract values like cca-spec-babel location from *-config scripts if they're available, accept command-line specification when we're &quot;cross-compiling&quot; the Guide on a different system
+</li><li> Document reference counting
+</li></ul></li></ul>
+<br />
+<div class="titlebar">Student handouts</div>
+<ul><li> <span style="color:#FF0000;">[David]</span> Make clear students need to build student-src
+</li><li> <span style="color:#FF0000;">[David]</span> Correct locations for tutorial-src, student-src
+</li><li> <span style="color:#FF0000;">[David]</span> Appropriate instructions for getting nodes for MPI exercises
+</li></ul>
+<br />
+<div class="titlebar">Code</div>
+<ul><li> <span style="color:#FF0000;">[???]</span> MPI exercise Fortran must be completed (requires MPI sumo first)
+</li><li> <b>Misc. items not critical for SC05</b>
+<ul><li> <span style="color:#FF0000;">[All]</span> Use exceptions properly
+</li><li> <span style="color:#FF0000;">[All]</span> Code walkthrough for correctness, consistency, pedagogical issues
+</li><li> <span style="color:#FF0000;">[???]</span>  language example that includes reference counting (something with <i>uses</i> ports, i.e. Driver) &mdash; <span style="color:#0000F2;">[Boyana note: the F90 integrators already have reference counting]</span>
+</li></ul></li></ul>
+<br />
+<div class="titlebar">Build</div>
+<ul><li> <span style="color:#00FF00;">[DONE, Boyana]</span> Eliminate NO-LIBTOOLS everywhere
+</li><li> <span style="color:#00FF00;">[DONE, Boyana]</span> Remove top-level Makefile.in (not used)
+</li><li> <span style="color:#00ff00;">[Boyana &amp; Wael]</span> Enable independent component compilation by incorporating true dependencies (currently components in the same package cannot be compiled separately, i.e., if the first component's build fails, the rest are not built) <b>Done throuugh modification of the current build system. Will probably needs overhaul along with &quot;true&quot; dependency management - Wael</b>
+<ul><li> add port dependencies to components
+</li></ul></li><li> <span style="color:#00FF00;">[Boyana, Wael]</span> fix babel.make.all generation or switch to using package babel.makes (currently can't combine component babel.make files in the presence of line continuation in variable assignments) <b>Done using a simple sed script. Not really needed for the tutorial, but important for people who use the build system in &quot;real&quot; apps. Wael</b>
+</li><li> <b>Misc. issues not critical for SC05</b>
+<ul><li> <span style="color:#FF0000;">[David]</span> Automate construction of versioned tutorial-src, student-src tarballs
+</li><li> <span style="color:#FF0000;">[Wael]</span> Rewrite, rename genSCLCCA replacement
+</li></ul></li></ul>
+<br />
+<div class="titlebar">Testing, testing, testing, and more testing</div>
+<ul><li> <span style="color:#FF0000;">[David]</span> Test ccafe-gui for Java 1.4 vs Java 5.0 on Windows, Linux
+</li><li> <span style="color:#FF0000;">[Coding camp]</span> Add tests to tutorial-src for better coverage of languages and components
+</li><li> <span style="color:#FF0000;">[All]</span> Sumo and tutorial build &amp; run on odin and all available other platforms
+<ul><li> Current status (9/23): sumo is /san/cca/cca-tools-0.5.9-mpich_gcc_intelF90-r3, tutorial works with the exception of the MPI driver, which fails due to refusal of ccaffeine to provide an MPIService port <span style="color:#0000F2;">[Boyana &amp; Wael]</span>
+</li></ul></li><li> <span style="color:#FF0000;">[All &amp; newbies]</span> Testing of new exercises by (relative) newbies
+</li></ul>
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Friday 23 of September, 2005 [15:29:30 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=norris.html' >norris</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=SC05%20Tutorial%20Worklist
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

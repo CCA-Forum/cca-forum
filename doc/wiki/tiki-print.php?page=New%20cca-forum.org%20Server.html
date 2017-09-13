@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : New cca-forum.org Server </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=New+cca-forum.org+Server.html">New cca-forum.org Server</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Planning and Execution of the cca-forum.org Migration and Upgrade</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<i>Note: A separate page tracks <a title="Plans and Progress towards the new cca-forum.org" href="tiki-index.php%3Fpage=cca-forum.org+migration+timeline.html" class="wiki">plans and progress</a>.</i><br />
+<br />
+<div class="titlebar">Background</div>
+<br />
+The current hardware for the cca-forum.org collaboration server, hosted at LBNL, is rather old, and are beginning to show occasional unexplained failures.  Therefore, we are purchasing new hardware, which will be installed at ORNL to replace the old systems.  After migrating existing services to the new hardware, we will also update, upgrade, and extend the services offered by the collaboration server.<br />
+<br />
+<div class="titlebar">Overview of Migration/Upgrade Plan</div>
+<br />
+The plan consists of four phases, some of which will overlap.<br />
+<br />
+<b>Phase 1</b><br />
+<br />
+<i>Pre-condition: ORNL servers installed and loaded with Red Hat Enterprise Linux version 4</i><br />
+<br />
+Setup <i>server1</i> at ORNL and migrate existing services from LBNL servers.  This step is motivated by the fact that the LBNL servers are old, and are beginning to show signs of failure.<br />
+<br />
+<i>Post-condition: decommissioning of LBNL servers.</i><br />
+<br />
+<b>Phase 2</b><br />
+<br />
+<i>Pre-condition: core services migrated from LBNL servers</i><br />
+<br />
+Begin development of new core services (i.e. Plone CMS).<br />
+<br />
+<i>Post-condition: all core services running on ORNL servers</i><br />
+<br />
+<b>Phase 3</b><br />
+<br />
+<i>Pre-condition: availability of Red Hat Enterprise Linux Version 5 with support for Xen</i><br />
+<br />
+Setup <i>server2</i> with Xen virtualized environment.  Migrate entire <i>server1</i> content to a Xen virtual machine on <i>server2</i>.  Rebuild <i>server1</i> with matching Xen environment and test migration/failover between servers.<br />
+<br />
+<i>Post-condition: ability to easily shift operations between servers in the event of system problems.</i><br />
+<br />
+<b>Phase 4</b><br />
+<br />
+<i>Pre-condition: completion of Phase 2</i><br />
+<br />
+Development of additional collaboration services.<br />
+<br />
+<i>Post-condition: On-going</i><br />
+<br />
+<div class="titlebar">Collaboration Services</div>
+<br />
+<b>Core Services</b><br />
+<br />
+The essential collaboration services we plan to provide on the new server:<br />
+<ul><li> common login environment
+</li><li> revision control repositories (Subversion)
+<ul><li> migrate current CVS repositories to Subversion
+</li></ul></li><li> mailing lists (Mailman)
+</li><li> web content management system (Zope/Plone)
+<ul><li> migrate current static and wiki content
+</li></ul></li><li> wiki (ZWiki coexisting with legacy TikiWiki)
+</li><li> bug tracking (Roundup)
+</li><li> instant messaging (ejabberd)
+</li></ul>
+<br />
+<b>Additional Services</b><br />
+<br />
+These are some services which aren't (currently) considered part of the core of absolutely essential services:<br />
+<ul><li> bibliographic databases
+<ul><li> For project to maintain internal publication database
+</li><li> For community to submit pointers to papers that use CCA (related to user gallery)
+</li></ul></li><li> eprint archive
+</li><li> user gallery
+</li><li> repository of useful graphics
+<ul><li> Probably a Plone or Zope plugin
+</li></ul></li><li> TAU performance database
+</li><li> continuous integration testing system
+<ul><li> Gantlet?
+</li><li> SciDAC Outreach Center will use <a class="wiki"  href="http://cruisecontrol.sourceforge.net/">CruiseControl</a>; GForge also uses it
+</li><li> Check for other tools with broader user and support base
+</li></ul></li><li> online voting service
+<ul><li> Quorum?
+</li><li> Check for newer tools, especially ones that support multiple choice voting as well as yes/no voting
+</li></ul></li><li> RSS feeds
+</li><li> Component repository
+</li></ul>
+<br />
+<b>Experimental Services</b><br />
+<br />
+These are services we'd like to experiment with (or perhaps develop):<br />
+<ul><li> SourceForge-like integrated collaborative development environment
+<ul><li> SciDAC Outreach Center will use <a class="wiki"  href="http://gforge.org/">GForge</a>
+</li></ul></li><li> Meeting scheduling tool
+<ul><li> Must not depend on everyone keeping their calendars in a common tool
+</li><li> Email plus web
+</li></ul></li><li> Generic meeting/conference registration tool
+<ul><li> Want to be able to easily instantiate registration pages for many conferences
+</li></ul></li><li> Online meeting attendance tool
+<ul><li> Reduce/eliminate manual steps required for voting tools
+</li></ul></li><li> Conference paper review managment tool
+<ul><li> Several free or commercial products exist
+</li></ul></li><li> Glossary
+</li></ul>
+<br />
+<b>Old Services</b><br />
+<br />
+For reference, here are the user-level services provided by the old servers:<br />
+<ul><li> common login environment
+</li><li> revision control repositories (CVS and Subversion)
+</li><li> mailing lists (Mailman)
+</li><li> static web site (Apache, Blossxom)
+</li><li> wiki (TikiWiki)
+</li><li> bug tracking (Roundup)
+</li></ul>
+<br />
+Additional key software behind the scenes is:<br />
+<ul><li> MySQL
+</li><li> Red Hat Linux
+</li></ul>
+<br />
+<br />
+<div class="titlebar">Timeline</div>
+<br />
+A separate page tracks <a title="Plans and Progress towards the new cca-forum.org" href="tiki-index.php%3Fpage=cca-forum.org+migration+timeline.html" class="wiki">plans and progress</a>.<br />
+<br />
+<div class="titlebar">Hardware Information</div>
+<br />
+We are buying two identical systems to support the collaboration needs of the CCA Forum and the TASCS project:<br />
+<ul><li> <a class="wiki"  href="http://www.penguincomputing.com/">Penguin Computing</a> <a class="wiki"  href="http://www.penguincomputing.com/index.php?option=com_content&amp;task=view&amp;id=304&amp;Itemid=445">Relion 2600SA</a>, 2U rackmount
+</li><li> Single 3.0GHz Intel XEON 5160 (dual core), 4MB Cache, 1333MHz FSB
+<ul><li> <i>Motherboard: two sockets</i>
+</li></ul></li><li> 4GB DDR2-667 Fully Buffered ECC RAM (4 x 1GB)
+<ul><li> <i>Motherboard: 8 slots/16 GB max</i>
+</li></ul></li><li> Storage setup
+<ul><li> 3Ware 8-Channel SATA 9550S-8 RAID controller
+</li><li>  1.1 TB RAID-5 (4+1 x 400 GB) disk
+</li><li>750 GB 'system&quot; disk
+</li><li> <i>Chassis: 6 x 3.5&quot; drive slots</i>
+</li></ul></li><li> Dual 700W Redundant Hot Swap Power Supply Modules
+</li><li> 3-year next-day on-site service
+</li></ul>
+<br />
+The systems will be installed in the <a class="wiki"  href="http://mri-fre.ornl.gov/download/RiskAssessment.pdf">ORNL Fundamental Research Enclave</a><br />
+<ul><li> Separate from ORNL internal network
+</li><li> Protected by firewall and intrusion detection
+</li><li> Powered by Center-wide uninterruptible power supply
+</li><li> On-site backup service
+</li><li> Migrating toward <a class="wiki"  href="https://xcams.ornl.gov/xcams/">XCAMS</a> common user management environment for all ORNL &quot;external&quot; systems (including other FRE collaboration servers)
+<ul><li> LDAP authentication services
+</li><li> &quot;Level-0&quot; enrollment of users on specific systems requires involvement of ORNL staff
+</li></ul></li></ul>
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+  last modification: Saturday 14 of October, 2006 [18:27:38 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=New%20cca-forum.org%20Server
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

@@ -1,0 +1,62 @@
+<html><title> sundials-sc04: babel-sundials wrappings</title>
+
+<body bgcolor="white">
+
+<p>March 2005:
+The SUNDIALS team at LLNL has determined not to follow up
+on using Babel or CCA at this time. If you have an application
+and would like to use SUNDIALS in Babel or CCA form,
+please email radu@llnl.gov and Cc me (Ben).
+</p>
+<p>January 2005:
+The sundials team at LLNL has imported our prototype and is
+examining reimplementing everything in C rather than c++
+for consistency with the rest of their package. We will post
+an update here when we know better the status of that work.
+All but the bravest of souls should probably wait for an
+official sundials product rather than use the components available here.
+</p>
+<hr>
+<p><a href="sundials-sc04-v3.tgz">The alpha-3 release of BABEL/SIDL
+wrapped (by Ben) CVODE (sundials from LLNL)</a>
+is available for brave souls. See INSTALL in sundials-sc04.
+This is based on a development version of sundials; we expect to
+incorporate the babel/sidl bindings and maybe CCA bindings into 
+an official sundials release. Features: 
+<ol>
+<li>Much improved configure support. got rid of hardcoded paths.</li>
+<li> example wrapping of a real OO C
+library in babel/sidl without *any* rewrite of the sundials code.</li>
+<li> CCA CVODE factory component for the serial (uniprocessor) sundials
+classes and generic (serial or parallel).</li>
+<li> Implemented interfaces for parallel (MPI)
+options in CVODE {hung up mainly on configure/build issues}.</li>
+<li> Implemented interfaces for generic
+(wrappers on user data structure) vector representations.</li>
+<li> Added LinearSystem interface for arbitrary linear solvers
+that use application-defined implementations of vectors.
+</li>
+<li>TODO: factory component for parallel vector wrappers.</li>
+</ol>
+</p>
+<hr>
+<p><a href="sundials-sc04.v1.tgz">The alpha release of BABEL/SIDL
+wrapped (by Ben) CVODE (sundials from LLNL)</a>
+is available for brave souls. See INSTALL in sundials-sc04.
+This is based on a development version of sundials; we expect to
+incorporate the babel/sidl bindings and maybe CCA bindings into 
+an official sundials release. Features: 
+<ol><li> example wrapping of a real OO C
+library in babel/sidl without *any* rewrite of the sundials code.</li>
+<li> CCA CVODE factory component for the serial (uniprocessor) sundials
+classes.</li>
+<li> Stubbed but not fully implemented interfaces for parallel (MPI)
+options in CVODE {hung up mainly on configure issues}.</li>
+<li> Stubbed but not fully implemented interfaces for generic
+(wrappers on user data structure) vector representations.</li>
+</ol>
+</p>
+
+</body>
+
+</html>

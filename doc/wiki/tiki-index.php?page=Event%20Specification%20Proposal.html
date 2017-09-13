@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+ : Event Specification Proposal
+</title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+   class="tiki_wiki">
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+<div id="tiki-main">
+    <div id="tiki-mid">
+    <table id="tiki-midtbl" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+            <td id="leftcolumn" valign="top">
+            
+
+
+
+
+<div class="box box-cca_menu">
+<div class="box-title">CCA Wiki</div><div id="mod-cca_menu" style="display: block" class="box-data">
+
+<div id="cca_menu" style="display:block;">
+
+<img src="../wiki-chrome/cca-logo-trans-180.gif"/>
+<span style="font-weight: bold;">CCA Software Resources</span>
+
+
+
+
+
+
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__3'); return false">[-]</a>
+	 
+<a href="tiki-index.php.html" class="separator">CCA</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__3'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__3'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=CCA+documentation+and+information.html" class="linkmenu">CCA Info</a></div>
+
+
+
+
+<div class="option"><a href="../mailman/listinfo.1.html" class="linkmenu">Mailing Lists</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Working+Groups.html" class="linkmenu">Working Groups</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Members.html" class="linkmenu">Membership & Voting</a></div>
+
+
+
+
+<div class="option"><a href="../bugs.html" class="linkmenu">Issue Trackers</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__15'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=CCA+Meetings&amp;watch_event=wiki_page_changed&amp;watch_object=CCA+Meetings.html" class="separator">Meetings</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__15'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__15'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Upcoming+Events.html" class="linkmenu">Upcoming Events</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=SC2006+Internal.html" class="linkmenu">SC2006 Internal</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__20'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_Ref_id=29.html" class="separator">CCA Specification</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__20'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__20'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Specification+News.html" class="linkmenu">News</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=CCA%2520Specification%2520Development.html" class="linkmenu">Developer</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=CCARB.html" class="linkmenu">CCA Review Board</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__60'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Tutorial.html" class="separator">Tutorial</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__60'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__60'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=News.html" class="linkmenu">News</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Developer.html" class="linkmenu">Developer</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__100'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_ref_id=3.html" class="separator">CCA Tools</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__100'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__100'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Install.html" class="linkmenu">Install</a></div>
+
+
+
+
+<div class="option"><a href="tiki-view_faq.php%3FfaqId=2.html" class="linkmenu">FAQ</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage_ref_id=12.html" class="linkmenu">Ebuilds</a></div>
+
+
+
+
+<div class="option"><a href="https://www.cca-forum.org/download/cca-tools" class="linkmenu">Download</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__150'); return false">[-]</a>
+	 
+<a href="../toolkit/index.html" class="separator">Toolkit</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__150'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__150'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Bocca.html" class="linkmenu">Bocca</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Toolkit+Tools.html" class="linkmenu">Devel Environment</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__200'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Ccafe.html" class="separator">Ccaffeine</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__200'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__200'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage_ref_id=16.html" class="linkmenu">Install</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__300'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_ref_id=27.html" class="separator">Babel</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__300'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__300'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Babel+Install.html" class="linkmenu">Install</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Babel+Patches.html" class="linkmenu">Patches</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__350'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=CCAIN.html" class="separator">CCAIN</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__350'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__350'>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__400'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_ref_id=28.html" class="separator">Usability</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__400'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__400'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Coding+Camps.html" class="linkmenu">Coding Camps</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__1000'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Collaboration+Resources.html" class="separator">Collaboration Resources</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__1000'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__1000'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=MeetingPlace.html" class="linkmenu">MeetingPlace web sharing</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=RoundupBugTracking.html" class="linkmenu">Roundup</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__1600'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Computational+Quality+of+Service.html" class="separator">CQoS</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu43__1600'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__1600'>
+
+
+
+</div>
+
+<script type='text/javascript'>
+      setsectionstate('menu43__3', 'e');
+        setsectionstate('menu43__15', 'e');
+        setsectionstate('menu43__20', 'e');
+        setsectionstate('menu43__60', 'e');
+        setsectionstate('menu43__100', 'e');
+        setsectionstate('menu43__150', 'e');
+        setsectionstate('menu43__200', 'e');
+        setsectionstate('menu43__300', 'e');
+        setsectionstate('menu43__350', 'e');
+        setsectionstate('menu43__400', 'e');
+        setsectionstate('menu43__1000', 'e');
+        setsectionstate('menu43__1600', 'e');
+  </script>
+
+</div>
+
+
+</div></div>
+            
+
+
+
+
+<div class="box box-mnu_application_menu">
+<div class="box-title"><table class="box-title">
+  <tr>
+    <td ondblclick="javascript:icntoggle('mod-mnu_application_menu','mo.png');">
+<span class="box-titletext">Menu</span>
+    </td>
+    <td width="11">
+      <a title="Hide module contents" class="flipmodtitle" href="javascript:icntoggle('mod-mnu_application_menu','mo.png');"><img name="mod-mnu_application_menuicn" class="flipmodimage" src="img/icons/omo.png" border="0" alt="[hide]" /></a>
+</td>
+</tr>
+</table>
+</div><div id="mod-mnu_application_menu" style="display: block" class="box-data">
+
+<div id="mnu_application_menu" style="display:block;">
+
+
+
+
+<div class="option"><a href="tiki-index.php.html" class="linkmenu">Home</a></div>
+
+
+
+
+<div class="option"><a href="tiki-contact.php.html" class="linkmenu">Contact us</a></div>
+
+
+
+
+
+
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__200'); return false">[-]</a>
+	 
+<a href="tiki-index.php.html" class="separator">Wiki</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__200'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__200'>
+
+
+
+
+<div class="option"><a href="tiki-index.php.html" class="linkmenu">Wiki Home</a></div>
+
+
+
+
+<div class="option"><a href="tiki-lastchanges.php.html" class="linkmenu">Last Changes</a></div>
+
+
+
+
+<div class="option"><a href="dump/new.tar" class="linkmenu">Dump</a></div>
+
+
+
+
+<div class="option"><a href="tiki-wiki_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+<div class="option"><a href="tiki-listpages.php.html" class="linkmenu">List pages</a></div>
+
+
+
+
+<div class="option"><a href="tiki-orphan_pages.php.html" class="linkmenu">Orphan pages</a></div>
+
+
+
+
+<div class="option"><a href="tiki-editpage.php%3Fpage=sandbox.html" class="linkmenu">Sandbox</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__300'); return false">[-]</a>
+	 
+<a href="tiki-galleries.php.html" class="separator">Image Galleries</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__300'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__300'>
+
+
+
+
+<div class="option"><a href="tiki-galleries.php.html" class="linkmenu">Galleries</a></div>
+
+
+
+
+<div class="option"><a href="tiki-galleries_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__350'); return false">[-]</a>
+	 
+<a href="../wiki.1.html" class="separator">Articles</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__350'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__350'>
+
+
+
+
+<div class="option"><a href="../wiki.1.html" class="linkmenu">Articles home</a></div>
+
+
+
+
+<div class="option"><a href="tiki-list_articles.php.html" class="linkmenu">List articles</a></div>
+
+
+
+
+<div class="option"><a href="tiki-cms_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__450'); return false">[-]</a>
+	 
+<a href="tiki-list_blogs.php.html" class="separator">Blogs</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__450'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__450'>
+
+
+
+
+<div class="option"><a href="tiki-list_blogs.php.html" class="linkmenu">List blogs</a></div>
+
+
+
+
+<div class="option"><a href="tiki-blog_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__600'); return false">[-]</a>
+	 
+<a href="tiki-file_galleries.php.html" class="separator">File Galleries</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__600'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__600'>
+
+
+
+
+<div class="option"><a href="tiki-file_galleries.php.html" class="linkmenu">List galleries</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__650'); return false">[-]</a>
+	 
+<a href="tiki-list_faqs.php.html" class="separator">FAQs</a>
+<a class='separator' href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#" onclick="javascript:toggle('menu42__650'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__650'>
+
+
+
+
+<div class="option"><a href="tiki-list_faqs.php.html" class="linkmenu">List FAQs</a></div>
+
+
+
+</div>
+
+<script type='text/javascript'>
+      setsectionstate('menu42__200', 'd');
+        setsectionstate('menu42__300', 'd');
+        setsectionstate('menu42__350', 'd');
+        setsectionstate('menu42__450', 'd');
+        setsectionstate('menu42__600', 'd');
+        setsectionstate('menu42__650', 'd');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display:none">
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+  setsectionstate('mod-mnu_application_menu','{$module_dstate}','mo.png');
+</script>
+
+</div></div>
+            
+
+
+
+
+<div class="box box-breadcrumb">
+<div class="box-title">Recently visited pages</div><div id="mod-breadcrumb" style="display: block" class="box-data">
+  <table  border="0" cellpadding="0" cellspacing="0">
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html">
+                      Event Specification Proposal
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=ComparisonWithCcaffeineFrameworkEvents.html">
+                      ComparisonWithCcaffeineFrameworkEvents
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=Babel%2520Migrations.html">
+                      Babel Migrations
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=migrating%2520the%2520CCA%2520spec%2520to%2520Babel%25200.11.html">
+                      migrating the CCA spec to Babel 0.11
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=SC2007%2520Internal.html">
+                      SC2007 Internal
+                  </a>
+      </td></tr>
+      </table>
+
+
+</div></div>
+            
+
+<!-- no perm -->
+
+                      </td>
+            <td width="100%" id="centercolumn" valign="top"><div id="tiki-center">
+      
+            
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Event+Specification+Proposal.html">Event Specification Proposal</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Event Specification Documents</div>
+</td>
+	<td style="text-align:right;width:142px;wrap:nowrap">
+	       
+				<a title="print" href="tiki-print.php%3Fpage=Event%2520Specification%2520Proposal.html"><img src="img/icons/ico_print.gif" border="0"  width="16" height="16" alt="print" /></a>
+	
+			<a title="create PDF" href="tiki-config_pdf.php%3Fpage=Event%2520Specification%2520Proposal.html"><img src="img/icons/ico_pdf.gif" border="0"  width="16" height="16" alt="PDF" /></a>
+				</td>
+
+			<td style="text-align:right;width:42px;">
+		<form action="tiki-index.php.html" method="get">
+		<select name="page" onchange="page.form.submit()">
+		<option>backlinks...</option>
+				<option value="CCA Specification Development">CCA Specification Development</option>
+				<option value="CCARB 2008-03-06">CCARB 2008-03-06</option>
+				</select>
+		</form>
+		</td>
+	
+	
+	
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar">Draft Specification aka The SIDL</div>
+<br />
+<a class="wiki"  href="http://www.cca-forum.org/download/spec/EventSpecification.sidl">event specification sidl</a><br />
+<br />
+<div class="titlebar">Overview Document</div>
+<br />
+<a class="wiki"  href="http://www.cca-forum.org/download/spec/EventSpecificationIssues.pdf">event specification overview document</a><br />
+<br />
+<div class="titlebar">Use Cases and Other Issues</div>
+<br />
+<ul><li> <b>GUI component</b>
+</li></ul>
+<br />
+When thinking of events, it is natural to think about GUI systems. However, the CCA event system is not intended to replace event support in the GUI toolkit. Instead, it provides its own means for distributing events to components in a framework. Of course, there are a number of events that occur that may need to be reflected in a GUI.<br />
+<br />
+We are working on a common set of events that are of use to any CCA framework. Most of these are in the area of component lifecycle and discovery.<br />
+<br />
+In the event specification, we reserve the cca.* event topic namsepace for these standard events. As the specification evolves, these topic names and the structure of the event body (as a TypeMap<a href="tiki-editpage.php%3Fpage=TypeMap.html" title="Create page: TypeMap" class="wiki wikinew">?</a> or XML) will be specified as well. Any feedback on what this namspace should look like is very useful.<br />
+<br />
+While it would be possible to implement the CCA event service on top of a GUI event framework, it wouldn't be an optimal choice, as the usage patterns are too different.<br />
+<br />
+<ul><li> <b>multiple frameworks</b>
+</li></ul>
+<br />
+Q:In this case let's consider several instances of (possibly) the same framework and the &quot;main()&quot; program appears as a component in all of them.  When main() calls framework specific methods (e.g. anything on Services) then the event bus associated with that framework gets serviced.   But if those methods are not called then the events will not get serviced.  It seems conceivable that this could lead to a deadlock.  It could be that the event service _should_ be a singleton to prevent this.<br />
+<br />
+A: The EventService<a href="tiki-editpage.php%3Fpage=EventService.html" title="Create page: EventService" class="wiki wikinew">?</a> is indeed a singleton, or unique to a given framework. For several instances of the same framework, it is up to the implementation to decide if all the framework instances share the same service instance or not. Each case has advantages and disadvantages.<br />
+<br />
+As for different frameworks, there seems to be more general interoperability issues that need to be addressed before one can discuss passing events between differing frameworks.<br />
+<br />
+<ul><li> <b>FPGAs and other heterogeneous environments</b>
+</li></ul>
+<br />
+With respect to FPGAs, the main need is to be able to asynchronously call a method that will execute on an FPGA and when it is finished, the calling process should be notified.  Hardware-accelerated methods (FPGA) will require the participation of a partner processor to handle all OS and framework system calls, the FPGA itself can only provide the computation with a restricted placement of the input data (i.e. it has to be on the FPGAs SRAM, or it has to be on certain window within the partner processor's main memory).  The partner processor should, of course, be the processor which is physically closest to the FPGA itself in order to minimize overhead.  Synchronous execution on the FPGAs should also be supported with semantics similar to a regular method call. (More details to come...)<br />
+<br />
+The model of providing FPGA support is very platform dependent. In most cases, a driver will be needed to setup access to the FPGA and to place data and calls to it. To raise a CCA event when the FPGA computation completes, it will probably be necessary to write platform and framework-specifc code that interacts with that driver to raise events based on low-level callback mechanisms (signals, callback functions, etc.) that the driver and OS platform provide.<br />
+<br />
+<a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=30">Using CCA Events for Polygraph and FPGAs</a><br />
+<br />
+<ul><li> <b>Event Service for HPC applications</b>
+</li></ul>
+<br />
+A prototype implementation of the initial CCA Event Service specification was implemented at PNNL on a Cray XD-1 using ARMCI as the event transport. A paper describing this work has been published at the Software Engineering for HPC Workshop held in minneapolis in May 2007.<br />
+<br />
+<a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=40"> SE-HPC 2007 paper</a><br />
+<br />
+We have now implemented the modified specification (from January 2007 CCA meeting) on the XD-1 and have increased the performance of event delivery by redesigning the event service internals. We have test ed this in a prototype application by using the event service as an abstraction to distribute work to a collection of FPGA-based analysis components from a mass spectrometry application.<br />
+<br />
+We have submitted a paper to the journal Concurrency &amp; Computation: Practice and Experience, describing in full details the design and implementation of a high-performance event service on HPC platforms.  The paper also discusses the use of the event service for distributing work on a mass spectrometry application executing on a heterogeneous CPU/FPGA cluster.<br />
+<br />
+The paper is titled &quot;<b>Design and Implementation of a High-Performance<a href="tiki-editpage.php%3Fpage=High-Performance.html" title="Create page: High-Performance" class="wiki wikinew">?</a> CCA Event Service</b>&quot;.  A summary of the paper is:<br />
+<br />
+<div class="simplebox">Event services based on publish-subscribe architectures are well established components of distributed computing applications. Recently, an event service has been proposed as part of the Common Component Architecture (CCA) for high-performance computing applications. In this paper we describe our implementation, experimental evaluation, and initial experience with a high performance CCA event service that exploits efficient communications mechanisms commonly used on high-performance computing (HPC) platforms. We describe the CCA event service model, and discuss briefly the possible implementation strategies of that model. We then present the design and implementation of the event service using the Aggregate Remote Memory Copy Interface (ARMCI) as an underlying communication layer for this mechanism. Two alternative implementations are presented and evaluated on a Cray XD-1 platform. The performance results demonstrate that event delivery latencies are low and that the event service is able to achieve high throughput levels. Finally, we describe the use of the event service in an application for high-speed processing of data from a mass spectrometer, and conclude by discussing some possible extensions to the event service for other HPC applications.</div><br />
+<br />
+We'll be able to post the paper as soon as it is accepted by CCPE... <img alt="cool" src="img/smiles/icon_cool.gif" /><br />
+<br />
+An evolving document describing use cases at PNNL for the HPC version of the event service is:<br />
+<br />
+<a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=41"> HPC Event Service use cases</a><br />
+<br />
+<ul><li> <b>distributed environments</b>
+</li></ul>
+<br />
+It is up to each component to decide how an event is distributed inside a component; the event service just insures that the every component gets the events it subscribes to, and can send events to all components. It is up to the framework implementation to provide those semantics, but the semantics of intra-component distribution is not specified.<br />
+<br />
+If using a standard CCA event service model to distribute events in a single component is desired, then it can work on that. The main issue is that intra-component events may be able to use optimizations that inter-component events can not. For example, if the component is in a single address space, one could create a simple event bus based on callback functions, allowing arbirtary objects in the language to be passed back and forth,<br />
+<br />
+<ul><li> <b>Management and Monitoring</b>
+</li></ul>
+<br />
+One common use of an event-based system is often used as the backbone of management and performance tools. Tools like HP Openview, Tivoli and Microsoft Operation Manager use a large set of events that correspond to various events in a running system (for example, process creation, abnormal termination, user login/logout, etc.) Also, there is a set of events associated with performance (memory usage, page file system, etc.)<br />
+<br />
+It seems that a discussion of create a standard set of CCA performance and management events that are optionally available to CCA components is worth exploring. However, it can not be understated that the collection and distribution of these events is not easy to scale. All the above companies have significant IP and technologies that allow the detection and distribution of system events with minimal overhead and maximum scalability.<br />
+<br />
+<ul><li> <b>Appropriate Use of Events</b>
+</li></ul>
+<br />
+It is vital to note that events are not a replacement for remote method calls or other methods of communication. Defining the appropriate level of events, how often events are raised and processed is vital for events to be used successfully. The framework can only process events as best they can.<br />
+<br />
+<div class="titlebar">Event Structure</div>
+<br />
+An event-based frame management (component wrangling) system has been prototyped for Ccaffeine (the ccafe04 framework implementation). The event delivery model is synchronous callbacks (on a local basis in a multi-process environment). The javadoc of the events and listeners in this prototype is available at <a class="wiki"  href="../~baallan/currentSpec/html/index.html">Ben's cca-forum web site</a>.<br />
+Compared to the 'everything is a string' approach, this prototype leverages the existing CCA defined handles (ComponentID, ConnectionID, TypeMap, ComponentClassDescription) in the event payloads. Once a component receives the event, it has everything it needs to interact with the BuilderService in response to the event. See particularly ccaffeine.ports.ContextEvent*Service and the package ccaffeine.ce. A <a title="Comparing proposed event service with Context-oriented (cca frame lifecycle) events in-core" href="tiki-index.php%3Fpage=ComparisonWithCcaffeineFrameworkEvents.html" class="wiki">ComparisonWithCcaffeineFrameworkEvents</a> reveals some efficiency issues both in coding and runtime performance.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=ayla.html' >ayla</a>
+  last modification: Tuesday 11 of March, 2008 [04:44:03 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=kosta.html' >kosta</a>
+</p>
+
+
+
+      
+            
+
+<hr/>
+<div id="page-bar">
+  <table>
+    <tr>
+
+
+    
+
+
+
+<td><div class="button2"><a href="tiki-likepages.php%3Fpage=Event%2520Specification%2520Proposal.html" class="linkbut">similar</a></div></td>
+
+
+
+ 
+
+  
+  
+  
+
+    
+  <td>
+    <div class="button2">
+      <a href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal.html#attachments" onclick="javascript:flip('attzone');" class="linkbut">
+
+        
+                  <span class="highlight">4 files attached</span>
+              </a>
+    </div>
+  </td>
+  
+  
+</tr>
+</table>
+</div>
+
+
+
+<a name="attachments"></a>
+
+<div id="attzone">
+
+
+
+
+ <table class="normal">
+ <caption> List of attached files </caption>
+ <tr>
+  <td class="heading">&nbsp;</td>
+  <td class="heading">
+   <a class="tableheading" href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal&amp;offset=&amp;sort_mode=filename_desc.html">name</a>
+  </td><td class="heading">
+   <a class="tableheading" href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal&amp;offset=&amp;sort_mode=comment_desc.html">desc</a>
+  </td><td class="heading">
+   <a class="tableheading" href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal&amp;offset=&amp;sort_mode=created_desc.html">uploaded</a>
+  </td><td class="heading">
+   <a class="tableheading" href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal&amp;offset=&amp;sort_mode=size_desc.html">size</a>
+  </td><td class="heading">
+   <a class="tableheading" href="tiki-index.php%3Fpage=Event%2520Specification%2520Proposal&amp;offset=&amp;sort_mode=downloads_desc.html"><b>&gt;</b></a>
+  </td>
+ </tr>
+
+<tr>
+<td class="odd"><span class="mini">1 : 41</span></td>
+<td class="odd">
+ <img border='0' src='img/icn/pdf.gif' alt='icon' />
+ <a class="tablename" href="tiki-download_wiki_attachment.php%3FattId=41&amp;page=Event%2520Specification%2520Proposal">HPC Event Service Use Cases.pdf</a>
+  </td>
+ <td class="odd"><small>A living document describing HPC use cases for teh CCA event service</small></td>
+ <td class="odd"><small>Mon 09 of Apr, 2007 [19:16 UTC] by iango</small></td>
+ <td style="text-align:right;" class="odd">11.65 Kb</td>
+ <td style="text-align:right;" class="odd">897</td>
+</tr>
+<tr>
+<td class="even"><span class="mini">2 : 40</span></td>
+<td class="even">
+ <img border='0' src='img/icn/pdf.gif' alt='icon' />
+ <a class="tablename" href="tiki-download_wiki_attachment.php%3FattId=40&amp;page=Event%2520Specification%2520Proposal">SE-HPC2007-PNNL.pdf</a>
+  </td>
+ <td class="even"><small>PNNL Paper on Event Servic eon Cray XD-1</small></td>
+ <td class="even"><small>Fri 06 of Apr, 2007 [16:16 UTC] by iango</small></td>
+ <td style="text-align:right;" class="even">101.46 Kb</td>
+ <td style="text-align:right;" class="even">820</td>
+</tr>
+<tr>
+<td class="odd"><span class="mini">3 : 30</span></td>
+<td class="odd">
+ <img border='0' src='img/icn/pdf.gif' alt='icon' />
+ <a class="tablename" href="tiki-download_wiki_attachment.php%3FattId=30&amp;page=Event%2520Specification%2520Proposal">Using CCA Events for PolyGraph and FPGAs.pdf</a>
+  </td>
+ <td class="odd"><small>FPGA use case</small></td>
+ <td class="odd"><small>Mon 18 of Sep, 2006 [17:04 UTC] by iango</small></td>
+ <td style="text-align:right;" class="odd">31.31 Kb</td>
+ <td style="text-align:right;" class="odd">1751</td>
+</tr>
+<tr>
+<td class="even"><span class="mini">4 : 29</span></td>
+<td class="even">
+ <img border='0' src='img/icn/pdf.gif' alt='icon' />
+ <a class="tablename" href="tiki-download_wiki_attachment.php%3FattId=29&amp;page=Event%2520Specification%2520Proposal">PNNL Comments on CCA Event Specification Draft.pdf</a>
+  </td>
+ <td class="even"><small>Comments on draft event service specification</small></td>
+ <td class="even"><small>Mon 18 of Sep, 2006 [17:04 UTC] by iango</small></td>
+ <td style="text-align:right;" class="even">36.44 Kb</td>
+ <td style="text-align:right;" class="even">626</td>
+</tr>
+</table>
+
+
+
+
+</div>
+
+
+
+    <a name="comments"></a>
+    	<div id="comzone">
+    
+
+  
+
+    
+
+	
+
+
+
+    </div><!-- comzone end -->
+            </div>
+      </td>
+            <td id="rightcolumn" valign="top">
+            
+
+
+
+<div class="box box-login_box">
+<div class="box-title">Login</div><div id="mod-login_box" style="display: block" class="box-data">
+
+         <form name="loginbox" action="https://www.cca-forum.org/wiki/tiki-login.php" method="post" > 
+           <table border="0">
+      <tr>
+        <td>
+          <table>
+          <tr><td class="module"><label for="login-user">user:</label></td></tr>
+		          <tr><td><input type="text" name="user" id="login-user" size="20" /></td></tr>
+		                    <tr><td class="module"><label for="login-pass">pass:</label></td></tr>
+          <tr><td><input type="password" name="pass" id="login-pass" size="20" /></td></tr>
+          <tr><td><input type="submit" name="login" value="login" /></td></tr>
+                    <tr>
+                      <td  class="module" valign="bottom">[ <a class="linkmodule" href="tiki-register.php.html" title="Click here to register">register</a> | <a class="linkmodule" href="tiki-remind_password.php.html" title="Click here if you've forgotten your password">I forgot my password</a> ]</td>
+                                                  </tr>
+                              </table>
+        </td>
+      </tr>
+      </table>
+
+              <input type="hidden" name="stay_in_ssl_mode" value="" />
+      			      </form>
+    
+
+</div></div>
+            
+
+
+
+
+<div class="box box-who_is_there">
+<div class="box-title">Online users</div><div id="mod-who_is_there" style="display: block" class="box-data">
+<div>
+16 
+online users
+</div>
+
+
+</div></div>
+                      </td>
+          </tr>
+    </table>
+  </div>
+  </div>
+
+</body>
+</html>  

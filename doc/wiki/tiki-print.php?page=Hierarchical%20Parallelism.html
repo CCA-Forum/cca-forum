@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Hierarchical Parallelism </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Hierarchical+Parallelism.html">Hierarchical Parallelism</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Hierarchical Parallelism</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div align="center"><b>Hierarchical Parallelism in Computational Chemistry using Common Component Architecture and Global Arrays</b></div><br />
+(POC: Manojkumar Krishnan, Jarek Nieplocha - PNNL)<br />
+<br />
+<br />
+<b>Use-case</b><br />
+Numerical Hessian Algorithm: Determination of energy second derivatives through numerical differentiation of <i>gradients</i>, which may in turn be obtained from numerical differentiation of <i>energies</i>. Single <i>energy</i> calculation (SPMD Style) does not scale well beyond certain number of processes (i.e. limited scalability). Hierarchical parallelism (MCMD Programming) can effectively utilize variable degrees of parallelism at the gradient and hessian level.<br />
+<br />
+<b>Approach</b><br />
+In the overall algorithm, a CCA Hessian driver component is used to create subgroups to instantiate QM components to calculate gradients.  These components in turn, may need to calculate numerical gradients and will therefore, need to create subgroups to calculate multiple energies.  This particular algorithm offers essentially three levels of parallelism: one at the CCA (Hessian) level, one at the gradient level and another to calculate the energy (each energy itself can use a large number of processors).<br />
+<br />
+<span class='img'><img src='img/wiki_up/mlp.gif' alt='img/wiki_up//mlp.gif' /></span><br />
+<div align="center">Numerical Hessian Calculation: Hierarchical Parallelism</div><br />
+<br />
+<b>CCA Implementation </b><br />
+The current builder services can barely support very simple two-level parallel schemes (difficult to program). Run-time reconfiguration of processor groups and starting new components requires breaking and rebuilding the connections. Communication and interaction between components running on different processor groups can lead to hard to debug problems without the CCA standard way of specifying and agreeing on group context and scope.<br />
+<br />
+<b>Technology/Requirements</b><br />
+New MCMD Service and component software compatible with MCMD parallelism is required.<br />
+<br />
+<ul><li> Creation and management of processor groups
+<ul><li> In order to express and manage hierarchical parallelism though the use of processor groups, it is essential to support processor groups at the component level. This promotes parallelism at the component level, parallelism within the component, and parallelism within a subroutine.
+</li></ul></li></ul>
+<br />
+<ul><li> CCA Representation for groups id, membership
+<ul><li> It is desirable for CCA groups and component management capabilities to be independent of specific parallel programming models (MPI, PVM, CAF, GA support idea of processor groups/teams. MPI model must be supported) and languages. If the components developed from different parallel models (e.g. GA in NWChem and MPI in ScaLAPACK, PETSc) interact, then there should be a universal way of representing group ids, group membership, etc.
+</li><li> coordination of concurrent and nested SCMD/MCMD tasks
+</li></ul></li></ul>
+<br />
+<ul><li> Mapping of component to groups and their coordination
+<ul><li> When a component is created, assigning a processor group to that component will make sure that component runs only on that processor group. This indeed promotes easy to use MCMD programming, which is currently very hard to do from an application perspective.
+</li></ul></li></ul>
+<br />
+<ul><li> Perform dynamic run-time reconfiguration of processor groups depending on the problem size and the algorithm/component chosen. Includes loading new components selectively without tearing and rebuilding all the connections.
+<ul><li> In our use-case, the MCMD driver dynamically instantiates QM components based on the number of energy calculations per gradient. However, load balancing became a serious problem beyond 32 processors, and therefore, the MCMD driver instantiates multiple components for larger processor runs (&gt; 32 processors). For now, this number is determined empirically, as it was hard to reconfigure components and groups at run-time based on algorithmic performance.
+</li><li> Facilitate dynamic behavior of the application itself, for example:
+<ul><li> Swapping components based on numerical or computational performance on the processor subgroups.
+</li><li> Resizing processor groups based on memory requirements or scaling characteristics.
+</li></ul></li></ul></li></ul>
+<br />
+<ul><li> Adding explicit processor group awareness to the CCA scientific component software.
+<ul><li> MCMD can be exploited at large-scale to improve application scalability, if the standard components (like solvers, I/O, data) are made processor group aware.
+</li></ul></li></ul>
+<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+  last modification: Thursday 12 of April, 2007 [19:06:17 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Hierarchical%20Parallelism
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : migrating the CCA spec to Babel 0.11 </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=migrating+the+CCA+spec+to+Babel+0.11.html">migrating the CCA spec to Babel 0.11</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+For configure:<br />
+<ul><li> babel_languages will now be dcxx, ucxx and not cxx.
+</li><li> we must recognize version 0.11.
+</li></ul>
+<br />
+For generating the spec server code,<br />
+<ul><li> babel -scxx becomes babel -sucxx.
+</li><li> .cxx as well as .cc files must be included in target lists and suffix rules.
+</li><li> The supporting library is now -lsidlstub_[u,d]cxx.
+</li><li> VPATH needs to include ucxx, dcxx.
+</li></ul>
+<br />
+Several changes affect the template makefile for client compilation, cca-spec-babel/utils/Makefile_template.client.in.<br />
+<br />
+<ul><li>Babel generated include directories are named by language and the names changed:
+</li><li> Cxx becomes cxx (and presently is deprecated/invalid).
+</li><li> Languages are now ucxx and dcxx. Language cxx will reappear in babel 1.0.
+</li><li> We must install *.hxx headers, not just .hh.
+</li><li> We must compile .cxx files for the ucxx binding and .cc files for dcxx.
+</li><li> We must build *stub_[u,d]cxx libraries.
+</li></ul>
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Monday 27 of March, 2006 [17:28:12 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=migrating%20the%20CCA%20spec%20to%20Babel%200.11
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

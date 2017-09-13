@@ -1,0 +1,1266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us"
+      lang="en-us">
+
+  
+    
+    
+    
+    
+    
+
+  
+
+  <head>
+
+    <meta http-equiv="Content-Type"
+          content="text/html;charset=utf-8" />
+
+    
+      <base href="" /><!--[if lt IE 7]></base><![endif]-->
+    
+
+    <meta name="generator" content="Plone - http://plone.org" />
+
+    <link rel="kss-base-url" href="event-service-overview.html" />
+
+  
+  
+    
+      <script type="text/javascript"
+              src="http://www.cca-forum.org/dev/portal_javascripts/Plone%20Default/event-registration-cachekey3537.js">
+      </script>
+    
+    
+  
+
+  
+    
+      <script type="text/javascript"
+              src="http://www.cca-forum.org/dev/portal_javascripts/Plone%20Default/ploneglossary-cachekey6274.js">
+      </script>
+    
+    
+  
+
+  
+    
+    
+      <script type="text/javascript"><!--  
+/* - ploneglossary_definitions.js - */
+// http://www.cca-forum.org/dev/portal_javascripts/ploneglossary_definitions.js?original=1
+
+  // --></script>
+    
+  
+
+  
+  
+    
+    
+      <style type="text/css"><!-- @import url(http://www.cca-forum.org/dev/portal_css/Plone%20Default/base-cachekey4948.css); --></style>
+    
+    
+  
+
+  
+    
+    
+      <style type="text/css"><!-- @import url(http://www.cca-forum.org/dev/portal_css/Plone%20Default/helpcenter-cachekey8329.css); --></style>
+    
+    
+  
+
+  
+    
+    
+      <style type="text/css"><!-- @import url(http://www.cca-forum.org/dev/portal_css/Plone%20Default/ploneglossary_popup-cachekey7338.css); --></style>
+    
+    
+  
+
+  
+  <link rel="kinetic-stylesheet" type="text/css"
+        href="http://www.cca-forum.org/dev/portal_kss/Plone%20Default/at-cachekey7959.kss" />
+
+
+<title>Event Service Overview &mdash; CCA Forum</title>
+
+    <meta content="Document describing our intentions in defining the event service specification. A useful read for everyone using events, but a must read when planning to implement the event service interface."
+          name="description" />
+
+    <!-- Internet Explorer CSS Fixes -->
+    <!--[if IE]>
+        <style type="text/css" media="all">@import url(http://www.cca-forum.org/dev/IEFixes.css);</style>
+    <![endif]-->
+
+    
+    <link rel="author"
+          href="http://www.cca-forum.org/dev/author/damevski"
+          title="Author information" />
+
+
+    <link rel="shortcut icon" type="image/x-icon"
+          href="../../favicon.ico" />
+
+
+    <link rel="home" href="http://www.cca-forum.org/dev"
+          title="Front page" />
+
+    <link rel="contents"
+          href="http://www.cca-forum.org/dev/sitemap"
+          title="Site Map" />
+
+
+
+
+    <link rel="search"
+          href="http://www.cca-forum.org/dev/search_form"
+          title="Search this site" />
+
+
+    
+
+    <!-- Disable IE6 image toolbar -->
+    <meta http-equiv="imagetoolbar" content="no" />
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+  </head>
+
+  <body class="section-working-groups template-document_view"
+        dir="ltr">
+    <div id="visual-portal-wrapper">
+
+      <div id="portal-top">
+        <div id="portal-header">
+<p class="hiddenStructure">
+  <a accesskey="2"
+     href="event-service-overview.html#documentContent">Skip to content.</a> |
+
+  <a accesskey="6"
+     href="event-service-overview.html#portlet-navigation-tree">Skip to navigation</a>
+</p>
+
+<ul id="portal-siteactions">
+
+    <li id="siteaction-sitemap"><a
+    href="http://www.cca-forum.org/dev/sitemap"
+    accesskey="3" title="Site Map">Site Map</a></li>
+    <li id="siteaction-accessibility"><a
+    href="http://www.cca-forum.org/dev/accessibility-info"
+    accesskey="0" title="Accessibility">Accessibility</a></li>
+    <li id="siteaction-contact"><a
+    href="http://www.cca-forum.org/dev/contact-info"
+    accesskey="9" title="Contact">Contact</a></li>
+
+</ul>
+
+<div id="portal-searchbox">
+    <form name="searchform"
+          action="http://www.cca-forum.org/dev/search">
+
+        <label for="searchGadget" class="hiddenStructure">Search Site</label>
+
+        <div class="LSBox">
+        <input name="SearchableText" type="text" size="18"
+               title="Search Site" accesskey="4"
+               class="inputLabel" id="searchGadget" />
+
+        <input class="searchButton" type="submit"
+               value="Search" />
+    
+        <div class="searchSection">
+            <input id="searchbox_currentfolder_only"
+                   class="noborder" type="checkbox"
+                   name="path"
+                   value="/cca/working-groups/event-service-specification-proposal" />
+            <label for="searchbox_currentfolder_only"
+                   style="cursor: pointer">
+                only in current section
+            </label>
+        </div>
+
+        <div class="LSResult" id="LSResult" style=""><div class="LSShadow" id="LSShadow"></div></div>
+        </div>
+    </form>
+
+    <div id="portal-advanced-search" class="hiddenStructure">
+        <a href="http://www.cca-forum.org/dev/search_form"
+           accesskey="5">
+            Advanced Search&hellip;
+        </a>
+    </div>
+
+</div>
+
+<a id="portal-logo" accesskey="1"
+   href="http://www.cca-forum.org/dev">
+    <img src="../../logo.jpg" alt="" title="" height="60" width="468" /></a>
+
+
+    <h5 class="hiddenStructure">Sections</h5>
+
+    <ul id="portal-globalnav">
+        <li id="portaltab-index_html" class="selected">
+            <a href="http://www.cca-forum.org/dev" title="">Home</a></li>
+    </ul>
+
+</div>
+
+<div id="portal-personaltools-wrapper">
+
+<h5 class="hiddenStructure">Personal tools</h5>
+
+<ul id="portal-personaltools" class="visualInline">
+   
+
+    
+        <li>
+            <a href="../../login_form.html">Log in</a>
+        </li>
+    
+
+</ul>
+</div>
+
+
+    
+
+<div id="portal-breadcrumbs">
+
+    <span id="breadcrumbs-you-are-here">You
+are here:</span>
+    <a href="http://www.cca-forum.org/dev">Home</a>
+    <span class="breadcrumbSeparator">
+        &rarr;
+        
+    </span>
+    <span dir="ltr">
+        
+            <a href="../../working-groups.html">Working Groups</a>
+            <span class="breadcrumbSeparator">
+                &rarr;
+                
+            </span>
+            
+         
+    </span>
+    <span dir="ltr">
+        
+            <a href="../event-service-specification-proposal.html">Event Service</a>
+            <span class="breadcrumbSeparator">
+                &rarr;
+                
+            </span>
+            
+         
+    </span>
+    <span dir="ltr">
+        
+            
+            
+            <span>Event Service Overview</span>
+         
+    </span>
+
+</div>
+
+      </div>
+
+      <div class="visualClear" id="clear-space-before-wrapper-table"><!-- --></div>
+
+      <table id="portal-columns">
+        <tbody>
+          <tr>
+            
+            <td id="portal-column-one">
+              <div class="visualPadding">
+                
+                  
+<div id="portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f6363610a6e617669676174696f6e"
+     class="portletWrapper kssattr-portlethash-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f6363610a6e617669676174696f6e">
+<dl class="portlet portletNavigationTree">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a href="http://www.cca-forum.org/dev/sitemap"
+           class="tile">Navigation</a>
+       
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem lastItem">
+        <ul class="portletNavigationTree navTreeLevel0">
+            <li class="navTreeItem">
+                <div>
+                   <a href="http://www.cca-forum.org/dev"
+                      class=""
+                      title="The Common Component Architecture Forum community site">
+                   
+                   Home
+                   
+                   </a>
+                </div>
+            </li>
+            
+
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../about-cca.html"
+           class="state-external" title="">
+            
+            About the CCA
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../governance.html"
+           class="state-external" title="">
+            
+            Participation and Governance
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../meetings.html"
+           class="state-external"
+           title="CCA Forum meetings are held quarterly at different places around the country. Check here for information about coming meetings (we plan a year ahead) and examine the minutes from previous ones. ">
+            
+            Meetings
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker navTreeItemInPath">
+
+    
+
+      <div>
+        
+        <a href="../../working-groups.html"
+           class="state-external" title="">
+            
+            Working Groups
+        </a>
+        
+    </div>
+
+    <ul class="navTree navTreeLevel1">  
+        
+
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../working-group-roster.html"
+           class="state-external"
+           title="A list of all working groups: past, present, and forming.">
+            
+            Working Group Roster
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker navTreeItemInPath">
+
+    
+
+      <div>
+        
+        <a href="../event-service-specification-proposal.html"
+           class="state-external"
+           title="Summary of the current state of the Event Service. Includes the SIDL specification, a set of proposed use cases, and other documentation.">
+            
+            Event Service
+        </a>
+        
+    </div>
+
+    <ul class="navTree navTreeLevel2">  
+        
+
+
+
+<li class="navTreeItem visualNoMarker navTreeCurrentNode">
+
+    
+
+      <div>
+        
+        <a href="event-service-overview.html"
+           class="state-external navTreeCurrentItem"
+           title="Document describing our intentions in defining the event service specification. A useful read for everyone using events, but a must read when planning to implement the event service interface.">
+            
+            Event Service Overview
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="event-service-sidl-for-viewing.html"
+           class="state-external"
+           title="The SIDL of the event service, formatted for viewing without a download.">
+            
+            Event Service SIDL (for viewing)
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="http://www.cca-forum.org/dev/working-groups/event-service-specification-proposal/EventSpecification.sidl/view"
+           class="state-external"
+           title="The current draft of the interface for the Event Service. ">
+            
+            Event Service SIDL (for download)
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="use-cases.html"
+           class="state-external"
+           title="Discussion on a few possible event service scenarios.">
+            
+            Use Cases
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="pending-issues.html"
+           class="state-external"
+           title="A list of things that need to be resolved regarding the Event Service specification.">
+            
+            Pending Issues
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="http://www.cca-forum.org/dev/working-groups/event-service-specification-proposal/Using%20CCA%20Events%20for%20PolyGraph%20and%20FPGAs.pdf/view"
+           class="state-external"
+           title="A document drafted by the guys at PNNL discussing a specific application for which they are considering the Event Service.">
+            
+            Using CCA Events for Polygraph and FPGAs
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="http://www.cca-forum.org/dev/working-groups/event-service-specification-proposal/SE-HPC2007-PNNL.pdf/view"
+           class="state-external"
+           title="A paper (published at Software Engineering for HPC) describing a high performance implementation of the Event Service on a Cray XD-1 using ARMCI.">
+            
+            A High Performance Event Service for HPC Applications
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="http://www.cca-forum.org/dev/working-groups/event-service-specification-proposal/topics.framework.txt/view"
+           class="state-external"
+           title="Draft (based on ccafe04 java framework) of topics and typemap payload details suitable for issuance by frameworks (or to instruct frameworks) and consumption by UI codes.">
+            
+            Draft framework+gui event topic naming and payload
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+
+
+    </ul>
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../mpi-service.html"
+           class="state-external"
+           title="Standards process information for component-wise access to MPI Communicator instances.">
+            
+            MPI Service
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../release-processing.html"
+           class="state-external"
+           title="Working Discussion/Documentation of release processes and criteria.
+As the texts here (or portions thereof) becomes agreed, final versions will be added to the cca-release-tools doc repository.">
+            
+            Release Management
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+
+
+    </ul>
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="http://www.cca-forum.org/dev/specification"
+           class="state-external" title="">
+            
+            CCA Specification
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../software.html"
+           class="state-external"
+           title="CCA tools, components, and other CCA-related software
+
+">
+            
+            Software
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../documentation.html"
+           class="state-external" title="">
+            
+            Documentation
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="http://eprints.cca-forum.org"
+           class="state-external" title="">
+            
+            Papers and Presentations
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../tutorials.html"
+           class="state-external"
+           title="CCA offers hands-on tutorials to introduce new users to the technology.">
+            
+            Tutorials
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../help.html"
+           class="state-external" title="">
+            
+            Help Desk
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../coding-camps.html"
+           class="state-external" title="">
+            
+            Coding Camps
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../collaboration-Tools.html"
+           class="state-external" title="">
+            
+            Collaboration Tools
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../../mailman.1.html"
+           class="state-external" title="">
+            
+            Mailing Lists
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../contact-us.html"
+           class="state-external" title="">
+            
+            Contact Us
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../glossary.html"
+           class="state-external" title="">
+            
+            Glossary
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../related-projects.html"
+           class="state-external" title="">
+            
+            Related Projects
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+<li class="navTreeItem visualNoMarker">
+
+    
+
+      <div>
+        
+        <a href="../../../wiki.1.html"
+           class="state-external"
+           title="Workspaces for various CCA activities">
+            
+            Old Wiki (deprecated)
+        </a>
+        
+    </div>
+
+    
+    
+</li>
+
+
+
+
+        </ul>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+</dl>
+
+</div>
+
+
+<div class="managePortletsLink">
+  
+</div>
+
+                
+                &nbsp;
+              </div>
+            </td>
+            
+
+            
+            <td id="portal-column-content">
+
+              
+                <div class="">
+
+                  
+
+
+                  <div id="region-content" class="documentContent">
+
+                    <span id="contentTopLeft"></span>
+                    <span id="contentTopRight"></span>
+                    
+                    <a name="documentContent"></a>
+
+                    
+
+    <dl class="portalMessage info" id="kssPortalMessage" style="display:none">
+        <dt>Info</dt>
+        <dd></dd>
+    </dl>
+
+
+                    
+                    <div id="viewlet-above-content"></div>
+
+                    
+                    
+                    <div id="content">
+                      
+                      
+    
+
+        
+
+        <h1 class="documentFirstHeading"> 
+            
+        <span class="" id="parent-fieldname-title">
+            Event Service Overview
+        </span>
+    
+        </h1>
+
+        <div class="documentByLine" id="plone-document-byline">
+  
+
+  
+    <span class="documentAuthor">
+      by
+      damevski
+
+    </span>
+  
+
+  <span class="documentModified">
+    &mdash;
+    <span>
+      last modified
+    </span>
+    May 26, 2009 07:46 PM
+  </span>
+
+  
+
+  
+
+  
+
+</div>
+
+
+
+        <p class="documentDescription">
+            
+        <span class="" id="parent-fieldname-description">
+            Document describing our intentions in defining the event service specification. A useful read for everyone using events, but a must read when planning to implement the event service interface.
+        </span>
+    
+        </p>
+
+        
+
+
+
+        
+
+        
+        <div class="" id="parent-fieldname-text">
+            
+<p align="center">&nbsp;</p>
+<h2 align="center"><strong>SCI Group CCA Event Specification</strong></h2>
+<div align="left">
+<div align="center">&nbsp;</div>
+<p align="center"><em>(Initially written by - Nathan Dykman, Kostadin Damevski, Ayla Khan, Steven Parker - 3/28/2007, <br />modifications by Kostadin Damevski on several occasions since)</em></p>
+<p>&nbsp;</p>
+<h3>1 Introduction</h3>
+<p>This document contains a proposal to add event processing capabilities to the CCA specification. In this, our goal to provide a simple mechanism for event distribution that meets the needs of the HPC community, while adhering as much as possible to other commonly used frameworks and taking full advantage of their experience and ideas.<br /><br />The proposed event service specification is amenable to different implementation that may differ in the semantics that they provide. The basic capabilities of the event service that should be provided by all implementations are discussed in Section 2, while possible extensions to provide slightly different capabilities are mentioned in Section 3. Some implementation issues are mentioned in Section 4.<br /><br /></p>
+<h3>2 Basic Capabilities of the Event Service Specification</h3>
+<h3>2.1 Event Service</h3>
+<p>We propose a “publish-subscribe” model, similar to the one used in the Message Oriented Middleware (MOM) domain. At the heart of most MOM is a system that provides a hierarchy of topics on which events can be sent (publishing to a topic) and or received (subscribing to a topic).&nbsp; <br /><br />At the core of the event system is the event service. This service is responsible for organizing the namespace of topics, setting and enforcing event policies, and maintaining the resources needed for event distribution. This service is based on two separate interfaces (<em>PublisherEventService</em> and <em>SubscriberEventService</em>) to differentiate the methods that ought to be called by an event publisher from those called by a subscriber. The event service guarantees delivery of an event to all components who are subscribers to this event at the time of delivery (when the event service's <em>processEvents</em> method is executed)<br /><br />Processing events need to be handled either asynchronously or synchronously. For asynchronous event handling, a process or threads needs to be available that will take care of event processing. In the synchronous case, a thread will yield in order to allow events to be processed. Threads are processed using the <em>processEvents</em> method, which flushes all events queued in the event service to the subscribers.</p>
+</div>
+<div align="left">
+<h3>2.2 Topic</h3>
+<p>Topic hierarchy organization is analogous to a file system structure. This hierarchy, which allows topics so be grouped together, allows one to subscribe to topic groups as well as individual topics.</p>
+<p>Here is are two sample topics:</p>
+<pre>functions.signals.iteration
+functions.signals.currentStepDone.time</pre>
+<p>From this, we can tell that there is a topic group called functions and in that group, we have a sub-group of topics called signals. In this signals sub-group, there is a topic called iteration and another sub-group of topics called currentStepDone. Finally, in currentStepDone sub-group there is a topic called time. We can simply subscribe to any of these two topics&nbsp;by using their full name (e.g. <em>functions.signals.currentStepDone.time)</em> . However, to listen for all events on every topic in the functions.signals group, we can use a wildcard syntax. Namely, we use a “*” token to match either of the sample topics given above:</p>
+<pre>functions.signals.*</pre>
+<p>To match only one dot-delimited segment we use&nbsp; a “?” wildcard token. This would select only the <em>functions.signals.iteration</em> topic:</p>
+<pre>functions.signals.?</pre>
+<p>Even more flexibly, we subscribe to any group which has a subgroup called signals as follows:</p>
+</div>
+<pre>*.signals.*</pre>
+<div align="left">
+<p>It is important to note that topics are just channels in which events are sent. The topic does not bind what type of event can or can’t be sent on it. In this sense, the topics are merely named channels for events to be distributed, nothing more.</p>
+<h3>2.3 Subscription</h3>
+When we subscribe to one or more topics, we receive a subscription handle. This handle is used to manage the the subscription (e.g. register listener object(s)). <br /><br />
+<h3>2.4 Event</h3>
+CCA events have the following information:<br />
+<ul><li><strong>Message header:</strong> A message header should not be empty. It should contain basic metadata, which at the very least is the ComponentID of the publisher of the event. <br /></li></ul>
+<ul><li><strong>Message body:</strong> Stores the event payload.<br /></li></ul>
+The event header and body are represented by a CCA Typemap, which is stores key-value pairs of different datatypes (e.g. string, double, etc.).<br /><br />
+<h3>2.5 Reserved Topics</h3>
+The top level topic group cca is reserved for standard CCA events, such as those generated by the framework.<br /><br />
+<h3>3 Possible Extensions to the Basic Event System</h3>
+We encourage a number of implementations of the CCA event service in order to meet the needs of various groups of users and various platforms. However, in order to reduce the confusion that may be experienced by users that encounter more than one event service implementation, we demand the each implementation to be well documented. This section defines a number of directions in extending the basic event service capability.<br /><br />
+<h3>3.1 Event Service Extensions</h3>
+<strong>a) Constrain Resources</strong> by limiting the storage for events (perhaps by using some sort of a circular buffer)<br />This would prevent bloat in the resources the event service consumes, especially when the processEvents method is called very infrequently<br />caveat: May lead to dropped events<br /><br /><strong>b) Event Persistence</strong> - storing events for a certain period of time (perhaps by using a time to live mechanism for each event)<br />In our opinion, this is possible to do in two ways:<br />
+<ol><li>smarts in the event services - the event service maintains the knowledge of what events need to be delivered to which listeners <br /><em>caveat: may not scale well</em></li><li>smarts in the event listener - ssome listeners may receive the same event from the event service more than once. listener components need to be prepared for this possibility.<br /></li></ol>
+<br /><strong>c) Local Scale:</strong> This means that the events are only seen on a per component basis, only on a per-framework basis.<br /><br /><strong>d) Filtered Components: </strong>This allows for filters to be run on the events when they are sent or received. The filtering runs on the event-service resource, not on the resource that is sending or receiving the events.<br /><br />
+<h3>3.2 Extensions to Topic Management</h3>
+One possible model is to only allow components with the proper permissions to programmatically create topics. Another possibility is to tracks the resources associated with a CCA task or computation, and give each of these tasks their own set of resources (including queues, etc.). These tools will allow management of the topic space, logging and monitoring of the event system and management of topic queues.<br /><br />
+<h3>4 Issues in Implementation</h3>
+At the heart of the implementation is the process events call on the event service. This is when all event processing occurs. In a system that doesn’t allow for a dedicated resource to be scheduled to process events (a dedicated thread, component in a given framework, etc.) then the computational resources must yield explicitly by calling process events on the event service.<br />An efficient implementation of an event service is not easy. However, even simple implementations can be efficient if the following guidelines are followed:<br /><br />
+<ul><li>Do as little computation in event receivers as possible. The event receiver should note the appropriate state, store it, and return. Complex logic or other processing should be done elsewhere.</li><li>In systems with multiple threads, the task of event processing can be parallelized by using a work queue model. For each event that needs to be processed, it can be handed to a thread in the pool. When the processing is finished, the thread returns to the pool.</li><li>If a dedicated set of threads can be used for event processing, then each thread can maintain its own queue of events. When each event is sent, it is delegated to each thread in a round-robin or other scheduling mechanism. A more advanced mechanism could dynamically size the thread pool based on demand.<br /></li></ul>
+<br /><br /><br /></div>
+
+            
+        </div>
+    
+
+        <div class="relatedItems">
+    
+        
+            
+        
+    
+</div>
+    
+        <div class="visualClear"><!-- --></div>
+<div class="documentActions">
+    
+
+    <h5 class="hiddenStructure">Document Actions</h5>
+
+    <ul>
+    
+        <li id="document-action-sendto">
+            <a href="http://www.cca-forum.org/dev/working-groups/event-service-specification-proposal/event-service-overview/sendto_form"
+               title="">Send this</a>
+        </li>
+    
+    
+        <li id="document-action-print">
+            <a href="javascript:this.print();" title="">Print this</a>
+        </li>
+    
+
+    </ul>
+    
+
+    
+
+</div>
+
+<div class="reviewHistory" id="review-history">
+    
+</div>
+
+
+    
+
+                    </div>
+                    
+
+                    
+                    
+                      
+    
+
+
+                    
+                    
+
+                    <span id="contentBottomLeft"></span>
+                    <span id="contentBottomRight"></span>
+
+                  </div>
+
+                </div>
+
+              
+            </td>
+            
+
+            
+            
+            
+          </tr>
+        </tbody>
+      </table>
+      
+
+      <div class="visualClear" id="clear-space-before-footer"><!-- --></div>
+      
+      
+
+      
+
+        <div id="portal-footer">
+
+<!-- Added by David Bernholdt 2008-07-14 -->
+<!-- Printing of footer blocked by CSS, so this is not so useful 
+<p>
+URL: <span tal:omit-tag="" tal:content="context/absolute_url">this page</span>
+</p>
+-->
+<p>
+
+Copyright &copy; <span>2017</span>
+
+&nbsp;|&nbsp;
+<a href="http://www.ornl.gov/ornlhome/disclaimers.shtml">Privacy &amp; Security Notices</a>
+&nbsp;|&nbsp;
+<a href="http://www.cca-forum.org/dev/contact-info">
+  Feedback</a>
+</p>
+<!-- End of addition -->
+
+<!-- Commented out by David Bernholdt 2008-01-20
+<p>
+    <span i18n:translate="description_copyright" tal:omit-tag="">
+    The
+    <span i18n:name="plonecms" tal:omit-tag="">
+        <a href="http://plone.org" i18n:translate="label_plone_cms">Plone<sup>&reg;</sup> CMS &mdash; Open Source Content Management System</a>
+    </span>
+    is
+    <acronym title="Copyright" i18n:name="copyright" i18n:attributes="title title_copyright;">&copy;</acronym>
+    2000-<span i18n:name="current_year"
+               tal:omit-tag=""
+               tal:define="now modules/DateTime/DateTime"
+               tal:content="now/year" />
+    by the
+    <span i18n:name="plonefoundation" tal:omit-tag="">
+        <a href="http://plone.org/foundation" i18n:translate="label_plone_foundation">Plone Foundation</a></span>
+    et al.
+    </span>
+</p>
+
+<p>
+    <span i18n:translate="description_trademark" tal:omit-tag="">
+    Plone<sup>&reg;</sup> and the Plone logo are registered trademarks of the
+        <span i18n:name="plonefoundation" tal:omit-tag="">
+            <a href="http://plone.org/foundation" i18n:translate="label_plone_foundation">Plone Foundation</a></span>.
+    </span>
+
+    <span i18n:translate="description_license" tal:omit-tag="">
+    Distributed under the
+        <span i18n:name="license" tal:omit-tag="">
+            <a href="http://creativecommons.org/licenses/GPL/2.0/" i18n:translate="label_gnu_gpl_licence">GNU GPL license</a></span>.
+    </span>
+</p>
+-->
+
+</div>
+
+<div id="portal-colophon">
+      
+
+      
+
+      <div class="colophonWrapper">
+<!-- Commented out by David Bernholdt 2008-07-14
+      <ul>
+        <li>
+          <a href="http://plone.org"
+             title="This site was built using Plone CMS, the Open Source Content Management System. Click for more information."
+             i18n:attributes="title title_built_with_plone;"
+             i18n:translate="label_powered_by_plone">
+            Powered by Plone</a>
+        </li>
+        <li>
+          <a href="http://validator.w3.org/check/referer"
+             title="This site is valid XHTML."
+             i18n:attributes="title title_valid_xhtml;"
+             i18n:translate="label_xhtml">
+            Valid XHTML</a>
+        </li>
+        <li>
+          <a href="http://jigsaw.w3.org/css-validator/check/referer&amp;warning=no&amp;profile=css3&amp;usermedium=all"
+             title="This site was built with valid CSS."
+             i18n:attributes="title title_built_with_css;"
+             i18n:translate="label_css">
+            Valid CSS</a>
+        </li>
+        <li>
+          <a href="http://www.section508.gov"
+             title="This site conforms to the US Government Section 508 Accessibility Guidelines."
+             i18n:attributes="title title_section_508;"
+             i18n:translate="label_section_508">
+            Section 508</a>
+        </li>
+        <li>
+          <a href="http://www.w3.org/WAI/WCAG1AA-Conformance"
+             title="This site conforms to the W3C-WAI Web Content Accessibility Guidelines."
+             i18n:attributes="title title_wcag_conformance;"
+             i18n:translate="label_wcag">
+            WCAG</a>
+        </li>
+      </ul>
+-->
+      </div>
+
+    </div>
+
+
+
+      
+
+      <div class="visualClear"><!-- --></div>
+    </div>
+<div id="kss-spinner"><img alt=""
+                           src="../../spinner.gif" /></div>
+</body>
+</html>
+
+

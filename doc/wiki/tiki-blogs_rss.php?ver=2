@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="Tiki CMS/Groupware via FeedCreator 1.7.2" -->
+<?xml-stylesheet href="https://www.cca-forum.org/wiki/lib/rss/rss-style.css" type="text/css"?>
+<?xml-stylesheet href="https://www.cca-forum.org/wiki/lib/rss/rss20.xsl" type="text/xsl"?>
+<rss version="2.0">
+    <channel>
+        <title>Tiki RSS feed for weblogs</title>
+        <description></description>
+        <link>https://www.cca-forum.org/wiki/tiki-blogs_rss.php?ver=2</link>
+        <lastBuildDate>Tue, 12 Sep 2017 10:08:13 +0100</lastBuildDate>
+        <generator>Tiki CMS/Groupware via FeedCreator 1.7.2</generator>
+        <image>
+            <url>https://www.cca-forum.org/wiki/img/tiki.jpg</url>
+            <title>tikiwiki logo</title>
+            <link>https://www.cca-forum.org/wiki/tiki-view_articles.php</link>
+            <description><![CDATA[Feed provided by https://www.cca-forum.org/wiki/tiki-view_articles.php. Click to visit.]]></description>
+        </image>
+        <language>en-us</language>
+    </channel>
+</rss>

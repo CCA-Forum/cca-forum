@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : BabelBuild </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=BabelBuild.html">BabelBuild</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Building babel guidelines</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+What goes into babel limits what can come out of babel-dependent<br />
+packages like cca-spec-babel and Ccafe on the other end of long<br />
+build processes. The key to most CCA success is getting babel<br />
+built correctly. Babel is normally built by:<br />
+<div class="simplebox">./configure --prefix=/where/you/want/it/installed {other options}<br />
+make install</div><br />
+See also: README and INSTALL from the babel source code.<br />
+Often we discover, in the end, that the sanest way to<br />
+handle babel is to install several different configurations<br />
+of it, each with a different prefix.<br />
+<br />
+The devil is in the other options details and in environment<br />
+variables. If you need fully static-linked executables<br />
+(often needed for performance or profiling runs or weird HPC<br />
+queue systems), you should add<br />
+<div class="simplebox">--enable-pure-static-runtime --disable-shared</div> to the configure<br />
+options. This has the side effect of disabling dynamic loading<br />
+and thus python and java code.<br />
+We will now discuss java, python, mpi, 64 bit-ness, and the<br />
+more traditional performance-oriented languages.<br />
+<br />
+<br />
+You <b>must have a java compiler</b> on your system.<br />
+Babel is implemented in Java. A 1.4 Java is best, while java 1.3<br />
+will work but limits the command-line options available to<br />
+babel which in turn may limit how you organize your code generation.<br />
+Specifically, older Java may not have the regex package used<br />
+for wildcard arguments to babel.<br />
+<br />
+Babel also has an <b>optional Java binding</b> ; this binding<br />
+allows java code to be included in multi-language executables.<br />
+If you do not need java support in your programs, simply<br />
+add <div class="simplebox">--disable-java</div> to the babel configure.<br />
+<br />
+Babel has a <b>python binding</b>. But it will not be built in<br />
+most unix environments because it <b>requires the Numeric library</b><br />
+for handling arrays and it <b>requires a libpython.so</b>. So, before building babel,<br />
+if you want python support go get Numeric and a libpython.so and install<br />
+it in your python environment. If you do not need python,<br />
+simply add <div class="simplebox">--disable-python</div><br />
+<br />
+Numeric is a bit of a football<br />
+in the python world. As of this writing, Numeric source could be<br />
+found at <a class="wiki"  href="http://sourceforge.net/project/showfiles.php?group_id=1369&amp;package_id=1351">Source Forge</a>. Building and installing Numeric is simple, though it<br />
+will require root privileges on most systems. Just follow the<br />
+README instructions. A note for the HPCers: Numeric has the<br />
+ability to use your system's optimized BLAS and LAPACK.<br />
+If you want this feature, you must edit the setup.py before<br />
+running it. The README explains this as well. By default you<br />
+get a simple BLAS replacement implementation that comes with numeric.<br />
+<br />
+A shared libpython.so can be obtained by rebuilding python<br />
+(but who wants to do that) with some additional options.<br />
+Alternatively on most Linux environments, you can make a<br />
+libpython.so by taking this Makefile code and adjusting/applying<br />
+it to your system. You may need to be root to make install.<br />
+<div class="simplebox"><br />
+PYROOT=/usr<br />
+INSTALLROOT=/usr<br />
+SRCLIB=$(PYROOT)/lib/python2.2/config/libpython2.2.a<br />
+<br />
+build:  $(SRCLIB)<br />
+<tt>        mkdir -p scratch</tt><br />
+<tt>        (cd scratch; ar x $(PYROOT)/lib/python2.2/config/libpython2.2.a)</tt><br />
+<tt>        (cd scratch; g++ -shared -o libpython2.2.so -lpthread -lutil -ldl *.o)</tt><br />
+<br />
+install: scratch/libpython2.2.so<br />
+<tt>        mkdir -p $(INSTALLROOT)/lib/python2.2/config</tt><br />
+<tt>        install -m 755 scratch/libpython2.2.so $(INSTALLROOT)/lib</tt><br />
+<tt>        install -m 755 scratch/libpython2.2.so $(INSTALLROOT)/lib/python2.2/config</tt><br />
+</div><br />
+This makefile fragment works on the assumption that libpython2.2.a<br />
+was compiled with the PIC options. This is usually the case<br />
+with python and thus all we need to do is rearchive the .a<br />
+into the .so format.<br />
+<br />
+Babel (as of version 0.10.2) does not use or require MPI.<br />
+However, down-stream CCA codes often do. The easiest way<br />
+to correctly build all MPI codes down stream from babel is to<br />
+tell babel to use the mpi-supporting compilers or compiler wrappers<br />
+that come with most MPI implementations. Babel's autoconf/automake-based build will not use the MPI compilers by default. They key to getting the right compilers is to<br />
+set the corresponding environment variables. Most commonly, the<br />
+following environment variables will help babel get it right<br />
+if set before running configure and installing babel.<br />
+<div class="simplebox"><br />
+<tt>  CC          MPI C compiler command</tt><br />
+<tt>  F77         MPI Fortran 77 compiler command</tt><br />
+<tt>  CXX         MPI C++ compiler command</tt><br />
+<tt>  FC          MPI Fortran 90 compiler command</tt><br />
+</div><br />
+On 64 bit platforms, and often with Fortran compilers, there<br />
+are compiler flags that control the memory (byte) sizes of<br />
+pointers, floating point, and integer variables. To work correctly,<br />
+these flags must be used consistently throughout the build process.<br />
+Tests in the babel configuration process compile code to check<br />
+these sizes, so if a size-adjusting flag is going to be used<br />
+in later code, babel must be configured to match. The following<br />
+environment variables will help babel get it right if set<br />
+before running configure and installing babel. These flags may<br />
+also be needed to control MPI compilation.<br />
+<div class="simplebox"><br />
+<tt>  CFLAGS      C compiler flags</tt><br />
+<tt>  LDFLAGS     linker flags, e.g. -L&lt;lib dir&gt; if you have libraries in a nonstandard directory &lt;lib dir&gt;</tt><br />
+<tt>  FFLAGS      Fortran 77 compiler flags</tt><br />
+<tt>  CXXFLAGS    C++ compiler flags</tt><br />
+<tt>  FCFLAGS     Fortran compiler flags</tt><br />
+</div><br />
+After babel is installed, these variables do not need to remain<br />
+in the environment. Down-stream tools will query babel-config<br />
+to discover what compilers and options babel was installed with.<br />
+<br />
+FORTRAN 90 support in babel requires the CHASM interop library<br />
+available from source forge and Los Alamos National Labs.<br />
+If you don't need fortran90 support, simply skip it when configuring babel:<br />
+<div class="simplebox">--disable-fortran90</div><br />
+Otherwise, you may need to additionally specify the CHASMPREFIX<br />
+environment variable to help babel locate chasm.<br />
+<br />
+Additional help on environment variables that influence<br />
+the babel build and additional switches can be obtained by<br />
+reading the output of:<br />
+<br />
+<div class="simplebox">./configure --help</div><br />
+in the babel source directory.<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Monday 04 of April, 2005 [21:39:01 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=BabelBuild
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

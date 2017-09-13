@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Parker Dataflow Notes </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Parker+Dataflow+Notes.html">Parker Dataflow Notes</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Thoughs on dataflow support for CCA from Steve Parker</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<i>Note: This discussion originally came up in the context of the CCA2 proposal, but it seemed worth capturing them here whether or not they appear in the proposal. The original message is from Steve Parker and was transcribed into the wiki by David Bernholdt.</i><br />
+<br />
+There are several ways to make CCA more directly support dataflow. They are listed here from smallest amount of work to largest amount of work, and also from smallest impact to largest.<br />
+<br />
+1. Create a standard set of interfaces for dataflow applications. This would not require any support from existing frameworks.<br />
+<br />
+2. Follow the design of  Corba and add two more port types in addition to uses and provides: publishes/consumes.  This would require some support in the infrastructure but would also allow the infrastructure to present this view to the user.<br />
+<br />
+Both of these are &quot;directorless&quot; dataflow - i.e. where each component internally decides what it will and won't do.  However, it is often more valuable to have a director involved that controls which components will execute at any given point in time.  This avoids redundant computation and facilitates research management.<br />
+<br />
+3. Use the standard dataflow interfaces combined with a set of standard interfaces for directors/controllers.  No framework changes would be required, but it would require several standard &quot;director&quot; components.<br />
+<br />
+4. Combine the Corba design above with the director component design of Ptolemy. This would make CCA look a lot like Ptolemy except it wouldn't be tied to just Java and Ptolemy doesn't have the method invocation semantics like Ptolemy does.   This would require a little but of support from the frameworks but would also require a number of &quot;standard&quot; director components.  Some director components may require the use of threads.<br />
+<br />
+The most involved one (#4) would make CCA pretty powerful.   As always, having a compelling use case would help calibrate the appropriate level of effort.<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+  last modification: Monday 24 of October, 2005 [21:50:06 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Parker%20Dataflow%20Notes
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

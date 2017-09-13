@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Toolkit </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="../toolkit/index.html">Toolkit</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">CCA Toolkit</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<a name='_CCA_Toolkit'></a><h1> CCA Toolkit</h1>
+<br />
+This is an information page for the CCA toolkit, a group of components that members of the CCA working group have produced and<br />
+maintain for parallel computations and distributed computing.<br />
+<br />
+If you are starting from scratch to build a new CCA component, then Bocca is definitely the way to go.   See the <a class="wiki"  href="../tutorials/index.html#sources">CCA tutorial</a>, in either live or downloadable form, for complete step-by-step instructions for its use.  The standard for installing toolkit packages is now the <a title="CCA Component Installation Standard" href='tiki-index.php%3Fpage=bocca+package+installation.html' class='wiki'>bocca package installation</a> standard, an update of the 2004 toolkit BOF standards (now deprecated) for installs and naming.  If your component does not use Bocca, that's OK, but it should support these standards as well as some configuration and build standards.  Please see the <a title="Building Components "By Hand"" href='tiki-index.php%3Fpage=Component+Builders+Guide+Sans+Bocca.html' class='wiki'>Component Builders Guide Sans Bocca</a>. Currently contributors to the toolkit should make their component compatible with the 0.6.5 version of the <a class="wiki"  href="tiki-index.php%3Fpage_ref_id=3.html">CCA Tools</a> tool chain.<br />
+<br />
+Here are a list of components in the toolkit project. Not yet packaged means the component works and has CCA interfaces but has not yet been added to the toolkit repository. Application code exists means the underlying application exists but does not yet have CCA interfaces. In Mind means none of the code is yet available, either interface or application level code. In Design means it is still having interfaces developed, generally for a component that requires significant numbers of people to agree upon it. Some of these packages may evolve further as the applications users indicate needs and negotiate changes in interfaces.<br />
+<br />
+Potential applications under consideration:<br />
+<ol><li> Simple parallel linear PDE solver in parallel (possibly Python scripting, simple mesh, Epetra, possibly CUMULVS)
+</li><li> Molecular dynamics problem (possibly Python scripting, global arrays, TAO)
+</li><li>  Simple method of lines solver (CVODE, some linear solver, some viz component)
+</li></ol>
+<br />
+<div class="titlebar">CCA Toolkit: Numerical Components</div>
+<table class="wikitable"><tr><td class="wikicell" ><b>Component</b></td><td class="wikicell" ><b>Derived from</b></td><td class="wikicell" ><b>Contact</b></td><td class="wikicell" ><b>Institution</b></td><td class="wikicell" ><b>Status</b></td><td class="wikicell" ><b>Due Date</b></td></tr><tr><td class="wikicell" >Parallel Visualization</td><td class="wikicell" >CUMULVS</td><td class="wikicell" >Jim Kohl</td><td class="wikicell" >ORNL</td><td class="wikicell" >packaged (needs documentation)</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Distributed Array Data Model</td><td class="wikicell" >Global Arrays</td><td class="wikicell" >Manojkumar Krishnan</td><td class="wikicell" >PNNL</td><td class="wikicell" >Done.</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Sparse Linear Solvers</td><td class="wikicell" >Trilinos/PetSC</td><td class="wikicell" >Randall Bramley</td><td class="wikicell" >Indiana U</td><td class="wikicell" ><a class="wiki"  href="http://www.cs.indiana.edu/~fangliu/lsi/intro.html">availibility</a> </td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Unstructured Mesh</td><td class="wikicell" >TSTT participants</td><td class="wikicell" >Lori Freitag</td><td class="wikicell" >SciDAC</td><td class="wikicell" >Not yet packaged</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Perf. Measurement</td><td class="wikicell" >TAU</td><td class="wikicell" >Sameer Shende</td><td class="wikicell" >Univ. of Oregon</td><td class="wikicell" ><a class="wiki"  href="http://www.cs.uoregon.edu/research/paracomp/tau/cca">available</a></td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Dist. Array Descriptor</td><td class="wikicell" >Home Brew</td><td class="wikicell" >David Bernholdt</td><td class="wikicell" >ORNL</td><td class="wikicell" >In design</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Optimization</td><td class="wikicell" >TAO</td><td class="wikicell" >Lois Curfman McInnes</td><td class="wikicell" >ANL</td><td class="wikicell" >Done.</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Structured Mesh</td><td class="wikicell" >GrACE</td><td class="wikicell" >Jaideep Ray</td><td class="wikicell" >SNL, Rutgers</td><td class="wikicell" >Version 0.9.8, <a class="wiki"  href="http://cca-forum.org/%7Ejaray/gracecomponent">available</a></td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Python Scripting</td><td class="wikicell" >Babel</td><td class="wikicell" >Wael Elwasif</td><td class="wikicell" >ORNL</td><td class="wikicell" >In design</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Serial IO/Data</td><td class="wikicell" >netCDF</td><td class="wikicell" >Jay Larson</td><td class="wikicell" >ANL</td><td class="wikicell" >Not yet packaged.</td><td class="wikicell" >April 05</td></tr><tr><td class="wikicell" >
+
+Parallel IO/Data</td><td class="wikicell" >PnetCDF</td><td class="wikicell" >Jay Larson</td><td class="wikicell" >ANL</td><td class="wikicell" >In development.</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Ordinary Differential Equation Solver</td><td class="wikicell" >CVODE</td><td class="wikicell" >Ben Allan</td><td class="wikicell" >SNL</td><td class="wikicell" ><a class="wiki"  href="../~baallan/sundials/index.html">available</a></td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Dense Linear Algebra</td><td class="wikicell" >ScaLAPACK</td><td class="wikicell" >Jack Dongarra</td><td class="wikicell" >U. Tennessee</td><td class="wikicell" >In development.</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Dense Linear Algebra</td><td class="wikicell" >LAPACK</td><td class="wikicell" >Jack Dongarra</td><td class="wikicell" >U. Tennessee</td><td class="wikicell" >In development.</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Linear and Nonlinear Solvers</td><td class="wikicell" >TOPS</td><td class="wikicell" >Lois Curfman McInnes</td><td class="wikicell" >SciDAC</td><td class="wikicell" >In development.</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Viz Component</td><td class="wikicell" >SciRUN2-based</td><td class="wikicell" >Steve Parker</td><td class="wikicell" >Univ. Utah</td><td class="wikicell" >Prototype exists</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >
+
+Iterative Methods for Sparse Linear Systems</td><td class="wikicell" >SPARSKIT2</td><td class="wikicell" >Masha Sosonkina</td><td class="wikicell" >AmesLab SCL</td><td class="wikicell" > <a class="wiki"  href="http://www.scl.ameslab.gov/Projects/Sparskit-CCA/">available</a></td><td class="wikicell" > </td></tr></table>
+
+<br />
+<br />
+<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=rob.html' >rob</a>
+  last modification: Wednesday 21 of January, 2009 [16:00:55 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=rob.html' >rob</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Toolkit
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

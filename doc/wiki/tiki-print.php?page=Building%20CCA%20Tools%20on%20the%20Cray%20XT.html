@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Building CCA Tools on the Cray XT </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Building+CCA+Tools+on+the+Cray+XT.html">Building CCA Tools on the Cray XT</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Instructions for building the CCA Tools on Cray XT systems, such as Jaguar (ORNL) and Franklin (NERSC).</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Many aspects of HPC systems at Leadership Class Facilities (LCF) require special configurations for building the CCA Tools.  This page includes example commands and handy downloadable shell scripts for configuring and building <a title="Babel Discussion" href='tiki-index.php%3Fpage=Babel.html' class='wiki'>Babel</a>, the <a title="CCA Specification And Process" href='tiki-index.php%3Fpage=CCA+Specification.html' class='wiki'>CCA Specification</a>, Ccaffeine (<a title="Ccaffeine Overview" href='tiki-index.php%3Fpage=Ccafe.html' class='wiki'>Ccafe</a>), and <a title="Bocca: a Component and Application Generator for CCA" href='tiki-index.php%3Fpage=Bocca.html' class='wiki'>Bocca</a> on the Cray XT systems at ORNL (Jaguar) and NERSC (Franklin).<br />
+<br />
+<div class="titlebar"> Basic File/Directory Structure and Custom Script Configuration </div>
+<br />
+<b>Note:</b> Each of the scripts linked from this page will require _modification_ to set the filesystem paths and directories where the CCA Tools' source code repositories and installed binaries should go.  This organization is based on a typical installation for LCF machines, where the source code for the CCA Tools and user application codes is stored in the user's _home area_, whereas the actual binaries/libraries for execution on the back-end compute nodes must be stored in a _distinct_ set of directories on the LCF system's _scratch area_ (which is the _only_ filesystem visible from the compute nodes for actual production runs!).  Aside from the compute node accessibility requirements, each filesystem area typically has its own disk usage and/or inode quotas, and you can't run any jobs if you surpass your quotas, so putting everything together on one filesystem probably won't work.  :-)<br />
+<br />
+The key variables that you will need to modify are:<br />
+<br />
+<ul><li> &quot;top&quot; = the top level _home area_ directory where the CCA Tools source code directories are stored.
+</li></ul>
+<br />
+<ul><li> &quot;scratch&quot; = the main directory in the _scratch area_ where the installed binaries and libraries should be installed.
+</li></ul>
+<br />
+Remember, you must properly set these variables in each of the scripts below.  For consistency (and hopefully clarity), the remainder of this documentation also refers to these variables as a generic means for indicating various filesystem directories.<br />
+<br />
+Btw, if you don't want to mess with the scripts/settings, then please just ignore them and manually type the commands below.  :-D<br />
+<br />
+<div class="titlebar"> Source Code Repositories </div>
+<br />
+Because the LCF machines are invariably &quot;bleeding edge&quot; systems, the standard &quot;stable&quot; CCA Tools tar balls and contractor builds do not (as yet) work &quot;out of the box&quot; for these systems.  That may change, as the special instructions on this wiki page are incorporated into the CCA contractor build specification.  But for now, the suggested build approach is to check out the source code for the CCA Tools straight from the various repositories, requiring appropriate login accounts on &quot;cca-forum.org&quot; and &quot;sourceforge.org&quot;.<br />
+<br />
+<div class="titlebar"> VBuild Directories </div>
+<br />
+Because file storage space is typically limited on LCF machines, a VBuild structure is used in the instructions here (i.e. in most cases we don't build the CCA Tools in the same directory where the source was checked out, but instead configure and build the tools over on the scratch filesystem).  Further, because LCF machines regularly clean, whack, delete, rebuild and otherwise purge their scratch areas, we recommend storing any/all of these scripts in some nice directory in your _home area_, which is hopefully more stable (and backed up :-)) and then linking the scripts into the VBuild directories where you configure and build stuff.<br />
+<br />
+<div class="titlebar"> Building Babel </div>
+<br />
+To check out the latest version of the <a title="Babel Discussion" href='tiki-index.php%3Fpage=Babel.html' class='wiki'>Babel</a> subversion repository:<br />
+<br />
+<tt>         <div class="simplebox">cd $top</tt><br />
+<tt>         svn co svn+ssh://cca-forum.org/home/svn/babel/trunk</tt><br />
+<tt>         mv trunk babel</tt><br />
+<tt>         cd babel</div></tt><br />
+Next, you must configure Babel for use on the _compute_ nodes of the Cray XT.<br />
+This can be done using the provided <a class="wiki"  href="tiki-download_wiki_attachment.php%3FattId=63&amp;page=Building%2520CCA%2520Tools%2520on%2520the%2520Cray%2520XT">doconf.babel.compute</a> script.<br />
+<br />
+For the script-urally challenged, these are the effective (csh) commands that the script executes:<br />
+<br />
+<tt>         <div class="simplebox">setenv CC &quot;cc&quot;</tt><br />
+<tt>         setenv CFLAGS &quot;-g&quot;    # optional...</tt><br />
+<br />
+<tt>         setenv CXX &quot;CC&quot;</tt><br />
+<tt>         setenv CXXFLAGS &quot;-g&quot;    # optional...</tt><br />
+<br />
+<tt>         setenv F77 &quot;ftn&quot;</tt><br />
+<tt>         setenv FFLAGS &quot;-g&quot;    # optional...</tt><br />
+<br />
+<tt>         setenv CPP &quot;gcc -E&quot;</tt><br />
+<tt>         setenv FC &quot;ftn&quot;</tt><br />
+<tt>         setenv FCFLAGS &quot;-g&quot;    # optional...</tt><br />
+<br />
+<tt>         configure --prefix=$scratch/install --target=x86_64-cray-cnl \</tt><br />
+<tt>         --disable-sidlx --without-sidlx \</tt><br />
+<tt>         --disable-shared --enable-static --enable-pure-static-runtime=yes \</tt><br />
+<tt>         --enable-c=$CC --enable-cxx=$CXX \</tt><br />
+<tt>         --enable-fortran=$F77 --with-F90-vendor=PGI \</tt><br />
+<tt>         --disable-python --disable-java</tt><br />
+<br />
+<tt>         make</tt><br />
+<br />
+<tt>         make install    # not optional...!</div></tt><br />
+This should give you a functional Babel installation.<br />
+<br />
+<div class="titlebar"> Building the CCA Specification </div>
+<br />
+Blah blah blah...<br />
+<br />
+<div class="titlebar"> Building the Ccaffeine Framework </div>
+<br />
+Blah blah blah...<br />
+<br />
+<div class="titlebar"> Building Bocca </div>
+<br />
+Blah blah blah...<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=jeeembo.html' >jeeembo</a>
+  last modification: Friday 01 of May, 2009 [21:13:38 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=jeeembo.html' >jeeembo</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Building%20CCA%20Tools%20on%20the%20Cray%20XT
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

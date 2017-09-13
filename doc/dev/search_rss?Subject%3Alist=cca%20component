@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+         xmlns="http://purl.org/rss/1.0/">
+
+
+
+
+    
+
+
+
+<channel rdf:about="https://www.cca-forum.org/dev/search_rss">
+  <title>CCA Forum</title>
+  <link>https://www.cca-forum.org/dev</link>
+  
+  <description>
+    
+            These are the search results for the query, showing results 1 to 3.
+        
+  </description>
+  
+  
+  
+  
+  <image rdf:resource="https://www.cca-forum.org/dev/logo.jpg"/>
+
+  <items>
+    <rdf:Seq>
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/c1"/>
+        
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/c2"/>
+        
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/petsc"/>
+        
+    </rdf:Seq>
+  </items>
+
+</channel>
+
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/c1">        <title>Parallel Cartesian Grid</title>        <link>https://www.cca-forum.org/dev/software/components/c1</link>        <description>A Parallel Rectilinear Grid Component</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>bek</dc:creator>        <dc:rights></dc:rights>                    <dc:subject>cca component</dc:subject>                <dc:date>2009-01-14T22:51:36Z</dc:date>        <dc:type>Page</dc:type>    </item>
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/c2">        <title>SPARSKIT Suite</title>        <link>https://www.cca-forum.org/dev/software/components/c2</link>        <description>SPARSKIT suite of components from SPARSKIT2.</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>bek</dc:creator>        <dc:rights></dc:rights>                    <dc:subject>cca component</dc:subject>                <dc:date>2009-01-14T22:51:36Z</dc:date>        <dc:type>Page</dc:type>    </item>
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/petsc">        <title>TOPS/PETSc</title>        <link>https://www.cca-forum.org/dev/software/components/petsc</link>        <description> TOPS Interfaces and Implementation Based on PETSc</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>rob_armstrong</dc:creator>        <dc:rights></dc:rights>                    <dc:subject>cca component</dc:subject>                <dc:date>2009-01-21T19:00:10Z</dc:date>        <dc:type>Page</dc:type>    </item>
+
+
+
+</rdf:RDF>

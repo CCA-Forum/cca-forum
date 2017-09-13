@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CCARB 2008-01-10 </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CCARB+2008-01-10.html">CCARB 2008-01-10</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar"> 2008 Jan 10 (Thursday)  10 am Pacific Time </div>
+<br />
+<a name='_Homework'></a><h1> Homework</h1>
+Review the Following<br />
+<ol><li> <a title="Motion53" href='tiki-index.php%3Fpage=Motion53.html' class='wiki'>Motion53</a> which describes process, task forces, and CCARB
+</li><li> Gary's <a class="wiki"  href="http://www.cca-forum.org/download/mtg/2007-10/TopTenReasonsCCAIsntReady.ppt">Top 10 List</a>
+</li><li> Ben's Response (email sent 11 Dec 2007) see Appendix A, below
+</li><li> <a title="Development of features in the CCA specification" href='tiki-index.php%3Fpage=CCA+Specification+Development.html' class='wiki'>CCA Specification Development</a> an older page found in this wiki that needs refreshing
+</li></ol>
+<br />
+<a name='_Agenda'></a><h1> Agenda</h1>
+<br />
+<ol><li> Decide on default time/day of month for telecons. (1st Thursday at 10am?)
+</li><li> Generate Revised Top 10 list for Denver Meeting.
+</li><li> Decide where to place EventServices
+</li><li> Develop plan to revise entire &quot;CCA Specification&quot; subtree of the wiki.
+</li></ol>
+<br />
+<a name='_Minutes'></a><h1> Minutes</h1>
+<br />
+<ul><li> action item- exception rethink wg chair - TBD
+</li><li> action item- mpi, cmdline wg chair - Allan
+</li><li> action item- event service wg chair - draft Parker
+</li><li> tabled item: iiop, distributed fwks, tuning abstractfwk: need more community work first.
+</li><li> action item: attempt to get ccarb in menu list - Allan
+</li><li> action item: report to forum - Gary
+</li></ul>
+<br />
+<a name='_Appendix_A_Ben_s_email_'></a><h1> Appendix A: (Ben's email)</h1>
+<br />
+<div class="simplebox"><pre>
+10 is now enshrined in approved process docs.
+ 9 is now done.
+ 8 The topic of exceptions, what kinds there are, and how they
+   should be distinguished is fine. The principal argument for bringing it
+   up (which is that an enum is somehow &quot;not OO enough&quot;) is misplaced
+   in that only 1 of the N languages supported with the CCA
+   specification feature a &quot;natural enough&quot; casting/ex.catching mechanism.
+   (I have evidence for that statement resulting from bocca).
+   Indeed in over half of the languages, (c,f77,f90,python) catching/casting is
+   downright painful. The idea of rederiving CCA exception from
+   one of the sidl bases merits consideration-- it's a hole in
+   the spec that user code cannot create and throw a ccaexception
+   within the specification (currently) unless they do a full
+   implementation of the ccaexception specification.
+ 7 Event, option processing (commandline) and mpi service.
+   All now unblocked at ccarb step. just need to schedule them
+   through the process.
+ 6 Queueing on 7.
+ 5 Where to begin:
+   - The specification already supports BasicParameterPort (Just 3 functions).
+   - Tutorial-style app examples have been created and posted
+   for both PP and BPP in f90 and c++, and they are not that complex.
+   - Having many functions in the spec makes for fewer, more precise calls
+   being needed in the application code.
+   - Ccaffeine has been brought into compliance with BPP; I suggest this
+   issue be closed unless there is concensus that CCA should be
+   investigating the &quot;bean&quot; pattern of getters/setters from java; now
+   that bocca exists, beanism would be feasible to support.
+   - The metric of &quot;function count&quot; as shown in the PPT is *exactly*
+   what one expects (and sees) in any data-holding interface; cca
+   TypeMap has roughly 2N functions (where N is the number of sidl
+   primitives supported). ParameterPortFactory adds another 2N functions
+   that serve to set and query metadata (help, string name, bounds, etc
+   about the elements of a typemap). We are dealing with multiplicity
+   of primitives, not vast complexity.
+ 4 Already done. What is needed is documentation.
+ 3 A sidl file is not a specification for human consumption. The cca
+   sidl file should be
+   an artifact that can be generated from a specification for humans.
+   I suggest that open-source specifications for humans are produced
+   with tex. All Gary's comments about inconsistencies and other nits
+   are very well founded. Where the inconsistencies are in the comments
+   not matching the argument names on methods, I have tried to make the
+   comments match the methods when I notice it.
+   SIDL, even with proposed contract extensions, is not sufficient to
+   specify software behavior of the sort required in the CCA
+   specification.
+ 2 All the proposed words (interoperability, compatibility) as proposed
+   imply babel/sidl conformance directly. This is a non-starter for
+   many. However, for at least the babel case appropriate testing
+   for compliance could begin as soon as a real specification document
+   is written.
+ 1 The manual, if one wants to call it that, is already in progress in
+   the form of documenting bocca and its uses. Queueing on the spec
+   being finished.
+</pre></div><br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=kumfert.html' >kumfert</a>
+  last modification: Thursday 10 of January, 2008 [18:10:12 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CCARB%202008-01-10
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : HOWTO: Static Ccaffeine Framework </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=HOWTO%253A+Static+Ccaffeine+Framework.html">HOWTO: Static Ccaffeine Framework</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Instructions for assembling a Static Ccaffeine Framework with Built-in Application Components.</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+The purpose of these instructions is to build a &quot;static&quot; CCA framework,<br />
+complete with pre-loaded &quot;built-in&quot; application components, using the Ccaffeine<br />
+framework and your own application-specific CCA components.<br />
+<br />
+The only reason you would likely ever want to do this is if you are running on some<br />
+HPC system (like the Cray XT or IBM BlueGene) which doesn't support &quot;dynamic loading&quot;<br />
+of components as shared library objects, as is otherwise typically done for run-time<br />
+loading of CCA components, or in the case where you are doing some other sort of<br />
+software testing or analysis which requires the use of a statically linked executable.<br />
+<br />
+Otherwise, you probably don't need to do this.  :-D<br />
+<br />
+But if you're one of those &quot;lucky&quot; souls, please read on...<br />
+<br />
+<hr />
+<br />
+<div class="titlebar">Step 0:</div>
+<br />
+This process requires an initial bootstrapping stage: the user should build a &quot;clean&quot;<br />
+(i.e. unmodified) version of the usual CCA tool chain, including Babel, a version<br />
+of the CCA Specification, Ccaffeine and Bocca (if being used).  You don't necessarily<br />
+have to use any special version of this initial tool chain - it could be the contractor<br />
+build, or from tar ball, subversion repositories, etc.<br />
+<br />
+Once the basic CCA Tools are built and installed on your system, then you must build<br />
+your application-specific CCA components using these tools.  If you are using Bocca,<br />
+just do the normal project build and install, and you will produce everything you need.<br />
+If you are _not_ using Bocca, then be sure to build &quot;Static&quot; versions of all your components<br />
+(in other words, you must build libFoo.a instead of or in addition to libFoo.so... :-).<br />
+<br />
+<div class="titlebar">Step 1:</div>
+<br />
+Next, to build a Static Ccaffeine framework, you will need a copy of the latest and<br />
+greatest version of the Ccaffeine source code, with all the necessary extensions for<br />
+static building...  So, (at least as of May 2009) this means using the subversion<br />
+source repository, instead of any other &quot;stable&quot; tar balls or contractor builds.<br />
+<br />
+To obtain this latest version of the Ccaffeine framework, start by<br />
+checking out the source from the new sourceforge repository:<br />
+<br />
+<tt>        <div class="simplebox">svn co https://cca-forum.svn.sourceforge.net/svnroot/cca-forum/ccafe/trunk/ccaffeine</div></tt><br />
+<br />
+<div class="titlebar">Step 2:</div>
+<br />
+Now, to add your new static application components to a static Ccaffeine framewor build,<br />
+you must modify the following 2 files:<br />
+<br />
+<tt>        <div class="simplebox">ccaffeine/cxx/dc/framework/BabelStaticFactory.cxx</tt><br />
+<br />
+<tt>        ccaffeine/cxx/Makefile.Static.in</div></tt><br />
+<br />
+as follows.<br />
+<br />
+<b>In cxx/dc/framework/BabelStaticFactory.cxx:</b><br />
+<br />
+For every static component to be included, add the following lines before the CREATEDEF() macro definition:<br />
+<tt>        <div class="simplebox">#ifdef _CCAFE_PRELOAD</tt><br />
+<tt>        #include &quot;&lt;bocca-project&gt;/&lt;namespace&gt;_&lt;Component&gt;.hxx&quot;</tt><br />
+<tt>        . . .</tt><br />
+<tt>        #endif</div></tt><br />
+For example:<br />
+<tt>        <div class="simplebox">#ifdef _CCAFE_PRELOAD</tt><br />
+<tt>        #include &quot;sph-bocca/drivers_SPHDriver.hxx&quot;</tt><br />
+<tt>        #include &quot;sph-bocca/erchm_ERSPChem.hxx&quot;</tt><br />
+<tt>        . . .</tt><br />
+<tt>        #endif</div></tt><br />
+Then, add the following lines for every static component to be included after the CREATEDEF() macro definition:<br />
+<tt>        <div class="simplebox">#ifdef _CCAFE_PRELOAD</tt><br />
+<tt>        CREATEDEF(&lt;namespace&gt;::&lt;Component&gt;, &lt;namespace&gt;_&lt;Component&gt;)</tt><br />
+<tt>        . . .</tt><br />
+<tt>        #endif</div></tt><br />
+For example:<br />
+<tt>        <div class="simplebox">#ifdef _CCAFE_PRELOAD</tt><br />
+<tt>        CREATEDEF(drivers::SPHDriver, drivers_SPHDriver)</tt><br />
+<tt>        CREATEDEF(erchm::ERSPChem, erchm_ERSPChem)</tt><br />
+<tt>        . . .</tt><br />
+<tt>        #endif</div></tt><br />
+Next, add the following lines for every static component to be included 		  inside the BabelStaticFactory::addClasses() method:<br />
+<tt>        <div class="simplebox">#ifdef _CCAFE_PRELOAD</tt><br />
+<tt>               ADDCLASS(&quot;&lt;namespace&gt;.&lt;Component&gt;&quot;,create_&lt;namespace&gt;_&lt;Component&gt;);</tt><br />
+<tt>                . . .</tt><br />
+<tt>        #endif</div></tt><br />
+For example:<br />
+<tt>        <div class="simplebox">#ifdef _CCAFE_PRELOAD</tt><br />
+<tt>                ADDCLASS(&quot;drivers.SPHDriver&quot;, create_drivers_SPHDriver);</tt><br />
+<tt>                ADDCLASS(&quot;erchm.ERSPChem&quot;, create_erchm_ERSPChem);</tt><br />
+<tt>                . . .</tt><br />
+<tt>        #endif</div></tt><br />
+<b>In cxx/Makefile.Static.in:</b><br />
+Modify the BABEL_PRELOAD_COMPONENTS define to include all the library flags needed for linking the static components; note that the *-cxx client and plain component client library flags for Ccaffeine are always required, and any language specific (e.g. *-f90) libraries for the component's implementation language are needed as well:<br />
+<tt>        <div class="simplebox">BABEL_PRELOAD_COMPONENTS += -L/&lt;path_to_project_install&gt;/lib</tt><br />
+<tt>        BABEL_PRELOAD_COMPONENTS += -l&lt;namespace1&gt;.&lt;Component1&gt;-cxx</tt><br />
+<tt>        BABEL_PRELOAD_COMPONENTS += -l&lt;namespace1&gt;.&lt;Component1&gt;-f90</tt><br />
+<tt>        BABEL_PRELOAD_COMPONENTS += -l&lt;namespace1&gt;.&lt;Component1&gt;</tt><br />
+<tt>        . . .</div></tt><br />
+For example:<br />
+<tt>        <div class="simplebox">BABEL_PRELOAD_COMPONENTS += -L/scratch/scratchdirs/kohl/babel_scratch/install_sph_bocca/lib</tt><br />
+<tt>        BABEL_PRELOAD_COMPONENTS += -ldrivers.SPHDriver-cxx -ldrivers.SPHDriver-f90 -ldrivers.SPHDriver</tt><br />
+<tt>        BABEL_PRELOAD_COMPONENTS += -lerchm.ERSPChem-cxx -lerchm.ERSPChem-f90 -lerchm.ERSPChem</div></tt><br />
+And add the include path(s) for all of the static component header files:<br />
+<tt>        <div class="simplebox">BABEL_PRELOAD_INCLUDES = -I/&lt;path_to_project_install&gt;/include</div></tt><br />
+For example:<br />
+<tt>        <div class="simplebox">BABEL_PRELOAD_INCLUDES = -I/scratch/scratchdirs/kohl/babel_scratch/install_sph_bocca/include</div></tt><br />
+<div class="titlebar">Step 3:</div>
+<br />
+That should do it. Finally, build and install the framework with “make” and “make install.” The framework should work as expected, but now the component libraries are statically linked!<br />
+<br />
+Enjoy!  :-D<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=jeeembo.html' >jeeembo</a>
+  last modification: Friday 01 of May, 2009 [19:41:41 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=jeeembo.html' >jeeembo</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=HOWTO%3A%20Static%20Ccaffeine%20Framework
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

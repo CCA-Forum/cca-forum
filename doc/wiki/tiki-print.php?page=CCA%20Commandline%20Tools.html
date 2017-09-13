@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CCA Commandline Tools </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CCA+Commandline+Tools.html">CCA Commandline Tools</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Command Line IDE</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Virtually everything we target doing can be readily done (and has in the tutorial) with basic gmake usages except proposed splicer-based functionality. This means:<br />
+<ol><li> bash should be perfectly satisfactory for all but the splicer-based operations.
+</li><li> what's left to argue about is the detailed directory layout (which the user should be able to override anyway) and ergonomics of the command line.
+</li><li> splicer operations can be done in any implementation language, and we have at least a Ruby prototype to be extended. Personally, I would write the splicer as a C tool using babel, following the prototypes in ruby and java that exist.
+</li></ol>
+<br />
+The classical stateful unix tools (CVS, SVN, Mozilla, news, ...) all rely on (hidden) directories full of captured state information so the user can work with minimal repetitive typing. In the case of tools supporting multiple databases (SVN, CVS) the trick is always done with an assumption of the working directory being the home of the saved state (.svn/, CVS/) and we should take a lesson from these.<br />
+<br />
+The prototype bash-based system (which has help fully implemented in lieu of documentation) is at<br />
+<div class="simplebox">svn co svn+ssh://cca-forum.org/home/svn/bocca/sandbox<br />
+cd sandbox/baallan/clide<br />
+bin/cct help<br />
+</div><br />
+<br />
+Design basis<br />
+<ol><li> Any unix command longer than 3 letters is too long. <i>I might ve willing to relax this -Rob</i> (BAA: svn and cvs teach well. If we're going to have 17 'top level' commands instead of just 1, obviously we can go longer).
+</li><li> Bash is available everywhere.
+</li><li> We should boldly refuse to finish sentences and edit text; those users should get eclipse, instead. <i>elaborate gui's are not our thing - Rob</i> (BAA: it's not just guis; emacs bigots have gone down that road, too, with very elaborate tooling).
+</li><li> I'm not willing to force my favorite scripting language (tcl) or Rob's (Ruby) or Boyana's (python) or a gui on anyone.  <i>granted, but what if we could run the java versions of any of these?-Rob</i> (BAA: To me there is no significant difference between Java and C (other than portability to classified hpc platforms) for the requirements of this project except the scandalously large MBytes of binary installs one must do before running even hello-world in java.)
+</li><li> The command line syntax proposed is entirely independent of the underlying implementation language (bash, c, java, etc) and is thus trivially <i>scriptable</i> from any language that supports a system() call.
+</li></ol>
+<br />
+<div class="titlebar">Comments from Rob</div>
+<br />
+I do <b>not</b> like the naming structure.   Why have it in the form:<br />
+<div class="simplebox"><br />
+<tt> $ cct &lt;command&gt; arg0 arg1 arg2</tt><br />
+</div><br />
+Why not just:<br />
+<div class="simplebox"><br />
+<tt> $ &lt;command&gt; arg0 arg1 arg2</tt><br />
+</div><br />
+what's the point of the extra, what amounts to a, prefix?<br />
+<br />
+<div class="titlebar">Comments by Ben</div>
+<br />
+BAA: cct is the least amount of info needed on the commandline to get us the context information we need without repeating ourselves at some point. My previous proposals on this topic have all ended in excessive wordiness, repetition of already known info, or a requirement for dropping the user into a ruby/python/tcl shell until they're done with 'ccaisms'. The prefix is short, and like cvs, svn, etc, it lets us get into our own command-line language independent of what the user's shell is. This lets us do things like<br />
+<div class="simplebox"><br />
+<tt> $ cct MyComponent provides MyPort mp3</tt><br />
+</div><br />
+Where <a title="Losing all those pesky switches" href='tiki-index.php%3Fpage=Known+Babel+Types+Become+Subcommands.html' class='wiki'>Known Babel Types Become Subcommands</a>, essentially.<br />
+<span style="color:#0000FF;"> Rob: I find this argument to be compelling.  If I understand it correctly, we are using the project context so that <i>cct</i> already understands all it needs to know about the component <i>MyComponent</i> </span><br />
+<br />
+where we see MyComponent is a project specific subcommand that I, the cct tool provider, didn't need to know apriori. The usual subcomands of something like svn don't conflict with anything else in the user's PATH because they are never at the unix shell level.<br />
+<br />
+Python, ruby, tcl similarly allow us to define new commands ad-hoc, and to make the new commands appear <i>on the path</i> (in the working script environment) without changing the PATH in the user's shell. It's going to be hard to beat the value of the lessons learned by the whole unix community about how the command lines look in tools that support multiple simultaneous projects/packages running in arbitrary shells.<br />
+<br />
+Any choice except sh/csh/bash is going to immediately allow evaluators of the new tools to say <i>oh, it depends on X; I don't like X and version Y of X doesn't come with my OS yet</i>; we should care about eliminating these excuses for using our tools.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Tuesday 13 of March, 2007 [23:38:45 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CCA%20Commandline%20Tools
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

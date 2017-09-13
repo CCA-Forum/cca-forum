@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : OptimizingBoccaUsage </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=OptimizingBoccaUsage.html">OptimizingBoccaUsage</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Bocca aims to keep the project files &quot;always correct&quot;. This is of course impossible because user's can create code bugs. Bocca's best effort requires periodic regeneration of code (not recompilation of binaries) based on changes to SIDL files. Here are some tips on speeding up the process.<br />
+<br />
+<ul><li> If your project (at least during development) doesn't need all the languages that your babel installation offers, restrict the language list to those you need. You can specify the list to configure as an argument: <b>--with-languages=&quot;python f90&quot;</b>. Or, if you want the change to be local and temporary, just make the change in make.project and it will disappear the next time you run configure.
+</li></ul>
+<br />
+<ul><li> If your components are changing but the ports are not, build the project once from its top directory and the cd into <b>components</b> and do all further work from there.
+</li></ul>
+<br />
+<ul><li> If you are developing the ports and interfaces, you can still work from within the components/ directory or individual component directory. Only the things that are in your current subdirectory and depend on the changed port will get rebuilt.
+</li></ul>
+<br />
+<ul><li> If you choose to turn off automatic regeneration of ports, you must remember to make clean and make in the ports/ directory before any changes to the ports will be seen in components.
+</li></ul>
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Friday 28 of September, 2007 [15:31:18 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=OptimizingBoccaUsage
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

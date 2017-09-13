@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : On splicing in bocca </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=On+splicing+in+bocca.html">On splicing in bocca</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Splicing in bocca</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar"> The short version </div>
+<br />
+<ul><li> Bocca will only rewrite in impls the bocca protected blocks.
+</li><li> Bocca will only generate non-protected code at component create.
+</li><li> Bocca will *always* rewrite the bocca protected blocks (not sometimes) unless told not to.
+</li><li> When more than one bocca block goes into a single babel block at generation, each must have clear prefix or suffix position in the splicer block and the tag is the tag on the block + :prolog or :epilog.
+</li><li> No bocca code goes in _misc.
+</li><li> No unconditional bocca native code goes in _include unless it is to include language standard headers. corollary: boccaSetServices and boccaForceUsePortInclude must appear in sidl.
+</li><li> Bocca macro code is allowed in _include; the BOCCA_ prefix is always used.
+</li><li> If the user deletes a bocca protected block entirely, it <b>will not be</b> reinserted-- the user gets what they deserve. If they want it back, they can insert the empty delimiters and then have bocca update all protected blocks by adding and removing a dummy port.
+</li></ul>
+<br />
+<div class="titlebar"> The long version </div>
+<br />
+Bocca understands babel splicer blocks and leverages those conventions as much as possible to manage bocca-generated code inside those blocks while never stepping on user-written code. This note is primarily for the users to understand the lengths we go to to preserve their code and for the developers to gain a common understanding of how splicing is handled in the bocca implementation.<br />
+<br />
+<b>Background</b><br />
+<ul><li> Babel blocks are delimited DO-NOT-DELETE splicer.begin/end(tag).
+</li><li> Bocca generated blocks are delimited bocca.protected.begin/end(tag).
+</li><li> User-written blocks in bocca-generated files (only sidl currently) are delimited DO-NOT-DELETE bocca.splicer.begin/end(tag).
+</li></ul>
+<br />
+To generalize the above delimiters, they consist of a tag in parentheses and a leading key string that is always followed by .begin(tag) or .end(tag). The key string examples here would be &quot;DO-NOT-DELETE splicer&quot;, &quot;bocca.protected&quot;, and &quot;DO-NOT-DELETE bocca.splicer&quot;. Delimited block tags are always well-nested; ill-nested blocks cause splicers to generate errors and cancel any overwrites that would occur in a successful splicing.<br />
+Summary: KEY.begin(TAG)/KEY.end(TAG) is the delimiter pair.<br />
+<br />
+<b>Handling SIDL</b><br />
+<br />
+<ul><li> Bocca generates SIDL package/class/interface/CCA Port declarations but leaves the methods within them to the user to write. The user puts their interface code in a bocca.splicer block.
+</li><li> Bocca generates a SIDL CCA component declaration leaving a user block in the sidl but also including some bocca-related methods outside the user block.
+</li></ul>
+<br />
+<b>Handling Impl files</b><br />
+<br />
+Bocca must handle a component's impl files when a component is created and any time the bocca-information is changed, such as when a new CCA port is added to update the bocca-generated methods.<br />
+<br />
+Most of the Babel splicer blocks in a Component implementation file are application-related methods that only the component writer knows how to implement. Bocca does not touch these methods at all. Bocca can (and normally does) generate default implementations for methods of the CCA interfaces gov.cca.Component, gov.cca.ComponentRelease, gov.cca.ports.GoPort (at the user's request) and portions of the component's private data. Bocca does not claim ownership of any method normally required by babel or cca specifications; bocca merely provides suggested implementations that the user may edit or discard.<br />
+<br />
+<b>Invoking the splicer to keep users happy</b><br />
+<br />
+The bocca splicer is almost always be invoked with <i>identical</i> keys for source and target if replacement is intended and <i>distinct</i> keys if insertion is intended. In normal operations (generate a component, update a component for new ports) only the identical keys case is needed.<br />
+<div class="simplebox">For initial definition of a method or methods, both keys are &quot;DO-NOT-DELETE splicer&quot;; for subsequent rewrite of the bocca-owned sections only, both keys are &quot;bocca.protected&quot;.</div><br />
+When the tags match, the source block will be inserted (or appended if insertFirst=True is not passed).<br />
+To handle multiple bocca.protected in a single Babel splicer block, simply splice to the same target.<br />
+<br />
+To handle multiple bocca tags inside a single bocca block, note that this requires no reference to a babel splicer key at all. Simply use extended bocca protected keys. In an example suited to setServices<br />
+<div class="simplebox">targetKey=&quot;DO-NOT-DELETE bocca.protected&quot;, sourceKey=&quot;DO-NOT-DELETE bocca.protected.port&quot;</div><br />
+<br />
+In any operation in which any user code might be replaced, rejectSave=True should be passed and the .rej file generated should be put in the appropriate Trash directory and a warning issued about where old code can be found.<br />
+There are no such operations currently.<br />
+<br />
+<b>Algorithms</b><br />
+<br />
+We distinguish for clarity (not because they are unique) several cases and explain what happens with splicing in each:<br />
+<br />
+<ul><li> A new component is defined in bocca.
+</li></ul>
+<div class="simplebox">The sidl is generated.<br />
+From sidl the impl is generated with babel.<br />
+The bocca generates and inserts the setServices method default block and protected auxiliary function splices.<br />
+The generated auxiliaries contain bocca.protected keyed splices which the user should never edit.<br />
+The user can insert code in the cca standard-specified functions and their code will never be molested (1). If the user removes calls to the cca auxilary methods,  they must provide alternative equivalent functionality.<br />
+</div><br />
+<br />
+<ul><li> An existing component is changed, e.g. a uses port is added.
+</li></ul>
+<div class="simplebox">The sidl file is regenerated, leaving user additions to the component inside the bocca.splicer block unchanged.<br />
+The bocca.protected blocks for the component are regenerated and replaced, given the new information.<br />
+If the user has <i>manually deleted</i> one of the bocca.protected blocks, it <b>will not be reinserted</b> unless the user inserts at least the needed delimiters.<br />
+If the user simply deletes the bocca.protected delimiters around a bocca code block, this has the effect of freezing that code in spite of any future changes bocca normally manages;<br />
+the generated code has been promoted to user code.<br />
+</div><br />
+<br />
+<ul><li> A bocca component is created based on an existing component implementation.
+</li></ul>
+<div class="simplebox"> The user's sidl description of the component is copied into the bocca project.<br />
+The original sidl file (outside the bocca project) is never again referenced.<br />
+If there is also an impl file or files, they are:<br />
+<tt> used as the source for a second splicing after the initial bocca impl generation.</tt><br />
+<tt> The default bocca code for setServices and go() is inserted unless suppressed by using</tt><br />
+<tt>   --import-impl-exact --exclude-impl-symbols=None.</tt><br />
+</div><br />
+<br />
+Special cases of code changes outside bocca.protected splicers:<br />
+<br />
+<ul><li> (1) An existing port instance is renamed (future feature)
+</li></ul>
+<div class="simplebox"> All the CCA-related calls in the impl file which use the old port instance name<br />
+as a literal string (e.g. &quot;myport&quot;) will be replaced with string literals of the<br />
+new port instance name. <i><b>This is independent of where the literals are located</b></i>.<br />
+Both user code and bocca-generated code will be updated with the new port name, but only in<br />
+the CCA functions handling port instance names.<br />
+If the port instance name is somehow computed instead of specified as a literal, manual<br />
+repairs may be needed when a port instance name is changed.</div><br />
+<br />
+<ul><li> (2) Babel default exceptions
+</li></ul>
+<div class="simplebox">A babel default &quot;not implemented exception&quot; throw is always deleted when<br />
+the bocca splicer inserts code to an unimplemented setServices or other bocca-managed function.<br />
+Default exceptions are left in place by bocca in all other functions.<br />
+</div><br />
+<br />
+<b>Splicing for power users</b><br />
+<ul><li> Users may want to splice or to extract splices from their own files. The splicer in bocca has a powerful python programming interface but is also accessible from the command line in the form of an extractor (bocca-extract) and splicer (bocca-merge). Either command responds to the --help switch with further information. There are many options to fine tune, replicating on the command line most of the functionality available in the programming interface.
+</li><li> Users are warned against any component maintenance model which uses both bocca and a collection of individual splice files to generate the final components to be compiled. Bocca is not designed for use in such models and sooner or later a splicing conflict will occur and will be fiendishly hard to debug.
+</li><li> The bocca-merge tool can be used independent of any bocca project to aid the renaming of a component implementation from one package and/or class name into another. Specifically it will migrate blocks from the old impl file into the new impl file generated from sidl where the names have been changed. Previously this kind of rename had to be done by hand or by custom written string substitution scripts.
+</li></ul>
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Friday 21 of September, 2007 [06:44:59 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=On%20splicing%20in%20bocca
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

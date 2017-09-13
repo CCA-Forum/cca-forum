@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Install </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Install.html">Install</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Requirements and options for CCA Tools install ...</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Requirements: gcc 3.2 or later, Sun or Blackdown Java 1.4 or later.<br />
+<br />
+This distro comes with the cca specification plus psuedo-specification<br />
+classic (if you don't know what it is it probably doesn't matter).<br />
+Make sure that javac and java (&gt;= j2sdk1.4) are in your path.  Now, if<br />
+you just type: &quot;configure --with-localsrc;make&quot; in the top level,<br />
+everything will make including the Babel distribution (requires<br />
+internet connection).  You should consider the --with-localsrc as a<br />
+failsafe, it will not build in Fortran90, or MPI support.<br />
+<br />
+Initially this distribution was intended for a user's own local<br />
+install.  Since then a number of people wish to install it in standard<br />
+places requiring root access.  Because this top-level &quot;make&quot; both<br />
+sequentially builds <i>and</i> installs the CCA tools from the single<br />
+&quot;make&quot; command, it is risky to do all of this as superuser.  As a way<br />
+of getting around this, give yourself &quot;sudo&quot; privleges and, instead of<br />
+typing &quot;make&quot;, type:<br />
+<br />
+<tt> &quot;make SUDO_PROG=sudo&quot;</tt><br />
+<br />
+while logged as your normal user.  The &quot;sudo&quot; command will be used for installs only: building,<br />
+cleaning and configuring will be done as your normal user.  Sudo may<br />
+prompt for a password, but only once.<br />
+<br />
+There are a variety of different options exclusive of &quot;localsrc&quot; and<br />
+it is useful to type: &quot;configure --help&quot; to find all of them.  These<br />
+options fall into two categories: language support for Babel/Chasm and<br />
+library support for Ccaffeine.<br />
+<br />
+1) Babel support.<br />
+<br />
+If you wish to enable Fortran 90 support:<br />
+<br />
+<tt> --with-F90-vendor=VENDOR</tt><br />
+<tt>    where VENDOR is one of:</tt><br />
+<tt>    Absoft (Absoft)</tt><br />
+<tt>    Alpha (Hp Compaq Fortran)</tt><br />
+<tt>    Cray  (Cray Fortran)</tt><br />
+<tt>    GNU    (gfortran)</tt><br />
+<tt>    IBMXL (IBM XL Fortran)</tt><br />
+<tt>    Intel (Intel v8)</tt><br />
+<tt>    Intel (Intel v7)</tt><br />
+<tt>    Lahey (Lahey)</tt><br />
+<tt>    NAG   (NAG)</tt><br />
+<tt>    MIPSpro (SGI MIPS Pro)</tt><br />
+<tt>    SUNWspro (SUN Solaris)</tt><br />
+<br />
+<br />
+<tt> --with-F90=/path/to/fortran-compiler &lt;Program that compiles F90&gt;.</tt><br />
+<br />
+Both of these options must be set to compile in F90 support.  The<br />
+configure script will make no attempt to discover Fortran90 compilers<br />
+on its own.  It is very important to source the setup code for your<br />
+particular compiler and be sure that the &quot;.so&quot; libraries for your<br />
+compiler appear in LD_LIBRARY_PATH environment variable.<br />
+<br />
+Python (version &gt; 2.2) support should be automatic.<br />
+<br />
+Of course if you already have Babel configured the way you want it<br />
+(&gt;=0.9.4 is a must for this tarball) then you will probably just want<br />
+to build the ccaffeine and specifications by themselves in this<br />
+distribution by itself with custom configurations.  If you have a non-default place for In this case<br />
+Fortran 90 options will be ignored.<br />
+<br />
+2) Ccaffeine support.<br />
+<br />
+<tt> --with-mpi=MPI_ROOT  where MPI_ROOT/bin/mpirun exists.</tt><br />
+<br />
+<br />
+Tell Ccaffeine where your MPI is.  This distribution will otherwise<br />
+attempt to locate MPI on its own.  Use this option if it is finding<br />
+the wrong one.<br />
+<br />
+<div class="titlebar">Platform dependent Information</div>
+<br />
+<i>Linux</i><br />
+<br />
+Should just work.<br />
+<br />
+<i>MacOSX</i><br />
+<br />
+Right now the sumo will build with <a class="wiki"  href="http://gcc.gnu.org/wiki/GFortranBinaries">gfortran</a> binaries.  There are reports that Absoft and Intel fortran fails for MacOSX but I do not have these compilers to test.<br />
+<br />
+<div class="titlebar">Issues</div>
+<br />
+Listed here are recent issues with the CCA Tools Sumo Tarball.<br />
+<br />
+<ul><li> Many reports exist that Babel does not work with some versions of j2sdk 1.5.x
+</li></ul>
+<br />
+<ul><li> cca-tools-0.5.9_rcx has a chasm bug that looks like:
+</li></ul>
+<div class="simplebox"><br />
+<tt> /usr/bin/install -c -m 644 xform/cca-f90.sidl.xsl /home/rob/cca/tar-staging/install/share/xform</tt><br />
+<tt> /usr/bin/install: cannot stat `xform/cca-f90.sidl.xsl': No such file or directory</tt><br />
+<tt> make[1]: *** [install-share] Error 1</tt><br />
+<tt> make[1]: Leaving directory `/u/home/rob/cca/tar-staging/build/cca-tools-0.5.9_rc2/chasm_1.3.RC1'</tt><br />
+<tt> Chasm failed to install</tt><br />
+<br />
+</div><br />
+Ignore this. It still produces a usable Chasm and does not affect the rest of the installation.<br />
+<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <span class='link'>system</span>
+  last modification: Saturday 13 of August, 2005 [00:00:36 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=rob.html' >rob</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Install
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

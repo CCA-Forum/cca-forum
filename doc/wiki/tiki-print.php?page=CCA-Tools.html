@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CCA-Tools </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CCA-Tools.html">CCA-Tools</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">CCA Tools are the building infrastructure for CCA component-based applications ...</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar">Installing the the CCA Tools</div>
+<br />
+<b>1.</b> Download <a class="wiki"  href="https://www.cca-forum.org/download/cca-tools/cca-tools-latest/cca-tools-installer-0.2.8.tar.gz">cca-tools-installer-0.2.8.tar.gz</a>  and unpack it, e.g., with<br />
+<br />
+<div class="simplebox"><br />
+<tt> tar xfz cca-tools-installer-0.2.8.tar.gz</tt><br />
+</div><br />
+<br />
+Note: The installer used to be named cca-tools-contractor prior to 7/2010.<br />
+<br />
+<b>2.</b> Create a subdirectory for each configuration you wish to build, for example, to build using only default options (see item <b>3</b> below for information on how to customize the build):<br />
+<br />
+<div class="simplebox"><br />
+<tt> cd cca-tools-installer-0.2.8</tt><br />
+<tt> mkdir default-build</tt><br />
+<tt> cd default-build</tt><br />
+<tt> ../contract.py --configure</tt><br />
+<tt> ../contract.py</div></tt><br />
+<br />
+Upon the successful completion of the above commands, you should have a complete installation of the CCA tools in the <b>cca-tools-installer-0.2.8/default-build/install/</b> directory.<br />
+<br />
+Note that the default Babel version is 1.4.0, which is not backward compatible with Babel 1.0.8, so by converting your projects to use 1.4.0, you will no longer be able to use Babel 1.0.8 with them. If you wish to build the CCA Tools with Babel 1.0.8, make sure to explicitly configure the build first, e.g., with &quot;../contract.py --configure babel_version=1.0.8&quot; before running &quot;../contract.py&quot;.<br />
+<br />
+<b>3.</b> You may also want to specify configuration options, such as a prefix, different compilers to use, an MPI prefix, etc. For more detailed information on the configuration options, refer to the <a class="wiki"  href="http://trac.mcs.anl.gov/projects/cca/wiki/tools">CCA Tools wiki page</a>.<br />
+<br />
+<b>4.</b> If you are using bocca to manage your project, note that after upgrading to a new version of the CCA Tools, you will need to do the following in the top-level directory of existing bocca projects:<br />
+<br />
+<div class="simplebox"><br />
+<tt> bocca update --store</tt><br />
+<tt> bocca config --update</tt><br />
+<tt> ./configure &lt;your configure options&gt;</div></tt><br />
+<br />
+The &quot;bocca update --store/-s&quot; command regenerates the internal project representation using the new version of bocca. Note that after doing this, you will no longer be able to switch to an old version of bocca. The &quot;bocca config --update/-u&quot; command updates project default settings and regenerates project-specific build files. You can see what configure options you used last time with the &quot;head config.log&quot; command. Make sure to use the path to the newly installed CCA tools in the --with-ccafe-config configure option.<br />
+<br />
+<br />
+<div class="titlebar"> Manually installing the CCA Tools </div>
+<br />
+The complete and latest build of the Sumo can be downloaded <a class="wiki"  href="https://www.cca-forum.org/download/cca-tools/cca-tools-latest.tar.gz">here</a>. Individual packages that comprise the latest Sumo are available <a class="wiki"  href="https://www.cca-forum.org/download/cca-tools/cca-tools-latest">here</a>.  Previous versions are available <a class="wiki"  href="https://www.cca-forum.org/download/cca-tools">elsewhere</a>.<br />
+<br />
+<div class="titlebar">Description</div>
+<br />
+The following packages can be built depending on the configuration (in this order):<br />
+<ul><li> Chasm
+</li><li> Babel
+</li><li> CCA Specification Babel bindings (classic, neo, babel)
+</li><li> Ccaffeine CCA framework
+</li><li> Ccaffeine GUI
+</li></ul>
+<br />
+<br />
+<div class="titlebar">Supported Platforms</div>
+<br />
+The CCA Tools distribution should work on most <b>Linux</b> distributions, and theoretically <b>Mac OS X</b> (requires GNU tools).<br />
+<br />
+All of the tools work on <b>IBM AIX</b>, but the CCA Tools distribution is not currently setup to build automatically for this platform without extra environment variable settings.<br />
+<br />
+The CCA Tools have not been ported to Windows.  They should work fairly easily on top of Cygwin or MinGW.  A native Windows port would require a good deal more work.  The core development team does not currently have funding to pursue a Windows port, but we would be happy to assist others.<br />
+<br />
+If you're interested in a platform we don't currently support, please let us know!<br />
+<br />
+We're establishing routine testing of the tools (build and regression) on as many different platforms as possible.  The <a title="Platforms for CCA Toolchain testing" href='tiki-index.php%3Fpage=Tools+Testing+Patforms.html' class='wiki'>Tools Testing Patforms</a> page is tracking this effort.<br />
+<br />
+<div class="titlebar"> HPC Systems and Static Frameworks </div>
+<br />
+Many systems, like the <b>Cray XT</b> and <b>IBM BlueGene</b><a href="tiki-editpage.php%3Fpage=BlueGene%253Cb%253E.html" title="Create page: BlueGene</b>" class="wiki wikinew">?</a>, do not support dynamically loadable component objects.<br />
+<br />
+For instructions on how to build a &quot;static&quot; CCA framework for these systems, or for other rare purposes, please see <a title="Instructions for assembling a Static Ccaffeine Framework with Built-in Application Components." href='tiki-index.php%3Fpage=HOWTO%253A+Static+Ccaffeine+Framework.html' class='wiki'>HOWTO: Static Ccaffeine Framework</a>.<br />
+<br />
+<div class="titlebar"> Development </div>
+The Subversion repository for the Contractor-based installer of the CCA Tools can be checked out with<br />
+<br />
+<tt> svn co https://cca-forum.svn.sourceforge.net/svnroot/cca-forum/cca-tools-installer/trunk cca-tools-installer</tt><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <span class='link'>system</span>
+  last modification: Friday 06 of May, 2011 [19:29:55 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=norris.html' >norris</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CCA-Tools
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+ : Space Weather Modeling
+</title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+   class="tiki_wiki">
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+<div id="tiki-main">
+    <div id="tiki-mid">
+    <table id="tiki-midtbl" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+            <td id="leftcolumn" valign="top">
+            
+
+
+
+
+<div class="box box-cca_menu">
+<div class="box-title">CCA Wiki</div><div id="mod-cca_menu" style="display: block" class="box-data">
+
+<div id="cca_menu" style="display:block;">
+
+<img src="../wiki-chrome/cca-logo-trans-180.gif"/>
+<span style="font-weight: bold;">CCA Software Resources</span>
+
+
+
+
+
+
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__3'); return false">[-]</a>
+	 
+<a href="tiki-index.php.html" class="separator">CCA</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__3'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__3'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=CCA+documentation+and+information.html" class="linkmenu">CCA Info</a></div>
+
+
+
+
+<div class="option"><a href="../mailman/listinfo.1.html" class="linkmenu">Mailing Lists</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Working+Groups.html" class="linkmenu">Working Groups</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Members.html" class="linkmenu">Membership & Voting</a></div>
+
+
+
+
+<div class="option"><a href="../bugs.html" class="linkmenu">Issue Trackers</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__15'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=CCA+Meetings&amp;watch_event=wiki_page_changed&amp;watch_object=CCA+Meetings.html" class="separator">Meetings</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__15'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__15'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Upcoming+Events.html" class="linkmenu">Upcoming Events</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=SC2006+Internal.html" class="linkmenu">SC2006 Internal</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__20'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_Ref_id=29.html" class="separator">CCA Specification</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__20'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__20'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Specification+News.html" class="linkmenu">News</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=CCA%2520Specification%2520Development.html" class="linkmenu">Developer</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=CCARB.html" class="linkmenu">CCA Review Board</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__60'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Tutorial.html" class="separator">Tutorial</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__60'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__60'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=News.html" class="linkmenu">News</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Developer.html" class="linkmenu">Developer</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__100'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_ref_id=3.html" class="separator">CCA Tools</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__100'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__100'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Install.html" class="linkmenu">Install</a></div>
+
+
+
+
+<div class="option"><a href="tiki-view_faq.php%3FfaqId=2.html" class="linkmenu">FAQ</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage_ref_id=12.html" class="linkmenu">Ebuilds</a></div>
+
+
+
+
+<div class="option"><a href="https://www.cca-forum.org/download/cca-tools" class="linkmenu">Download</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__150'); return false">[-]</a>
+	 
+<a href="../toolkit/index.html" class="separator">Toolkit</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__150'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__150'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Bocca.html" class="linkmenu">Bocca</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Toolkit+Tools.html" class="linkmenu">Devel Environment</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__200'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Ccafe.html" class="separator">Ccaffeine</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__200'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__200'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage_ref_id=16.html" class="linkmenu">Install</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__300'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_ref_id=27.html" class="separator">Babel</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__300'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__300'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Babel+Install.html" class="linkmenu">Install</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Babel+Patches.html" class="linkmenu">Patches</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__350'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=CCAIN.html" class="separator">CCAIN</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__350'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__350'>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__400'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage_ref_id=28.html" class="separator">Usability</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__400'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__400'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=Coding+Camps.html" class="linkmenu">Coding Camps</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__1000'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Collaboration+Resources.html" class="separator">Collaboration Resources</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__1000'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__1000'>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=MeetingPlace.html" class="linkmenu">MeetingPlace web sharing</a></div>
+
+
+
+
+<div class="option"><a href="tiki-index.php%3Fpage=RoundupBugTracking.html" class="linkmenu">Roundup</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__1600'); return false">[-]</a>
+	 
+<a href="tiki-index.php%3Fpage=Computational+Quality+of+Service.html" class="separator">CQoS</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu43__1600'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu43__1600'>
+
+
+
+</div>
+
+<script type='text/javascript'>
+      setsectionstate('menu43__3', 'e');
+        setsectionstate('menu43__15', 'e');
+        setsectionstate('menu43__20', 'e');
+        setsectionstate('menu43__60', 'e');
+        setsectionstate('menu43__100', 'e');
+        setsectionstate('menu43__150', 'e');
+        setsectionstate('menu43__200', 'e');
+        setsectionstate('menu43__300', 'e');
+        setsectionstate('menu43__350', 'e');
+        setsectionstate('menu43__400', 'e');
+        setsectionstate('menu43__1000', 'e');
+        setsectionstate('menu43__1600', 'e');
+  </script>
+
+</div>
+
+
+</div></div>
+            
+
+
+
+
+<div class="box box-mnu_application_menu">
+<div class="box-title"><table class="box-title">
+  <tr>
+    <td ondblclick="javascript:icntoggle('mod-mnu_application_menu','mo.png');">
+<span class="box-titletext">Menu</span>
+    </td>
+    <td width="11">
+      <a title="Hide module contents" class="flipmodtitle" href="javascript:icntoggle('mod-mnu_application_menu','mo.png');"><img name="mod-mnu_application_menuicn" class="flipmodimage" src="img/icons/omo.png" border="0" alt="[hide]" /></a>
+</td>
+</tr>
+</table>
+</div><div id="mod-mnu_application_menu" style="display: block" class="box-data">
+
+<div id="mnu_application_menu" style="display:block;">
+
+
+
+
+<div class="option"><a href="tiki-index.php.html" class="linkmenu">Home</a></div>
+
+
+
+
+<div class="option"><a href="tiki-contact.php.html" class="linkmenu">Contact us</a></div>
+
+
+
+
+
+
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__200'); return false">[-]</a>
+	 
+<a href="tiki-index.php.html" class="separator">Wiki</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__200'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__200'>
+
+
+
+
+<div class="option"><a href="tiki-index.php.html" class="linkmenu">Wiki Home</a></div>
+
+
+
+
+<div class="option"><a href="tiki-lastchanges.php.html" class="linkmenu">Last Changes</a></div>
+
+
+
+
+<div class="option"><a href="dump/new.tar" class="linkmenu">Dump</a></div>
+
+
+
+
+<div class="option"><a href="tiki-wiki_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+<div class="option"><a href="tiki-listpages.php.html" class="linkmenu">List pages</a></div>
+
+
+
+
+<div class="option"><a href="tiki-orphan_pages.php.html" class="linkmenu">Orphan pages</a></div>
+
+
+
+
+<div class="option"><a href="tiki-editpage.php%3Fpage=sandbox.html" class="linkmenu">Sandbox</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__300'); return false">[-]</a>
+	 
+<a href="tiki-galleries.php.html" class="separator">Image Galleries</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__300'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__300'>
+
+
+
+
+<div class="option"><a href="tiki-galleries.php.html" class="linkmenu">Galleries</a></div>
+
+
+
+
+<div class="option"><a href="tiki-galleries_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__350'); return false">[-]</a>
+	 
+<a href="../wiki.1.html" class="separator">Articles</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__350'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__350'>
+
+
+
+
+<div class="option"><a href="../wiki.1.html" class="linkmenu">Articles home</a></div>
+
+
+
+
+<div class="option"><a href="tiki-list_articles.php.html" class="linkmenu">List articles</a></div>
+
+
+
+
+<div class="option"><a href="tiki-cms_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__450'); return false">[-]</a>
+	 
+<a href="tiki-list_blogs.php.html" class="separator">Blogs</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__450'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__450'>
+
+
+
+
+<div class="option"><a href="tiki-list_blogs.php.html" class="linkmenu">List blogs</a></div>
+
+
+
+
+<div class="option"><a href="tiki-blog_rankings.php.html" class="linkmenu">Rankings</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__600'); return false">[-]</a>
+	 
+<a href="tiki-file_galleries.php.html" class="separator">File Galleries</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__600'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__600'>
+
+
+
+
+<div class="option"><a href="tiki-file_galleries.php.html" class="linkmenu">List galleries</a></div>
+
+
+
+
+
+</div>
+<div class="separator">
+		<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__650'); return false">[-]</a>
+	 
+<a href="tiki-list_faqs.php.html" class="separator">FAQs</a>
+<a class='separator' href="tiki-index.php%3Fpage=Space+Weather+Modeling.html#" onclick="javascript:toggle('menu42__650'); return false">[+]</a> 
+</div> 
+
+<div class="menuSection" style="display:block;" id='menu42__650'>
+
+
+
+
+<div class="option"><a href="tiki-list_faqs.php.html" class="linkmenu">List FAQs</a></div>
+
+
+
+</div>
+
+<script type='text/javascript'>
+      setsectionstate('menu42__200', 'd');
+        setsectionstate('menu42__300', 'd');
+        setsectionstate('menu42__350', 'd');
+        setsectionstate('menu42__450', 'd');
+        setsectionstate('menu42__600', 'd');
+        setsectionstate('menu42__650', 'd');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display:none">
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+  setsectionstate('mod-mnu_application_menu','{$module_dstate}','mo.png');
+</script>
+
+</div></div>
+            
+
+
+
+
+<div class="box box-breadcrumb">
+<div class="box-title">Recently visited pages</div><div id="mod-breadcrumb" style="display: block" class="box-data">
+  <table  border="0" cellpadding="0" cellspacing="0">
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=Molecular%2520Dynamics.html">
+                      Molecular Dynamics
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=Coupled%2520Climate%2520Modeling.html">
+                      Coupled Climate Modeling
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=Ab%2520Initio%2520Nuclear%2520Structure%2520Calculations.html">
+                      Ab Initio Nuclear Structure Calculations
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=Coop%2520Parallelism.html">
+                      Coop Parallelism
+                  </a>
+      </td></tr>
+          <tr><td class="module">
+        <a class="linkmodule" href="tiki-index.php%3Fpage=Hierarchical%2520Parallelism.html">
+                      Hierarchical Parallelism
+                  </a>
+      </td></tr>
+      </table>
+
+
+</div></div>
+            
+
+<!-- no perm -->
+
+                      </td>
+            <td width="100%" id="centercolumn" valign="top"><div id="tiki-center">
+      
+            
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Space+Weather+Modeling.html">Space Weather Modeling</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Space Weather Modeling and InterComm</div>
+</td>
+	<td style="text-align:right;width:142px;wrap:nowrap">
+	       
+				<a title="print" href="tiki-print.php%3Fpage=Space%2520Weather%2520Modeling.html"><img src="img/icons/ico_print.gif" border="0"  width="16" height="16" alt="print" /></a>
+	
+			<a title="create PDF" href="tiki-config_pdf.php%3Fpage=Space%2520Weather%2520Modeling.html"><img src="img/icons/ico_pdf.gif" border="0"  width="16" height="16" alt="PDF" /></a>
+				</td>
+
+			<td style="text-align:right;width:42px;">
+		<form action="tiki-index.php.html" method="get">
+		<select name="page" onchange="page.form.submit()">
+		<option>backlinks...</option>
+				<option value="MCMD-WG">MCMD-WG</option>
+				</select>
+		</form>
+		</td>
+	
+	
+	
+</tr></table>
+</div>
+
+<div class="wikitext">
+The Center for Integrated Space Weather Modeling (CISM), an NSF Science and Technology Center begun in 2002 with Boston University as the lead site, focuses on the production of a comprehensive scientific model of the solar terrestrial environment from the solar surface to the upper atmosphere of earth. The model consists of global codes which address the solar corona, heliosphere, the earth's magnetosphere, and ionosphere. The characteristics of these codes, including that they are still being developed and modified by groups of space scientists at different institutions, dictate an approach involving loosely coupled groups of independently running programs (components).<br />
+<br />
+CISM has chosen to use existing codes that model accurately either individual regions of the solar-terrestrial environment, or particular physical processes. The reliance on existing codes necessitates that the software to be used require only minimal code modification. At the same time, the software must support extensive numeric (grid) interpolation both at the boundaries, or in overlapping volumes, as well as the translation of physical quantities as necessary among the codes. These constraints require that the coupling strategy have four separable functions:<br />
+(1) efficient transmission of information among codes;<br />
+(2) interpolation of grid quantities;<br />
+(3) translation of physical variables between codes with different physical models; and<br />
+(4) control mechanism to synchronize the execution and interaction of the codes.<br />
+<br />
+To achieve such a goal, the University of Maryland InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> framework is being used for coupling between those codes. One part of InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> is a runtime library that performs direct data transfers between distributed data structures, in particular multidimensional arrays, among different parallel programs. Programs do not need to know in advance any information about others with which they will communicate, since all the information required for data transfers is computed by InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> at runtime. After analyzing the data structures in the communicating programs, InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> uses efficient algorithms to generate communication schedules which enable data to be sent directly from the processors on which it resides to the processors in the receiving program that are destination of the data, i.e., a complete MxN data transfer.<br />
+<br />
+InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> contains a runtime library that achieves direct data transfers between data structures managed by multiple data parallel languages and libraries in different programs. Communications between processes in different programs are performed using a low level communication library, which currently is PVM. The data transfer requires that all processes of the sender and the receiver programs locate data elements involved in the data transfer and that a mapping be specified between data elements in the two data structures. Upon initialization of InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a>, three process groups are created in the PVM environment, namely,<br />
+(1) The global group containing all the processes in sender and receiver programs, to facilitate data transfers between the two programs (components)<br />
+(2) The sender group containing all the processes in the sender program only, to locate data elements involved in the data transfer on the sender side.<br />
+(3) The receiver group containing all the processes in receiver program only, to locate data elements involved in the data transfer on the receiver side.<br />
+Using the data distribution and mapping information exchanged through these groups, InterComm<a href="tiki-editpage.php%3Fpage=InterComm.html" title="Create page: InterComm" class="wiki wikinew">?</a> generates all the information required to execute direct data transfers between the processes in the sender program and the receiver program, and stores the information in a communication schedule, which is then used to perform direct communication between the processes in different programs.<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+  last modification: Wednesday 05 of December, 2007 [19:32:08 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=manoj77.html' >manoj77</a>
+</p>
+
+
+
+      
+            
+
+<hr/>
+<div id="page-bar">
+  <table>
+    <tr>
+
+
+    
+
+
+
+<td><div class="button2"><a href="tiki-likepages.php%3Fpage=Space%2520Weather%2520Modeling.html" class="linkbut">similar</a></div></td>
+
+
+
+ 
+
+  
+  
+  
+
+    
+  
+</tr>
+</table>
+</div>
+
+
+
+<a name="attachments"></a>
+
+<div id="attzone">
+
+
+
+
+
+
+
+</div>
+
+
+
+    <a name="comments"></a>
+    	<div id="comzone">
+    
+
+  
+
+    
+
+	
+
+
+
+    </div><!-- comzone end -->
+            </div>
+      </td>
+            <td id="rightcolumn" valign="top">
+            
+
+
+
+<div class="box box-login_box">
+<div class="box-title">Login</div><div id="mod-login_box" style="display: block" class="box-data">
+
+         <form name="loginbox" action="https://www.cca-forum.org/wiki/tiki-login.php" method="post" > 
+           <table border="0">
+      <tr>
+        <td>
+          <table>
+          <tr><td class="module"><label for="login-user">user:</label></td></tr>
+		          <tr><td><input type="text" name="user" id="login-user" size="20" /></td></tr>
+		                    <tr><td class="module"><label for="login-pass">pass:</label></td></tr>
+          <tr><td><input type="password" name="pass" id="login-pass" size="20" /></td></tr>
+          <tr><td><input type="submit" name="login" value="login" /></td></tr>
+                    <tr>
+                      <td  class="module" valign="bottom">[ <a class="linkmodule" href="tiki-register.php.html" title="Click here to register">register</a> | <a class="linkmodule" href="tiki-remind_password.php.html" title="Click here if you've forgotten your password">I forgot my password</a> ]</td>
+                                                  </tr>
+                              </table>
+        </td>
+      </tr>
+      </table>
+
+              <input type="hidden" name="stay_in_ssl_mode" value="" />
+      			      </form>
+    
+
+</div></div>
+            
+
+
+
+
+<div class="box box-who_is_there">
+<div class="box-title">Online users</div><div id="mod-who_is_there" style="display: block" class="box-data">
+<div>
+16 
+online users
+</div>
+
+
+</div></div>
+                      </td>
+          </tr>
+    </table>
+  </div>
+  </div>
+
+</body>
+</html>  

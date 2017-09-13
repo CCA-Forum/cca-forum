@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Ben Rob Toolkit Tools Discussion </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Ben+Rob+Toolkit+Tools+Discussion.html">Ben Rob Toolkit Tools Discussion</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Toolkit Tools</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar">Proposed Command Line Environment</div>
+<br />
+We adopt the Rails philosophy that we have tools create build infrastructure and working code.  The code will not do anything like what the user wants but is &quot;upgradeable&quot; into something the user does want.  In our case the user wants to create a component that does MonteCarlo integration (a familiar example):<br />
+<br />
+<div class="simplebox"><br />
+<tt> $ createProject --ccafe-config=/usr/local/bin/cafe_config MonteCarloIntegratorProj</tt><br />
+<tt> $ cd  MonteCarloIntegratorProj/</tt><br />
+<tt> $ ls -F</tt><br />
+<tt> scripts/ components/ ports/ legacy/ utils/ README configure.in</tt><br />
+<tt> configure Makefile.in MakeIncl<a href="tiki-editpage.php%3Fpage=MakeIncl.html" title="Create page: MakeIncl" class="wiki wikinew">?</a>.user.in</tt><br />
+</div><br />
+<br />
+At this point these created directories are mostly empty.  <b>scripts</b> is populated with scripts (language to be determined) that do things like create components and add ports.  The <i>legacy</i> directory should probably be renamed <i>external</i> or something.  The <i>utils</i> directory should be folded in with <i>scripts</i>.  The project name used in the command line will also be the SIDL package name.<br />
+(Ben thinks there'e a <a title="Antipatterns in CCA software" href="tiki-index.php%3Fpage=CcaBuildAntiPattern.html" class="wiki">CcaBuildAntiPattern</a> showing up in the thinking behind 'components/')<br />
+<br />
+<div class="simplebox"><br />
+<tt> configure Makefile.in MakeIncl<a href="tiki-editpage.php%3Fpage=MakeIncl.html" title="Create page: MakeIncl" class="wiki wikinew">?</a>.user xml_repository/</tt><br />
+<tt> $ ./scripts/createComponent  MonteCarloIntegrator</tt><br />
+</div><br />
+This creates the infrastructure incl. <i>setServices</i> for MonteCarloIntegrator .<br />
+<br />
+- rob<br />
+<hr />
+<br />
+At risk of being beaten, let me propose that the option instead be rubyesque<br />
+<div class="simplebox"> defineComponent {optional -e=/whatever/dir/this/projects/root/is/if/not/in/pwd/.ccaenv/env.file} MonteCarloIntegrator </div><br />
+and that we decide from the beginning that the design intent is that there be one program named defineComponent. Can we imagine trying to explain (and manage in scripts) multiple executables all with the same name? {Spelling Alternates --env, --environment}.<br />
+<br />
+Also we'll need:<br />
+<div class="simplebox"> createPackage {optional -e=/another/projects/to/be/cloned/intelligently/root/is/env.file} {optional -o path/in/which/to/create/output/dir} mypackage</div><br />
+and a convention that the package dir is created with matching name (mypackage here) and ports for a package are always defined in mypackage/ports unless the env file overrides the public ports location.<br />
+<br />
+So then the default use case would start to look like:<br />
+<div class="simplebox">createProject testProject<br />
+- yields new dir testProject/ (containing .ccaenv/project.env and ports/}<br />
+cd testProject<br />
+definePort MyPort1 {optional -from-c/c++/fortran/java=sourceFileToScanForPublicMethods}<br />
+definePort MyPort2<br />
+definePort MyPort3<br />
+- a bunch of port sidl files have been defined in testProject/ports now.<br />
+defineComponent MyComponent1 -lang=c -uses=MyPort1 -provides=MyPort2 {optional -o outputdirname}<br />
+- creates testProject/MyComponent1/.ccaenv/{MyComponent1.env, componentList.env}<br />
+cd MyComponent1<br />
+addProvidesPort {optional -c MyComponent1 if more than one live in this dir} -dynamic MyPort3<br />
+</div><br />
+Ben<br />
+<hr />
+<br />
+To comment on the above: nowhere do I see a .env in the Rails work. I don't see any hidden files or worse, environment vars.   I am not sure where you got this.  Having said that, I think the command structure is the same as I proposed.<br />
+- Rob<br />
+<hr />
+Rails is drowning in &quot;cached context&quot; aka &quot;config&quot; files, starting from environment.rb and fanning out, as well as using RAILS_ENV for most actual development work. For a couple of examples of just how much complexity they're burying (given the 'all-ruby' assumption which removes a lot of the complexity CCA has to manage), see:<br />
+<a class="wiki"  href="http://wiki.rubyonrails.org/rails/pages/Environments">Environments in Ruby on Rails</a><br />
+and<br />
+<a class="wiki"  href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails environments: The Cheat Sheet</a><br />
+and there's chaos afoot in rails, and ways around it:<br />
+<a class="wiki"  href="http://www.redhillconsulting.com.au/blogs/simon/archives/000359.html">My hovercraft is full of eels: Deploying to Multiple Rails Environments</a><br />
+<br />
+The way environment.rb now works (outlinks to config/environments/*.rb gems) looks an awful lot like /etc/rc.d/ being reinvented; not a surprise since practical patterns recur.<br />
+<br />
+In conclusion:<br />
+- Yes, what I'm saying in my prior examples is oriented toward keeping the default command-line usage as clean as possible.<br />
+- Yes, we're all agreed that the context has to be remembered somewhere if we're not going to make the user repeat themselves constantly.<br />
+- Torsten took the 'stuff it in a database approach', which has the advantage of being not-user-editable and the crippling disadvantage of requiring a database dependency.<br />
+- SVN/CVS/open-mpi/eclipse,... take the approach (which I am suggesting we follow) that the defaults are in a set of files/databases and the user can override the defaults in several ways. Most of these ways appear in some form in Rails and/or plain Ruby.<br />
+<br />
+Ben<br />
+<hr />
+<br />
+<div class="titlebar"> To start the 'tool context resolution' topic </div>
+Here's how I would have the various command line tools hunt for environment information in a package+components+ports oriented system.<br />
+- The general utility programs (createPackage,createComponent, etc) are installed in one location and appear in the user's path and may be used for multiple projects at once.<br />
+- These programs consult read config information in the following order:<br />
+<ol><li> system-wide environment defaults file installed along with createPackage
+</li><li> per-user environment defaults overrides/additions in ~/.ccaenvrc, if present
+</li><li> the file pointed to by env $CCATOOLS_CONFIG, if present
+</li><li> the env file pointed to by -e command line argument, if present
+</li><li> env files in .ccaenv of the present working directory, which in the case of a component will refer upward to a project-wide config defaults file before making its own settings
+</li></ol>
+<br />
+- The package/project and component config files will of course be created by default and modifiable by the user (with tools or otherwise) to incorporate information about external dependencies, etc just as we discovered we must in the tutorial.<br />
+<br />
+Ben<br />
+<hr />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=admin.html' >admin</a>
+  last modification: Thursday 26 of October, 2006 [20:24:58 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Ben%20Rob%20Toolkit%20Tools%20Discussion
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

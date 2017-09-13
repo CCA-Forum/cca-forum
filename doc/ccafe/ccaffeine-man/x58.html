@@ -1,0 +1,1381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Running Ccaffeine</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE=" Ccaffeine Reference Framework for CCA Components "
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Building and Running Ccaffeine"
+HREF="c3.html"><LINK
+REL="PREVIOUS"
+TITLE="Building and Running Ccaffeine"
+HREF="c3.html"><LINK
+REL="NEXT"
+TITLE=" PortTranslator: A Babel gov.cca.Port that provides access to
+the Ccaffeiene Classic Type Components "
+HREF="a282.html"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ccaffeine Reference Framework for CCA Components</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c3.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Building and Running Ccaffeine</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="a282.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="runningCcafe"
+></A
+>Running Ccaffeine</H1
+><P
+> Now that you have built Ccaffeine it would probably be nice to
+know how to run it.  The Ccaffeine executable orchestrates a set of
+SCMD (Single Component Multiple Data) components on a parallel
+machine.  It has the ability to instantiate, connect and run
+components interactively or in batch mode.  Additionally, it has debug
+mode that runs as a single processor serial program.  Ccaffeine itself
+has no ability to spawn processes and relies on MPI or PVM to do this
+task for it.  For more information see the Ccaffeine paper.  The rest
+of this document assumes a rudimentary understanding of the CCA
+component connection mechanisms and procedures.  </P
+><P
+>&#13;The the ccaffeine executable comes in three distinct forms:
+</P
+><P
+></P
+><UL
+><LI
+STYLE="list-style-type: opencircle"
+><P
+>&#13;    ccafe-client - client version that expects to connect to a
+    multiplexer front end which can then be connected to the Ccaffeine
+    GUI or a plain old command line for interactive work.  </P
+></LI
+><LI
+STYLE="list-style-type: opencircle"
+><P
+>&#13;    ccafe-batch - a batch version that has no need of a front end and
+    has no ability to be interactive.</P
+></LI
+><LI
+STYLE="list-style-type: opencircle"
+><P
+>&#13;    ccafe-single - a single process interactive version useful for
+    debugging.  </P
+></LI
+></UL
+><P
+>&#13; These executables are closely related and are intended to be useful
+ in different modes of component-oriented software development ( <A
+HREF="x58.html#run_mode"
+> see below </A
+> ).  </P
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="AEN71"
+></A
+>ccafe-single</H2
+><P
+>&#13; This executable is meant to be run in single processor mode
+ interactively with the command line.
+
+   <DIV
+CLASS="figure"
+><A
+NAME="AEN74"
+></A
+><P
+><IMG
+SRC="ccafe-single.png"></P
+><P
+><B
+>Figure 1.  Schematic of a single processor run for Ccaffeine</B
+></P
+></DIV
+>
+</P
+><P
+> Options for <B
+CLASS="command"
+>ccafe-single</B
+>:</P
+><P
+CLASS="literallayout"
+><br>
+&nbsp;ccafe-single&nbsp;&nbsp;[--ccafe-rc&nbsp;&#60;&nbsp;rc&nbsp;file&nbsp;&#62;]&nbsp;&nbsp;&nbsp;[--help]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--ccafe-rc&nbsp;&#60;&nbsp;rc&nbsp;file&nbsp;&#62;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Source&nbsp;the&nbsp;given&nbsp;file&nbsp;into&nbsp;ccaffeine.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Print&nbsp;out&nbsp;help&nbsp;information.<br>
+</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="AEN80"
+></A
+>ccafe-batch</H2
+><P
+>&#13;    This executable is meant to run in a parallel environment, but
+    does not have an interactive capability, nor the cumbersome
+    multiplexing machinery that interaction requires.  Since there is
+    no way for the user to interactively create a component program,
+    ccafe-batch requires either a command line <B
+CLASS="command"
+> --ccafe-rc
+    </B
+> option for a
+    Ccaffiene resource file, a <TT
+CLASS="filename"
+> ~/.ccaferc </TT
+>, or a
+    <TT
+CLASS="envar"
+> CCAFE_RC_FILE </TT
+>
+    environment variable to perform parallel computations ( <A
+HREF="x58.html#ccaferc"
+> see below </A
+> ).
+</P
+><P
+>&#13;   <DIV
+CLASS="figure"
+><A
+NAME="AEN88"
+></A
+><P
+><IMG
+SRC="ccafe-batch.png"></P
+><P
+><B
+>Figure 2.  Schematic of a batch multi-processor run for
+   Ccaffeine</B
+></P
+></DIV
+>
+   </P
+><P
+>Options for ccafe-batch:</P
+><P
+CLASS="literallayout"
+><br>
+	ccafe-batch&nbsp;[--ccafe-rc&nbsp;&#60;&nbsp;rc&nbsp;file&nbsp;&#62;&nbsp;]&nbsp;[--help]<br>
+		--ccafe-rc&nbsp;&#60;&nbsp;rc&nbsp;file&nbsp;&#62;			Source&nbsp;the&nbsp;given&nbsp;file&nbsp;into&nbsp;ccaffeine.<br>
+&nbsp;<br>
+		--help<br>
+			Print&nbsp;out&nbsp;help&nbsp;information.<br>
+</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="AEN93"
+></A
+>ccafe-client</H2
+><P
+>&#13; This is the application for interactive use in a parallel
+ environment.  A copy of cafe-client runs on each participating
+ processor, orchestrating and managing component creation,
+ connections, and destruction on behalf of the user.  A central
+ multiplexor, called the Muxer, creates a single multiplexed
+ communication stream out of the many cafe-client streams.  The
+ multiplexed stream communicates with the user through a GUI, or
+ directly to a terminal.  In order to preserve scalability, the
+ Muxer's are self-similar and can be cascaded in a tree.
+</P
+><P
+>&#13;   <DIV
+CLASS="figure"
+><A
+NAME="ccafeClientFig"
+></A
+><P
+><IMG
+SRC="ccafe-client.png"></P
+><P
+><B
+>Figure 3.  Schematic of a interactive 
+multi-processor run for
+   Ccaffeine</B
+></P
+></DIV
+>
+   </P
+><P
+>Options for ccafe-client:</P
+><P
+>&#13;<P
+CLASS="literallayout"
+><br>
+ccafe-client&nbsp;&nbsp;[--type&nbsp;&#60;&nbsp;client,interactive,gui,oneProcInteractive&nbsp;&#62;&nbsp;]&nbsp;&nbsp;<br>
+[--ccafe-waitForGdbAttach]&nbsp;&nbsp;[--port]&nbsp;&nbsp;[--ccafe-rc&nbsp;&#60;&nbsp;rc&nbsp;file&nbsp;&#62;&nbsp;]&nbsp;&nbsp;[--help]<br>
+<br>
+&nbsp;&nbsp;--type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More&nbsp;below:<br>
+&nbsp;<br>
+&nbsp;&nbsp;--type&nbsp;&nbsp;client&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;"normal"&nbsp;position,&nbsp;it&nbsp;listens&nbsp;for&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connection,&nbsp;probably&nbsp;the&nbsp;GUI.&nbsp;&nbsp;The&nbsp;backend&nbsp;right<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now,&nbsp;always&nbsp;behaves&nbsp;as&nbsp;a&nbsp;client.<br>
+&nbsp;<br>
+&nbsp;&nbsp;--type&nbsp;&nbsp;interactive&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Same&nbsp;as&nbsp;client&nbsp;but&nbsp;interacts&nbsp;in&nbsp;human&nbsp;readable&nbsp;form,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rather&nbsp;than&nbsp;the&nbsp;way&nbsp;the&nbsp;GUI&nbsp;would&nbsp;be&nbsp;expecting&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interact.<br>
+&nbsp;<br>
+&nbsp;&nbsp;--type&nbsp;gui&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;behavior,&nbsp;expecting&nbsp;to&nbsp;talk&nbsp;to&nbsp;a&nbsp;GUI.<br>
+&nbsp;<br>
+&nbsp;&nbsp;--type&nbsp;oneProcInteractive&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expects&nbsp;that&nbsp;there&nbsp;will&nbsp;be&nbsp;only&nbsp;one<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process&nbsp;and&nbsp;that&nbsp;it&nbsp;will&nbsp;be&nbsp;talking&nbsp;to&nbsp;a&nbsp;human<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;being.<br>
+<br>
+&nbsp;&nbsp;--port&nbsp;&#60;&nbsp;number&nbsp;&#62;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Port&nbsp;number&nbsp;to&nbsp;listen&nbsp;on,&nbsp;default&nbsp;host&nbsp;name&nbsp;is&nbsp;localhost.<br>
+&nbsp;<br>
+&nbsp;&nbsp;--name&nbsp;&#60;&nbsp;host&nbsp;&#62;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Host&nbsp;other&nbsp;than&nbsp;localhost&nbsp;to&nbsp;connect&nbsp;to.<br>
+&nbsp;<br>
+&nbsp;&nbsp;--file&nbsp;&#60;&nbsp;configFile&nbsp;&#62;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;processor&nbsp;config&nbsp;file&nbsp;for&nbsp;the&nbsp;processor&nbsp;map,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;an&nbsp;initialization&nbsp;file.<br>
+&nbsp;<br>
+&nbsp;&nbsp;--ccafe-waitForGdbAttach<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spins&nbsp;until&nbsp;gdb&nbsp;attaches&nbsp;for&nbsp;debugging,&nbsp;probably&nbsp;not&nbsp;useful&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;parallel&nbsp;environment;&nbsp;every&nbsp;process&nbsp;would&nbsp;have&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;attached&nbsp;simultaneously.&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;--ccafe-rc&nbsp;&#60;&nbsp;rc&nbsp;file&nbsp;&#62;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source&nbsp;the&nbsp;given&nbsp;file&nbsp;into&nbsp;ccaffeine.<br>
+<br>
+&nbsp;&nbsp;&nbsp;--ccafe-outputdir&nbsp;&#60;&nbsp;directory&nbsp;&#62;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ccaffeine&nbsp;creates&nbsp;files&nbsp;that&nbsp;are&nbsp;tied&nbsp;off&nbsp;to&nbsp;each&nbsp;process's<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stdout&nbsp;and&nbsp;stderr.&nbsp;&nbsp;This&nbsp;flag&nbsp;&nbsp;causes&nbsp;those&nbsp;files&nbsp;to&nbsp;appear&nbsp;in&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified&nbsp;directory.<br>
+<br>
+&nbsp;&nbsp;--help<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;message.&nbsp;\n<br>
+<br>
+<br>
+<br>
+</P
+>
+</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="AEN103"
+></A
+>Ccaffeine Runtime Summary</H2
+><A
+NAME="run_mode"
+></A
+><DIV
+CLASS="table"
+><A
+NAME="AEN106"
+></A
+><P
+><B
+>Table 1. Ccaffeine run modes vs executables</B
+></P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> mode/executable</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> <B
+CLASS="command"
+>ccafe-single</B
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><B
+CLASS="command"
+>ccafe-batch</B
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> <B
+CLASS="command"
+>ccafe-client</B
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> Parallel</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> N</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> Y</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> Y</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> GUI</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> N</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> N</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> Y<A
+NAME="AEN128"
+HREF="x58.html#FTN.AEN128"
+>[a]</A
+> </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> interactive
+	 command line</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> Y</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> N </TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> Y<A
+NAME="AEN135"
+HREF="x58.html#FTN.AEN135"
+>[b]</A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> debug<A
+NAME="AEN142"
+HREF="x58.html#FTN.AEN142"
+>[c]</A
+> (gdb attach)</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> N</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> N</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> Y</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> mpi-based components</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> N<A
+NAME="AEN153"
+HREF="x58.html#FTN.AEN153"
+>[d]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> Y<A
+NAME="mpisupport"
+HREF="x58.html#FTN.mpisupport"
+>[e]</A
+>
+</TD
+><TD
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+> Y<A
+HREF="x58.html#FTN.mpisupport"
+>[e]</A
+>
+</TD
+></TR
+></TBODY
+><TR
+><TD
+COLSPAN="4"
+>Notes:<BR><A
+NAME="FTN.AEN128"
+>a. </A
+>java muxer and builder gui req'd if used in parallel.
+	 <BR><A
+NAME="FTN.AEN135"
+>b. </A
+>Use telnet to the relevant Muxer
+	 port, specified by<TT
+CLASS="varname"
+>--builderPort</TT
+> on the Muxing
+	 process (default = 2024), also helpful but not neccessary is
+	 to specify <TT
+CLASS="varname"
+>--type interactive </TT
+> on
+	 <B
+CLASS="command"
+>ccafe-client</B
+>.
+	 <BR><A
+NAME="FTN.AEN142"
+>c. </A
+>If <B
+CLASS="command"
+>ccafe-client</B
+> run with
+ 	<TT
+CLASS="varname"
+>--ccafe-gdbWaitForAttach</TT
+> and debugging symbols
+ 	configured during the build,
+ 	<TT
+CLASS="function"
+>gdbWaitForAttach()</TT
+> occurs during startup.
+ 	<BR><A
+NAME="FTN.AEN153"
+>d. </A
+>
+	No serious reason for excluding this, just
+	<TT
+CLASS="function"
+>MPI_Init()</TT
+> is not called by Ccaffeine in this mode.
+	<BR><A
+NAME="FTN.mpisupport"
+>e. </A
+>
+	Yes if mpi support configured into ccaffeine.
+	<BR></TD
+></TR
+></TABLE
+></DIV
+><P
+>&#13;<A
+NAME="ccaferc"
+></A
+>A Ccaffeine resource file consists of a valid set of
+<A
+HREF="x58.html#scriptingLanguage"
+> Ccaffeine commands </A
+>
+and is loaded and run before interactive input begins.  The
+ Ccaffeine resource file is found and used in the following order of
+ precedence for all of executables:
+</P
+><P
+></P
+><UL
+><LI
+><P
+> --ccafe-rc option </P
+></LI
+><LI
+><P
+>CCAFE_RC_FILE environment variable</P
+></LI
+><LI
+><P
+>$HOME/.ccaferc</P
+></LI
+><LI
+><P
+>$prefix/cxx/dc/user_iface/CcaffeineRC  where $prefix is the value by 
+the same name given to configure.</P
+></LI
+></UL
+><P
+>&#13;<B
+CLASS="command"
+> ccafe-single </B
+> and <B
+CLASS="command"
+> ccafe-client </B
+>
+if still not finding an rc file, bravely continue, waiting for the
+interactive input, ccafe-batch on the other hand, will exit.
+ </P
+><P
+>In order to prevent unintended use of non-Ccaffeine files, a valid
+Ccaffeine resource file must have a "magic number" at the top of
+it:</P
+><P
+CLASS="literallayout"
+><br>
+<br>
+#!ccaffeine&nbsp;bootstrap&nbsp;file.&nbsp;<br>
+#&nbsp;-------&nbsp;don't&nbsp;change&nbsp;anything&nbsp;ABOVE&nbsp;this&nbsp;line.-------------<br>
+#			...<br>
+<br>
+</P
+><P
+> You should include the first two lines of this <A
+HREF="http://www.cca-forum.org/old/ccafe/ccafe-man/CcaffeineRC.txt"
+TARGET="_top"
+>&#13;example file</A
+> at the top of any rc file you wish to create for
+yourself.  If these magic two lines are not present, the file will not
+be read by Ccaffeine and it will complain on start up.  If the file
+<TT
+CLASS="filename"
+> $CCAFE_ROOT/cxx/dc/user_iface/CcaffeineRC </TT
+>
+is used as a resource file
+(directly from the Ccaffeine build), the components that come with
+Ccaffeine will be loaded automatically whenever Ccaffeine is
+started.</P
+><P
+>&#13;All executables, if given an invalid resource file, continue searching
+in the next possible rc file location, and issuing a warning about the
+bad file. If any rc file is subsequently found, another warning is
+issued that the rc file found is not the one expected.
+</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="scriptingLanguage"
+></A
+>Ccaffeine Scripting Language</H2
+><P
+>&#13; At the command line Ccafeine is pretty much self documenting.
+ Running ccafe-single at the command line and typing "help &#60; CR &#62;"
+ gives:
+</P
+><P
+CLASS="literallayout"
+><br>
+help&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;[string&nbsp;token]&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;prints&nbsp;the&nbsp;help&nbsp;of&nbsp;one&nbsp;or&nbsp;all&nbsp;commands<br>
+<br>
+exit&nbsp;--&nbsp;<br>
+<br>
+x&nbsp;--&nbsp;<br>
+<br>
+bye&nbsp;--&nbsp;<br>
+<br>
+quit&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;[string&nbsp;token]&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;leave&nbsp;the&nbsp;parser&nbsp;and&nbsp;the&nbsp;calling&nbsp;program,&nbsp;with&nbsp;optional&nbsp;return&nbsp;code.<br>
+<br>
+display&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;&nbsp;&#60;&nbsp;string&nbsp;token&nbsp;&#62;&nbsp;&nbsp;[instance]&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display&nbsp;pallet<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;show&nbsp;what&nbsp;is&nbsp;in&nbsp;the&nbsp;pallet&nbsp;currently.<br>
+<br>
+display&nbsp;arena<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;show&nbsp;what&nbsp;is&nbsp;in&nbsp;the&nbsp;arena&nbsp;currently.<br>
+<br>
+display&nbsp;component&nbsp;&nbsp;&#60;&nbsp;component&nbsp;instance&nbsp;name&nbsp;&#62;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;show&nbsp;the&nbsp;ports&nbsp;and&nbsp;class&nbsp;name&nbsp;associated&nbsp;with&nbsp;a&nbsp;component<br>
+<br>
+display&nbsp;chain&nbsp;&nbsp;&#60;&nbsp;component&nbsp;instance&nbsp;name&nbsp;&#62;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;show&nbsp;the&nbsp;connections&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+<br>
+display&nbsp;state<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;equivalent&nbsp;to&nbsp;"display&nbsp;arena"&nbsp;and&nbsp;then&nbsp;"display&nbsp;chain"<br>
+<br>
+pulldown&nbsp;--&nbsp;<br>
+<br>
+instantiate&nbsp;--&nbsp;<br>
+<br>
+create&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;&nbsp;&#60;&nbsp;class&nbsp;&#62;&nbsp;&nbsp;[string&nbsp;token]&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;create&nbsp;an&nbsp;arena&nbsp;instance&nbsp;from&nbsp;a&nbsp;class.<br>
+<br>
+connect&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;&nbsp;&#60;&nbsp;instance&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;string&nbsp;token&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;instance&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;<br>
+<br>
+string&nbsp;token&nbsp;&#62;&nbsp;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#60;&nbsp;using&nbsp;instance&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;used&nbsp;Port&nbsp;name&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;providing&nbsp;instance&nbsp;<br>
+&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;provided&nbsp;Port&nbsp;name&nbsp;&#62;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;make&nbsp;a&nbsp;connection&nbsp;between&nbsp;two&nbsp;instantiated&nbsp;components&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;residing&nbsp;in&nbsp;the&nbsp;arena.<br>
+<br>
+disconnect&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;&nbsp;&#60;&nbsp;instance&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;string&nbsp;token&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;instance&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;<br>
+<br>
+string&nbsp;token&nbsp;&#62;&nbsp;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#60;&nbsp;using&nbsp;instance&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;used&nbsp;Port&nbsp;name&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;providing&nbsp;instance&nbsp;<br>
+&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;provided&nbsp;Port&nbsp;name&nbsp;&#62;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;break&nbsp;a&nbsp;connection&nbsp;between&nbsp;two&nbsp;instantiated&nbsp;components&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;residing&nbsp;in&nbsp;the&nbsp;arena.<br>
+<br>
+configure&nbsp;--&nbsp;<br>
+<br>
+parameters&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;&nbsp;&#60;&nbsp;instance&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;string&nbsp;token&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;string&nbsp;token&nbsp;&#62;&nbsp;&nbsp;<br>
+[string&nbsp;token]&nbsp;[0&nbsp;or&nbsp;args&nbsp;like&nbsp;previous]<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;query&nbsp;or&nbsp;set&nbsp;the&nbsp;configuration&nbsp;parameters&nbsp;of&nbsp;a&nbsp;component&nbsp;port<br>
+<br>
+go&nbsp;--&nbsp;<br>
+<br>
+run&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;[instance]&nbsp;[string&nbsp;token]&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cause&nbsp;the&nbsp;connection&nbsp;framework&nbsp;to&nbsp;run&nbsp;the&nbsp;framed&nbsp;components.<br>
+<br>
+pallet&nbsp;--&nbsp;<br>
+<br>
+classes&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show&nbsp;what&nbsp;component&nbsp;classes&nbsp;are&nbsp;in&nbsp;the&nbsp;pallet&nbsp;currently.<br>
+<br>
+arena&nbsp;--&nbsp;<br>
+<br>
+instances&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show&nbsp;what&nbsp;instances&nbsp;are&nbsp;in&nbsp;the&nbsp;arena&nbsp;currently.<br>
+<br>
+links&nbsp;--&nbsp;<br>
+<br>
+chain&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show&nbsp;what&nbsp;connections&nbsp;are&nbsp;in&nbsp;the&nbsp;arena&nbsp;currently.<br>
+<br>
+property&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;&nbsp;&#60;&nbsp;instance&nbsp;&#62;&nbsp;&nbsp;[string&nbsp;token]&nbsp;[remainder&nbsp;of&nbsp;line&nbsp;as&nbsp;a&nbsp;single&nbsp;<br>
+string]<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;property&nbsp;&nbsp;&#60;&nbsp;component-instance-name&nbsp;&#62;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;show&nbsp;all&nbsp;the&nbsp;properties&nbsp;of&nbsp;a&nbsp;component.<br>
+<br>
+property&nbsp;&nbsp;&#60;&nbsp;component-instance-name&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;key&nbsp;&#62;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;show&nbsp;all&nbsp;the&nbsp;named&nbsp;property&nbsp;of&nbsp;a&nbsp;component,&nbsp;if&nbsp;it&nbsp;exists.<br>
+<br>
+property&nbsp;&nbsp;&#60;&nbsp;component-instance-name&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;key&nbsp;&#62;&nbsp;&nbsp;&nbsp;&#60;&nbsp;value&nbsp;&#62;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;set&nbsp;the&nbsp;named&nbsp;property&nbsp;of&nbsp;a&nbsp;component.<br>
+<br>
+remove&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;[instance]&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;remove&nbsp;&nbsp;&#60;&nbsp;component&nbsp;instance&nbsp;name&nbsp;&#62;&nbsp;<br>
+<br>
+nuke&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;&nbsp;&#60;&nbsp;string&nbsp;token&nbsp;&#62;&nbsp;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;remove&nbsp;all&nbsp;components&nbsp;in&nbsp;the&nbsp;arena<br>
+<br>
+repository&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;&nbsp;&#60;&nbsp;string&nbsp;token&nbsp;&#62;&nbsp;&nbsp;[string&nbsp;token]&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;repository&nbsp;list<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;show&nbsp;components&nbsp;available&nbsp;in&nbsp;the&nbsp;repository.<br>
+<br>
+&nbsp;&nbsp;The&nbsp;following&nbsp;get&nbsp;options&nbsp;cannot&nbsp;be&nbsp;abbreviated:<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;repository&nbsp;get&nbsp;class<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;load&nbsp;component&nbsp;from&nbsp;the&nbsp;repository&nbsp;list&nbsp;(private&nbsp;and&nbsp;immediate&nbsp;<br>
+linking).<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;repository&nbsp;get-global&nbsp;class<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;load&nbsp;component&nbsp;from&nbsp;the&nbsp;repository&nbsp;list&nbsp;(global&nbsp;and&nbsp;immediate&nbsp;linking).&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;repository&nbsp;get-lazy&nbsp;class<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;load&nbsp;component&nbsp;from&nbsp;the&nbsp;repository&nbsp;list&nbsp;(private&nbsp;and&nbsp;lazy&nbsp;linking).<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;repository&nbsp;get-lazy-global&nbsp;class<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;load&nbsp;component&nbsp;from&nbsp;the&nbsp;repository&nbsp;list&nbsp;(global&nbsp;and&nbsp;lazy&nbsp;linking).<br>
+<br>
+Global&nbsp;linking&nbsp;may&nbsp;be&nbsp;appropriate&nbsp;for&nbsp;components&nbsp;that,&nbsp;as&nbsp;a&nbsp;side&nbsp;effect,<br>
+<br>
+for&nbsp;example&nbsp;include&nbsp;libblas,&nbsp;liblapack,&nbsp;libppm,&nbsp;and&nbsp;other&nbsp;legacy&nbsp;C/f77&nbsp;<br>
+routines.Such&nbsp;components&nbsp;will&nbsp;need&nbsp;to&nbsp;be&nbsp;loaded&nbsp;before&nbsp;any&nbsp;other&nbsp;components&nbsp;that&nbsp;<br>
+<br>
+use&nbsp;the<br>
+<br>
+global&nbsp;symbols.<br>
+<br>
+path&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;[string&nbsp;token]&nbsp;[string&nbsp;token]&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;init<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;set&nbsp;framework&nbsp;path&nbsp;from&nbsp;env(CCA_COMPONENT_PATH).<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;append&nbsp;&nbsp;&#60;&nbsp;directory&nbsp;&#62;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;add&nbsp;directory&nbsp;to&nbsp;path.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;prepend&nbsp;&nbsp;&#60;&nbsp;directory&nbsp;&#62;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;insert&nbsp;directory&nbsp;before&nbsp;path.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;set<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;replace&nbsp;path.&nbsp;format&nbsp;input&nbsp;as&nbsp;env()<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;show&nbsp;path<br>
+<br>
+shell&nbsp;--&nbsp;<br>
+<br>
+system&nbsp;--&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arguments:&nbsp;[remainder&nbsp;of&nbsp;line&nbsp;as&nbsp;a&nbsp;single&nbsp;string]<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;executes&nbsp;shell&nbsp;commands&nbsp;(no&nbsp;globbing,&nbsp;though)<br>
+<br>
+</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="AEN186"
+></A
+>Configuration Files and File Confusion</H2
+><P
+>&#13; There are 3 different files that Ccaffeine uses for configuration,
+ beyond other files that might be associated with any components that
+ get instantiated.  In addition to these, ccafe-client creates files
+ associated with the stdout/stderr of each process (these are usually
+ named pErr xx and pOutxx, where xx is the MPI rank of the process ) .
+ It is easy to confuse them and usually disasterous to program
+ execution if they are mixed up.  Only one file type is associated
+ with ccafe-batch and ccafe-single: the 
+ <A
+HREF="x58.html#ccaferc"
+> Ccaffeine resource file </A
+>.  For
+ ccafe-batch there are three configuration files:</P
+><P
+></P
+><UL
+><LI
+><P
+>&#13;<A
+HREF="x58.html#ccaferc"
+> Ccaffeine resource file </A
+>
+</P
+></LI
+><LI
+><P
+>&#13;A runtime configuration file indicated by the --file option.
+</P
+></LI
+><LI
+><P
+>&#13;A ".bld" file that is read by the Ccaffeine
+	<A
+HREF="x58.html#ccaffeineGui"
+> GUI </A
+> .
+</P
+></LI
+></UL
+><P
+>&#13; Of these the most similar and the easiest to confuse are the ".bld"
+ file and the Ccaffeine resource file.  The ".bld" file is a format
+ only for the GUI front end and is only read and parsed only by the
+ GUI.  Ccaffeine proper (i.e. ccafe-client) will get confused by it
+ and probably hang.  The ".bld" file can both be read and written by
+ the GUI .  It can also be carefully edited by the user, usually with
+ reasonable results.  The <A
+HREF="x58.html#ccaferc"
+> Ccaffeine resource
+ file </A
+> is never written by Ccaffeine and is only constructed by
+ the user from the valid list of 
+<A
+HREF="x58.html#scriptingLanguage"
+> Ccaffeine commands </A
+>.</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="ccaffeineGui"
+></A
+>The Ccaffeine GUI</H2
+><P
+>&#13; The Ccaffeine GUI takes the place of a user typing at a command line
+ terminal.  It interprets gestures in the window and translates them
+ into commands to be typed out on a socket that is connected to the
+ <A
+HREF="x58.html#muxer"
+> Muxer </A
+>, which in turn sends them to the
+ <B
+CLASS="command"
+>ccafe-client</B
+>'s.  The GUI
+ always assumes that it is talking to a single Ccaffeine client and
+ requires the <A
+HREF="x58.html#muxer"
+>Muxer</A
+> to communicate in to
+ a parallel run.  Obviously
+ the GUI can only be used in an interactive fashion and does not work
+ with <B
+CLASS="command"
+>ccafe-batch</B
+> or
+ <B
+CLASS="command"
+>ccafe-single</B
+>.  It will function normally with a
+ single processor run of ccafe-client. 
+</P
+><DIV
+CLASS="figure"
+><A
+NAME="AEN210"
+></A
+><P
+><IMG
+SRC="gui.png"></P
+><P
+><B
+>Figure 4. Schematic of an
+ interactive multi-processor run using the Ccaffeine GUI</B
+></P
+></DIV
+><P
+>The GUI is written in Java and can take many forms.  The standard path
+from the console  is:</P
+><P
+CLASS="literallayout"
+><br>
+<br>
+java&nbsp;-classpath&nbsp;$CCAFE_ROOT/java&nbsp;gov.sandia.ccaffeine.dc.user_iface.BuilderClient<br>
+<br>
+</P
+><P
+> The available options are:</P
+><P
+CLASS="literallayout"
+><br>
+<br>
+&nbsp;&nbsp;--builderPort&nbsp;&#60;&nbsp;port&nbsp;number&#62;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Port&nbsp;on&nbsp;which&nbsp;GUI&nbsp;will&nbsp;connect,&nbsp;default&nbsp;is&nbsp;2024.<br>
+<br>
+&nbsp;&nbsp;--host&nbsp;&#60;&nbsp;hostName&nbsp;&#62;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Host&nbsp;to&nbsp;which&nbsp;GUI&nbsp;will&nbsp;connect,&nbsp;default&nbsp;is&nbsp;localhost.<br>
+<br>
+&nbsp;&nbsp;--file&nbsp;&#60;.bld&nbsp;file&#62;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUI&nbsp;compatible&nbsp;.bld&nbsp;file&nbsp;to&nbsp;be&nbsp;read&nbsp;in&nbsp;at&nbsp;startup.<br>
+<br>
+</P
+><P
+>The GUI ".bld" files are a format that is written by the GUI and
+is not compatible with the <A
+HREF="x58.html#scriptingLanguage"
+>Ccaffeine
+rc file</A
+> type.  Having said that, the major differences between
+the two file types are that the GUI requires layout information and
+does not provide pallet loading support like the <B
+CLASS="command"
+> repository
+get </B
+> command in the <A
+HREF="x58.html#scriptingLanguage"
+>&#13;scripting language </A
+>.</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="muxer"
+></A
+>Ccaffeine Muxer</H2
+><P
+>&#13;This is an application, written in Java, that multiplexes streams
+between multiple parallel processes and a single user driven client.
+In practice that client is either telnet for command line interaction
+or the Ccaffeine GUI for a graphical user interface.  
+
+The muxer is enforces the SPMD nature of Ccaffeine, it allows only
+duplicate, identical configuration information out to the
+<B
+CLASS="command"
+>ccafe-client</B
+>'s running the computational end, and
+it ensures that the responses from the multiple
+<B
+CLASS="command"
+>ccafe-client</B
+>'s are identical<A
+NAME="AEN226"
+HREF="x58.html#FTN.AEN226"
+>[1]</A
+>.
+
+The standard
+execution from the Ccaffeine build is:</P
+><P
+CLASS="literallayout"
+><br>
+java&nbsp;-classpath&nbsp;$CCAFE_ROOT/java&nbsp;<br>
+gov.sandia.ccaffeine.dc.distributed.MuxingProcess<br>
+</P
+><P
+>The common options are:</P
+><P
+CLASS="literallayout"
+><br>
+<br>
+&nbsp;&nbsp;--file&nbsp;procDefinitionFile&nbsp;(required)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;processor&nbsp;definition&nbsp;file&nbsp;that&nbsp;associates&nbsp;names&nbsp;with&nbsp;machine&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;processor&nbsp;locations&nbsp;of&nbsp;the&nbsp;layout&nbsp;for&nbsp;this&nbsp;parallel&nbsp;run.<br>
+<br>
+&nbsp;&nbsp;--name&nbsp;MyName&nbsp;(required)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;name&nbsp;for&nbsp;this&nbsp;server&nbsp;appearing&nbsp;in&nbsp;the&nbsp;processor&nbsp;definition&nbsp;file.<br>
+<br>
+&nbsp;&nbsp;--builderPort&nbsp;port<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;port&nbsp;to&nbsp;listen&nbsp;on&nbsp;for&nbsp;a&nbsp;connection&nbsp;from&nbsp;the&nbsp;single&nbsp;process&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expecting&nbsp;multiplexed&nbsp;IO.<br>
+<br>
+&nbsp;&nbsp;--port&nbsp;port<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;port&nbsp;to&nbsp;listen&nbsp;on&nbsp;for&nbsp;multiple&nbsp;connections&nbsp;from&nbsp;the&nbsp;parallel&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;processes.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br>
+</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="AEN231"
+></A
+>Ccaffeine Scripts</H2
+><P
+>There are two shell scripts that hopefully make it easy to run
+Ccaffeine as a beginner: <B
+CLASS="command"
+>runParallelLocal</B
+> and
+<B
+CLASS="command"
+>runGUI</B
+>.  Both are located in
+<TT
+CLASS="filename"
+>$CCAFE_ROOT/bin</TT
+> and run from the Ccaffeine build.
+These are meant to be complementary:
+<B
+CLASS="command"
+>runParallelLocal</B
+> starts, by default, 3 parallel
+processes on <B
+CLASS="command"
+>localhost</B
+> and waits for a connect,
+<B
+CLASS="command"
+>runGUI</B
+> connects to the results of
+<B
+CLASS="command"
+>runParallelLocal</B
+>.</P
+><P
+><B
+CLASS="command"
+>runParallelLocal</B
+> has these options:</P
+><P
+>&#13;<P
+CLASS="literallayout"
+><br>
+<br>
+	--np&nbsp;			number&nbsp;of&nbsp;processes&nbsp;requested&nbsp;from&nbsp;MPI.<br>
+<br>
+	--kill&nbsp;&nbsp;		wipe&nbsp;out&nbsp;the&nbsp;Ccaffeine&nbsp;parallel&nbsp;backend<br>
+				run&nbsp;previously.<br>
+<br>
+	--help&nbsp;&nbsp;		this&nbsp;message.<br>
+<br>
+</P
+>
+</P
+><P
+>In addition <B
+CLASS="command"
+>runParallelLocal</B
+> will take any
+options available to <A
+HREF="x58.html#ccafeClientOptions"
+><B
+CLASS="command"
+>ccafe-client</B
+></A
+>.
+With no options runParallelLocal will execute three MPI processes of
+ccafe-client and connect them to a Muxer ready for a command line
+connection (telnet) or a connection from the Ccaffeine GUI.  </P
+><P
+>&#13;<B
+CLASS="command"
+>runGUI</B
+> has no extra options but takes all of the options available to the <A
+HREF="x58.html#guiOptions"
+>Ccaffeine GUI </A
+>.
+</P
+><P
+>In addition, there is a script called <B
+CLASS="command"
+>runOneProcWGUI
+</B
+> that will run both ends at once using only one processor
+with suitable defaults so that the GUI will have some simple components
+in the pallet at start up.  This script takes no arguments.</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="AEN254"
+></A
+>Ccaffeine ".cca" File for Component Meta-information</H2
+><P
+>Although Babel-SIDL provides all of the machinery necessary to build and load components, the
+framework still needs to know what components are available.  Because
+the CCA is still in the process of defining a standard file format for
+component information, Ccaffeine must rely on its own file to provide
+that information in the meantime.  The file is usually stored with the
+component ".so" file for the component(s) and points to its location.
+In addition a wrapper function is required as a legacy of the previous
+"classic" version of the CCA specification in C++.  Both of these
+requirements are likely to disappear real soon now.  In the figure
+below is the format of the ".cca" file.  It consists of a magic number
+and the location of the library and the name of the babel component
+class.</P
+><DIV
+CLASS="figure"
+><A
+NAME="AEN257"
+></A
+><P
+><IMG
+SRC="dot-cca-file.png"
+ALIGN="center"></P
+><P
+><B
+>Figure 5. Structure of the .cca File Special to Ccaffeine</B
+></P
+></DIV
+><P
+> The important information here is the<I
+CLASS="emphasis"
+>Component
+Name</I
+> and the <I
+CLASS="emphasis"
+>Component Type</I
+>. Although
+Ccaffeine still supports the "classic" C++ components, for our
+purposes here <I
+CLASS="emphasis"
+>Component Type</I
+> should always be
+"babel".</P
+><P
+>This file will soon be replaced by a CCA standard that is
+based on XML, in the meantime it is necessary to inform Ccaffeine
+about what components are available and where they can be found.</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="AEN265"
+></A
+>Tips</H2
+><P
+></P
+><UL
+><LI
+><P
+>&#13;Do not use relative paths for any of the file arguments,
+use only absolute paths.  These are parallel runs and MPI does its
+best, but sometimes paths get confused.
+</P
+></LI
+><LI
+><P
+>&#13;Unless you are sure you know what your doing do not use the --file  argument for <B
+CLASS="command"
+>ccafe-client</B
+>.
+</P
+></LI
+><LI
+><P
+>&#13;Make sure that your MPI installation is working and your rsh is configured such that "rsh localhost ls" works without an error.
+</P
+></LI
+><LI
+><P
+>&#13;It is always best to preface any parallel run with a "runParallelLocal
+--kill" to get rid of any stray processes that may be laying around.
+If there are complaints about "connection refused" or "port
+unavailable" resort to this command.  Also: unless you are already
+running something, it can't hurt.
+</P
+></LI
+><LI
+><P
+>&#13;Not all combinations of GUI and Ccaffeine options are compatible, but
+the default ones are.
+</P
+></LI
+><LI
+><P
+>&#13;Use the <A
+HREF="mailto:ccafe-help@z.ca.sandia.gov"
+TARGET="_top"
+> help line</A
+>.
+</P
+></LI
+></UL
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN226"
+HREF="x58.html#AEN226"
+>[1]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>&#13;	By default this response checking is turned off.
+</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c3.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="a282.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Building and Running Ccaffeine</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c3.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>PortTranslator: A Babel gov.cca.Port that provides access to
+the Ccaffeiene Classic Type Components</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

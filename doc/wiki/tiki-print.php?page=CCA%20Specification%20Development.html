@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CCA Specification Development </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CCA+Specification+Development.html">CCA Specification Development</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Development of features in the CCA specification</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Here we have a scratch-pad of feature ideas under discussion for<br />
+extension of the CCA SIDL specification or of the generic<br />
+components that might be supplied to any CCA environment.<br />
+The presentation is in no particular order yet.<br />
+<hr />
+<a title="Event Specification Documents" href='tiki-index.php%3Fpage=Event+Specification+Proposal.html' class='wiki'>Event Specification Proposal</a><br />
+A first draft of a general CCA event specification.<br />
+<hr />
+<a title="Objects and protections for TypeMap" href='tiki-index.php%3Fpage=Typemap+extension+proposal.html' class='wiki'>Typemap extension proposal</a><br />
+We need more power, Scotty.<br />
+<hr />
+<b>Generic distributed Event services</b><br />
+A general event framework. A great deal of prior art exists for this, including event bus specifications from various versions of XCAT. In the CCA context, the present gotcha is that an interprocess protocol (Babel RMI) is still under development.<br />
+<br />
+In high-performance frameworks, an extra (relatively uncontrolled) thread is generally avoided. Thus call-back based in-process systems are often preferred to asynchronous event delivery systems dependent on threads.<br />
+<hr />
+<b>Framework Events Service Component</b><br />
+A specific event framework describing happenings within a running framework (which could be built on top of a generic event potentially, if the generic framework provides guarantees about delivery and delivery order). The primary publishers would be frames or components acting as frames. Both publishers and subscribers would manage events via CCA ports. A framework which manages nearly everything with via events is possible (the Java Ccafe framework of 2001 demonstrates this), but of course requires the Framework Event component be treated as more equal than the rest of the components.<br />
+<hr />
+<b>MxN Component</b><br />
+Data redistribution components are a high level topic, which probably deserves a CcaMxN<a href="tiki-editpage.php%3Fpage=CcaMxN.html" title="Create page: CcaMxN" class="wiki wikinew">?</a> wiki page all its own.<br />
+<hr />
+<b>MPI Component</b><br />
+This component at runtime will do fairly trivial things &mdash; just hand out MPI Comm dups or references to a shared communicator and handle the variations of MPI that require argc/argv be passed. Most of the value is in the data collected and exported to all downstream applications and build processes about how to compile and link components or applications with MPI in the installed Babel/CCA environment.<br />
+<hr />
+<b>Advanced MPI Component</b><br />
+An MPI component with more detailed functionality to&quot;simplify&quot; constructing MPMD applications from components.<br />
+<hr />
+<b>Component Registry</b><br />
+In much prior art this means a server process (distributed component) that provides interfaces and a mechanism for distinct applications (components) to find each other and connect (with or without including the intermediary in all subsequent calls). The assumption is that component means an already running instance.<br />
+<br />
+In more SPMD-oriented frameworks (like Ccaffeine), components are instances of classes from libraries linked within a single parallel process image (spread over parallel nodes). The registry, then, describes classes available to be linked (either statically or at run-time). Various CCA-supportive XML schema/dtds have been defined for storing registry data, but none is yet in the adopted standard.<br />
+<hr />
+<b>Creation Service</b><br />
+In the distributed context, this means a server that causes (by hook or crook) other servers (components) to be started and registered.<br />
+<br />
+In more SPMD-oriented frameworks (like Ccaffeine), components are instances of classes from libraries linked within a single parallel process image (spread over parallel nodes). Creation implies calling a factory function after assuring that the corresponding library is linked in the defined process. This defined process may be a dynamic runtime or an application binary being assembled from static libraries.<br />
+<hr />
+<b>Rule Processing Service Component</b><br />
+Given any event service, a rule processing and event filtering service can be constructed that allows applications and subsets of components to be self-assembling. A prototype exists in the Java Ccafe framework.<br />
+<hr />
+<b>Command-line Processing Component</b><br />
+A command line convention for passing configuration values to components and a component to implement/automate that processing.  Take a look at JSAP (Java Simple Argument Parsing) for anything of value.<br />
+<hr />
+<b>Environment Processing Component</b><br />
+An environment variable convention for passing configuration values to components implemented by another service component. Much prior art exists including but by no means limited to the Windows registry, X-resource database, Java property files, Windows ini files, and the Petsc resources.<br />
+<hr />
+<b>Output Management Component</b><br />
+At least one set of prototypes of this exists &mdash; the Printf port in Ccaffeine. In the parallel context, text and data output files are routinely an important issue. The difficulty with components for text output is that the least common denominator is printing a string optionally with a carriage return. Every language has a highly unique idiom for regular text input/output.<br />
+<br />
+Ideas that may be worth investigating include:<br />
+<ul><li> Analogs/generalizations of Java's Log4J or output control scheme used in NWChem
+</li><li> Configurable tagging of output lines with process ids, timestamps, line numbers, etc. If done in XML, it might be possible to create XSLT translators to re-organize outputs by timestamp or by processor id or other attributes.
+</li></ul>
+<br />
+Management of large binary data input/output is historically precisely the domain of the application specialist and not a generic data managing component because I/O performance requirements may be very stringent.<br />
+<hr />
+<b>GuiBuilder Service</b><br />
+This could be a component in the distributed computing sense. Given a detailed framework events specification, a GUI application component to drive a &quot;remote&quot; framework is possible. Prior art exists in Scirun/Ccaffeine/XCAT, but lacking an event standard and an RMI protocol, nothing has been defined in the CCA specification yet.<br />
+<hr />
+<b>Distributed CCA Protocols</b><br />
+Define the protocols and conventions that would allow &quot;live&quot; interoperability amongst CCA frameworks.  This means the ability to have a set of components on  system A running in framework AA connect to another set of components running on system B running in framework BB as a single application.<br />
+<hr />
+<b>User Interface APIs</b><br />
+Define the API's and corresponding ports for support of user interface functionality, such as that used and provided by a GUI builder component.<br />
+<hr />
+<b>Package/Component <a title="CCA Description Language(s)" href='tiki-index.php%3Fpage=CCA+Description+Language.html' class='wiki'>CCA Description Language</a> and Related Tools</b><br />
+We're interested in defining simple tools for extracting the information needed to generate, build, and package components implemented in any language from the component author. Thumb-screws are not working well.<br />
+<hr />
+<b>Architecture Description Language</b><br />
+A standardized way to represent compositions of CCA components.  Suitable for feeding to a framework (service) for instantiation, describing (hierarchical) component assemblies (for complexity management), and as part of recording provenance information for a CCA application.  Q: does this need to be time-dependent, or can that be put over the top?<br />
+<hr />
+<b>Application Composition Tracker Service</b><br />
+One of the underlying services for a provenance tracking capability for the CCA.  This service logs changes to the application's composition over time, and reports them on demand.  Generally, BuilderService<a href="tiki-editpage.php%3Fpage=BuilderService.html" title="Create page: BuilderService" class="wiki wikinew">?</a> calls would result in updates to the internal composition information maintained by this service, and timestamped log entries. Components would supply provenance information about themselves through a yet-to-be-defined interface.  The component could be queried for snapshot composition (perhaps returned in the Architecture Description Language), or historical information (in a form to be determined).  It could also be queried for the provenance information based on component id.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Saturday 06 of October, 2007 [17:46:15 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=bernhold.html' >bernhold</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CCA%20Specification%20Development
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

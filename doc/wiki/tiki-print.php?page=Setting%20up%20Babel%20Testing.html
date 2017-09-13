@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Setting up Babel Testing </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Setting+up+Babel+Testing.html">Setting up Babel Testing</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Donate your cycles to test Babel</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Put instructions to configure automated testing of the nightly babel distribution here.<br />
+<br />
+<ol><li> Make sure the prerequisites for Babel are installed: <a class="wiki"  href="http://chasm-interop.sourceforge.net">CHASM</a>, <a class="wiki"  href="http://xmlsoft.org">libxml2</a>, and either <a class="wiki"  href="http://numpy.scipy.org/">NumPy</a> or the deprecated <a class="wiki"  href="http://sourceforge.net/project/showfiles.php?group_id=1369&amp;package_id=1351">Numeric Python</a>. Make sure you can build an official distribution of Babel from <a class="wiki"  href="http://www.llnl.gov/CASC/components/software.html">the main Babel distribution site.</a> Many of these packages may already be installed on your system. If not, there may be prepackaged binaries available from your operating system distributor. When configuring <a class="wiki"  href="http://chasm-interop.sourceforge.net">CHASM</a>, I suggest using <code>--enable-shared --disable-pdt</code>.
+</li><li> Get an account on cca-forum.org.
+</li><li> Check out the copy of the babel development files: <div class="simplebox"><code>mkdir ${HOME}/babel_testing ; cd ${HOME}/babel_testing ; svn co svn+ssh://cca-forum.org/home/svn/babel/trunk babel</code></div>. You may need to insert a username if using a testing account named other than your cca login, e.g. <div class="simplebox"><code>svn co svn+ssh://USER@cca-forum.org/home/svn/babel/trunk babel</code></div> (Please note that the code which will be tested is a downloaded nightly tar file (as mentioned at the top of this page), not the checked out babel copy you use to set up testing.)
+</li><li> Change directories to the cronjobs subdirectory: <div class="simplebox"><code>cd babel/regression/cronjobs</code></div>
+</li><li> Add MakeWebCheckKey.asc to your <a class="wiki"  href="http://www.gnupg.org/">GPG</a> keyring. Here's a simple <a title="Setting up gpg with babel testing." href='tiki-index.php%3Fpage=GPG+Example.html' class='wiki'>GPG Example</a>. This is assuming that the nightly build will run with your user account (userid &amp; groupid). If you don't want to disturb your personal GPG setup, you can set the <code>GNUPGHOME</code> environment variable in your .profile file to specify an alternative directory for GPG configuration information. The finger print for the Babel key should match the following <div class="simplebox"><code>6135 307F 0F9B 569A D2CD 67C2 C4C9 ADCE 2CB2 BD37</code></div>
+</li><li> Look at the various various .profile files there <div class="simplebox"><code>ls *.profile</code></div>, and pick one that sounds close to your environment.
+</li><li> Copy one of the profile files to your profile file. For example, <div class="simplebox"><code>cp casc-linux-gcc2.96-g77-absoft-dbg.profile myorg-linux-gcc-g77-gfortran-dbg.profile</code></div>
+</li><li> Edit this profile to set environment variables to appropriate values for your organization. <code>template.profile</code> shows many of the environment variables that have an impact. The key thing to setup is to choose which which C, C++, Fortran 77, Fortran 90/95, Python and Java compilers to use.  The <code>PACKAGING_BUILDDIR</code> is also critical. It specifies a directory where the build files will be stored. The <code>TESTGID</code> sets a group id that will be use for all test related files and directories. The test scripts do <code>$CHGRP -Rf $TESTGID</code> for the test directories. If you have a multi-core machine and GNU make, you can reduce build time with settings like <div class="simplebox"><code>export MAKE_FLAGS='-j3'</code></div>
+</li><li> If you would like to test the latest changes to the Babel 1.0.x series, <div class="simplebox"><code>export PACKAGE=babel10x</code></div> This will test the latest commits to the latest Babel 1.0.x release.
+</li><li> Try out your profile: <div class="simplebox"><code>/bin/bash ./gantlet_cron.sh myorg-linux-gcc-g77-gfortran-dbg.profile make_webcheck myemailaddr@myorg.net</code></div>. LLNL generates nightly tarballs Sunday through Thursday, so this step should work fine if you run it Monday through Friday unless the LLNL nightly tarball build failed. If you run after 7:30pm Pacific time, you will most likely test the tarball generated in the evening of today's nightly tarball. If you run before 7:30pm, you will most likely test last night's nightly tarball. If it's successful, you should get a long XML file. Also examine the output in the terminal window to see if your profile needs tweeking.
+</li><li> Try out your profile as a cronjob. Use <div class="simplebox"><code>crontab -e</code></div> to edit your crontab. Add a line like <div class="simplebox"><code>45 19 * * 0-4 (cd ${HOME}/babel_testing/babel/regression/cronjobs ; /bin/bash gantlet_cron.sh myorg-linux-gcc-g77-gfortran-dbg.profile make_webcheck myemailaddr@myorg.net) 2&gt;&amp;1</code></div>. If your cron supports it, you might also want to set the <code>MAILTO</code> environment variable which sets the email address where cron email is sent. In some environments, you may need to set http_proxy variables as well so the download of the nightly release succeeds.
+</li><li> Once you've had some successful test runs (successful doesn't necessarily mean that all the tests pass, it just means the tests didn't break due to a incorrect .profile file), change your crontab line to send the email to LLNL. <div class="simplebox"><code>45 19 * * 0-4 (cd ${HOME}/babel_testing/babel/regression/cronjobs ; /bin/bash gantlet_cron.sh myorg-linux-gcc-g77-gfortran-dbg.profile make_webcheck babel-automated@llnl.gov ) 2&gt;&amp;1</code></div>
+</li><li> If you're a member of the babel-dev email list at LLNL, your nightly build should be included in the daily summary that's archived in the  <a class="wiki"  href="https://www.cca-forum.org/pipermail/babel-dev/">babel-dev mailing list archive</a>.
+</li><li> It's probably worth adding your profile to Babel's svn respository. <div class="simplebox"><code>cd ${HOME}/babel_testing/babel/regression/cronjobs</code></div> <div class="simplebox"><code>svn add myorg-linux-gcc-g77-gfortran-dbg.profile</code></div> <div class="simplebox"><code>svn propset svn:mime-type text/plain myorg-linux-gcc-g77-gfortran-dbg.profile</code></div> <div class="simplebox"><code>svn propset svn:eol-style native myorg-linux-gcc-g77-gfortran-dbg.profile</code></div> <div class="simplebox"><code>svn commit -m &quot;Adding profile for Myorg&quot; myorg-linux-gcc-g77-gfortran-dbg.profile</code></div>
+</li><li> Consider subscribing to the babel-dev mailing list at llnl.gov. See the <a class="wiki"  href="http://www.llnl.gov/CASC/components/resources.html">instructions here.</a> If the moderator questions why you want to join, mention that you're running a nightly build.
+</li></ol>
+<br />
+<a name='_What_to_do_when_the_build_fails'></a><h2> What to do when the build fails</h2>
+<br />
+<ol><li> Cron usually sends you an email showing the output of the nightly build job. If this indicates a problem in Babel, forward it to babel-dev@llnl.gov. It might also indicate a problem with your profile.
+</li><li> Look for a file in $PACKAGING_BUILDDIR/myorg-linux-gcc-g77-gfortran-dbg/$PACKAGE/ ending with <code>.cron.log</code>. This file has the complete log of the build. The problem is usually near the end. If it indicates a problem in Babel, send the relevant part to babel-dev@llnl.gov
+</li></ol>
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Tuesday 20 of March, 2007 [18:14:18 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=tepperly.html' >tepperly</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Setting%20up%20Babel%20Testing
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

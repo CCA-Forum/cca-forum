@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CQoS Database Usage in Adaptive Linear Solvers </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CQoS+Database+Usage+in+Adaptive+Linear+Solvers.html">CQoS Database Usage in Adaptive Linear Solvers</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Work note by Sep. 24 2007</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Performance database uses for the purpose of adaptive linear solver selection fall into two categories:<br />
+<br />
+1. Look up matrix metadata that precisely matches the attributes of linear system and, if hit, retrieve the optimal solver and parameter setting associated the metadata to apply to the new problem.<br />
+<br />
+2. If there is no data in the DB that exactly matches properties of the problem at hand, or a miss, it is desirable to select a linear solver based on historical performance, which can potentially yield optimal performance. Intelligent methods, such as statistical modeling and machine learning will be greatly helpful in this scenario.<br />
+<br />
+Making an adaptive decision often need to go through both types of PerfDB query. If a question can not be answered exactly from historical data, then we need to guess a solution that is good enough.<br />
+<br />
+Performance database query APIs are accordingly broken into two groups.<br />
+<br />
+1.	Retrieve optimal solver and parameters. Examples are:<br />
+<br />
+<ul><li> <i>int determineMethodMetric(map&lt;string, double&gt; property, string metric_name, string *function_names, bool inclusive,int *result_size,double ***results, bool minimum,int *optimal_index)</i>:  match matrix properties (including name and value) and functions to best-performed (in terms of the specified performance metric) linear solver in history database.
+</li></ul>
+<br />
+<ul><li> <i>int determineMethodEvent(map&lt;string, double&gt; property, string *event_names, int number_of_events,int *result_size,double ***results, bool minimum,int *optimal_index)</i>: match matrix properties (including name and value) and user events to best-performed solver in history database.
+</li></ul>
+<br />
+<ul><li> <i>int determineParameterMetric(string solver, string param_name, string      metric_name,string *function_names, bool inclusive,int *result_size,double ***results, bool minimum,int *optimal_index)</i>: given the linear solver selected, match functions to best-performed (in terms of the specified performance evaluation metric, e.g., convergence rate, run time) parameters in history database.
+</li></ul>
+<br />
+<ul><li> <i>int determineParameterEvent(string solver, string param_name, string *event_names, int number_of_events,int *result_size,double ***results, bool minimum,int *optimal_index)</i>: given the linear solver selected, match user events to best-performed parameter setting in history database.
+</li></ul>
+<br />
+2. Apply machine learning and statistical modeling to predict optimal parameters/solvers from history data.<br />
+<br />
+<b>Statistical modeling</b> <a class="wiki"  href="https://www.cca-forum.org/wiki/1">1</a> approaches base algorithm decisions on the nature of the user data. The approach can help identify correlations between characteristics of the matrix and choices and parameterizations of the numerical methods. Generally speaking, using statistical techniques to make an adaptive decision proceeds in four steps:<br />
+<br />
+<ul><li> Feature extraction: estimate performance-critical properties of the matrix. For linear/nonlinear system solving, we use AnaMod<a href="tiki-editpage.php%3Fpage=AnaMod.html" title="Create page: AnaMod" class="wiki wikinew">?</a> to compute the matrix metadata.
+</li></ul>
+<br />
+<ul><li> Training stage: a large number of problems is solved with available methods, which, for linear/nonlinear system solving, can be a combination of iterative method, preconditioner, problem or system specific parameter settings. Performance and matrix features are recorded into database.
+</li></ul>
+<br />
+<ul><li> Each problem is assigned to the method that gave the fasted solution. As a result, we find for each method a number of problems that are best solved by it. Base on a statistical model technique, say, Bayesian analysis, we compute a probability density function for the method by using feature vectors of these problems.
+</li></ul>
+<br />
+<ul><li> Given a new problem and its feature vector, the method that maximize the probability density function is selected to solve the problem.
+</li></ul>
+<br />
+<b>Machine learning</b> <a class="wiki"  href="https://www.cca-forum.org/wiki/2">2</a> methods are also based on training set and matrix features to make solver predictions. Given a performance criterion, the machine learning algorithms, such as Adaboost, classify a set of solvers into two groups: solvers that perform better than some reference method and solvers that are worse than the reference. The first group forms the set of suitable solvers for a linear system. When multiple criteria (e.g., the norm of residual vector, execution time, iteration steps) are employed, the set of suitable candidate solvers will be narrowed by intersecting individual solver sets associated with each criterion.<br />
+<br />
+The application of above intelligent methods to predict optimal solvers entails more complicated DB query requirements. Investigation of specific scenarios of database use in statistical analysis and Adaboost algorithm are underway.<br />
+<br />
+<a name='_Ongoing_work_and_experiment_'></a><h3> Ongoing work and experiment:</h3>
+<br />
+There are many important issues in implementing linear solver prediction and selection algorithms. Among them, ongoing work includes:<br />
+<br />
+<ul><li> Matrix feature selection. There are totally 75 matrix properties available in AnaMod<a href="tiki-editpage.php%3Fpage=AnaMod.html" title="Create page: AnaMod" class="wiki wikinew">?</a>. Not all properties are relevant to a specific problem, some features might be correlated. Applying principle component analysis (PCA) to matrix properties, and using the principal components (i.e., most performance-critical properties) to classify linear solver would improve efficiency and accuracy of solver selection significantly.
+</li></ul>
+<br />
+<ul><li> Impact of matrix property calculation and adaptive algorithm on overall performance. The cost of running the algorithms may possibly degrade performance or compromise the benefit of adaptive solvers. We are currently using Driven Cavity Flow for computational fluid dynamics from the PETSC toolkit  as the testbed to measure overheads of AnaMod<a href="tiki-editpage.php%3Fpage=AnaMod.html" title="Create page: AnaMod" class="wiki wikinew">?</a> computing.
+</li></ul>
+<br />
+References:<br />
+<br />
+<a class="wiki"  href="https://www.cca-forum.org/wiki/1">1</a> Demmel, J., Dongarra, J., Eijkhout, V., Fuentes, E., Petitet, A., Vuduc, R., Whaley, R.C., Yelick, K. &quot;Self Adapting Linear Algebra Algorithms and Software,&quot; IEEE Proceedings, 2005.<br />
+<br />
+<a class="wiki"  href="https://www.cca-forum.org/wiki/2">2</a> Bhowmick, S., Eijkhout, V., Freund, Y., Fuentes, E., Keyes, D. &quot;Application of Machine Learning to the Selection of Sparse Linear Solvers,&quot; International Journal of High Performance Computing Applications, 2006.<br />
+<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <span class='link'>likli</span>
+  last modification: Friday 12 of October, 2007 [15:17:40 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=norris.html' >norris</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CQoS%20Database%20Usage%20in%20Adaptive%20Linear%20Solvers
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

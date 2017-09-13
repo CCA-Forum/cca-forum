@@ -1,0 +1,85 @@
+body    { color: black; 
+          background: white; 
+	}
+.footer { font-family: sans-serif;
+          font-size: smaller; 
+	}
+
+.mailtoLink {
+   font-style: italic;
+}
+
+.httpLink {
+   background-color: silver;
+}
+
+td.navigation { /* The table containing the navigation */
+}
+
+td.navNormalSection { /* Cell containing the button of a nonactive section */
+   white-space:nowrap; 
+   padding:3px; 
+   text-align:left; 
+   font-family: sans-serif;
+   margin-left: 2em;
+}
+
+td.navActiveSection { /* Cell containing the button of the active section */
+   white-space:nowrap; 
+   padding:3px; 
+   text-align:left; 
+   font-family: sans-serif;
+   font-weight: bold;
+   font-style: italic;
+   margin-left: 2em;
+}
+
+td.navNormalEntry { /* Cell containing the button of a nonactive page */
+   white-space:nowrap; 
+   padding:3px; 
+   text-align:left; 
+   font-family: sans-serif;
+   margin-left: 4em;
+}
+
+td.navActiveEntry { /* Cell containing the button of the active page */
+   white-space:nowrap; 
+   padding:3px; 
+   text-align:left; 
+   font-family: sans-serif;
+   margin-left: 4em;
+}
+
+td.marginInSection { /* Cell used as margin behind last entry in section */
+   height: 0;
+}
+
+td.spacingBehindSections { 
+   /* Cell behind sections if primary nav on left and secondary is below */
+}
+
+td.firstLogo { /* The table cell containing the first logo */
+}
+
+td.secondLogo { /* The table cell containing the second logo */
+}
+
+div.sectionBanner { /* The part with the section banner */
+}
+
+div.entryBanner { /* The part with the page banner */
+}
+
+span.firstLetter { /* The first letter of a paragraph */
+}
+
+span.paragraphNumber { /* The paragraph number include parens */
+}
+
+a.xwebLink { /* An internal link that was resolved by XWeb */
+}
+
+/* a.xLink A link using the protocol "x", eg "httpLink" */
+
+a.localLink { /* A link without any protocol given */
+}

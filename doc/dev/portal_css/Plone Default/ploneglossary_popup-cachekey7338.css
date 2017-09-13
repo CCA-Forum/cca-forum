@@ -1,0 +1,40 @@
+
+/* - ploneglossary_popup.css - */
+/* https://www.cca-forum.org/dev/portal_css/ploneglossary_popup.css?original=1 */
+/* */
+.glossaryPopupPosition {
+position: relative;
+z-index: 1;
+}
+#glossary-definition-popup {
+display: block;
+position: absolute;
+font-size: 10px;
+top: 30px;
+left: -40px;
+border: 1px solid #8cacbb;
+background: #eef3f5;
+width: 300px;
+padding: 0.5em;
+z-index: 1000;
+font-weight: normal;
+text-decoration: none;
+}
+#glossary-definition-popup h6 {
+padding: 0px;
+margin: 0px;
+font-size: 10px;
+}
+#glossary-definition-popup p {
+padding: 0px;
+margin: 0px;
+font-size: 10px;
+}
+.highlightedGlossaryTerm {
+border-bottom: 2px dotted #436976;
+background: #eef3f5;
+cursor: help;
+z-index: 2;
+}
+/* */
+

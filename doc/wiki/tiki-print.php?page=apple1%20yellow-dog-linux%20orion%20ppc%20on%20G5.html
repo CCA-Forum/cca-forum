@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : apple1 yellow-dog-linux orion ppc on G5 </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=apple1+yellow-dog-linux+orion+ppc+on+G5.html">apple1 yellow-dog-linux orion ppc on G5</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">ydl orion java babel cca build</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+architecture: linux/ppc64<br />
+date: 10/26/05<br />
+contributor: Joe Kenny<br />
+<br />
+Machine description:<br />
+Apple Xserve G5<br />
+dual 2.0GHz G5 (PPC970FX, altivec)<br />
+Yellow Dog Linux 4.0<br />
+Linux apple1 2.6.13.4 #1 SMP Thu Oct 20 21:48:41 MDT 2005 ppc64 ppc64 ppc64 GNU/Linux<br />
+<br />
+It seems that there is no JDK available with this distro.  I ended up using j2sdk-1.3.1-02c-FCS-linux-ppc.bin from blackdown.org.  Blackdown does not have a JDK 1.4 version for ppc, and this caused babel issues later on.  Hacks on several scripts (javac, realpath) were required to get &quot;ppc64&quot; recognized (and avoid &quot;Can't find libjava.so&quot; errors):<br />
+<br />
+case &quot;`uname -m`&quot; in<br />
+<tt>    i<a class="wiki"  href="https://www.cca-forum.org/wiki/3-7">3-7</a>86 | ia32 | ia64)</tt><br />
+<tt>        proc=i386</tt><br />
+<tt>        ;;</tt><br />
+<tt>    sparc*)</tt><br />
+<tt>        proc=sparc</tt><br />
+<tt>        ;;</tt><br />
+<tt>    ppc64*)</tt><br />
+<tt>        proc=ppc</tt><br />
+<tt>        ;;</tt><br />
+<tt>    *)</tt><br />
+<tt>        proc=&quot;`uname -m`&quot;</tt><br />
+<tt>        ;;</tt><br />
+esac<br />
+<br />
+The JIT freaks out on the G5, so this must be turned off (see http://ozlabs.org/pipermail/linuxppc-dev/2004-August/017521.html):<br />
+<br />
+$ export JAVA_COMPILER=NONE<br />
+<br />
+javac should now work and babel configure will succeed but the compilation will die complaining about calls to URLEncoder.encode().  This looks to be a JDK 1.3/1.4 issue, requiring the second argument to calls to encode() to be deleted.  One or two similar hacks may have been required to back-port Babel to JDK 1.3 (really not much effort).<br />
+<br />
+At this point I was able to build a working cca toolchain.<br />
+<br />
+I learned of the JAVA_COMPILER issue AFTER failing attemps to build with a JDK 1.4 downloaded directly from IBM's website.  It's entirely possible that with this variable set, the IBM JDK can be used and many if not all of the above hacks are unnecessary.<br />
+<br />
+Good night and good luck.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Wednesday 26 of October, 2005 [16:51:06 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=jpkenny.html' >jpkenny</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=apple1%20yellow-dog-linux%20orion%20ppc%20on%20G5
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

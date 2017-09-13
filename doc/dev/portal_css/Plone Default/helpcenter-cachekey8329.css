@@ -1,0 +1,149 @@
+
+/* - helpcenter.css - */
+@media all {
+/* https://www.cca-forum.org/dev/portal_css/helpcenter.css?original=1 */
+/* */
+.link-expand {
+background: transparent url(../../arrowDown.gif.html) 4px 5px no-repeat;
+padding: 1px 0px 1px 16px;
+display: block;
+font-size: 90%;
+float: right;
+}
+.faqMarker {
+list-style-type: square;
+list-style-image: url(../../faq_icon.gif.html);
+}
+.portletHalfWidth {
+width: 45%;
+float: left;
+margin: 0 1em 1em 0 !important;
+}
+.portletThirdWidth {
+width: 30%;
+float: left;
+margin: 0 1em 1em 0 !important;
+}
+/* */
+table.sectionIndex {
+float: right;
+background: White;
+border-collapse: collapse;
+border-left: 1px solid #8cacbb;
+border-bottom: 1px solid #8cacbb;
+font-size: 90%;
+margin: 0.5em 0em 1em 1em;
+}
+.sectionIndex th {
+background: #dee7ec;
+border-top: 1px solid #8cacbb;
+border-bottom: 1px solid #8cacbb;
+border-right: 1px solid #8cacbb;
+font-weight: normal;
+padding: 0.25em 1em;
+text-transform: none;
+}
+.sectionIndex td {
+border-right: 1px solid #8cacbb;
+padding: 0.25em 1em;
+}
+.sectionIndex a {
+text-decoration: none;
+}
+.sectionIndex a:hover {
+text-decoration: underline;
+}
+/* */
+.tutorialAbout {
+display: inline;
+float: right;
+background-color: #dee7ec;
+border-color: #8cacbb;
+border-width: 1px;
+border-style: solid;
+font-size: 90%;
+margin: 0.5em 0 0.5em 0.5em;
+padding: 1em;
+width: 10em;
+clear: right;
+text-align: center;
+}
+/* */
+.jumpBox {
+float: right;
+text-align: right;
+}
+/* */
+.outdatedMarker {
+}
+/* */
+.state-hidden {
+color: red;
+}
+.state-in-progress {
+color: #74AE0B;
+}
+.state-obsolete {
+color: #cccccc;
+}
+ul.quickLinks {
+margin: 0 0 1em 0;
+background-color: #dee7ec;
+border: solid 1px #8cacbb;
+padding: 1em;
+text-align: center;
+}
+ul.quickLinks li {
+display: inline;
+margin-right: 1em;
+}
+dl.topicList {
+width: 32%;
+display: block;
+float: left;
+margin: 0 0.5em 1em 0;
+/* */
+}
+dl.topicList dt {
+font-size: 120%;
+}
+dl.topicList dt a {
+color: black;
+}
+dl.topicList dd {
+margin: 0;
+display: inline;
+}
+.flatlist li {
+display: inline;
+margin-right: 2em;
+}
+.flatlist ul {
+margin-left: 0;
+margin-bottom: 1em;
+}
+.doclist dd {
+margin-left: 20px;
+}
+.template-helpcenter_topicview_main .readmore {
+text-align: right;
+}
+h2.section-subheading {
+margin-top: 0.5em;
+}
+/* */
+}
+
+
+/* - helpcenter_print.css - */
+@media print {
+/* https://www.cca-forum.org/dev/portal_css/helpcenter_print.css?original=1 */
+/* */
+/* */
+.link-parent, .link-expand, .jumpBox, .listingBar,
+.sectionIndex, .link-anchor {
+display: none;
+}
+/* */
+}
+

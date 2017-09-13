@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : BoccaFortran </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=BoccaFortran.html">BoccaFortran</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar"> F90 examples </div>
+The CCA tutorial and bocca test/cca suite come with a number of fortran examples.<br />
+<br />
+<div class="titlebar"> Common fortran questions </div>
+<br />
+<ul><li> Q: What does this error mean?
+</li></ul>
+<div class="simplebox"><br />
+<tt> - compiling sources...  In file /home/baallan/cca/build/bocca/trunk/test/cca/</tt><br />
+ppF/components/ppF.testX/ppF_testX_Impl.f90:638<br />
+<br />
+<tt>    call set_null(port)</tt><br />
+<tt>                      1</tt><br />
+Error: There is no specific subroutine for the generic 'set_null' at (1)<br />
+</div><br />
+<ul><li> A: a use statement is missing. Add 'use gov_cca_Port' to your use splicer like so:
+</li></ul>
+<div class="simplebox"><br />
+<tt>  ! Insert-Code-Here<a href="tiki-editpage.php%3Fpage=Insert-Code-Here.html" title="Create page: Insert-Code-Here" class="wiki wikinew">?</a> {ppF.testX.setServices.use} (use statements)</tt><br />
+<tt>  use gov_cca_Port</tt><br />
+<tt>  ! DO-NOT-DELETE splicer.end(ppF.testX.setServices.use)</tt><br />
+</div><br />
+<div class="titlebar"> F90 vs F77 support </div>
+<ul><li> F90 is fully supported by bocca.
+</li><li> F77 is not fully supported, as bocca is based on 1.0.x babel and the required f77_31 will not be fully supported until babel 1.1.1 or later. F77_31 is the preprocessed Fortran-77 binding to babel that will allow bocca to process all valid sidl into valid F77 code. If the babel team drops f77_31 entirely, bocca will drop all support for f77.
+</li><li> For 'safe' SIDL, that is for definitions which result in no identifiers longer than 31 characters, bocca and the unpreprocessed f77 babel binding may be used, but the quality and completeness of the current bocca-generated f77 code is not high.
+</li></ul>
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Thursday 25 of October, 2007 [23:43:27 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=BoccaFortran
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

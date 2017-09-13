@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+         xmlns="http://purl.org/rss/1.0/">
+
+
+
+
+    
+
+
+
+<channel rdf:about="https://www.cca-forum.org/dev/software/components/component-list/RSS">
+  <title>Components</title>
+  <link>https://www.cca-forum.org/dev</link>
+  
+  <description>
+    
+       CCA Toolkit Components
+       
+  </description>
+  
+  
+  
+            <syn:updatePeriod>daily</syn:updatePeriod>
+            <syn:updateFrequency>1</syn:updateFrequency>
+            <syn:updateBase>2008-07-16T23:49:50Z</syn:updateBase>
+        
+  
+  <image rdf:resource="https://www.cca-forum.org/dev/logo.jpg"/>
+
+  <items>
+    <rdf:Seq>
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/cca-lisi"/>
+        
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/global-arrays"/>
+        
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/intercomm-parallel-coupler"/>
+        
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/c1"/>
+        
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/c2"/>
+        
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/tao-numerical-optimization-components"/>
+        
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/tau-components"/>
+        
+        
+            <rdf:li rdf:resource="https://www.cca-forum.org/dev/software/components/petsc"/>
+        
+    </rdf:Seq>
+  </items>
+
+</channel>
+
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/cca-lisi">        <title>CCA LISI </title>        <link>https://www.cca-forum.org/dev/software/components/cca-lisi</link>        <description>LInear Solver Interface</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>rob_armstrong</dc:creator>        <dc:rights></dc:rights>                <dc:date>2009-03-13T16:16:35Z</dc:date>        <dc:type>Page</dc:type>    </item>
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/global-arrays">        <title>Global Arrays</title>        <link>https://www.cca-forum.org/dev/software/components/global-arrays</link>        <description>GA Component encapsulates parallel distributed
+array functionality in component form</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>rob_armstrong</dc:creator>        <dc:rights></dc:rights>                <dc:date>2009-01-14T22:51:36Z</dc:date>        <dc:type>Page</dc:type>    </item>
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/intercomm-parallel-coupler">        <title>Intercomm Parallel Coupler</title>        <link>https://www.cca-forum.org/dev/software/components/intercomm-parallel-coupler</link>        <description>Intercomm is a framework that facilitates interoperation between two parallel codes.   The Intercomm component does the same for CCA components.</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>rob_armstrong</dc:creator>        <dc:rights></dc:rights>                <dc:date>2009-03-14T02:51:49Z</dc:date>        <dc:type>Page</dc:type>    </item>
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/c1">        <title>Parallel Cartesian Grid</title>        <link>https://www.cca-forum.org/dev/software/components/c1</link>        <description>A Parallel Rectilinear Grid Component</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>bek</dc:creator>        <dc:rights></dc:rights>                    <dc:subject>cca component</dc:subject>                <dc:date>2009-01-14T22:51:36Z</dc:date>        <dc:type>Page</dc:type>    </item>
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/c2">        <title>SPARSKIT Suite</title>        <link>https://www.cca-forum.org/dev/software/components/c2</link>        <description>SPARSKIT suite of components from SPARSKIT2.</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>bek</dc:creator>        <dc:rights></dc:rights>                    <dc:subject>cca component</dc:subject>                <dc:date>2009-01-14T22:51:36Z</dc:date>        <dc:type>Page</dc:type>    </item>
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/tao-numerical-optimization-components">        <title>TAO Numerical Optimization Components</title>        <link>https://www.cca-forum.org/dev/software/components/tao-numerical-optimization-components</link>        <description>Toolkit for Advanced Optimization (TAO) in CCA component form.</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>rob_armstrong</dc:creator>        <dc:rights></dc:rights>                <dc:date>2009-03-22T23:53:10Z</dc:date>        <dc:type>Page</dc:type>    </item>
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/tau-components">        <title>TAU Components</title>        <link>https://www.cca-forum.org/dev/software/components/tau-components</link>        <description>Tuning and Analysis Utilities (TAU) as a CCA component.</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>rob_armstrong</dc:creator>        <dc:rights></dc:rights>                <dc:date>2009-03-23T00:30:07Z</dc:date>        <dc:type>Page</dc:type>    </item>
+    <item rdf:about="https://www.cca-forum.org/dev/software/components/petsc">        <title>TOPS/PETSc</title>        <link>https://www.cca-forum.org/dev/software/components/petsc</link>        <description> TOPS Interfaces and Implementation Based on PETSc</description>        <dc:publisher>No publisher</dc:publisher>        <dc:creator>rob_armstrong</dc:creator>        <dc:rights></dc:rights>                    <dc:subject>cca component</dc:subject>                <dc:date>2009-01-21T19:00:10Z</dc:date>        <dc:type>Page</dc:type>    </item>
+
+
+
+
+</rdf:RDF>

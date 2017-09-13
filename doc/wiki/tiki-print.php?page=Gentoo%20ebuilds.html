@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Gentoo ebuilds </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Gentoo+ebuilds.html">Gentoo ebuilds</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Ebuilds for the entire CCA tool chain ...</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+This is not part of the standard Portage distribution yet and so you have to get them from download as a <a class="wiki"  href="https://www.cca-forum.org/download/cca-tools/ebuild">tar ball</a>.<br />
+<br />
+Requirements: Have a Gentoo Linux distribution<br />
+<br />
+Installing the ebuilds:<br />
+<br />
+<ol><li> Edit /etc/make.conf and set <div class="simplebox">PORTDIR_OVERLAY=/usr/local/portage</div>
+</li></ol>
+<br />
+<ol><li> Type: <div class="simplebox">cd /usr/local; tar xvzf cca-tools-ebuilds.tar.gz</div>
+</li></ol>
+<br />
+Emerging the CCA tool chain:<br />
+<br />
+<div class="simplebox">ACCEPT_KEYWORDS=&quot;~x86&quot; emerge ccafe-gui</div><br />
+<br />
+<div class="titlebar">Options and Details</div>
+It is worth examining some of the optional use variables that the packages pay attention to:<br />
+<div dir="ltr"><pre class='codelisting'>
+glass-slipper local # emerge -pv ccafe-gui
+
+These are the packages that I would merge, in order:
+
+Calculating dependencies ...done!
+[ebuild  N    ] dev-lang/babel-0.9.8  +fortran -fortran90 +python 0 kB [1]
+[ebuild  N    ] sys-cluster/cca-spec-babel-0.7.5  535 kB [1]
+[ebuild  N    ] sys-cluster/ccaffeine-0.5.6  -debug +doc -mpi 5,424 kB [1]
+[ebuild  N    ] sys-cluster/ccafe-gui-0.5.5  382 kB [1]
+
+Total size of downloads: 6,343 kB
+Portage overlays:
+ [1] /usr/local/portage
+</pre></div><br />
+<br />
+If <i>USE=&quot;mpi&quot; </i> is flagged then MPICH will be emerged unless it is already present, see the information below on MPICH shared libraries.  If <i>USE=fortran90</i> is flagged then chasm will be emerged and more information on your f90 compiler must be given in the form of environment variables: <i>F90VENDOR</i> and <i>F90</i> (see below).<br />
+<br />
+<br />
+<br />
+Special considerations apply to Fortran90 and MPICH.<br />
+<br />
+<div class="titlebar">MPICH</div>
+<br />
+Shared libraries for mpich may be required by some components and Ccaffeine will build with shared libraries if they are available.  In Gentoo, MPICH is not built with shared libaries (for some reason). To enable shared libraries in MPICH type:<br />
+<br />
+<div class="simplebox">MPICH_CONFIGURE_OPTS=&quot;--enable-sharedlib&quot; emerge mpich</div><br />
+<br />
+<div class="titlebar">Fortran 90/95</div>
+Note that two environment variables must be set to give this ebuild a<br />
+fighting chance at installing.<br />
+<br />
+1) F90VENDOR must be set to the vendor of the Fortran compiler below:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>F90VENDOR</b></td><td class="wikicell" ><b>Vendor Name</b></td></tr><tr><td class="wikicell" >Absoft</td><td class="wikicell" >  Absoft (Mac OS X, linux)</td></tr><tr><td class="wikicell" >Intel</td><td class="wikicell" > Intel (linux)</td></tr><tr><td class="wikicell" >Intelv7 </td><td class="wikicell" >Intel (linux, v7)</td></tr><tr><td class="wikicell" >Lahey</td><td class="wikicell" >Lahey (linux)</td></tr><tr><td class="wikicell" >NAG </td><td class="wikicell" > NAG (Mac OS X, linux)</td></tr></table><br />
+<br />
+2) Make sure that the Fortran compiler itself is in environment variable: F90,<br />
+such that:<br />
+<br />
+<div class="simplebox">$F90 -c some_fortran.f90</div><br />
+<br />
+compiles.<br />
+<br />
+Example:<br />
+<div dir="ltr"><pre class='codelisting'>
+ACCEPT_KEYWORDS=&quot;~x86&quot; USE=&quot;fortran90 mpi debug&quot; F90VENDOR=Intel F90=&quot;/opt/intel_fc_80/bin/ifort&quot; emerge ccafe-gui
+</pre></div><br />
+<br />
+Here mpi and debug are requested and we wish to sue the Intel F90 compiler.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <span class='link'>system</span>
+  last modification: Saturday 05 of March, 2005 [00:23:53 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=admin.html' >admin</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Gentoo%20ebuilds
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

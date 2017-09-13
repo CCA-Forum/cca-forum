@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : ComponentsAsPortCollections </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=ComponentsAsPortCollections.html">ComponentsAsPortCollections</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+This is an area Ben and Craig noodled on a lot.<br />
+Version 0: static ports used and provided (name and type of each)<br />
+Improvement 1: dynamic ports used and provided (name and type of each)<br />
+Improvement 2: service ports provided (same type, multiple instances naming pattern)<br />
+Improvement 3: indicate delegation or direct (sidl inheritance) implementation<br />
+<br />
+Put examples here.<br />
+<br />
+Example 1.  Goal, provide enough information to create setServices for the MonteCarloIntegrator<a href="tiki-editpage.php%3Fpage=MonteCarloIntegrator.html" title="Create page: MonteCarloIntegrator" class="wiki wikinew">?</a> component.<br />
+<br />
+<span style="color:#FF0000;">// <b>TODO</b><br />
+// 1. We need to specify a way to add namespaces.<br />
+// 2. We need bundle/package specification<br />
+//        a. Need language/binding information for component instance.<br />
+//        b. Need path information to input and output files.<br />
+</span><br />
+component MonteCarloIntegrator<a href="tiki-editpage.php%3Fpage=MonteCarloIntegrator.html" title="Create page: MonteCarloIntegrator" class="wiki wikinew">?</a><br />
+{<br />
+<tt>    uses Function as linear_function;</tt><br />
+<tt>    uses Function as cos_function;</tt><br />
+<tt>    uses RandomNumber<a href="tiki-editpage.php%3Fpage=RandomNumber.html" title="Create page: RandomNumber" class="wiki wikinew">?</a> as random;</tt><br />
+<tt>    provides Integrator monte_carlo;</tt><br />
+}<br />
+<br />
+port Integrator<br />
+{<br />
+<tt>    double integrate(double lowerBound, double upperBound, int count);</tt><br />
+}<br />
+<br />
+port Function<br />
+{<br />
+<tt>    double evaluate(double x);</tt><br />
+}<br />
+<br />
+port RandomNumber<a href="tiki-editpage.php%3Fpage=RandomNumber.html" title="Create page: RandomNumber" class="wiki wikinew">?</a><br />
+{<br />
+<tt>    double getRandomNumber( );</tt><br />
+}<br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Thursday 26 of October, 2006 [06:41:47 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=mjsottile.html' >mjsottile</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=ComponentsAsPortCollections
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

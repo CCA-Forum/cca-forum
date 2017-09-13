@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : GPG Example </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=GPG+Example.html">GPG Example</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Setting up gpg with babel testing.</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+Here's what Ben found works:<br />
+<br />
+<ol><li> get into (su, ssh) the testing account on your test host.
+</li><li> gpg --gen-key ; % skip this step if you already use gpg from this account
+</li><li> gpg --list-keys ; % you should see the key you just generated.
+</li><li> cd babel/regression/cronjobs
+</li><li> gpg --import MakeWebCheckKey.asc
+</li><li> gpg --fingerprint ; % in the output should be the following or very like:
+</li></ol>
+<div class="simplebox">pub   1024D/2CB2BD37 2007-01-23<br />
+<tt>      Key fingerprint = 6135 307F 0F9B 569A D2CD  67C2 C4C9<a href="tiki-editpage.php%3Fpage=C4C9.html" title="Create page: C4C9" class="wiki wikinew">?</a> ADCE 2CB2 BD37</tt><br />
+uid                  Babel Nightly Build (Not high security) &lt;components@llnl.gov&gt;<br />
+sub   2048g/178AC930 2007-01-23<br />
+</div><br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Tuesday 13 of March, 2007 [23:13:06 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=GPG%20Example
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

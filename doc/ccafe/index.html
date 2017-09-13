@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+                                               
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+                                               
+  <meta name="GENERATOR"
+ content="Mozilla/4.04 [en] (X11; I; Linux 2.0.27 i686) [Netscape]">
+  <title>CCAFFEINE HOME</title>
+  
+</head>
+<body bgcolor="white">
+ 
+<center> 
+<h1>Ccaffeine - a CCA component framework for parallel computing</h1>
+<h3>Credits</h3>
+       Ben Allan<br>
+       Rob Armstrong<br>
+       Sophia Lefantzi <br>
+       Jaideep Ray<br>
+       Edward Walsh <br>
+       Pippin Wolfe<br>
+<br>
+ </center>
+ 
+<hr width="100%" size="2">July 2005<br>
+<h3>The <a href="../wiki/tiki-index.php%3Fpage=CcafeInstallNeo.html">Neo binding for Ccaffeine</a> is documented on the wiki.</h3>
+<hr width="100%" size="2">2004<br>
+<h3>This is a Common Component Architecture prototype framework for distributed
+memory message passing High Performance Computing. The name <em> Ccaffeine
+</em> no longer stands for anything in particular.  Ccaffeine is largely
+a product of the High Performance Computing Research Division at Sandia National
+Labs in Livermore, but also has benefited from many contributions from other
+labs and Universities. &nbsp;This web page is to be converted to a weblog
+as soon as I can get someone to install one Slashcode, in the meantime this
+is something handtooled to tide us over.  Ccaffeine documentation can be found <a href="ccaffeine-man.html"> here</a>.</h3>
+
+<hr width="100%" size="2">19Oct03<br>
+<h3>Final feature set for SC03 Ccaffeine is in.</h3>
+Decided to tag it "lemur" because that is an animal that Joe thinks is
+    scary.  Quick checkout:
+<pre>
+cvs -d  $USER@cca-forum.org:/cvs/ccaffeine/repository co -r lemur ccafe
+</pre>
+A better description along with a complete build transcript is
+    available <a href="15Oct03.html">here</a>.
+<p>
+ Make sure you update the cca-spec-babel too, the new "goodbye kiss"
+ pattern is in it per the last vote.  Note that Ccaffeine implements
+ the <i>ComponentRelease</i> interface and no longer does a
+ setServices with a null object to signal imminent destruction.
+      Note also that the "classic" binding to Ccaffeine still behaves
+      in the same way. 
+</p>
+<br>
+
+
+<hr width="100%" size="2">29Sep03<br>
+<h3>Python install ready</h3>
+<pre>
+cvs -d  $USER@cca-forum.org:/cvs/ccaffeine/repository co -r Python ccafe
+cvs -d  $USER@cca-forum.org:/cvs/cca-spec/repository co -r Python cca-spec-babel
+</pre>
+You need both the new cca-spec-babel and the new Ccaffeine.  Make sure
+you have Python installed with the right Babelized libpython.so.  Then
+use --with-babel-python in the configure for both cca-spec-babel and
+for ccaffeine.  Let <a href="mailto:rob@sandia.gov">me</a> know if there is a problem.<br>
+
+
+<hr width="100%" size="2">
+
+11Dec02<br>
+<h3> gcc >= 3.1 works with Ccaffeine now, important caveats though: </h3>
+
+
+This information applies to the latest <a
+href="http://cca-forum.org/download/ccafe/tutorial"> tar-ball </a>
+which works fine with gcc 3.2.  If you are using Ccaffeine scripting
+language (affectionately know as "BenSpeak") then please note that the
+friendly people at Gnu have changed (corrected?) the way .so's are
+loaded. You <em> must </em> use "repository get-global" where you
+might have used (and gotten away with) "repository get" before.  This
+has caused no end of problems even though Ben has warned us repeatedly
+:-).  The major symptom is that components are successfully connected
+and the port obtained through <em> getPort() </em>, but the <em>
+dynamic_cast </em> fails for no apparent reason.  Using "repository
+get-global" will fix this. <br> <br>
+
+<hr width="100%" size="2">26Oct02<br>
+<h3>A PortTranslator facility is now available, allowing the use of dynamic
+parameters in components.</h3>
+Download the latest tarball <a
+ href="http://cca-forum.org/download/ccafe/tutorial">here</a>, or if your
+feeling gutsy you can check out a fresh copy directly from CVS. &nbsp;If
+you have access to the cca-forum.org machine do this:<br>
+<br>
+<pre>cvs -d $USER@cca-forum.org:/home/ccaffeine/repository co -r "babelification" ccafe</pre>
+or just use <a href="anoncvs.html">anonymous CVS</a> checkout.<br>
+<br>
+It should just build as usual, exactly the same as you already have it. &nbsp;<br>
+I have accomplished this by creating a special Babel <b>gov::cca::Port</b>
+called the PortTranslator.&nbsp; It has a method on it called <i>getClassicPort</i>
+that returns a <b>classic::gov::cca::Port*</b>.&nbsp; Translation is handled
+automatically: all you do is ask for a classic port by type, and it comes
+to you wrapped in a PortTranslator.&nbsp; Moreover, you can decorate your
+component with classic ports (like a <b>ParameterPort</b>) by wrapping the
+classic port in a PortTranslator and exporting via <i>addProvidesPort</i>
+in the usual way.&nbsp; The biggest headache comes from the fact that all
+foreign entities must go through an opaque data type in Babel, and that translates
+into a <b>void*</b>. &nbsp; Here is an <a
+ href="26Oct02/Ccaffeine_Build_Example.html">example</a> of the Ccaffeine
+build for this distro.<br>
+ 
+<hr width="100%" size="2">06Sep02<br>
+<h3>An <a href="06Sep02/Ccaffeine_Build_Example.html">example</a> of building
+the new(er) Babel-enabled Ccaffeine.<br>
+</h3>
+<h3>Download the Babel-enabled Ccaffeine <a
+ href="http://www.cca-forum.org/download/ccafe"> here</a>.</h3>
+<hr width="100%" size="2">20Jan02<br>
+<h3>Ccaffeine <a href="ccafe-man/Ccafe_Manual.html"> man page</a>  for using
+it after it is built.</h3>
+<hr width="100%" size="2">21Aug02
+<h3> Ccaffeine <a
+ href="file:///home/rob/mnt/cj/cca/dccafe/doc/Paper01/html-total_58/total5_8.html">
+paper</a>  that       appeared in Concurrency: </h3>
+ <i>The CCA Core Specification in a Distributed Memory SPMD Framework</i>,
+Concurrency Computat. 2002;<b>14</b>:1-23.  
+<hr width="100%" size="2">20Jan01
+<h3>Some <a href="http://www.cca-forum.org/ccafe/build-notes.html"> notes</a> on how to build the old Ccaffeine
+from the <a href="http://www.cca-forum.org/cca-sc01/">  SC01 demo </a> distribution.
+These build notes apply <em>only</em> to the tar       source distribution
+found there. <br>
+ </h3>
+   
+<hr width="100%" size="2"> 
+<h3><br>
+</h3>
+<br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+</body>
+</html>

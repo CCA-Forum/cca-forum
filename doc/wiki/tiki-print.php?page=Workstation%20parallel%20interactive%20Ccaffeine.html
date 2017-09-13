@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : Workstation parallel interactive Ccaffeine </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=Workstation+parallel+interactive+Ccaffeine.html">Workstation parallel interactive Ccaffeine</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+In this example, everything (even mpi) is installed in<br />
+/home/baallan/cca/mpibuild/install.<br />
+To make clear which port arguments must match, let's define two variables<br />
+<div class="simplebox">BP=2999<br />
+FWKP=3000</div><br />
+Let's also note that the content of two files (firstMuxer and procfile) is machine and number of processors specific. These files appear after the commands that are next.<br />
+There is an oft-reported bug at the end of this description, and the workaround.<br />
+<br />
+<div class="simplebox">java -classpath /home/baallan/cca/mpibuild/install/lib/ccafe-gui.jar \<br />
+gov.sandia.ccaffeine.dc.distributed.MuxingProcess --name 127.0.0.1 \<br />
+--timeout 0 --file firstMuxer --logFile firstMuxer.log \<br />
+--builderPort $BP --port $FWKP &amp;</div><br />
+<br />
+<div class="simplebox">/home/baallan/cca/mpibuild/install/bin/mpirun -np 3 \<br />
+/home/baallan/cca/mpibuild/install/bin/ccafe-client \<br />
+--type client --port $FWKP \<br />
+--file /home/baallan/cca/mpibuild/install/procfile \<br />
+--ccafe-rc /home/baallan/cca/mpibuild/install/share/ccafe-0.5.10/CcaffeineRC</div><br />
+<br />
+<div class="simplebox">/home/baallan/cca/mpibuild/install/bin/gui.sh --port $BP</div><br />
+<br />
+The first two of the above commands can be done from the same window or script. For obvious reasons, the third command must happen in a different window on the same host.<br />
+<br />
+In this workstation example, it happens that the content of both<br />
+firstMuxer and profile looks like:<br />
+<div class="simplebox">127.0.0.1 server<br />
+0 client<br />
+1 client<br />
+2 client</div><br />
+<br />
+Often reported bug:<br />
+<div class="simplebox"><br />
+Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: gov/sandia/ccaffeine/dc/distributed/MuxingProcess</div><br />
+seen when starting the muxer in the first step. This is from an error in the ccafe-gui/Makefile. Here is the work-around:<br />
+1) Edit ccafe-gui/Makefile to add MuxingProcess<a href="tiki-editpage.php%3Fpage=MuxingProcess.html" title="Create page: MuxingProcess" class="wiki wikinew">?</a>.java to the variable JAVA_FILES. A patch-file showing exactly what to do is:<br />
+<br />
+<div class="simplebox">diff -u -r1.15 Makefile.in<br />
+<hr />
++++ Makefile.in 23 Mar 2006 07:44:46 -0000
+@@ -11,7 +11,8 @@<br />
+<tt> gov/sandia/ccaffeine/dc/user_iface/BuilderClient.java \</tt><br />
+<tt> gov/sandia/ccaffeine/dc/user_iface/examples/*.java \</tt><br />
+<tt> gov/sandia/ccaffeine/dc/user_iface/gui/AppFrame.java \</tt><br />
+-gov/sandia/ccaffeine/dc/user_iface/gui/CcaffeineGUITestWidget.java<br />
++gov/sandia/ccaffeine/dc/user_iface/gui/CcaffeineGUITestWidget.java \
++gov/sandia/ccaffeine/dc/distributed/MuxingProcess.java
+<br />
+<tt> EXTRA_FILES_FOR_JAR= \</tt><br />
+<tt> gov/sandia/ccaffeine/dc/user_iface/gui/about.html \</tt><br />
+</div><br />
+2) Delete the ccafe-gui/ccafe-gui.jar file.<br />
+3) make clean; make ; make install<br />
+4) verify that the new jar contains MuxingProcess<a href="tiki-editpage.php%3Fpage=MuxingProcess.html" title="Create page: MuxingProcess" class="wiki wikinew">?</a> with jar tf ccafe-gui.jar<br />
+<br />
+Other often reported bug:<br />
+MPIComponent appears in the GUI, but if anything is done with it, crashes occur.<br />
+Workaround: Just don't touch the MPIComponent; it's a singleton component used<br />
+in the framework implementation. If your components ask for MPIService or MPIBorrow<br />
+ports from Ccaffeine, this is what will ultimately serve them.<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Thursday 23 of March, 2006 [06:51:14 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=Workstation%20parallel%20interactive%20Ccaffeine
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

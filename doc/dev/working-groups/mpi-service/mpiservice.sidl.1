@@ -1,0 +1,129 @@
+
+package gob version 0.0 {
+
+    package cca version 0.8.5 {
+
+        package ports {
+
+            interface MPIService extends gov.cca.Port
+            {
+
+      /** Get an mpi communicator with the same scope as the component instance.
+       Won't be mpi_comm_null. The communicator returned will be
+       private to the recipient, which implies an mpi_comm_dup by the provider.
+       Call must be made collectively.
+       @return The comm produced, in FORTRAN form. C callers use comm_f2c
+               method defined by their mpi implementation, usually MPI_Comm_f2c,
+               to convert result to MPI_Comm.
+       @throw CCAException if the service cannot be implemented because MPI is
+              not present.
+       */
+      long getComm() throws gov.cca.CCAException;
+
+      /** Let go the communicator. previously fetched with getComm.
+       * Call must be made collectively.
+       *  @throw CCAException if an error is detected.
+       */
+      void releaseComm(in long comm) throws gov.cca.CCAException;
+
+      /** Get the typically needed basic parallelism information for a component that
+       *  requires no MPI communication and thus does not need an independent communicator.
+       * Rationale: on very large machines, the cost of a Comm_dup should be avoided where possible;
+       * The other calls on a MPI Comm object may affect its state, and thus should not
+       * be proxied here.
+       *  @throw CCAException if an error is detected.
+       */
+      void getSizeRank(out long commSize, out long commRank) throws gov.cca.CCAException;
+
+	
+            }
+        }
+    }
+}
+
+package gob version 0.0 {
+
+    package cca version 0.8.5 {
+
+        package ports {
+
+            interface MPISetup extends gov.cca.Port
+            {
+        /** Check instance status. Only one init* call per instance is allowed.
+        @return true if initAsService or initComponent already done.
+         */
+        bool isInitialized();
+
+        /**
+        *
+        * This method is for treating an instance from an external driver
+        * to set up a general service instance global to a frame.
+        * Useful in at least the static linking case.
+        *
+         * Create and add to the framework MPIService
+         * support. This will appear in the frame as an
+         * MPICommSource component instance without necessarily existing
+         * in the BuilderService accessible class list. 
+         * MPI_Init must have been called before this is called.
+         * This entry point should work for any cca framework bootstrapping
+         * in commworld or otherwise scoped communicator via the standard
+         * ServiceRegistry interface. This will not automatically
+         * cause the component class providing this interface to appear in the
+         * list of classes the user may instantiate.
+         * In the MPI sense, this call must be collective on the scope of
+         * dupComm.
+         *
+         * @param dupComm  the (valid) communicator (in fortran form) to duplicate
+         *   for those using MPIService.
+         * @param af The frame into which the server will add itself.
+         * In principle, the caller should be able to forget about the class object
+         * they are holding to make this call.
+         */
+        void initAsInstance(in long dupComm, inout gov.cca.AbstractFramework af) throws gov.cca.CCAException;
+
+        /** Set the communicators on an uninitialized mpi support component
+         * instance created like any other and register the component through
+         * the ServiceRegistry.
+         * 
+         * In the MPI sense, this call must be collective on the scope of 
+         * dupComm.
+         * 
+         * @param dupComm  the (valid) communicator (in fortran form) to duplicate
+         *   for those using MPIService.
+         * @param af The frame into which the server will add itself.
+         * In principle, the caller should be able to forget about the class object
+         * they are holding to make this call.
+         */
+        void initAsService(in long dupComm);
+
+        /** Set the communicators on an uninitialized mpi support component
+         * instance created like any other.
+         * This does NOT cause the component being initialized to register itself
+         * as a service for all comers.
+         * This method is for treating an instance from inside a frame or
+         * subframe as a peer component that may serve only certain other
+         * components in the frame, e.g after a comm split.
+         *
+         * In the MPI sense, this call must be collective on the scope of
+         * dupComm.
+         *
+         * @param dupComm  the (valid) communicator (in fortran form) to duplicate
+         *   for those using MPIService.
+         * @param af The frame into which the server will add itself.
+         * In principle, the caller should be able to forget about the class object
+         * they are holding to make this call.
+         */
+        void initComponent(in long dupComm);
+
+        /**
+         * Shutdown the previous mpi-related services.
+         * @param reclaim if reclaim true, try to release communicator
+         * resources allocated in MPIService support.
+         * Otherwise, lose them.
+         */
+        void finalize(in bool reclaim) throws gov.cca.CCAException;
+
+            }
+        }
+    }
+}

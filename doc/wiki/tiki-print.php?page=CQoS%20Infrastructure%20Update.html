@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : CQoS Infrastructure Update </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=CQoS+Infrastructure+Update.html">CQoS Infrastructure Update</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description">Li Li's work note</div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar"> Motivation </div>
+<br />
+Our CQoS infrastructure design is partially motivated by SciDAC applications in:<br />
+<br />
+<ul><li> parallel mesh partitioning in <b>combustion (</b>CFRFS project, BES ... more details coming from Jaideep et al. ... link here)
+</li><li> managing resources in <b>quantum chemistry </b>(BES ... details coming from Joe, Meng-Shiou, Masha ... link here)
+</li><li> <b>efficient solution of linear systems in fusion and accelerator simulations</b> (FACETS project, FES, and COMPASS project, HEP/NP/BES)
+</li></ul>
+<br />
+<br />
+Adaptive linear solvers:  The solution of linear algebraic systems of equations often dominates the overall runtime of large-scale PDE-based simulations, including some phases of modeling in the COMPASS accelerator and FACETS fusion projects. CQoS work here focuses on determining appropriate choices for algorithms and parameters of TOPS linear and nonlinear solver components.  Because the properties of linear systems in time-dependent and/or nonlinear applications may significantly change during the coarse of a given simulation, CQoS-enabled adaptive multimethod solvers have promise to improve robustness and reduce overall time to solution.  The design goal is to help select Krylov methods and preconditioners dynamically to match the attributes of linear systems as they change during the course of long-running simulations.<br />
+<br />
+The basic idea is during runtime to monitor the overall nonlinear, time-dependent solution process as well as changes in linear systems through computing matrix metadata that describe various system properties. Exhaustive analyses of properties of a number of matrices are stored in a historical database for subsequent analysis, together with performance results, for instance from solving linear systems with these matrices. New matrices, as described by their metadata, can then be matched up against this database for recommendations as to preferred solution methods.<br />
+<br />
+In the initial investigation, we simply use the criterion of having a symmetric vs. nonsymmetric linear operator to select an appropriate Krylov method and preconditioner for use within Newton’s method:<br />
+<ul><li>	Driven cavity operator is nonsymmetric.
+</li><li>	Krylov solvers for nonsymmetric systems include GMRES, TFQMR.
+</li><li>	Preconditioners for nonsymmetric systems include ILU, SOR.
+</li></ul>
+The adaptive strategy will gradually increase in its sophistication.<br />
+<br />
+<div class="titlebar"> CQoS Infrastructure Design Principles </div>
+<br />
+info coming here ...<br />
+<br />
+<div class="titlebar"> Metadata and Performance Database Query and Management Capabilities </div>
+<br />
+<a name='_Matrix_metadata_format'></a><h3> Matrix metadata format</h3>
+<br />
+We use the <a class="wiki"  href="http://www.tacc.utexas.edu/~eijkhout/doc/anamod/html/main.html">Anamod metadata standard</a> (V. Eijkhout, Univ. of Texas) to represent properties of matrices and linear systems.   Anamod provides eight categories:<br />
+<br />
+<ul><li> Estimates for the departure from normality
+<ul><li> Example elements are:
+<ul><li> <b>trace-asquared</b>: an auxiliary quantity
+</li><li><b>commutator-normF</b>: the Frobenius norm of the commutator
+</li></ul></li></ul></li></ul>
+<br />
+<ul><li> Simple (normlike) quantities
+<ul><li> Contains simple, normlike quantities, In general, these are properties that can be calculated in time proportional to the number of nonzeros of the matrix. Example elements are:
+<ul><li><b>trace</b>: Trace, sum of diagonal elements;
+</li><li><b>normF</b>: Frobenius-norm, sqrt of sum of elements squared;
+</li></ul></li></ul></li></ul>
+<br />
+<ul><li> Spectral properties
+<ul><li> Provides various estimates that are derived from running the system through a GMRES iteration for a few dozen iterations. Example elements are:
+<ul><li><b>ritz-values-c</b>: complex parts of stored Ritz values
+</li><li><b>ellipse-ax</b>: size of -axis of the enclosing ellipse
+</li></ul></li></ul></li></ul>
+<br />
+<ul><li> Structural properties
+<ul><li> Computes matrix properties that are only a function of the nonzero structure. Thus, these properties will likely stay invariant during a nonlinear solve process, or while time-stepping a system of equations. Example elements are:
+<ul><li><b>nrows</b>: number of rows in the matrix
+</li><li><b>symmetry</b>: 1 for symmetric matrix, 0 otherwise
+</li></ul></li></ul></li></ul>
+<br />
+<ul><li> Measurements of element variance
+<ul><li>Contains various estimates of how different elements in a matrix are. Example elements are:
+<ul><li><b>diagonal-average</b>: average value of absolute diagonal elements,
+</li><li><b>diagonal-variance</b>: standard deviation of diagonal average
+</li></ul></li></ul></li></ul>
+<br />
+<ul><li> ICMK distribution
+<ul><li> ICMK (`Inverse Cuthill-McKee') is a heuristic that, based on the sparsity structure of a matrix, tries to find a meaningful block structure. This is done without permuting the matrix. This block structure can be used in Block Jacobi preconditioners: distributing the matrix over parallel processors according to the block structure often improves convergence. Example elements are:
+<ul><li><b>nsplits</b>: number of split points found in the matrix
+</li><li><b>splits</b>: the sequence of split points, including 0 and N
+</li></ul></li></ul></li></ul>
+<br />
+<ul><li> Intelligent Preconditioner Recommendation System
+<ul><li> Structural properties used in the University of Kentucky `Intelligent Preconditioner Recommendation System'. Example elements are:
+<ul><li><b>nnzup</b>: number of nonzeros in upper triangle
+</li><li><b>relsymm</b>: relative symmetry, ratio of structural symmetric elements to total number of nonzeros
+</li></ul></li></ul></li></ul>
+<br />
+<ul><li> Jones Plassmann multi-colouring
+<ul><li> Example elements are:
+<ul><li><b>n-colours</b>: the number of colours computed
+</li><li><b>colour-set-sizes</b>: an array containing in location i the number of points of colour i.
+</li></ul></li></ul></li></ul>
+<br />
+<a name='_Metadata_and_performance_database'></a><h3> Metadata and performance database</h3>
+We generate and store the matrix metadata in a database, together with metadata at other levels of abstraction, and performance analysis results from applying different linear solvers to these matrices. The metadata at different levels of abstraction includes system parameters with respect to hardware and compiler configuration, algorithmic parameters and problem-specific parameters. Together the metadata should provide enough information to reproduce a particular experiment instance.<br />
+<br />
+As a new matrix or linear system arise during the course of simulation, the adapter consults the history database of previous runs in judging the match between the system and linear solvers and the associated solution parameters.  It look up “the best” performed method for solving the system, using the associated metadata as search indices. The recommendations as to preferred solution methods are in the form of, for instance, Krylov method, preconditioner, algorithmic parameters configuring the method. After the system has been solved, data reflecting this run can be added to the database as a new case.<br />
+<br />
+<br />
+<a name='_Proposed_performance_database_store_and_query_API'></a><h3> Proposed performance database store and query API</h3>
+<br />
+This initial approach is motivated by linear solvers in fusion and accelerator applications; we will extend/generalize this API based on needs from quantum chemistry and combustion applications.<br />
+<br />
+<ul><li><b> loadSchema</b> Load schema specifying matrix and linear system metadata format.
+</li></ul>
+<br />
+<ul><li><b> loadMetadatafromXML</b> Load matrix metadata, for instance, in a XML file format into database.
+</li></ul>
+<br />
+<ul><li><b> loadExperimentData</b> Load performance data from an experiment run to the database, associate the data to corresponding metadata items in the database.
+</li></ul>
+<br />
+<ul><li><b>determineMethod(metaName, metaValue, metric)</b> Match metadata name and value with respect to a matrix property to best-performed (in terms of the specified performance evaluation metric, e.g., convergence rate, execution time) linear solver in history database.
+</li></ul>
+<br />
+<ul><li><b>determineMethodParameter(method, paramName, metaName, metaValue, metric)</b> Given the linear solver selected, determine an ‘optimal’ parameter configuration by searching history performance information in the database.
+</li></ul>
+<br />
+<ul><li><b>loadAnalysisData</b> After the system has been solved, analysis data reflecting this run is added to the database as a new case. The analysis data consists of brief summary of performance characteristic of the run, such as, number of iterations, convergence rate, execution time per iteration, which will be used as a key to expedite the search for best solution in the database.
+</li></ul>
+<br />
+Metadata at other levels of abstraction, for instance, system and algorithm parameters, will add complexity to database queries. An adaptive method may require questions like ‘which linear solver fits in when the linear system to be solved is becoming sparse, considering the memory limitation of the machine the program is running on? ’ be answered. The query APIs can be organized in a multiple-levels structure, with each level reflecting a specific metadata abstraction level.<br />
+<br />
+<a class="wiki"  href="tiki-index.php%3Fpage=CQoS%253A8-27-2007.html">Return to CQoS meeting area</a><br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <span class='link'>likli</span>
+  last modification: Monday 27 of August, 2007 [15:09:01 UTC] by <span class='link'>likli</span>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=CQoS%20Infrastructure%20Update
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  

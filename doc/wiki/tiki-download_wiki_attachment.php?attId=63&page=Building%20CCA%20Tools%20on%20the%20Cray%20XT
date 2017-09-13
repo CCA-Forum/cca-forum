@@ -1,0 +1,88 @@
+#!/bin/tcsh
+#
+# Compute Node Configure
+#
+
+set top = "/u0/k/kohl/franklin_babel_testing"
+
+set scratch = "/scratch/scratchdirs/kohl/babel_scratch"
+
+set configure = "$top/babel/configure"
+
+set install = "$scratch/install"
+
+set sidlx_opts = "--disable-sidlx --without-sidlx"
+
+set static_opts = \
+	"--disable-shared --enable-static --enable-pure-static-runtime=yes"
+
+# # Dummy Cache Inputs...
+# /bin/rm -f config.cache
+# touch config.cache
+# echo 'cross_compiling=yes' >> config.cache
+# echo 'llnl_cross_compiling_okay=yes' >> config.cache
+# echo 'llnl_cv_F77_logical_size=4' >> config.cache
+# echo 'llnl_cv_F90_logical_size=4' >> config.cache
+# echo 'llnl_cv_F77_string_passing="far int32_t"' >> config.cache
+# echo 'llnl_cv_F90_string_passing="far int32_t"' >> config.cache
+# echo 'ac_cv_f90_pointer_size=8' >> config.cache
+# set target = "-C"
+
+# The "Official" Way...
+set target = "--target=x86_64-cray-cnl"
+
+# C
+setenv CC "cc"
+setenv CFLAGS "-g"
+set c_opts = "--enable-c=$CC"
+
+# C++
+setenv CXX "CC"
+setenv CXXFLAGS "-g"
+set cxx_opts = "--enable-cxx=$CXX"
+
+# Fortran
+setenv F77 "ftn"
+setenv FFLAGS "-g"
+set fort_opts = "--enable-fortran77=$F77"
+
+# Fortran 90
+setenv CPP "gcc -E"
+setenv FC "ftn"
+setenv FCFLAGS "-g"
+set f90_opts = "--enable-fortran90=$FC --with-F90-vendor=PGI"
+
+# Python
+set python_opts = "--disable-python"
+
+# Java
+set java_opts = "--disable-java"
+
+# Dump Inputs...
+
+echo "Environment:"
+echo "CC = $CC"
+echo "CFLAGS = $CFLAGS"
+echo "CXX = $CXX"
+echo "CXXFLAGS = $CXXFLAGS"
+echo "F77 = $F77"
+echo "FFLAGS = $FFLAGS"
+echo "CPP = $CPP"
+echo "FC = $FC"
+echo "FCFLAGS = $FCFLAGS"
+echo ""
+
+# echo "config.cache:"
+# /bin/cat config.cache
+# echo ""
+
+# Run Configure...
+
+echo "$configure --prefix=$install $target $sidlx_opts $static_opts $c_opts $cxx_opts $fort_opts $f90_opts $python_opts $java_opts"
+
+$configure \
+	--prefix=$install \
+	$target \
+	$sidlx_opts $static_opts \
+	$c_opts $cxx_opts $fort_opts $f90_opts $python_opts $java_opts
+

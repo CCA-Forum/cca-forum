@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+
+ : PerComponentFileFormat </title>
+
+
+
+
+<link rel="StyleSheet"  href="styles/tikineat.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+    
+
+<link rel="alternate" type="application/rss+xml" title="RSS Wiki" href="tiki-wiki_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Blogs" href="tiki-blogs_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Articles" href="tiki-articles_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS Image Galleries" href="tiki-image_galleries_rss.php%3Fver=2" />
+<link rel="alternate" type="application/rss+xml" title="RSS File Galleries" href="tiki-file_galleries_rss.php%3Fver=2" />
+
+
+<!-- 1 -->
+
+
+
+</head>
+
+<body
+ onload=""
+  >
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div>
+<script type="text/javascript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+
+<h1><a class="pagetitle" title="refresh" accesskey="2" href="tiki-index.php%3Fpage=PerComponentFileFormat.html">PerComponentFileFormat</a></h1>
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+<div id="description"></div>
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<div class="titlebar"> bocca approach </div>
+The componentness (that information not redundant with sidl interface descriptions) can now be described (or should be describable, were bocca complete) with the bocca command line:<br />
+<div class="simplebox"><br />
+bocca create component -l LANGUAGE COMPONENTNAME<br />
+bocca change COMPONENTNAME --provides=PORTTYPE:PORTNAME<br />
+bocca change COMPONENTNAME --uses=PORTTYPE:PORTNAME<br />
+</div><br />
+The only open issue in the above (bocca) is handling delegated ports and port-properties/component-properties.<br />
+<br />
+<div class="titlebar"> small language approach </div>
+The component description files may have multiple sections and each section might have its own format.<br />
+E.g.<br />
+<br />
+<div class="simplebox">Package ptest {<br />
+Component Foo in C++ {<br />
+Provides hello.StringConsumerPort output1;<br />
+Uses hello.TimePort t1;<br />
+}<br />
+Component Bar in C {<br />
+Provides hello.TimeService clock%N dynamic=true; // %N indicates a number will be part of the runtime-generated port instance name.<br />
+Provides hello.SyncService mysync dynamic=true delegated=true; // dynamic means 'not provided in setServices', delegated means not done by Class Bar inheriting interface SyncService and further that there will be a private data member mysync in the component that is the delegate provider.<br />
+}</div><br />
+<br />
+Or in INI fashion, but I'm sure i must be breaking the INI conventions here; with minor extensions this is the language the Ccaffeine framework speaks to the gui to tell it what to draw.<br />
+{Component.Foo}<br />
+ImplementationLanguage=c++<br />
+{Provides.output1}<br />
+type=hello.StringConsumerPort<br />
+depends=sidl.string<br />
+{Uses.t1}<br />
+type=hello.TimePort<br />
+{Component.Bar}<br />
+ImplementationLanguage=c<br />
+etc<br />
+
+</div> 
+
+
+<p class="editdate">
+  Created by: <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+  last modification: Wednesday 03 of October, 2007 [16:50:31 UTC] by <a class='link'  target='_top' href='tiki-user_information.php%3Fview_user=baallan.html' >baallan</a>
+</p>
+
+
+  <div class="editdate" align="center"><p>
+    The original document is available at http://www.cca-forum.org/wiki/tiki-index.php?page=PerComponentFileFormat
+  </p></div>
+
+  </div>
+</div>
+
+
+</body>
+</html>  
